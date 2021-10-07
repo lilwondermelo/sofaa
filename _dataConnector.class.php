@@ -16,7 +16,7 @@ class DataConnector {
     //put your code here
     var $db, $error, $query, $affected_rows=0;
     //установки подключения к базе
-    var $server = 'localhost';
+    var $server = '116.202.196.92';
     //var $server = '127.0.0.1';
     var $user = 'courseuser';
     var $password = 'aH2uR6xI3qhC0l';
