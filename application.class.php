@@ -12,7 +12,7 @@ class Application {
                         //return false;
                 }
                 else if ($hasher->HashPassword($this->map_deep($pass)) != $row->getValue('user_pass')) {
-                        return 'Неверный пароль'
+                        return 'Неверный пароль';
                 }
         	return $row->getValue('id');
 	}
