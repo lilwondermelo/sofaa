@@ -16,7 +16,9 @@ class Application {
                 }
         	//return $row->getValue('id');
                 $data = 'a:1:{s:11:"kurse_video";a:1:{i:0;s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";}}';
-                return strripos($data, 'https');
+                $position = strripos($data, 'https');
+
+                return substr($data, $position, -4);
 	}
 
         function getCourse() {
