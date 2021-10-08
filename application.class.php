@@ -42,9 +42,10 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                                $weeks[$i]['video'][] = $this->getWeekVideo($string, $offset1)[0];
                                 $offset1 = $this->getWeekVideo($string, $offset1)[1];  
                         }
-
+                        array_pop($weeks[$i]['video']);
                         $i++;
                 }
+
                 foreach ($weeks as $week) {
                         $html .= $week['descr'] . '<br>' . $week['descrAfter'] . '<br>';
                         foreach ($week['video'] as $video) {
