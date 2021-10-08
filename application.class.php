@@ -12,7 +12,7 @@ class Application {
                         //return false;
                 }
                 else if (!$hasher->CheckPassword($pass, $row->getValue('user_pass'))) {
-                        return 'Пароль не совпадает';
+                        return $row->getValue('user_pass');
                 }
         	return $row->getValue('id');
 	}
