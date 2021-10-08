@@ -11,9 +11,9 @@ class Application {
                         return 'Нет такого пользователя!';
                         //return false;
                 }
-                else if ($hasher->HashPassword($this->map_deep($pass)) != $row->getValue('user_pass')) {
+                else if ($hasher->HashPassword($pass) != $row->getValue('user_pass')) {
                         //return 'Неверный пароль';
-                        return $row->getValue('user_pass') . ' ' . $hasher->HashPassword($this->map_deep($pass));
+                        return $row->getValue('user_pass') . ' ' . $hasher->HashPassword($pass);
                 }
         	return $row->getValue('id');
 	}
