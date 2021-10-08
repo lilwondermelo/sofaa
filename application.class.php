@@ -36,7 +36,7 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $i++;
                 }
                 foreach ($weeks as $week) {
-                        $html .= $week['descr'] . $week['descrAfter'];
+                        $html .= $week['descr'] . '<br>' . $week['descrAfter'] . '<br>';
                 }
                 return $html;
 	}
