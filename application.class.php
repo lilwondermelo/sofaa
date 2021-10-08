@@ -10,29 +10,17 @@ class Application {
                 if (!$row->getData()) {
                         return 'Нет такого пользователя!';
                         //return false;
-                }       
+                }
                 else if (!$hasher->CheckPassword($pass, $row->getValue('user_pass'))) {
                         return 'Неверный пароль';
                 }
-        	return $row->getValue('id');
+        	//return $row->getValue('id');
+                return ' a:1:{s:11:"kurse_video";a:1:{i:0;s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";}}';
 	}
 
-        function map_deep( $value) {
-            if ( is_array( $value ) ) {
-                foreach ( $value as $index => $item ) {
-                    $value[ $index ] = map_deep( $item);
-                }
-            } elseif ( is_object( $value ) ) {
-                $object_vars = get_object_vars( $value );
-                foreach ( $object_vars as $property_name => $property_value ) {
-                    $value->$property_name = map_deep( $property_value);
-                }
-            } else {
-                $value = is_string( $value ) ? stripslashes( $value ) : $value;
-            }
-         
-            return $value;
-
+        function getCourse() {
+                require_once '_dataRowSource.class.php';
+                $row = new DataRowSource('select id, user_pass from cr_users where user_login = "' . $login . '"');
         }
 }
 ?>
