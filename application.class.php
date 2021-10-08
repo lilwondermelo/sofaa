@@ -35,7 +35,7 @@ class Application {
                         $offset = $this->getWeekDescrAfter($string, $this->getWeekDescr($string)[1])[1];
                 }
                 foreach ($weeks as $week) {
-                        $html .= $week['descr'] . $week['descrAfter']
+                        $html .= $week['descr'] . $week['descrAfter'];
                 }
                 return $html;
 	}
