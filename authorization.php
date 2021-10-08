@@ -4,5 +4,5 @@
 	require_once 'application.class.php';
 	$app = new Application();
 	$result = $app->login($login, $pass);
-	echo $result;
+	//echo $result;
 ?>
