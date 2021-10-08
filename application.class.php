@@ -66,7 +66,7 @@ class Application {
                 $position0 = stripos($metaString, 'week_descr') + 14;
                 $trim = substr($metaString, $position0);
                 $position1 = stripos($trim, ':') + 2;
-                $trim = substr($trim, $position1);
+                //$trim = substr($trim, $position1);
                 return $trim;
         }
 }
