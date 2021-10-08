@@ -67,4 +67,4 @@ class Application {
                 return array($trim, $position2);
         }
 }
-?>n
+?>

@@ -3,6 +3,6 @@
 	$pass = $_GET['pass'];
 	require_once 'application.class.php';
 	$app = new Application();
-	//$result = $app->login($login, $pass);
-	//echo $result;
+	$result = $app->login($login, $pass);
+	echo $result;
 ?>
