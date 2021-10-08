@@ -11,47 +11,27 @@ class Application {
                         return 'Нет такого пользователя!';
                         //return false;
                 }
-                else if (!$hasher->CheckPassword($pass, $row->getValue('user_pass'))) {
-                        return $row->getValue('user_pass');
+                else if (!$hasher->CheckPassword($pass, $hasher->HashPassword(map_deep($pass,'stripslashes_from_strings_only')))) {
+                        return $hasher->HashPassword(map_deep($pass,'stripslashes_from_strings_only'));
                 }
         	return $row->getValue('id');
 	}
 
-        function crypt_private($password, $setting) {
-        $output = '*0';
-        if (substr($setting, 0, 2) === $output)
-                $output = '*1';
-
-        $id = substr($setting, 0, 3);
-        # We use "$P$", phpBB3 uses "$H$" for the same thing
-        if ($id !== '$P$' && $id !== '$H$')
-                return $output;
-
-        $count_log2 = strpos($this->itoa64, $setting[3]);
-        if ($count_log2 < 7 || $count_log2 > 30)
-                return $output;
-
-        $count = 1 << $count_log2;
-
-        $salt = substr($setting, 4, 8);
-        if (strlen($salt) !== 8)
-                return $output;
-
-        # We were kind of forced to use MD5 here since it's the only
-        # cryptographic primitive that was available in all versions
-        # of PHP in use.  To implement our own low-level crypto in PHP
-        # would have resulted in much worse performance and
-        # consequently in lower iteration counts and hashes that are
-        # quicker to crack (by non-PHP code).
-        $hash = md5($salt . $password, TRUE);
-        do {
-                $hash = md5($hash . $password, TRUE);
-        } while (--$count);
-
-        $output = substr($setting, 0, 12);
-        $output .= $this->encode64($hash, 16);
-
-        return $output;
-}
+        function map_deep( $value, $callback ) {
+            if ( is_array( $value ) ) {
+                foreach ( $value as $index => $item ) {
+                    $value[ $index ] = map_deep( $item, $callback );
+                }
+            } elseif ( is_object( $value ) ) {
+                $object_vars = get_object_vars( $value );
+                foreach ( $object_vars as $property_name => $property_value ) {
+                    $value->$property_name = map_deep( $property_value, $callback );
+                }
+            } else {
+                $value = call_user_func( $callback, $value );
+            }
+         
+            return $value;
+        }
 }
 ?>
