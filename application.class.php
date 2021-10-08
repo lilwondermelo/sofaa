@@ -1,7 +1,6 @@
 <?php
 class Application {
         public $error;
-	private $code;
 	function login($login, $pass) {
                 require_once 'class-phpass.php';
                 $hasher = new PasswordHash(8, TRUE);
@@ -24,8 +23,11 @@ class Application {
  Regel Nr. 2  achte auf deine Atmung, erkenne deine Blockaden und Verspannungen. Der Bauch ist einen Zentralpunkt der Entspannung.
  ";s:11:"week_videos";a:2:{i:0;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 1 недели 2";}i:1;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 2 недели 2";}}s:16:"week_descr_after";s:63:"Описание недели 2 после трансляции";}i:2;a:2:{s:10:"week_descr";s:139:"Mach weiter!
  Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Körper auf eine oder andere Bewegung reagiert.
- ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}}}';
-                return $this->getWeekDescr($string);
+ ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}}}';           
+                $week = array();
+                $week['descr'] = $this->getWeekDescr($string)[0];
+                $week['descrAfter'] = $this->getWeekDescrAfter($string, $this->getWeekDescr($string)[1])[0];
+                return $week['descr'] . $week['descr_after'];
 	}
 
         function getCourse() {
@@ -44,14 +46,25 @@ class Application {
                 return substr($metaString, $position, -4);
         }
 
-        function getWeekDescr($metaString) {
+        function getWeekDescr($metaString, $offset = 0) {
+                $metaString = substr($metaString, $offset);
                 $position0 = stripos($metaString, 'week_descr') + 14;
                 $trim = substr($metaString, $position0);
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
                 $position2 = stripos($trim, ';')-1;
                 $trim = substr($trim, 0, $position2);
-                return $trim;
+                return array($trim, $position2);
+        }
+        function getWeekDescrAfter($metaString, $offset = 0) {
+                $metaString = substr($metaString, $offset);
+                $position0 = stripos($metaString, 'week_descr_after') + 14;
+                $trim = substr($metaString, $position0);
+                $position1 = stripos($trim, ':') + 2;
+                $trim = substr($trim, $position1);
+                $position2 = stripos($trim, ';')-1;
+                $trim = substr($trim, 0, $position2);
+                return array($trim, $position2);
         }
 }
 ?>
