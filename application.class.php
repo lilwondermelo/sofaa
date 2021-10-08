@@ -31,8 +31,10 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $weeks[$i] = array();
                         $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
                         $offset = $this->getWeekDescr($string, $offset)[1];
+                        
                         $weeks[$i]['video'] = $this->getWeekVideo($string, $offset)[0];
                         $offset = $this->getWeekVideo($string, $offset)[1];
+
                         $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
                         $offset = $this->getWeekDescrAfter($string, $offset)[1];
                         $i++;
@@ -83,7 +85,7 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
 
         function getWeekVideo($metaString, $offset = 0) {
                 $metaString = substr($metaString, $offset);
-                $position0 = stripos($metaString, 'week_video') + 14;
+                $position0 = stripos($metaString, 'week_video"') + 14;
                 $trim = substr($metaString, $position0);
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
