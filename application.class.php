@@ -31,12 +31,14 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $weeks[$i] = array();
                         $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
                         $offset = $this->getWeekDescr($string, $offset)[1];
+                        $weeks[$i]['video'] = $this->getWeekVideo($string, $offset)[0];
+                        $offset = $this->getWeekVideo($string, $offset)[1];
                         $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
                         $offset = $this->getWeekDescrAfter($string, $offset)[1];
                         $i++;
                 }
                 foreach ($weeks as $week) {
-                        $html .= $week['descr'] . '<br>' . $week['descrAfter'] . '<br>';
+                        $html .= $week['descr'] . '<br>' . $week['video'] . '<br>' . $week['descrAfter'] . '<br>';
                 }
                 return $html;
 	}
@@ -71,6 +73,28 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
         function getWeekDescrAfter($metaString, $offset = 0) {
                 $metaString = substr($metaString, $offset);
                 $position0 = stripos($metaString, 'week_descr_after') + 20;
+                $trim = substr($metaString, $position0);
+                $position1 = stripos($trim, ':') + 2;
+                $trim = substr($trim, $position1);
+                $position2 = stripos($trim, ';')-1;
+                $trim = substr($trim, 0, $position2);
+                return array($trim, $offset + $position0 + $position1 + $position2);
+        }
+
+        function getWeekVideo($metaString, $offset = 0) {
+                $metaString = substr($metaString, $offset);
+                $position0 = stripos($metaString, 'week_video') + 14;
+                $trim = substr($metaString, $position0);
+                $position1 = stripos($trim, ':') + 2;
+                $trim = substr($trim, $position1);
+                $position2 = stripos($trim, ';')-1;
+                $trim = substr($trim, 0, $position2);
+                return array($trim, $offset + $position0 + $position1 + $position2);
+        }
+
+        function getWeekVideoDescr($metaString, $offset = 0) {
+                $metaString = substr($metaString, $offset);
+                $position0 = stripos($metaString, 'week_video_descr') + 20;
                 $trim = substr($metaString, $position0);
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
