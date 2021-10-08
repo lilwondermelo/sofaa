@@ -43,7 +43,7 @@ class Application {
  ";s:11:"week_videos";a:2:{i:0;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 1 недели 2";}i:1;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 2 недели 2";}}s:16:"week_descr_after";s:63:"Описание недели 2 после трансляции";}
  i:2;a:2:{s:10:"week_descr";s:139:"Mach weiter!
  Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Körper auf eine oder andere Bewegung reagiert.
- ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}}}', false);
+ ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}}}');
 	}
 
         function getCourse() {
