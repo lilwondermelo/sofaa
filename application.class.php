@@ -43,7 +43,6 @@ class Application {
  i:2;a:2:{s:10:"week_descr";s:139:"Mach weiter!
  Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Körper auf eine oder andere Bewegung reagiert.
  ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}}}';
-             
                 return $this->getWeekDescr($string);
 	}
 
@@ -62,8 +61,11 @@ class Application {
                 $position = strripos($metaString, 'embed/') + 6;
                 return substr($metaString, $position, -4);
         }
+
         function getWeekDescr($metaString) {
-                return $metaString;
+                $position0 = strripos($metaString, 'week_descr') + 14;
+                $trim1 = substr($metaString, $position0);
+                return $trim1;
         }
 }
 ?>
