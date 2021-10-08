@@ -72,7 +72,7 @@ class Application {
                 $trim = substr($trim, $position1);
                 $position2 = stripos($trim, ';')-1;
                 $trim = substr($trim, 0, $position2);
-                return array($trim, $offset + $position0 + $position1 + $position2;
+                return array($trim, $offset + $position0 + $position1 + $position2);
         }
 }
 ?>
