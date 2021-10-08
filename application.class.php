@@ -11,7 +11,7 @@ class Application {
                         return 'Нет такого пользователя!';
                         //return false;
                 }
-                else if (!$hasher->CheckPassword($pass, $row->getValue('user_pass')) {
+                else if (!$hasher->CheckPassword($pass, $row->getValue('user_pass'))) {
                         return 'Пароль не совпадает';
                 }
         	return $row->getValue('id');
