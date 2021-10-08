@@ -30,11 +30,11 @@ class Application {
                 $offset = $this->getWeekDescr($string, $offset)[1];
                 $week['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
                 $offset = $this->getWeekDescrAfter($string, $offset)[1];
-                $week['descr'] = $this->getWeekDescr($string, $offset)[0];
+                $week['descr1'] = $this->getWeekDescr($string, $offset)[0];
                 $offset = $this->getWeekDescr($string, $offset)[1];
-                $week['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
+                $week['descrAfter1'] = $this->getWeekDescrAfter($string, $offset)[0];
                 $offset = $this->getWeekDescrAfter($string, $offset)[1];
-                return $week['descr'] . $week['descrAfter'];
+                return $week['descr'] . $week['descrAfter'] . $week['descr1'] . $week['descrAfter1'];
 	}
 
         function getCourse() {
