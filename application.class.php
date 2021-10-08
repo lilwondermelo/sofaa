@@ -27,7 +27,7 @@ class Application {
                 $week = array();
                 $week['descr'] = $this->getWeekDescr($string)[0];
                 $week['descrAfter'] = $this->getWeekDescrAfter($string, $this->getWeekDescr($string)[1])[0];
-                return '1' . $week['descr'] . $week['descrAfter'];
+                return $week['descr'] . $week['descrAfter'];
 	}
 
         function getCourse() {
