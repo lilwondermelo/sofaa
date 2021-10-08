@@ -11,24 +11,25 @@ class Application {
                         return 'Нет такого пользователя!';
                         //return false;
                 }
-        	return $hasher->HashPassword($this->map_deep($pass,'stripslashes_from_strings_only'));
+        	return $hasher->HashPassword($this->map_deep($pass));
 	}
 
-        function map_deep( $value, $callback ) {
+        function map_deep( $value) {
             if ( is_array( $value ) ) {
                 foreach ( $value as $index => $item ) {
-                    $value[ $index ] = map_deep( $item, $callback );
+                    $value[ $index ] = map_deep( $item);
                 }
             } elseif ( is_object( $value ) ) {
                 $object_vars = get_object_vars( $value );
                 foreach ( $object_vars as $property_name => $property_value ) {
-                    $value->$property_name = map_deep( $property_value, $callback );
+                    $value->$property_name = map_deep( $property_value);
                 }
             } else {
-                $value = call_user_func( $callback, $value );
+                $value = is_string( $value ) ? stripslashes( $value ) : $value
             }
          
             return $value;
+
         }
 }
 ?>
