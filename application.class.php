@@ -6,10 +6,13 @@ class Application {
                 require_once 'class-phpass.php';
                 $hasher = new PasswordHash(8, TRUE);
                 require_once '_dataRowSource.class.php';
-                $row = new DataRowSource('select id from cr_users where user_login = "' . $login . '" and user_pass = "' .  md5($pass) . '"');
+                $row = new DataRowSource('select id, user_pass from cr_users where user_login = "' . $login . '"');
                 if (!$row->getData()) {
-                        return $hasher->wp_hash_password($pass);
+                        return 'Нет такого пользователя!';
                         //return false;
+                }
+                else if (!$hasher->CheckPassword($pass, $row->getValue('user_pass')) {
+                        return 'Пароль не совпадает';
                 }
         	return $row->getValue('id');
 	}
