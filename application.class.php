@@ -53,7 +53,7 @@ class Application {
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
                 $position2 = stripos($trim, ';') - 1;
-                $trim = substr($trim, 1, $position2);
+                $trim = substr($trim, 0, $position2);
                 return array($trim, $position2);
         }
         function getWeekDescrAfter($metaString, $offset = 0) {
