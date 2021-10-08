@@ -20,11 +20,11 @@ class Application {
 
         function getCourse() {
                 require_once '_dataSource.class.php';
-                $rowData = new DataSource('select meta_key as key, meta_value as val from cr_postmeta where post_id = 1446 and (meta_key = "kurse_desc" or meta_key = "kurse_videos" or meta_key = "kurse_desc_after_video" or meta_key = "week" or meta_key = "kurse_descr_after")');
+                $rowData = new DataSource('select meta_key as mkey, meta_value as mval from cr_postmeta where post_id = 1446 and (meta_key = "kurse_desc" or meta_key = "kurse_videos" or meta_key = "kurse_desc_after_video" or meta_key = "week" or meta_key = "kurse_descr_after")');
                 $data = $rowData->getData();
                 $html = '';
                 foreach ($data as $row) {
-                        $html = $html . $row['meta_key'];
+                        $html = $html . $row['mkey'];
                 }
                 return $html;
         }
