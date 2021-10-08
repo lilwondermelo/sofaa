@@ -24,25 +24,21 @@ Regel Nr. 2  achte auf deine Atmung, erkenne deine Blockaden und Verspannungen. 
 ";s:11:"week_videos";a:2:{i:0;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 1 недели 2";}i:1;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 2 недели 2";}}s:16:"week_descr_after";s:63:"Описание недели 2 после трансляции";}i:2;a:3:{s:10:"week_descr";s:139:"Mach weiter!
 Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Körper auf eine oder andere Bewegung reagiert.
 ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}s:16:"week_descr_after";s:1:" ";}}';     
-                $week = array();
+                $weeks = array();
                 $offset = 0;
-                $week['descr'] = $this->getWeekDescr($string, $offset)[0];
-                $offset = $this->getWeekDescr($string, $offset)[1];
-                $week['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
-                $offset = $this->getWeekDescrAfter($string, $offset)[1];
-                $week['descr1'] = $this->getWeekDescr($string, $offset)[0];
-                $offset = $this->getWeekDescr($string, $offset)[1];
-                $week['descrAfter1'] = $this->getWeekDescrAfter($string, $offset)[0];
-                $offset = $this->getWeekDescrAfter($string, $offset)[1];
-                $week['descr2'] = $this->getWeekDescr($string, $offset)[0];
-                $offset = $this->getWeekDescr($string, $offset)[1];
-                $week['descrAfter2'] = $this->getWeekDescrAfter($string, $offset)[0];
-                $offset = $this->getWeekDescrAfter($string, $offset)[1];
-                $week['descr3'] = $this->getWeekDescr($string, $offset)[0];
-                $offset = $this->getWeekDescr($string, $offset)[1];
-                $week['descrAfter3'] = $this->getWeekDescrAfter($string, $offset)[0];
-                $offset = $this->getWeekDescrAfter($string, $offset)[1];
-                return $week['descr'] . $week['descrAfter'] . $week['descr1'] . $week['descrAfter1'] . $week['descr2'] . $week['descrAfter2']. $week['descr3'] . $week['descrAfter3'];
+                $i = 1;
+                while($this->getWeekDescr($string, $offset)[0]) {
+                        $weeks[$i] = array();
+                        $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
+                        $offset = $this->getWeekDescr($string, $offset)[1];
+                        $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
+                        $offset = $this->getWeekDescrAfter($string, $offset)[1];
+                        $i++;
+                }
+                foreach ($weeks as $week) {
+                        $html .= $week['descr'] . $week['descrAfter'];
+                }
+                return $html;
 	}
 
         function getCourse() {
