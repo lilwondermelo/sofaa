@@ -50,8 +50,8 @@ class Application {
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
                 $position2 = stripos($trim, ';');
-                $trim1 = substr($trim, $position1, $position2);
-                return $trim . ' ' . $trim1;
+                $trim = substr($trim, 0, $position2);
+                return $trim;
         }
 }
 ?>
