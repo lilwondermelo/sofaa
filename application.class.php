@@ -25,8 +25,15 @@ class Application {
  Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Körper auf eine oder andere Bewegung reagiert.
  ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/ltesMEFKnQA";s:16:"week_video_descr";s:37:"Трансляция 1 недели 3";}}}}';           
                 $week = array();
-                $week['descr'] = $this->getWeekDescr($string)[0];
-                $week['descrAfter'] = $this->getWeekDescrAfter($string, $this->getWeekDescr($string)[1])[0];
+                $offset = 0;
+                $week['descr'] = $this->getWeekDescr($string, $offset)[0];
+                $offset = $this->getWeekDescr($string, $offset)[1];
+                $week['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
+                $offset = $this->getWeekDescrAfter($string, $offset)[1];
+                $week['descr'] = $this->getWeekDescr($string, $offset)[0];
+                $offset = $this->getWeekDescr($string, $offset)[1];
+                $week['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
+                $offset = $this->getWeekDescrAfter($string, $offset)[1];
                 return $week['descr'] . $week['descrAfter'];
 	}
 
