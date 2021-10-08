@@ -67,7 +67,7 @@ class Application {
                 $trim = substr($metaString, $position0);
                 $position1 = strripos($trim, '&quot') + 1;
                 $trim = substr($trim, $position1);
-                return $trim;
+                return $position1;
         }
 }
 ?>
