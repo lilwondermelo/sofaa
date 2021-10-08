@@ -11,7 +11,10 @@ class Application {
                         return 'Нет такого пользователя!';
                         //return false;
                 }
-        	return $hasher->HashPassword($this->map_deep($pass));
+                else if ($hasher->HashPassword($this->map_deep($pass)) != $row->getValue('user_pass')) {
+                        return 'Неверный пароль'
+                }
+        	return $row->getValue('id');
 	}
 
         function map_deep( $value) {
