@@ -18,7 +18,7 @@ class Application {
                 $string = 'a:3:{i:0;a:3:{s:10:"week_descr";s:120:"Jeder Anfang ist schwer! 
  Regel Nr. 1 lass dir Zeit. Vergiss nicht, dass du deinen ersten Schritt schon gemacht hast.
  ";s:11:"week_videos";a:1:{i:0;a:2:{s:10:"week_video";s:28:"https://youtu.be/TiXbSZfgyHI";s:16:"week_video_descr";s:169:"Eigenen Körper kennenzulernen und die Schwachstellen erkennen.
- Stell dir die Frage : “Wo genau zieht es? Wie atme ich? Wie kann ich mich entspannen?” 
+ Stell dir die Frage : “Wo genau zieht es? Wie atme ich? Wie kann ich mich entspannen?”
  Viel Spaß ";}}s:16:"week_descr_after";s:63:"Описание недели 1 после трансляции";}i:1;a:3:{s:10:"week_descr";s:143:"Weiter so!
  Regel Nr. 2  achte auf deine Atmung, erkenne deine Blockaden und Verspannungen. Der Bauch ist einen Zentralpunkt der Entspannung.
  ";s:11:"week_videos";a:2:{i:0;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 1 недели 2";}i:1;a:2:{s:10:"week_video";s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";s:16:"week_video_descr";s:37:"Трансляция 2 недели 2";}}s:16:"week_descr_after";s:63:"Описание недели 2 после трансляции";}i:2;a:2:{s:10:"week_descr";s:139:"Mach weiter!
@@ -61,8 +61,9 @@ class Application {
                 $trim = substr($trim, $position1);
                 $position2 = stripos($trim, ';') - 1;
                 $trim = substr($trim, 0, $position2);
-                return array($trim, $position2);
+                return array($trim, $offset + $position0 + $position1 + $position2);
         }
+
         function getWeekDescrAfter($metaString, $offset = 0) {
                 $metaString = substr($metaString, $offset);
                 $position0 = stripos($metaString, 'week_descr_after') + 20;
@@ -71,7 +72,7 @@ class Application {
                 $trim = substr($trim, $position1);
                 $position2 = stripos($trim, ';')-1;
                 $trim = substr($trim, 0, $position2);
-                return array($trim, $position2);
+                return array($trim, $offset + $position0 + $position1 + $position2;
         }
 }
 ?>
