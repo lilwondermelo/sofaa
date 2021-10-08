@@ -11,10 +11,7 @@ class Application {
                         return 'Нет такого пользователя!';
                         //return false;
                 }
-                else if (!$hasher->CheckPassword($pass, $hasher->HashPassword(map_deep($pass,'stripslashes_from_strings_only')))) {
-                        return $hasher->HashPassword(map_deep($pass,'stripslashes_from_strings_only'));
-                }
-        	return $row->getValue('id');
+        	return $hasher->HashPassword($this->map_deep($pass,'stripslashes_from_strings_only'));
 	}
 
         function map_deep( $value, $callback ) {
