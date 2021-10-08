@@ -15,7 +15,7 @@ class Application {
                         return 'Неверный пароль';
                 }
         	//return $row->getValue('id');
-                $data = ' a:1:{s:11:"kurse_video";a:1:{i:0;s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";}}';
+                $data = 'a:1:{s:11:"kurse_video";a:1:{i:0;s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";}}';
                 return strripos($data, 'https');
 	}
 
