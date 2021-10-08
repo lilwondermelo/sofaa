@@ -27,6 +27,7 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                 $weeks = array();
                 $offset = 0;
                 $i = 1;
+                $offset1 = 0;
                 while($this->getWeekDescr($string, $offset)[0] != '') {
                         $weeks[$i] = array();
                         $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
