@@ -27,7 +27,7 @@ class Application {
                 $week = array();
                 $week['descr'] = $this->getWeekDescr($string)[0];
                 $week['descrAfter'] = $this->getWeekDescrAfter($string, $this->getWeekDescr($string)[1])[0];
-                return $this->getWeekDescr($string)[1];
+                return $week['descr'] . $week['descrAfter'];
 	}
 
         function getCourse() {
@@ -58,7 +58,7 @@ class Application {
         }
         function getWeekDescrAfter($metaString, $offset = 0) {
                 $metaString = substr($metaString, $offset);
-                $position0 = stripos($metaString, 'week_descr_after') + 14;
+                $position0 = stripos($metaString, 'week_descr_after') + 20;
                 $trim = substr($metaString, $position0);
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
@@ -67,4 +67,4 @@ class Application {
                 return array($trim, $position2);
         }
 }
-?>
+?>n
