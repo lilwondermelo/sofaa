@@ -38,10 +38,11 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
                         $offset = $this->getWeekDescrAfter($string, $offset)[1];
                         $weeks[$i]['video'] = array();
-                        while (($offset > $offset1) && ($this->getWeekVideo($string, $offset1)[0] != '')) {
+                        do {
                                $weeks[$i]['video'][] = $this->getWeekVideo($string, $offset1)[0];
                                 $offset1 = $this->getWeekVideo($string, $offset1)[1];  
                         }
+                        while (($offset > $offset1) && ($this->getWeekVideo($string, $offset1)[0] != ''));
 
                         $i++;
                 }
