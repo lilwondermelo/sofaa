@@ -31,15 +31,23 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $weeks[$i] = array();
                         $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
                         $offset = $this->getWeekDescr($string, $offset)[1];
-
-                        $weeks[$i]['video'] = $this->getWeekVideo($string, $offset)[0];
-                        $offset = $this->getWeekVideo($string, $offset)[1];
-
-                        $weeks[$i]['video1'] = $this->getWeekVideo($string, $offset)[0];
-                        $offset = $this->getWeekVideo($string, $offset)[1];
-
+                        $offset1 = $this->getWeekDescr($string, $offset)[1];
                         $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
                         $offset = $this->getWeekDescrAfter($string, $offset)[1];
+
+                        if ($offset < $offset1) {
+                              $weeks[$i]['video'] = $this->getWeekVideo($string, $offset, $offset1)[0];
+                                $offset = $this->getWeekVideo($string, $offset, $offset1)[1];  
+                        }
+
+                        if ($offset < $offset1) {
+                              $weeks[$i]['video1'] = $this->getWeekVideo($string, $offset, $offset1)[0];
+                                $offset = $this->getWeekVideo($string, $offset, $offset1)[1];
+                        }
+                        
+                        
+
+                        
                         $i++;
                 }
                 foreach ($weeks as $week) {
@@ -86,7 +94,7 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                 return array($trim, $offset + $position0 + $position1 + $position2);
         }
 
-        function getWeekVideo($metaString, $offset = 0) {
+        function getWeekVideo($metaString, $offset, $offsetEnd) {
                 $metaString = substr($metaString, $offset);
                 $position0 = stripos($metaString, 'week_video"') + 14;
                 $trim = substr($metaString, $position0);
