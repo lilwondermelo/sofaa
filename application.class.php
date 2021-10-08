@@ -64,8 +64,10 @@ class Application {
 
         function getWeekDescr($metaString) {
                 $position0 = strripos($metaString, 'week_descr') + 14;
-                $trim1 = substr($metaString, $position0);
-                return $trim1;
+                $trim = substr($metaString, $position0);
+                $position1 = strripos($metaString, '"') + 1;
+                $trim = substr($trim, $position1);
+                return $trim;
         }
 }
 ?>
