@@ -15,15 +15,23 @@ class Application {
                         return 'Неверный пароль';
                 }
         	//return $row->getValue('id');
-                $data = 'a:1:{s:11:"kurse_video";a:1:{i:0;s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";}}';
-                $position = strripos($data, 'embed/') + 6;
-
-                return substr($data, $position, -4);
+                return $this->getCourse();
 	}
 
         function getCourse() {
                 require_once '_dataRowSource.class.php';
-                $row = new DataRowSource('select id, user_pass from cr_users where user_login = "' . $login . '"');
+                $rowData = new DataRowSource('select meta_key as key, meta_value as val from cr_postmeta where post_id = 1446 and (meta_key = "kurse_desc" or meta_key = "kurse_videos" or meta_key = "kurse_desc_after_video" or meta_key = "week" or meta_key = "kurse_descr_after"');
+                $data = $rowData->getData();
+                $html = '';
+                foreach ($data as $row) {
+                        $html = $html . $row['meta_key'];
+                }
+                return $html;
+        }
+
+        function getVideoId($metaString) {
+                $position = strripos($data, 'embed/') + 6;
+                return substr($data, $position, -4);
         }
 }
 ?>
