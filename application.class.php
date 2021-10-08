@@ -49,9 +49,9 @@ class Application {
                 $trim = substr($metaString, $position0);
                 $position1 = stripos($trim, ':') + 2;
                 $trim = substr($trim, $position1);
-                $position2 = -stripos($trim, ':');
+                $position2 = stripos($trim, ':');
                 $trim = substr($trim, $position1, $position2);
-                return $trim;
+                return $position2;
         }
 }
 ?>
