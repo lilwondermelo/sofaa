@@ -28,7 +28,7 @@ class Application {
                 $offset = 0;
                 $i = 1;
                 $html = '';
-                while ($this->getWeekDescr($string, $offset)[0]) {
+                while ($this->getWeekDescr($string, $offset)[0] != '') {
                         $weeks[$i] = array();
                         $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
                         $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $this->getWeekDescr($string)[1])[0];
