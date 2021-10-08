@@ -31,8 +31,11 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $weeks[$i] = array();
                         $weeks[$i]['descr'] = $this->getWeekDescr($string, $offset)[0];
                         $offset = $this->getWeekDescr($string, $offset)[1];
-                        
+
                         $weeks[$i]['video'] = $this->getWeekVideo($string, $offset)[0];
+                        $offset = $this->getWeekVideo($string, $offset)[1];
+
+                        $weeks[$i]['video1'] = $this->getWeekVideo($string, $offset)[0];
                         $offset = $this->getWeekVideo($string, $offset)[1];
 
                         $weeks[$i]['descrAfter'] = $this->getWeekDescrAfter($string, $offset)[0];
@@ -40,7 +43,7 @@ Regel Nr. 3: Finde „deine“ Position, lerne dich kennen. Schaue wie dein Kör
                         $i++;
                 }
                 foreach ($weeks as $week) {
-                        $html .= $week['descr'] . '<br>' . $week['video'] . '<br>' . $week['descrAfter'] . '<br>';
+                        $html .= $week['descr'] . '<br>' . $week['video'] . '<br>' . $week['video1'] . '<br>' . $week['descrAfter'] . '<br>';
                 }
                 return $html;
 	}
