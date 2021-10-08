@@ -16,8 +16,7 @@ class Application {
                 }
         	//return $row->getValue('id');
                 //return $this->getCourse();
-                $string = 'a:1:{s:11:"kurse_video";a:1:{i:0;s:41:"https://www.youtube.com/embed/i9GXpIJPqbE";}}
- <h1>Общее описание курса после видео</h1>
+                $string = '
  a:3:{
         i:0;
         a:3:{
