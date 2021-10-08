@@ -25,7 +25,7 @@ class Application {
                     $value->$property_name = map_deep( $property_value);
                 }
             } else {
-                $value = is_string( $value ) ? stripslashes( $value ) : $value
+                $value = is_string( $value ) ? stripslashes( $value ) : $value;
             }
          
             return $value;
