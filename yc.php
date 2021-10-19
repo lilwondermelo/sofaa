@@ -68,7 +68,8 @@
 	$out=curl_exec($curl);
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
-	$data[] = $out['data']['name'];
+	$res = json_decode($out,TRUE);
+	$data[] = $res['data']['name'];
 	$i++;
 	if ($i%5 == 0) {
 		sleep(1);
