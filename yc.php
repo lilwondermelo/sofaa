@@ -1,6 +1,6 @@
 <?php
 	$type = 'POST';
-	$args = array('count' => 200);
+	$args = array('page_size' => 200);
 	$data = array();
 	$link = 'https://api.yclients.com/api/v1/company/505278/clients/search?';
 
