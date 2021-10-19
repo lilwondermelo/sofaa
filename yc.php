@@ -41,6 +41,13 @@
 	echo $out;
 
 
+	foreach ($result['data'] as $item) {
+		$data[] = $item['id'];
+	}
+
+	echo json_encode($data);
+
+
 
 	
 
