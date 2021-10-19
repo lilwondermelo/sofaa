@@ -38,7 +38,7 @@
 	curl_close($curl);
 	$result = json_decode($out,TRUE);
 
-	echo $out;
+	echo $result['meta'];
 
 
 
