@@ -52,5 +52,5 @@ $code = "def50200164e9b950e3329974d6c5e111c2420ac8895da4881b8ade0a0906fd59afae40
 
 			$response = json_decode($out, true);
 
-	    echo $response;
+	    echo $out;
 	
