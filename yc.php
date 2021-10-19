@@ -68,7 +68,7 @@
 	$out=curl_exec($curl);
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
-	$data[] = $out;
+	$data[] = $out['data']['name'];
 	$i++;
 	if ($i%5 == 0) {
 		sleep(1);
