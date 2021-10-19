@@ -38,7 +38,6 @@
 	curl_close($curl);
 	$result = json_decode($out,TRUE);
 
-	echo $out;
 
 
 	foreach ($result['data'] as $item) {
