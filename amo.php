@@ -1,6 +1,9 @@
 <?php
 ini_set("display_errors", 'on');
 
+
+//eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ4ZWJjYzdlMzFhY2ZjMWIzODA3ZDgzNjUyZjdhOTA3Yjk1MTI2MjQxMzgyZDQwZDZiMTZmODY0MjgwZGM0NDQwNmJjYzg3OWM5YTI2NzU4In0.eyJhdWQiOiJiMjVlMWIwMC1iZDI3LTRkMTAtOTM2My1hNWZkYjMxMDI3YjAiLCJqdGkiOiJkOGViY2M3ZTMxYWNmYzFiMzgwN2Q4MzY1MmY3YTkwN2I5NTEyNjI0MTM4MmQ0MGQ2YjE2Zjg2NDI4MGRjNDQ0MDZiY2M4NzljOWEyNjc1OCIsImlhdCI6MTYzNDY0MTA5NSwibmJmIjoxNjM0NjQxMDk1LCJleHAiOjE2MzQ3Mjc0OTUsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTc2NTIzMCwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.UltDqHpRlQwtWjZN0QnV4rvJcwJ0HkmTA5oSzxebnZrbLsPHlVHqBqkkEjjpZWfuLyIBeH5HznTb5liYJV9IrkAd96GsWnFODCJi00mRY9faoNx3-rIQSKoVQnioILk10X8JZhkRHlOZEv181JZ8Zvh-uG0C2nLA_T7d4dbpMtjp-mJUqhbwOoKzUu0rSHHIefufjOqwP-ZhLMkm8lWfSLgdwcp_CMjbn2wL_VScRzD1UhrZBjgzCM7C1NqqkzSzVh7fM6Ebb0849pCPU-2vj-Ibp8f-E7GuBeFixhKidz3Hzi981C6vhjbglMEJSfo8-AbP82JaYxkT8Xt6xeePbA
+
 $host = strtolower(trim("bodycare"));
 $redirect_uri = "https://ingeniouslife.space/amo.php";
 $client_id = "b25e1b00-bd27-4d10-9363-a5fdb31027b0";
@@ -9,14 +12,12 @@ $code = "def5020088cbe831749fa61cf72623becef7e77a9f1f51c08ffdcfe1258a34a1210b065
 
 
 
-	    $link='https://'.$host.'.amocrm.ru/oauth2/access_token';
+	    $link='https://'.$host.'.amocrm.ru/api/v4/contacts';
 
 	    $data = [
-	    	"redirect_uri" => $redirect_uri,
-	    	'client_id' => $client_id,
-	    	'client_secret' => $client_secret,
-	    	'grant_type' => 'authorization_code',
-	    	'code' => $code
+	    	{
+        "name": "Владимир Смирнов"
+    }
 	    ];
 
 
@@ -30,6 +31,7 @@ $code = "def5020088cbe831749fa61cf72623becef7e77a9f1f51c08ffdcfe1258a34a1210b065
 			curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
 			curl_setopt($curl,CURLOPT_URL, $link);
 			curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
+			curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ4ZWJjYzdlMzFhY2ZjMWIzODA3ZDgzNjUyZjdhOTA3Yjk1MTI2MjQxMzgyZDQwZDZiMTZmODY0MjgwZGM0NDQwNmJjYzg3OWM5YTI2NzU4In0.eyJhdWQiOiJiMjVlMWIwMC1iZDI3LTRkMTAtOTM2My1hNWZkYjMxMDI3YjAiLCJqdGkiOiJkOGViY2M3ZTMxYWNmYzFiMzgwN2Q4MzY1MmY3YTkwN2I5NTEyNjI0MTM4MmQ0MGQ2YjE2Zjg2NDI4MGRjNDQ0MDZiY2M4NzljOWEyNjc1OCIsImlhdCI6MTYzNDY0MTA5NSwibmJmIjoxNjM0NjQxMDk1LCJleHAiOjE2MzQ3Mjc0OTUsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTc2NTIzMCwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.UltDqHpRlQwtWjZN0QnV4rvJcwJ0HkmTA5oSzxebnZrbLsPHlVHqBqkkEjjpZWfuLyIBeH5HznTb5liYJV9IrkAd96GsWnFODCJi00mRY9faoNx3-rIQSKoVQnioILk10X8JZhkRHlOZEv181JZ8Zvh-uG0C2nLA_T7d4dbpMtjp-mJUqhbwOoKzUu0rSHHIefufjOqwP-ZhLMkm8lWfSLgdwcp_CMjbn2wL_VScRzD1UhrZBjgzCM7C1NqqkzSzVh7fM6Ebb0849pCPU-2vj-Ibp8f-E7GuBeFixhKidz3Hzi981C6vhjbglMEJSfo8-AbP82JaYxkT8Xt6xeePbA']);
 			curl_setopt($curl,CURLOPT_HEADER, false);
 			curl_setopt($curl,CURLOPT_CUSTOMREQUEST, 'POST');
 			curl_setopt($curl,CURLOPT_POSTFIELDS, json_encode($data));
