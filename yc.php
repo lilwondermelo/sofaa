@@ -1,6 +1,6 @@
 <?php
 	$type = 'POST';
-	$args = array('page_size' => 200);
+	$args = array('page_size' => 5);
 	$data = array();
 	$link = 'https://api.yclients.com/api/v1/company/505278/clients/search?';
 
@@ -69,7 +69,8 @@
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
 	$res = json_decode($out,TRUE);
-	$data[] = $res['data']['name'];
+	$data[]['name'] = $res['data']['name'];
+	$data[]['phone'] = $res['data']['phone'];
 	$i++;
 	if ($i%5 == 0) {
 		sleep(1);
