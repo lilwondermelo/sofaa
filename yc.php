@@ -73,7 +73,6 @@
 
 
 	$data[$i]['name'] = $res['data']['name'];
-	$data[$i]['custom_fields_values'] = array(array("field_id" => 763725, "values" => array(array("value" => $res['data']['phone']))));
 
 	$i++;
 	if ($i%5 == 0) {
@@ -85,7 +84,7 @@
 	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
 $host = strtolower(trim("bodycare"));
 
-	$link='https://'.$host.'.amocrm.ru/api/v4/contacts';
+	$link='https://'.$host.'.amocrm.ru/api/v4/leads';
 
 	$curl = curl_init(); //Сохраняем дескриптор сеанса cURL
 			curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
