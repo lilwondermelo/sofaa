@@ -7,7 +7,7 @@
 	$headers = array(
 	  "Content-Type: application/json",
 	  "Accept: application/vnd.yclients.v2+json",
-	  "Authorization: Bearer db422y4ahpubbnjuy4ya User 29a9ec5bbf774c4923d126e04cf57897"
+	  "Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
 	);
 
 	$curl=curl_init();
