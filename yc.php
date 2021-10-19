@@ -1,6 +1,6 @@
 <?php
 	$type = 'POST';
-	$args = array('page_size' => 200);
+	$args = array('page_size' => 5);
 	$data = array();
 	$link = 'https://api.yclients.com/api/v1/company/505278/clients/search?';
 
@@ -69,6 +69,9 @@
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
 	$res = json_decode($out,TRUE);
+
+
+
 	$data[$i]['name'] = $res['data']['name'];
 	$data[$i]['custom_fields_values'] = array(array("field_id" => 763725, "values" => array(array("value" => $res['data']['phone']))));
 
@@ -78,7 +81,6 @@
 	}
 	}
 
-	echo json_encode($data);
 
 	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
 $host = strtolower(trim("bodycare"));
