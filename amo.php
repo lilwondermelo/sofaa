@@ -15,8 +15,8 @@ $code = "def5020088cbe831749fa61cf72623becef7e77a9f1f51c08ffdcfe1258a34a1210b065
 	    $link='https://'.$host.'.amocrm.ru/api/v4/contacts';
 
 	    $data = [
-	    	
-        "name"=> "Владимир Смирнов"
+	    	["name"=> "Владимир Смирнов"]
+        
     
 	    ];
 
