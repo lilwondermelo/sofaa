@@ -69,8 +69,8 @@
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
 	$res = json_decode($out,TRUE);
-	$data[]['name'] = $res['data']['name'];
-	$data[]['phone'] = $res['data']['phone'];
+	$data[$i]['name'] = $res['data']['name'];
+	$data[$i]['phone'] = $res['data']['phone'];
 	$i++;
 	if ($i%5 == 0) {
 		sleep(1);
