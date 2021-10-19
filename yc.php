@@ -70,7 +70,7 @@
 	curl_close($curl);
 	$res = json_decode($out,TRUE);
 	$data[$i]['name'] = $res['data']['name'];
-	$data[$i]['custom_fields_values'] = array("field_id" => 763725, "values" => json_encode(array("value" => $res['data']['phone'])));
+	$data[$i]['custom_fields_values'] = array("field_id" => 763725, "values" => array(array("value" => $res['data']['phone'])));
 
 	$i++;
 	if ($i%5 == 0) {
