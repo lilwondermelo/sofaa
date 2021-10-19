@@ -47,7 +47,6 @@
 	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 	switch (mb_strtoupper($type)) { 
 		case 'GET':
-			$link .= "?".http_build_query($args);
 			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
 			break; 
 		case 'POST':
