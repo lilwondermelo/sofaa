@@ -78,7 +78,7 @@
 	}
 
 	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
-
+$host = strtolower(trim("bodycare"));
 
 	$link='https://'.$host.'.amocrm.ru/api/v4/contacts';
 
