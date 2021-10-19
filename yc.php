@@ -1,8 +1,8 @@
 <?php
 	$type = 'POST';
-	$args = array();
+	$args = array('count' => 200);
 
-	$link = 'https://api.yclients.com/api/v1/company/505278/clients/search';
+	$link = 'https://api.yclients.com/api/v1/company/505278/clients/search?';
 
 	$headers = array(
 	  "Content-Type: application/json",
@@ -38,7 +38,13 @@
 	curl_close($curl);
 	$result = json_decode($out,TRUE);
 
-	echo $result['meta']['total_count'];
+	//echo $result['meta']['total_count'];
+
+	$count = $result['meta']['total_count']/200;
+	echo $count;
+
+
+	
 
 
 
