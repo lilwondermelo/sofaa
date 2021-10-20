@@ -41,9 +41,9 @@
 
 	
 	$data['id'] = $result['data'][0]['id'];
-	$data['date'] = $result['data']['last_change_date'];
-	$data['status'] = $result['data']['attendance'];
-	$data['deleted'] = $result['data']['deleted'];
+	$data['date'] = $result['data'][0]['last_change_date'];
+	$data['status'] = $result['data'][0]['attendance'];
+	$data['deleted'] = $result['data'][0]['deleted'];
 
 
 
