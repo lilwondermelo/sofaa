@@ -98,10 +98,10 @@ $j = 0;
 	curl_setopt($curl,CURLOPT_HEADER,false);
 	curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,0);
 	curl_setopt($curl,CURLOPT_SSL_VERIFYHOST,0);
-	$out=curl_exec($curl);
+	$out1=curl_exec($curl);
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
-	$res = json_decode($out,TRUE);
+	$res = json_decode($out1,TRUE);
 	
 	$data[$j]['yc_id'] = $item['id'];
 	$data[$j]['name'] = $res['data']['name'];
