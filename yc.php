@@ -39,7 +39,7 @@
 	$result = json_decode($out,TRUE);
 
 
-	echo $out['meta']['total_count'];
+	echo $result['meta']['total_count'];
 
 	/* $i = 0;
 	foreach ($result['data'] as $item) {
