@@ -43,7 +43,7 @@
 
 $j = 0;
 	for ($i = 0; $i < $count; $i++) {
-		$args = array('page_size' => 5, 'page' => $i+1);
+		$args = array('page_size' => 1, 'page' => $i+1);
 		$curl=curl_init();
 	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 	switch (mb_strtoupper($type)) { 
@@ -113,10 +113,10 @@ $j = 0;
                 $updater->setDataFields(array('yc_id' => $item['id'], 'name' => $res['data']['name'], 'phone' => $res['data']['phone'], 'spent' => $res['data']['spent'], 'visits' => $res['data']['visits']));
                 $result_upd = $updater->update();
                 if (!$result_upd) {
-                        $result_db = false;
+                        $result_db = 'false';
                 }
                 else {
-                	$result_db = true;
+                	$result_db = 'true';
                 }
 	$j++;
 	if ($j%5 == 0) {
