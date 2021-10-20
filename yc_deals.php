@@ -42,7 +42,7 @@
 	
 	$data['id'] = $result['data'][0]['id'];
 	$data['date'] = $result['data'][0]['last_change_date'];
-	$data['status'] = $result['data'][0]['attendance'];
+	$data['status'] = $result['data'][0]['visit_attendance'];
 	$data['deleted'] = $result['data'][0]['deleted'];
 
 
