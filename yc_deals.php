@@ -49,7 +49,7 @@
 
 
 	$data[$i]['id'] = $result['data'][0]['id'];
-	$data[$i]['date'] = substr($result['data'][0]['last_change_date'], 10);
+	$data[$i]['date'] = substr($result['data'][0]['last_change_date'], 10, 0);
 	$data[$i]['status'] = $result['data'][0]['visit_attendance'];
 	$data[$i]['deleted'] = $result['data'][0]['deleted'];
 
