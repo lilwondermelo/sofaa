@@ -71,7 +71,6 @@ $j = 0;
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
 	$result = json_decode($out,TRUE);
-	echo $out . '<br>';
 	foreach ($result['data'] as $item) {
 
 		$type1 = 'GET';
