@@ -109,8 +109,8 @@ $j = 0;
 	$data[$j]['visits'] = $res['data']['visits'];
 	require_once '_dataRowUpdater.class.php';
 	$updater = new DataRowUpdater('clients_laser');
-        	$updater->setKey('phone', $data[$j]['phone']);
-                $updater->setDataFields(array('yc_id' => $item['id'], 'name' => $res['data']['name'], 'spent' => $res['data']['spent'], 'visits' => $res['data']['visits']));
+        	$updater->setKey('yc_id', $item['id']);
+                $updater->setDataFields(array('phone' => $res['data']['phone'], 'name' => $res['data']['name'], 'spent' => $res['data']['spent'], 'visits' => $res['data']['visits']));
                 $result_upd = $updater->update();
                 if (!$result_upd) {
                         $result_db = $updater->error;
