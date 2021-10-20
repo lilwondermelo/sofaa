@@ -1,5 +1,5 @@
 <?php
-
+	$type = 'GET';
 	require_once '_dataSource.class.php';
 	$dataSource = new DataSource('select yc_id from clients_laser');
 	$dataS = $dataSource->getData();
