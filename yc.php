@@ -113,7 +113,7 @@ $j = 0;
                 $updater->setDataFields(array('yc_id' => $item['id'], 'name' => $res['data']['name'], 'phone' => $res['data']['phone'], 'spent' => $res['data']['spent'], 'visits' => $res['data']['visits']));
                 $result_upd = $updater->update();
                 if (!$result_upd) {
-                        $result_db = 'false';
+                        $result_db = $updater->error;
                 }
                 else {
                 	$result_db = 'true';
