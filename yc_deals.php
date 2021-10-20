@@ -52,6 +52,19 @@
 	$data[$i]['date'] = $result['data'][0]['last_change_date'];
 	$data[$i]['status'] = $result['data'][0]['visit_attendance'];
 	$data[$i]['deleted'] = $result['data'][0]['deleted'];
+
+	require_once '_dataRowUpdater.class.php';
+	$updater = new DataRowUpdater('records_laser');
+        	$updater->setKey('yc_id', $data[$i]['id']);
+                $updater->setDataFields(array('yc_client_id' => $item['yc_id'], 'date' => $data[$i]['date'], 'status' => $data[$i]['status'], 'deleted' => $data[$i]['deleted']));
+                $result_upd = $updater->update();
+                if (!$result_upd) {
+                        $result_db = $updater->error;
+                }
+                else {
+                	$result_db = 'true';
+                }
+
 	$i++;
 	}
 
