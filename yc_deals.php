@@ -69,7 +69,7 @@
 	}
 
 	
-	echo json_encode($data, JSON_UNESCAPED_UNICODE);
+	echo $result_db;
 
 
 	/* $i = 0;
