@@ -1,6 +1,6 @@
 <?php
 	require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select yc_id from clients_laser');
+	$dataSource = new DataSource('select yc_id from clients_laser where yc_ic = 117378729');
 	$dataS = $dataSource->getData();
 	$i = 0;
 	$data = array();
@@ -69,7 +69,7 @@
 	}
 
 	
-	echo $result_db;
+	echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 
 	/* $i = 0;
