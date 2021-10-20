@@ -1,8 +1,14 @@
 <?php
-	$type = 'GET';
-	$args = array('client_id' => '112532956');
-	$data = array();
-	$link = 'https://api.yclients.com/api/v1/records/543499';
+
+	require_once '_dataSource.class.php';
+	$dataSource = new DataSource('select yc_id from clients_laser');
+	$data = $dataSource->getData();
+	$i = 0;
+	foreach ($data as $item) {
+		$type = 'GET';
+		$args = array('client_id' => $item['yc_id']);
+		$data = array();
+		$link = 'https://api.yclients.com/api/v1/records/543499';
 
 	$headers = array(
 	  "Content-Type: application/json",
@@ -39,13 +45,13 @@
 	$result = json_decode($out,TRUE);
 
 
+	$data[0]['id'] = $result['data'][0]['id'];
+	$data[0]['date'] = $result['data'][0]['last_change_date'];
+	$data[0]['status'] = $result['data'][0]['visit_attendance'];
+	$data[0]['deleted'] = $result['data'][0]['deleted'];
+	}
+
 	
-	$data['id'] = $result['data'][0]['id'];
-	$data['date'] = $result['data'][0]['last_change_date'];
-	$data['status'] = $result['data'][0]['visit_attendance'];
-	$data['deleted'] = $result['data'][0]['deleted'];
-
-
 	echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 
