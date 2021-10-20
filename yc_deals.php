@@ -56,7 +56,7 @@
 	}
 
 	
-	echo json_encode($dataS, JSON_UNESCAPED_UNICODE);
+	echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 
 	/* $i = 0;
