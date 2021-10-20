@@ -2,7 +2,7 @@
 	$type = 'POST';
 	$args = array('page_size' => 5);
 	$data = array();
-	$link = 'https://api.yclients.com/api/v1/company/505278/clients/search?';
+	$link = 'https://api.yclients.com/api/v1/company/543499/clients/search?';
 
 	$headers = array(
 	  "Content-Type: application/json",
@@ -39,7 +39,9 @@
 	$result = json_decode($out,TRUE);
 
 
-	$i = 0;
+	echo $out;
+
+	/* $i = 0;
 	foreach ($result['data'] as $item) {
 		$type = 'GET';
 		$link = 'https://api.yclients.com/api/v1/client/505278/' . $item['id'];
@@ -69,20 +71,20 @@
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
 	$res = json_decode($out,TRUE);
-
-
-
 	$data[$i]['name'] = $res['data']['name'];
 
 	$i++;
 	if ($i%5 == 0) {
 		//sleep(1);
 	}
-	}
+	} */
+
+
+
 
 
 	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
-$host = strtolower(trim("bodycare"));
+		/*$host = strtolower(trim("bodycare"));
 
 	$link='https://'.$host.'.amocrm.ru/api/v4/leads';
 
@@ -100,7 +102,6 @@ $host = strtolower(trim("bodycare"));
 			$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
 			$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 			curl_close($curl);
-			/** Теперь мы можем обработать ответ, полученный от сервера. Это пример. Вы можете обработать данные своим способом. */
 			$code = (int)$code;
 			$errors = [
 				400 => 'Bad request',
@@ -114,7 +115,9 @@ $host = strtolower(trim("bodycare"));
 
 			$response = json_decode($out, true);
 
-	    echo $out;
+	    echo $out; */
+
+
 	
 
 
