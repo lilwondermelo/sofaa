@@ -40,7 +40,7 @@
 
 
 	
-	echo $result['id'];
+	echo $result['data']['id'];
 
 
 	/* $i = 0;
