@@ -1,6 +1,6 @@
 <?php
 	require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select yc_id from clients_laser');
+	$dataSource = new DataSource('select yc_id from clients_laser where yc_id = 117378729');
 	$dataS = $dataSource->getData();
 	$i = 0;
 	$data = array();
@@ -56,7 +56,7 @@
 	require_once '_dataRowUpdater.class.php';
 	$updater = new DataRowUpdater('records_laser');
         	$updater->setKey('yc_id', $data[$i]['id']);
-                $updater->setDataFields(array('yc_client_id' => $item['yc_id'], 'date' => $data[$i]['date'], 'status' => $data[$i]['status'], 'deleted' => $data[$i]['deleted']));
+                $updater->setDataFields(array('yc_client_id' => $item['yc_id'], 'date_last' => $data[$i]['date'], 'stat' => $data[$i]['status'], 'is_deleted' => $data[$i]['deleted']));
                 $result_upd = $updater->update();
                 if (!$result_upd) {
                         $result_db = $updater->error;
