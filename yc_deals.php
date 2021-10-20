@@ -10,9 +10,9 @@
 	  "Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
 	);
 	$type = 'GET';
-	$link = 'https://api.yclients.com/api/v1/records/543499';
+	
 	foreach ($dataS as $item) {
-		
+		$link = 'https://api.yclients.com/api/v1/records/543499';
 		$args = array('client_id' => $item['yc_id']);
 		
 		
