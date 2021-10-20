@@ -43,7 +43,7 @@
 
 $j = 0;
 	for ($i = 0; $i < $count; $i++) {
-		$args = array('page_size' => 5, 'page' => $i+1);
+		$args = array('page_size' => 200, 'page' => $i+1);
 		$curl=curl_init();
 	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 	switch (mb_strtoupper($type)) { 
