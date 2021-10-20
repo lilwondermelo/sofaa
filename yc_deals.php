@@ -41,6 +41,11 @@
 
 	
 	$data['id'] = $result['data'][0]['id'];
+	$data['date'] = $result['data']['last_change_date'];
+	$data['status'] = $result['data']['attendance'];
+	$data['deleted'] = $result['data']['deleted'];
+
+
 
 	echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
