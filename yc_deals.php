@@ -40,7 +40,9 @@
 
 
 	
-	echo $result['data'][0]['id'];
+	$data['id'] = $result['data'][0]['id'];
+
+	echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 
 	/* $i = 0;
