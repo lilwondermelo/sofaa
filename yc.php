@@ -72,10 +72,11 @@
 	curl_close($curl);
 	$result = json_decode($out,TRUE);
 	foreach ($result['data'] as $item) {
-		$data[] = $item['id'];
+		$data[]['id'] = $item['id'];
 	}
 	}
-	echo json_encode($data, JSON_UNESCAPED_UNICODE)
+	echo json_encode($data, JSON_UNESCAPED_UNICODE);
+
 
 	/* $i = 0;
 	foreach ($result['data'] as $item) {
