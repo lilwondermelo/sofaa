@@ -46,8 +46,8 @@
 	$data['deleted'] = $result['data'][0]['deleted'];
 
 
-
-	echo json_encode($data, JSON_UNESCAPED_UNICODE);
+	echo $out;
+	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 
 	/* $i = 0;
