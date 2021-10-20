@@ -1,20 +1,23 @@
 <?php
-	$type = 'GET';
 	require_once '_dataSource.class.php';
 	$dataSource = new DataSource('select yc_id from clients_laser');
 	$dataS = $dataSource->getData();
 	$i = 0;
-	foreach ($dataS as $item) {
-		$type = 'GET';
-		$args = array('client_id' => $item['yc_id']);
-		$data = array();
-		$link = 'https://api.yclients.com/api/v1/records/543499';
-
+	$data = array();
 	$headers = array(
 	  "Content-Type: application/json",
 	  "Accept: application/vnd.yclients.v2+json",
 	  "Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
 	);
+	$type = 'GET';
+	$link = 'https://api.yclients.com/api/v1/records/543499';
+	foreach ($dataS as $item) {
+		
+		$args = array('client_id' => $item['yc_id']);
+		
+		
+
+	
 
 	$curl=curl_init();
 	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
