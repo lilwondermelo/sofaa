@@ -74,33 +74,33 @@ $j = 0;
 	echo $out . '<br>';
 	foreach ($result['data'] as $item) {
 
-		$type = 'GET';
-		$link = 'https://api.yclients.com/api/v1/client/543499/' . $item['id'];
-		$curl=curl_init();
-	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-	switch (mb_strtoupper($type)) { 
+		$type1 = 'GET';
+		$link1 = 'https://api.yclients.com/api/v1/client/543499/' . $item['id'];
+		$curl1=curl_init();
+	curl_setopt($curl1,CURLOPT_RETURNTRANSFER,true);
+	switch (mb_strtoupper($type1)) { 
 		case 'GET':
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+			curl_setopt($curl1, CURLOPT_CUSTOMREQUEST, 'GET');
 			break; 
 		case 'POST':
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-			curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
+			curl_setopt($curl1, CURLOPT_CUSTOMREQUEST, 'POST');
+			curl_setopt($curl1, CURLOPT_POSTFIELDS, json_encode($args));
 			break; 
 		case 'PUT':
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-			curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
+			curl_setopt($curl1, CURLOPT_CUSTOMREQUEST, 'PUT');
+			curl_setopt($curl1, CURLOPT_POSTFIELDS, json_encode($args));
 			break; 
 		default: 
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $type); 
+			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $type1); 
 	}
-	curl_setopt($curl,CURLOPT_URL,$link);
-	curl_setopt($curl,CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($curl,CURLOPT_HEADER,false);
-	curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,0);
-	curl_setopt($curl,CURLOPT_SSL_VERIFYHOST,0);
-	$out1=curl_exec($curl);
-	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
-	curl_close($curl);
+	curl_setopt($curl1,CURLOPT_URL,$link1);
+	curl_setopt($curl1,CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($curl1,CURLOPT_HEADER,false);
+	curl_setopt($curl1,CURLOPT_SSL_VERIFYPEER,0);
+	curl_setopt($curl1,CURLOPT_SSL_VERIFYHOST,0);
+	$out1=curl_exec($curl1);
+	$code1=curl_getinfo($curl1,CURLINFO_HTTP_CODE);  
+	curl_close($curl1);
 	$res = json_decode($out1,TRUE);
 	
 	$data[$j]['yc_id'] = $item['id'];
