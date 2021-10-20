@@ -41,7 +41,7 @@
 
 	$count = $result['meta']['total_count']/200;
 
-
+$j = 0;
 	for ($i = 0; $i < $count; $i++) {
 		$args = array('page_size' => 200, 'page' => $i+1);
 		$curl=curl_init();
@@ -71,7 +71,7 @@
 	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 	curl_close($curl);
 	$result = json_decode($out,TRUE);
-	$j = 0;
+	
 	foreach ($result['data'] as $item) {
 
 		$type = 'GET';
