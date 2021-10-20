@@ -45,10 +45,11 @@
 	$result = json_decode($out,TRUE);
 
 
-	$data[0]['id'] = $result['data'][0]['id'];
-	$data[0]['date'] = $result['data'][0]['last_change_date'];
-	$data[0]['status'] = $result['data'][0]['visit_attendance'];
-	$data[0]['deleted'] = $result['data'][0]['deleted'];
+	$data[$i]['id'] = $result['data'][0]['id'];
+	$data[$i]['date'] = $result['data'][0]['last_change_date'];
+	$data[$i]['status'] = $result['data'][0]['visit_attendance'];
+	$data[$i]['deleted'] = $result['data'][0]['deleted'];
+	$i++;
 	}
 
 	
