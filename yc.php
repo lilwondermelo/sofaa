@@ -104,6 +104,20 @@ $j = 0;
 	
 	$data[$j]['yc_id'] = $item['id'];
 	$data[$j]['name'] = $res['data']['name'];
+	$data[$j]['phone'] = $res['data']['phone'];
+	$data[$j]['spent'] = $res['data']['spent'];
+	$data[$j]['visits'] = $res['data']['visits'];
+	require_once '_dataRowUpdater.class.php';
+	$updater = new DataRowUpdater('clients_laser');
+        	$updater->setKey('phone', $data[$j]['phone']);
+                $updater->setDataFields(array('yc_id' => $item['id'], 'name' => $res['data']['name'], 'phone' => $res['data']['phone'], 'spent' => $res['data']['spent'], 'visits' = $res['data']['visits']));
+                $result_upd = $updater->update();
+                if (!$result_upd) {
+                        $result_db = false;
+                }
+                else {
+                	$result_db = true;
+                }
 	$j++;
 	if ($j%5 == 0) {
 		//sleep(1);
@@ -111,8 +125,7 @@ $j = 0;
 		
 	}
 	}
-	echo json_encode($data, JSON_UNESCAPED_UNICODE);
-	echo count($data);
+	echo $result_db;
 
 
 	/* $i = 0;

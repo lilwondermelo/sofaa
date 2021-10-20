@@ -16,11 +16,11 @@ class DataConnector {
     //put your code here
     var $db, $error, $query, $affected_rows=0;
     //установки подключения к базе
-    var $server = '116.202.196.92';
+    var $server = 'egogr.beget.tech';
     //var $server = '127.0.0.1';
-    var $user = 'courseuser';
-    var $password = 'aH2uR6xI3qhC0l';
-    var $dbase = 'coursedb';
+    var $user = 'egogr_ycamo';
+    var $password = 'yFwx0r&a';
+    var $dbase = 'egogr_ycamo';
 
     //подключаем
     public function sqlConnect() {
