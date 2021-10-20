@@ -2,7 +2,7 @@
 	$type = 'GET';
 	$args = array('client_id' => '117378729');
 	$data = array();
-	$link = 'https://api.yclients.com/api/v1/records/543499?';
+	$link = 'https://api.yclients.com/api/v1/records/543499';
 
 	$headers = array(
 	  "Content-Type: application/json",
