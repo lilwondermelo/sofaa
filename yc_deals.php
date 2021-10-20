@@ -2,9 +2,9 @@
 
 	require_once '_dataSource.class.php';
 	$dataSource = new DataSource('select yc_id from clients_laser');
-	$data = $dataSource->getData();
+	$dataS = $dataSource->getData();
 	$i = 0;
-	foreach ($data as $item) {
+	foreach ($dataS as $item) {
 		$type = 'GET';
 		$args = array('client_id' => $item['yc_id']);
 		$data = array();
