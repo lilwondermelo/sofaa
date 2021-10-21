@@ -49,7 +49,7 @@ class YCClass {
 	}
 
 	public function getCLientCount() {
-		$args = array('page_size' => 1);
+		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
 		$type = 'POST';
 		$link = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 		$result = $this->apiQuery($type, $link, $args);
