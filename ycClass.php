@@ -68,7 +68,7 @@ class YCClass {
 
 	public function getClientData($clientId) {
 		$type = 'GET';
-		$link = 'https://api.yclients.com/api/v1/client/543499/' . $clientId;
+		$link = 'https://api.yclients.com/api/v1/client/' . $this->accData['ycFilialId'] . '/' . $clientId;
 		return $this->apiQuery($type, $link);
 	}
 

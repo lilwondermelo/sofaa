@@ -1,6 +1,6 @@
 <?php
 	require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select yc_id from clients_laser');
+	$dataSource = new DataSource('select yc_id from clients_autobeauty');
 	$dataS = $dataSource->getData();
 	$i = 0;
 	$data = array();
@@ -12,7 +12,7 @@
 	$type = 'GET';
 	
 	foreach ($dataS as $item) {
-		$link = 'https://api.yclients.com/api/v1/records/543499';
+		$link = 'https://api.yclients.com/api/v1/records/142632';
 		$args = array('client_id' => $item['yc_id']);
 		
 		
@@ -56,7 +56,7 @@
 
 
 	require_once '_dataRowUpdater.class.php';
-	$updater = new DataRowUpdater('records_laser');
+	$updater = new DataRowUpdater('records_autobeauty');
         	$updater->setKey('yc_id', $data[$i]['id']);
                 $updater->setDataFields(array('yc_client_id' => $item['yc_id'], 'date_last' => $data[$i]['date'], 'stat' => $data[$i]['status'], 'is_deleted' => $data[$i]['deleted']));
                 $result_upd = $updater->update();
