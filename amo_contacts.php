@@ -2,7 +2,7 @@
 
 
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select * from clients_laser where yc_id = 112479717');
+	$dataSource = new DataSource('select * from clients_laser');
 	$dataS = $dataSource->getData();
 
 	$data = array();
