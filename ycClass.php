@@ -54,12 +54,12 @@ class YCClass {
 		$link = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 		$result = $this->apiQuery($type, $link, $args);
 		$clientCount = $result['meta']['total_count'];
-		$pagesCount = $clientCount/$dataPerPage;
+		$pagesCount = $clientCount/$this->dataPerPage;
 		return array('clients' => $clientCount, 'pages' => $pagesCount);
 	}
 
-	public function getClients($pageSize, $page = 1) {
-		$args = array('page_size' => $pageSize, 'page' => $page);
+	public function getClients($page = 1) {
+		$args = array('page_size' => $this->$dataPerPage, 'page' => $page);
 		$type = 'POST';
 		$link = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 		return $this->apiQuery($type, $link, $args);
