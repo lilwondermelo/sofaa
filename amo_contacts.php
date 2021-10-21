@@ -29,7 +29,19 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 			curl_close($curl);
 			
 			$resId = json_decode($out, true)['_embedded']['contacts'][0]['id'];
-			echo $resId . '<br>';
+			
+
+			require_once '_dataRowUpdater.class.php';
+	$updater = new DataRowUpdater('clients_laser');
+        	$updater->setKey('yc_id', $item['yc_id']);
+                $updater->setDataFields(array('amo_id' => $resId));
+                $result_upd = $updater->update();
+                if (!$result_upd) {
+                        $result_db = $updater->error;
+                }
+                else {
+                	$result_db = 'true';
+                }
 	}
 
 	
