@@ -1,5 +1,5 @@
 <?php
-$host = 'https://telo.amocrm.ru/oauth2/access_token';
+$host = 'https://autobeauty.amocrm.ru/oauth2/access_token';
 
 $requestData = [
             'client_secret' => 'tk3ess9oZ2t5RqxD5hFghSNDaosuY8ddICkmnvuTB9EycMXJ4gfjHOUEMtwEZLOW',
