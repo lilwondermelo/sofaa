@@ -3,7 +3,7 @@ class YCClass {
 	private $ycBearer;
 	private $ycUser;
 	private $ycHeaders;
-	private $dataPerPage = 200;
+	private $dataPerPage = 1;
 
 	public function __construct($host){
 		require_once 'accounts.php';
