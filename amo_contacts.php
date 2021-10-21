@@ -1,6 +1,4 @@
 <?php
-
-
 require_once '_dataSource.class.php';
 	$dataSource = new DataSource('select * from clients_laser');
 	$dataS = $dataSource->getData();
