@@ -49,7 +49,8 @@
 
 
 	$data[$i]['id'] = $result['data'][0]['id'];
-	$data[$i]['date'] = substr($result['data'][0]['last_change_date'], 0, 10);
+	if ($data[$i]['id']) {
+		$data[$i]['date'] = substr($result['data'][0]['last_change_date'], 0, 10);
 	$data[$i]['status'] = ($result['data'][0]['visit_attendance'])?$result['data'][0]['visit_attendance']:'0';
 	$data[$i]['deleted'] = ($result['data'][0]['deleted'])?'1':'0';
 
@@ -67,6 +68,8 @@
                 }
 
 	$i++;
+	}
+	
 	}
 
 	
