@@ -16,7 +16,7 @@ class YCClass {
 			"Accept: application/vnd.yclients.v2+json",
 			"Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
 		);
-		$this->ycLink = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search?';
+		$this->ycLink = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 	}
 
 	public function apiQuery($type, $args) {
@@ -48,6 +48,15 @@ class YCClass {
 		curl_close($curl);
 		$result = json_decode($out,TRUE);
 		return $result;
+	}
+
+
+	public function getClients($pageSize) {
+
+		$args = array('page_size' => $pageSize);
+		$type = 'POST';
+
+		return $this->apiQuery($type, $args);
 	}
 }
 

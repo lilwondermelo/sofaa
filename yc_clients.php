@@ -9,12 +9,27 @@
 
 
 	$type = 'POST';
+	$countClients = 1;
+
 	$args = array('page_size' => 200);
+
+
 	$data = array();
 	require_once 'ycClass.php';
 	$ycClass = new YCClass('ablaser');
 
-	$result = $ycClass->apiQuery($type, $args);
+
+
+
+
+	$result = $ycClass->getClients($countClients);
+
+
+
+
+
+
+
 	$count = $result['meta']['total_count']/200;
 
 	$j = 0;
@@ -26,7 +41,14 @@
 
 	foreach ($result['data'] as $item) {
 
+
+
 		$type1 = 'GET';
+
+
+
+
+
 		$link1 = 'https://api.yclients.com/api/v1/client/543499/' . $item['id'];
 		$curl1=curl_init();
 	curl_setopt($curl1,CURLOPT_RETURNTRANSFER,true);
@@ -54,6 +76,12 @@
 	$code1=curl_getinfo($curl1,CURLINFO_HTTP_CODE);  
 	curl_close($curl1);
 	$res = json_decode($out1,TRUE);
+
+
+
+
+
+
 	
 	$data[$j]['yc_id'] = $item['id'];
 	$data[$j]['name'] = $res['data']['name'];
