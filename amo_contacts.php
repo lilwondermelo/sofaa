@@ -16,7 +16,11 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 		$data[$i]['custom_fields_values'] = array(array("field_id" => 629913, "values" => array(array("value" => $item['yc_id']))), array("field_id" => 159945, "values" => array(array("value" => $item['phone']))), array("field_id" => 629911, "values" => array(array("value" => $item['visits']))), array("field_id" => 629909, "values" => array(array("value" => $item['spent']))));
 		
 
-$curl = curl_init(); //Сохраняем дескриптор сеанса cURL
+
+			$i++;
+	}
+
+	$curl = curl_init(); //Сохраняем дескриптор сеанса cURL
 			curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
 			curl_setopt($curl,CURLOPT_URL, $link);
@@ -29,7 +33,5 @@ $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
 			curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
 			$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
 			curl_close($curl);
-			$i++;
-	}
 	echo json_encode($data);
 ?>
