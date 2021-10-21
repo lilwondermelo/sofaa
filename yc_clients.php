@@ -6,7 +6,7 @@ $pages = $ycClass->getCLientCount()['pages']; //Количество стран�
 for ($i = 0; $i < $pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 	$pageData = $ycClass->getClients($i+1); //$i+1 - номер текущей страницы
 	foreach ($pageData['data'] as $item) {
-		var_dump($pageData);
+		echo json_encode($pageData) . '<br>';
 		$clientData = $ycClass->getClientData($item['id']);
 		//Ниже работа класса по построчному занесению данных в БД
 		require_once '_dataRowUpdater.class.php';
