@@ -10,7 +10,7 @@ class YCClass {
 		require_once 'accounts.php';
 		$this->ycBearer = $ycBearer;
 		$this->ycUser = $ycUser;
-		$this->accData = $accData($host);
+		$this->accData = $accData[$host];
 		$this->ycHeaders = array(
 			"Content-Type: application/json",
 			"Accept: application/vnd.yclients.v2+json",
