@@ -171,7 +171,7 @@
 
 
 	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
-		/*$host = strtolower(trim("bodycare"));
+		/*$host = strtolower(trim("ablaser"));
 
 	$link='https://'.$host.'.amocrm.ru/api/v4/leads';
 
