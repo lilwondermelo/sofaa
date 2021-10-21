@@ -27,7 +27,7 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/leads';
 		}
 
 		$data[$i]['created_at'] = strtotime($item['dateLast']);
-		$data['_embedded'] = array('contacts' => array(array('id' => (int)$item['amoId'])));
+		$data[$i]['_embedded'] = array('contacts' => array(array('id' => (int)$item['amoId'])));
 
 			$i++;
 	}
