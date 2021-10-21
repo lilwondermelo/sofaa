@@ -51,9 +51,9 @@ class YCClass {
 	}
 
 
-	public function getClients($pageSize) {
+	public function getClients($pageSize, $page = 1) {
 
-		$args = array('page_size' => $pageSize);
+		$args = array('page_size' => $pageSize, 'page' => $page);
 		$type = 'POST';
 
 		return $this->apiQuery($type, $args);

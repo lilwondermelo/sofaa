@@ -8,13 +8,10 @@
 
 
 
-	$type = 'POST';
 	$countClients = 1;
-
-	$args = array('page_size' => 200);
-
-
 	$data = array();
+
+
 	require_once 'ycClass.php';
 	$ycClass = new YCClass('ablaser');
 
@@ -34,10 +31,10 @@
 
 	$j = 0;
 	for ($i = 0; $i < $count; $i++) {
-		$args = array('page_size' => 1, 'page' => $i+1);
-		
+		$page = $i+1;
 
-		$result = $ycClass->apiQuery($type, $args);
+		$result = $ycClass->getClients($countClients, $page);
+
 
 	foreach ($result['data'] as $item) {
 
