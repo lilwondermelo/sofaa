@@ -3,7 +3,7 @@ class YCClass {
 	private $ycBearer;
 	private $ycUser;
 	private $ycHeaders;
-	private $dataPerPage = 1;
+	private $dataPerPage = 200;
 
 	public function __construct($host){
 		require_once 'accounts.php';
@@ -59,7 +59,8 @@ class YCClass {
 	}
 
 	public function getClients($page = 1) {
-		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
+		$args = array('page_size' => 200, 'page' => $page);
+		//$args = array('page_size' => $this->dataPerPage, 'page' => $page);
 		$type = 'POST';
 		$link = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 		return $this->apiQuery($type, $link, $args);
