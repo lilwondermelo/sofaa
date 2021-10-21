@@ -127,60 +127,16 @@
 	}
 	echo $result_db;
 
+	$hostAmo = strtolower(trim("ablaser"));
 
-	/* $i = 0;
-	foreach ($result['data'] as $item) {
-		$type = 'GET';
-		$link = 'https://api.yclients.com/api/v1/client/505278/' . $item['id'];
-		$curl=curl_init();
-	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-	switch (mb_strtoupper($type)) { 
-		case 'GET':
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-			break; 
-		case 'POST':
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-			curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
-			break; 
-		case 'PUT':
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-			curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
-			break; 
-		default: 
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $type); 
-	}
-	curl_setopt($curl,CURLOPT_URL,$link);
-	curl_setopt($curl,CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($curl,CURLOPT_HEADER,false);
-	curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,0);
-	curl_setopt($curl,CURLOPT_SSL_VERIFYHOST,0);
-	$out=curl_exec($curl);
-	$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
-	curl_close($curl);
-	$res = json_decode($out,TRUE);
-	$data[$i]['name'] = $res['data']['name'];
+	$link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 
-	$i++;
-	if ($i%5 == 0) {
-		//sleep(1);
-	}
-	} */
-
-
-
-
-
-	//echo json_encode($data, JSON_UNESCAPED_UNICODE);
-		/*$host = strtolower(trim("ablaser"));
-
-	$link='https://'.$host.'.amocrm.ru/api/v4/leads';
-
-	$curl = curl_init(); //Сохраняем дескриптор сеанса cURL
-			curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
-			curl_setopt($curl,CURLOPT_URL, $link);
-			curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
-			curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ4ZWJjYzdlMzFhY2ZjMWIzODA3ZDgzNjUyZjdhOTA3Yjk1MTI2MjQxMzgyZDQwZDZiMTZmODY0MjgwZGM0NDQwNmJjYzg3OWM5YTI2NzU4In0.eyJhdWQiOiJiMjVlMWIwMC1iZDI3LTRkMTAtOTM2My1hNWZkYjMxMDI3YjAiLCJqdGkiOiJkOGViY2M3ZTMxYWNmYzFiMzgwN2Q4MzY1MmY3YTkwN2I5NTEyNjI0MTM4MmQ0MGQ2YjE2Zjg2NDI4MGRjNDQ0MDZiY2M4NzljOWEyNjc1OCIsImlhdCI6MTYzNDY0MTA5NSwibmJmIjoxNjM0NjQxMDk1LCJleHAiOjE2MzQ3Mjc0OTUsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTc2NTIzMCwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.UltDqHpRlQwtWjZN0QnV4rvJcwJ0HkmTA5oSzxebnZrbLsPHlVHqBqkkEjjpZWfuLyIBeH5HznTb5liYJV9IrkAd96GsWnFODCJi00mRY9faoNx3-rIQSKoVQnioILk10X8JZhkRHlOZEv181JZ8Zvh-uG0C2nLA_T7d4dbpMtjp-mJUqhbwOoKzUu0rSHHIefufjOqwP-ZhLMkm8lWfSLgdwcp_CMjbn2wL_VScRzD1UhrZBjgzCM7C1NqqkzSzVh7fM6Ebb0849pCPU-2vj-Ibp8f-E7GuBeFixhKidz3Hzi981C6vhjbglMEJSfo8-AbP82JaYxkT8Xt6xeePbA']);
+	$curlAmo = curl_init(); //Сохраняем дескриптор сеанса cURL
+			curl_setopt($curlAmo,CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curlAmo,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
+			curl_setopt($curlAmo,CURLOPT_URL, $link);
+			curl_setopt($curlAmo,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
+			curl_setopt($curlAmo,CURLOPT_HTTPHEADER,['Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI3YThlYjdmZDMxMWQxNjcxMTM4OWQ5ODZjN2ZlMjQxYzg5ODQ3YzMwZDMyMWJlYzk5MGM5YzMyN2ExNzkwYTdlNzA3YjdjNmI0NzczZTZiIn0.eyJhdWQiOiI2MTRkMzA1Yi00MmNjLTRhZTEtOWI4Ni1jMzUyNDI2ODZjYmYiLCJqdGkiOiIyN2E4ZWI3ZmQzMTFkMTY3MTEzODlkOTg2YzdmZTI0MWM4OTg0N2MzMGQzMjFiZWM5OTBjOWMzMjdhMTc5MGE3ZTcwN2I3YzZiNDc3M2U2YiIsImlhdCI6MTYzNDc4NTA1NSwibmJmIjoxNjM0Nzg1MDU1LCJleHAiOjE2MzQ4NzE0NTUsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTcxNTQ0Miwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.Cy8CS3UTLpGrArEPzV_E50SxsGNGyzKPdKOWDA797WOLqOKWe5rXYE09_Hx7KIn-Z9I5SYAfXqOEd-uol5qMmYZbx3IvWjJmwAXJQmDoCkiJ86LwYMZB_4uv_wIZqVSKQFbHDCWKc9SrxIt1X8Rsrtlbf1l5enJkHcT-TswFE5JAA6IHg5Xyo9VV_V8V0PnwuQAO-WKYUZNnWOSNyhD2jeN6yLxCJFUMHlDD47hpYs5vkf-EqemNaBDWfch_Ep7-bTXN02_dn_I-x88VceqTTJbFhGUP9IwHbsAEclS5EUZjT_gwKVgzVqKcpC-fzn4sLn67VW2Uc_hdhxuw44un7g']);
 			curl_setopt($curl,CURLOPT_HEADER, false);
 			curl_setopt($curl,CURLOPT_CUSTOMREQUEST, 'POST');
 			curl_setopt($curl,CURLOPT_POSTFIELDS, json_encode($data));
