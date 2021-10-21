@@ -2,7 +2,7 @@
 
 
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select * from clients_laser where yc_id = 112479717');
+	$dataSource = new DataSource('select * from clients_laser where yc_id = 112479717 or yc_id = 112532956');
 	$dataS = $dataSource->getData();
 
 	$data = array();
@@ -28,7 +28,7 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 			$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
 			curl_close($curl);
 	
-			echo json_encode($data);
+			$resId = json_decode($out, true)[];
 	}
 
 	
