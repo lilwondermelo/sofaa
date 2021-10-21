@@ -1,6 +1,6 @@
 <?php
 	require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select yc_id from clients_laser where yc_id = 117378729');
+	$dataSource = new DataSource('select yc_id from clients_laser');
 	$dataS = $dataSource->getData();
 	$i = 0;
 	$data = array();
