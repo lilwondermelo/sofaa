@@ -31,5 +31,5 @@ $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
 			curl_close($curl);
 			$i++;
 	}
-	echo $data;
+	echo json_encode($data);
 ?>
