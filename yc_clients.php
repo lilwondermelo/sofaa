@@ -21,5 +21,5 @@ for ($i = 0; $i < $pages; $i++) { //цикл перебирает страниц
 		}
 	}
 }
-echo $result_db;
+var_dump($result_db) ;
 ?>
