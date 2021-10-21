@@ -21,5 +21,6 @@ for ($i = 0; $i < $pages; $i++) { //цикл перебирает страниц
 		}
 	}
 }
-var_dump($result_db) ;
+var_dump($result_db);
+echo $ycClass->getCLientCount();
 ?>
