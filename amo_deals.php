@@ -13,16 +13,16 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/leads';
 		$data[$i]['name'] = $item['name'] . ' (YCLIENTS)';
 		$data[$i]['price'] = (int)$item['spent'];
 
-		if ($item['spent'] == '-1') {
+		if ($item['stat'] == -1) {
 			$data[$i]['status_id'] = 43315798;
 		}
-		else if ($item['spent'] == '0') {
+		else if ($item['stat'] == 0) {
 			$data[$i]['status_id'] = 43315789;
 		}
-		else if ($item['spent'] == '1') {
+		else if ($item['stat'] == 1) {
 			$data[$i]['status_id'] = 43315795;
 		}
-		else if ($item['spent'] == '2') {
+		else if ($item['stat'] == 2) {
 			$data[$i]['status_id'] = 43315792;
 		}
 
