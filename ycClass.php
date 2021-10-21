@@ -47,7 +47,7 @@ class YCClass {
 		$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 		curl_close($curl);
 		$result = json_decode($out,TRUE);
-		return $out;
+		return $this->ycLink;
 	}
 }
 
