@@ -9,7 +9,7 @@
 	$count = $result['meta']['total_count']/200;
 
 	
-	echo $result;
+	var_dump($result);
 	
 
 
