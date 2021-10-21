@@ -11,7 +11,7 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/leads';
 
 		
 		$data[$i]['name'] = $item['name'] . ' (YCLIENTS)';
-		$data[$i]['price'] = $item['spent'];
+		$data[$i]['price'] = (int)$item['spent'];
 
 		if ($item['spent'] == '-1') {
 			$data[$i]['status_id'] = '43315798';
