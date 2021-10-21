@@ -1,21 +1,33 @@
 <?php
-
-
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select * from clients_laser');
+	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent from records_laser r join clients_laser c on r.yc_client_id = c.yc_id where r.yc_id = 339273201');
 	$dataS = $dataSource->getData();
 
 	$data = array();
 	$i = 0;
 $hostAmo = strtolower(trim("ablaser"));
-$link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
+$link='https://'.$hostAmo.'.amocrm.ru/api/v4/leads';
 	foreach ($dataS as $item) {
 
 		
-		$data[$i]['name'] = $item['name'];
-		$data[$i]['custom_fields_values'] = array(array("field_id" => 629913, "values" => array(array("value" => $item['yc_id']))), array("field_id" => 159945, "values" => array(array("value" => $item['phone']))), array("field_id" => 629911, "values" => array(array("value" => $item['visits']))), array("field_id" => 629909, "values" => array(array("value" => $item['spent']))));
-		
+		$data[$i]['name'] = $item['name'] . ' (YCLIENTS)';
+		$data[$i]['price'] = $item['spent'];
 
+		if ($item['spent'] == '-1') {
+			$data[$i]['status_id'] = '43315798';
+		}
+		else if ($item['spent'] == '0') {
+			$data[$i]['status_id'] = '43315789';
+		}
+		else if ($item['spent'] == '1') {
+			$data[$i]['status_id'] = '43315795';
+		}
+		else if ($item['spent'] == '2') {
+			$data[$i]['status_id'] = '43315792';
+		}
+
+		$data[$i]['created_at'] = strtotime($item['dateLast']);
+		$data['_embedded'] = array('contacts' => array(array('id' => $item['clientId'])));
 
 			$i++;
 	}
@@ -33,5 +45,5 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 			curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
 			$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
 			curl_close($curl);
-	echo json_encode($out);
+	echo json_encode($data);
 ?>
