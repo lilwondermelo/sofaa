@@ -6,7 +6,7 @@
 	$ycClass = new YCClass('ablaser');
 
 	$result = $ycClass->apiQuery($type, $args);
-	$count = $result['meta']['total_count']/200;
+	//$count = $result['meta']['total_count']/200;
 
 	
 	var_dump($result);
