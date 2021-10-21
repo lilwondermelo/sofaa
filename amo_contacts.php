@@ -28,7 +28,7 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 			$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
 			curl_close($curl);
 	
-			echo $out;
+			echo json_encode($data);
 	}
 
 	
