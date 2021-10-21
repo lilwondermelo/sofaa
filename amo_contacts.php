@@ -28,7 +28,6 @@ $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
 			curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
 			$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
 			curl_close($curl);
-			$code = (int)$code;
-			echo $code;
+			echo $out;
 	}
 ?>
