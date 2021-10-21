@@ -1,118 +1,26 @@
 <?php
-
-	$headers = array(
-			"Content-Type: application/json",
-			"Accept: application/vnd.yclients.v2+json",
-			"Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
-		);
-
-
-
-	$countClients = 1;
-	$data = array();
-
-
-	require_once 'ycClass.php';
-	$ycClass = new YCClass('ablaser');
-
-
-
-
-
-	$result = $ycClass->getClients($countClients);
-
-
-
-
-
-
-
-	$count = $result['meta']['total_count']/200;
-
-	$j = 0;
-	for ($i = 0; $i < $count; $i++) {
-		$page = $i+1;
-
-		$result = $ycClass->getClients($countClients, $page);
-
-
-	foreach ($result['data'] as $item) {
-
-
-
-		$type1 = 'GET';
-
-
-
-
-
-		$link1 = 'https://api.yclients.com/api/v1/client/543499/' . $item['id'];
-		$curl1=curl_init();
-	curl_setopt($curl1,CURLOPT_RETURNTRANSFER,true);
-	switch (mb_strtoupper($type1)) { 
-		case 'GET':
-			curl_setopt($curl1, CURLOPT_CUSTOMREQUEST, 'GET');
-			break; 
-		case 'POST':
-			curl_setopt($curl1, CURLOPT_CUSTOMREQUEST, 'POST');
-			curl_setopt($curl1, CURLOPT_POSTFIELDS, json_encode($args));
-			break; 
-		case 'PUT':
-			curl_setopt($curl1, CURLOPT_CUSTOMREQUEST, 'PUT');
-			curl_setopt($curl1, CURLOPT_POSTFIELDS, json_encode($args));
-			break; 
-		default: 
-			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $type1); 
+$resultDb = array(); //Массив для занесения результатов добавления данных в БД
+$countClients = 1; //Первый запрос отправляем для получения метаданных об общем количестве клиентов филиала
+require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
+$ycClass = new YCClass('ablaser'); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
+$pages = $ycClass->getCLientCount()['pages']; //Количество страниц в запросе пользователей
+for ($i = 0; $i < $pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
+	$pageData = $ycClass->getClients($countClients, $i+1); //$i+1 - номер текущей страницы
+	foreach ($pageData['data'] as $item) {
+		$clientData = $ycClass->getClientData($item['id']);
+		//Ниже работа класса по построчному занесению данных в БД
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('clients_laser');
+		$updater->setKey('yc_id', $item['id']);
+		$updater->setDataFields(array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits']));
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			$result_db[] = $updater->error;
+		}
+		else {
+			$result_db = 'true';
+		}
 	}
-	curl_setopt($curl1,CURLOPT_URL,$link1);
-	curl_setopt($curl1,CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($curl1,CURLOPT_HEADER,false);
-	curl_setopt($curl1,CURLOPT_SSL_VERIFYPEER,0);
-	curl_setopt($curl1,CURLOPT_SSL_VERIFYHOST,0);
-	$out1=curl_exec($curl1);
-	$code1=curl_getinfo($curl1,CURLINFO_HTTP_CODE);  
-	curl_close($curl1);
-	$res = json_decode($out1,TRUE);
-
-
-
-
-
-
-	
-	$data[$j]['yc_id'] = $item['id'];
-	$data[$j]['name'] = $res['data']['name'];
-	$data[$j]['phone'] = $res['data']['phone'];
-	$data[$j]['spent'] = $res['data']['spent'];
-	$data[$j]['visits'] = $res['data']['visits'];
-	require_once '_dataRowUpdater.class.php';
-	$updater = new DataRowUpdater('clients_laser');
-        	$updater->setKey('yc_id', $item['id']);
-                $updater->setDataFields(array('phone' => $res['data']['phone'], 'name' => $res['data']['name'], 'spent' => $res['data']['spent'], 'visits' => $res['data']['visits']));
-                $result_upd = $updater->update();
-                if (!$result_upd) {
-                        $result_db = $updater->error;
-                }
-                else {
-                	$result_db = 'true';
-                }
-	$j++;
-	if ($j%5 == 0) {
-		//sleep(1);
-	}
-		
-	}
-	}
-	echo $result_db;
-
-	
-
-
-	
-
-
-	
-
-
-
+}
+echo $result_db;
 ?>
