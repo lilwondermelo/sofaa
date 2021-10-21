@@ -1,6 +1,6 @@
 <?php
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_laser r join clients_laser c on r.yc_client_id = c.yc_id');
+	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_laser r join clients_laser c on r.yc_client_id = c.yc_id where r.yc_id = 339273201');
 	$dataS = $dataSource->getData();
 
 	$data = array();
