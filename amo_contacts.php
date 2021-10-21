@@ -12,10 +12,7 @@ $link='https://'.$hostAmo.'.amocrm.ru/api/v4/contacts';
 
 		$data = array();
 		$data['name'] = $item['name'];
-		$data['custom_fields_values'] = array(array("field_id" => 629913, "values" => array(array("value" => $item['yc_id']))));
-		$data['custom_fields_values'] = array(array("field_id" => 159945, "values" => array(array("value" => $item['phone']))));
-		$data['custom_fields_values'] = array(array("field_id" => 629911, "values" => array(array("value" => $item['visits']))));
-		$data['custom_fields_values'] = array(array("field_id" => 629909, "values" => array(array("value" => $item['spent']))));
+		$data['custom_fields_values'] = array(array("field_id" => 629913, "values" => array(array("value" => $item['yc_id']))), array("field_id" => 159945, "values" => array(array("value" => $item['phone']))), array("field_id" => 629911, "values" => array(array("value" => $item['visits']))), array("field_id" => 629909, "values" => array(array("value" => $item['spent']))));
 		
 
 $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
