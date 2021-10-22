@@ -1,6 +1,6 @@
 <?php
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select * from clients_autobeauty');
+	$dataSource = new DataSource('select * from clients_autobeauty where amo_id is null');
 	$dataS = $dataSource->getData();
 
 	$data = array();
