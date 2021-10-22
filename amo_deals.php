@@ -43,7 +43,7 @@ $data = array();
 		foreach ($array250 as $item) {
 			echo $item['name'] . '<br>';
 		}
-        echo json_encode($data250) . '<br><br>';
+        echo count($data250) . '<br><br>';
     }
 	
 
