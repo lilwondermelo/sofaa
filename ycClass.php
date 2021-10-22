@@ -4,8 +4,8 @@ class YCClass {
 	private $ycUser;
 	private $ycHeaders;
 	private $dataPerPage = 200;
-	private $isTest = 0;
-	private $accData = array();
+	private $isTest;
+	private $accData;
 
 	public function __construct($host, $isTest = 0){
 		require_once 'accounts.php';
