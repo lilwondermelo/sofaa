@@ -36,7 +36,7 @@ $data = array();
 
 
 	}
-	$data250 = array_chunk($data, 200)[0];
+	$data250 = array_chunk($data, 200)[1];
 
                 $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
             	curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
