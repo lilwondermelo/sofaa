@@ -40,10 +40,7 @@ $data = array();
 	$data250 = array_chunk($data, 200);
 
 	foreach ($data250 as $array250) {
-		foreach ($array250 as $item) {
-			echo $item['name'] . '<br>';
-		}
-		echo '<br><br>';
+				echo json_encode($array250) . '<br><br>';
 	}
 
 	
