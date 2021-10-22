@@ -4,8 +4,10 @@ class YCClass {
 	private $ycUser;
 	private $ycHeaders;
 	private $dataPerPage = 200;
+	private $isTest = 0;
 
-	public function __construct($host){
+
+	public function __construct($host, $isTest = 0){
 		require_once 'accounts.php';
 		$this->ycBearer = $ycBearer;
 		$this->ycUser = $ycUser;
@@ -15,6 +17,7 @@ class YCClass {
 			"Accept: application/vnd.yclients.v2+json",
 			"Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
 		);
+		$this->isTest = $isTest;
 	}
 
 	public function apiQuery($type, $link, $args = array()) {
@@ -59,8 +62,8 @@ class YCClass {
 	}
 
 	public function getClients($page = 1) {
-		$args = array('page_size' => 200, 'page' => $page);
-		//$args = array('page_size' => $this->dataPerPage, 'page' => $page);
+		$pageSize = ($this->isTest == 1)?1:$this->dataPerPage;
+		$args = array('page_size' => $pageSize, 'page' => $page);
 		$type = 'POST';
 		$link = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 		return $this->apiQuery($type, $link, $args);
@@ -72,8 +75,11 @@ class YCClass {
 		return $this->apiQuery($type, $link);
 	}
 
-	public function getLastClientRecord() {
-
+	public function getLastClientRecord($clientId) {
+		$type = 'GET';
+		$args = array('client_id' => $clientId);
+		$link = 'https://api.yclients.com/api/v1/records/' . $this->accData['ycFilialId'];
+		return $this->apiQuery($type, $link, $args);
 	}
 }
 ?>
