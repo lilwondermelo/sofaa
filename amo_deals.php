@@ -43,7 +43,7 @@ $data = array();
 		foreach ($array250 as $item) {
 			echo $item['name'] . '<br>';
 		}
-        echo count($data250) . '<br><br>';
+        echo count($array250) . '<br><br>';
     }
 	
 
