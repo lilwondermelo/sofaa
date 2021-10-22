@@ -22,7 +22,7 @@ if ($company != '') {
 				'stat' => ($result['visit_attendance'])?$result['data'][0]['visit_attendance']:'0',
 				'is_deleted' => ($result['deleted'])?'1':'0'
 			);
-			$result_db[] = recordInDb('yc_id', $data[$i]['id'], $data[$i]['data']);
+			$result_db[] = $ycClass->recordInDb('yc_id', $data[$i]['id'], $data[$i]['data']);
 		$i++;
 		}
 	}
