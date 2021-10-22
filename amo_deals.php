@@ -37,8 +37,14 @@ $data = array();
 
 	}
 
-	foreach ($data as $item) {
-		echo $item['name'] . '<br>';
+	$data250 = array_chunk($data, 200);
+
+	foreach ($data250 as $array250) {
+		foreach ($array250 as $item) {
+			echo $item['name'] . '<br>';
+		}
+		echo '<br><br>';
 	}
+
 	
 ?>
