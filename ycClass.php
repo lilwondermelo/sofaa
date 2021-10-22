@@ -81,10 +81,11 @@ class YCClass {
 		$link = 'https://api.yclients.com/api/v1/records/' . $this->accData['ycFilialId'];
 		return $this->apiQuery($type, $link, $args);
 	}
-	public function recordInDb($key, $data) {
+
+	public function recordInDb($key, $keyVal, $data) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients_' . $this->accData['tableName']);
-		$updater->setKey('yc_id', $key);
+		$updater->setKey($key, $keyVal);
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
@@ -92,6 +93,18 @@ class YCClass {
 		}
 		else {
 			return $result_upd;
+		}
+	}
+
+	public function getClientsDb() {
+		require_once '_dataSource.class.php';
+		$dataSource = new DataSource('select yc_id from clients_' . $this->accData['tableName']);
+		$data = $dataSource->getData();
+		if ($this->isTest == 1) {
+			return array($data[0]);
+		}
+		else {
+			return $data;
 		}
 	}
 }

@@ -15,7 +15,7 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 			$clientData = $ycClass->getClientData($item['id']);
 			$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits']);
-			$result_db[] = $ycClass->recordInDb($item['id'], $tableData);
+			$result_db[] = $ycClass->recordInDb('yc_id', $item['id'], $tableData);
 			
 		}
 	}
