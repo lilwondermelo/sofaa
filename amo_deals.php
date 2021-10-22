@@ -32,10 +32,11 @@ $data = array();
 
 			
 
-			
+		$i++;	
 
 
 	}
+	
 	echo count($data);
 	
 ?>
