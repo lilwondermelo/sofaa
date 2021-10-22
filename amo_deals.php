@@ -1,6 +1,6 @@
 <?php
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_autobeauty r join clients_autobeauty c on r.yc_client_id = c.yc_id where r.stat = -1 or r.stat = 1');
+	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_autobeauty r join clients_autobeauty c on r.yc_client_id = c.yc_id where c.spent >= 0 and (r.stat = -1 or r.stat = 1)');
 	$dataS = $dataSource->getData();
 	$sum = array();
 	$result = array();
@@ -36,9 +36,10 @@ $data = array();
 
 
 	}
-	$data250 = array_chunk($data, 200)[1];
+	$data250 = array_chunk($data, 200);
 
-                $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
+	foreach ($data250 as $$array250) {
+		$curl = curl_init(); //Сохраняем дескриптор сеанса cURL
             	curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
             	curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
             	curl_setopt($curl,CURLOPT_URL, $link);
@@ -51,11 +52,12 @@ $data = array();
             	curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
             	$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
             	curl_close($curl);
-            	
-    		
-    
+            	$sum = json_decode($out, true)['id'];
+	}
 
-    echo $out;
+                
+     
+    echo $sum;
 	
 
 	
