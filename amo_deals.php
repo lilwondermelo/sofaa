@@ -2,7 +2,7 @@
 require_once '_dataSource.class.php';
 	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_autobeauty r join clients_autobeauty c on r.yc_client_id = c.yc_id where r.stat = -1 or r.stat = 1');
 	$dataS = $dataSource->getData();
-
+	$sum = array();
 	$result = array();
 $hostAmo = strtolower(trim("autobeauty"));
 $link='https://'.$hostAmo.'.amocrm.ru/api/v4/leads';
@@ -37,7 +37,7 @@ $data = array();
 
 	}
 
-	$data250 = array_chunk($data, 200);
+	$data250 = array_chunk($data, 1);
 
 	foreach ($data250 as $array250) {
                 $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
@@ -53,9 +53,11 @@ $data = array();
             	curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
             	$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
             	curl_close($curl);
-            	echo $out;
+            	$sum[] = json_decode($out, true)['id'];
     		
     }
+
+    echo json_encode($sum);
 	
 
 	
