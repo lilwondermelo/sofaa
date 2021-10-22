@@ -82,9 +82,9 @@ class YCClass {
 		return $this->apiQuery($type, $link, $args);
 	}
 
-	public function recordInDb($key, $keyVal, $data) {
+	public function recordInDb($table, $key, $keyVal, $data) {
 		require_once '_dataRowUpdater.class.php';
-		$updater = new DataRowUpdater('clients_' . $this->accData['tableName']);
+		$updater = new DataRowUpdater($table . '_' . $this->accData['tableName']);
 		$updater->setKey($key, $keyVal);
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
