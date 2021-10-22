@@ -40,7 +40,6 @@ $data = array();
 	$data250 = array_chunk($data, 200);
 
 	foreach ($data250 as $array250) {
-		foreach ($data250 as $array250) {
                 $curl = curl_init(); //Сохраняем дескриптор сеанса cURL
             	curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
             	curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
@@ -55,7 +54,7 @@ $data = array();
             	$out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
             	curl_close($curl);
             	echo $out;
-    		}
+    		
     }
 	
 
