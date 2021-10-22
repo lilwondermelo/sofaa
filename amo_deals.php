@@ -1,6 +1,6 @@
 <?php
 require_once '_dataSource.class.php';
-	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_autobeauty r join clients_autobeauty c on r.yc_client_id = c.yc_id');
+	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_autobeauty r join clients_autobeauty c on r.yc_client_id = c.yc_id where r.stat = -1 or r.stat = 1');
 	$dataS = $dataSource->getData();
 
 	$result = array();
@@ -34,7 +34,7 @@ $data = array();
 
 		$i++;	
 
-
+ч
 	}
 
 	$data250 = array_chunk($data, 200);
