@@ -26,8 +26,9 @@ foreach ($dataS as $item) {
                 	$result_db = 'true';
                 }
 
-		$i++;
+	$i++;
 	}
+	
 }
 echo $result_db;
 ?>

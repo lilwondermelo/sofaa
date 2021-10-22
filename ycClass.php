@@ -81,5 +81,18 @@ class YCClass {
 		$link = 'https://api.yclients.com/api/v1/records/' . $this->accData['ycFilialId'];
 		return $this->apiQuery($type, $link, $args);
 	}
+	public function recordInDb($key, $data) {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('clients_' . $this->accData['tableName']);
+		$updater->setKey('yc_id', $key);
+		$updater->setDataFields($data);
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return $updater->error;
+		}
+		else {
+			return 'true';
+		}
+	}
 }
 ?>
