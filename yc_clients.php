@@ -3,7 +3,7 @@ $isTest = 0;
 $company = '';
 $isTest = (!empty($_GET["isTest"]))?(!empty($_GET["isTest"])):0;
 if (!empty($_GET["company"])) {
-	$company = !empty($_GET["company"]);
+	$company = (!empty($_GET["company"]))?$_GET["company"]:'';
 }
 if ($company != '') {
 	$resultDb = array(); //Массив для занесения результатов добавления данных в БД
