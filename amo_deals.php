@@ -36,7 +36,9 @@ $data = array();
 
 
 	}
-	
-	echo count($data);
+
+	foreach ($data as $item) {
+		echo $data['name'] . '<br>';
+	}
 	
 ?>
