@@ -91,7 +91,7 @@ class YCClass {
 			return $updater->error;
 		}
 		else {
-			return 'true';
+			return $result_upd;
 		}
 	}
 }
