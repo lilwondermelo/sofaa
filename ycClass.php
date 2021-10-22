@@ -67,7 +67,7 @@ class YCClass {
 		$type = 'POST';
 		$link = 'https://api.yclients.com/api/v1/company/' . $this->accData['ycFilialId'] . '/clients/search';
 		//return $this->apiQuery($type, $link, $args);
-		return $link;
+		return $this->accData;
 	}
 
 	public function getClientData($clientId) {
