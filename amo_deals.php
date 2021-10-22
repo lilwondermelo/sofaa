@@ -38,7 +38,7 @@ $data = array();
 	}
 
 	foreach ($data as $item) {
-		echo $data['name'] . '<br>';
+		echo $item['name'] . '<br>';
 	}
 	
 ?>
