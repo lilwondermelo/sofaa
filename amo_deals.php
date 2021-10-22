@@ -34,7 +34,7 @@ $data = array();
 
 		$i++;	
 
-ч
+
 	}
 
 	$data250 = array_chunk($data, 200);
