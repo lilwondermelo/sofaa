@@ -55,7 +55,7 @@ $data = array();
     		
     
 
-    echo json_encode($sum);
+    echo json_encode(array_chunk($data, 200));
 	
 
 	
