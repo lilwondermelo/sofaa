@@ -1,7 +1,7 @@
 <?php
 $isTest = 0;
 $company = '';
-if ($_SERVER["REQUEST_METHOD"] == "GET"]){
+if ($_SERVER["REQUEST_METHOD"] == "GET"){
 	$isTest = (!empty($_GET["isTest"]))?(!empty($_GET["isTest"])):0;
 	if (!empty($_GET["company"])) {
 		$company = !empty($_GET["company"]);
