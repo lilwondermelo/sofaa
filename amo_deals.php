@@ -3,7 +3,7 @@ require_once '_dataSource.class.php';
 	$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_autobeauty r join clients_autobeauty c on r.yc_client_id = c.yc_id');
 	$dataS = $dataSource->getData();
 
-	
+	$result = array();
 $hostAmo = strtolower(trim("autobeauty"));
 $link='https://'.$hostAmo.'.amocrm.ru/api/v4/leads';
 $i = 0;
@@ -54,8 +54,9 @@ $data = array();
             $out = curl_exec($curl); //Инициируем запрос к API и сохраняем ответ в переменную
             curl_close($curl);
 
-            sleep(20);
+            $result[] = $out;
 	}
+	echo json_encode($result);
 
 	
 ?>
