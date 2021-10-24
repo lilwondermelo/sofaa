@@ -53,7 +53,7 @@ class AmoClass {
 	}
 
 	public function setContact($item, $amoId = '') {
-		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts' . (($amoId != '')?('/' . $amoId):'');
+		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts' . $amoId;
 		$type = 'POST';
 		$data = array();
 		$data[0]['name'] = $item['name'];
