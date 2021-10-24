@@ -62,4 +62,10 @@ class AmoClass {
 		$resId = $this->apiQuery($type, $link, $data)['_embedded']['contacts'][0]['id'];
 		return $resId;
 	}
+
+	public function getContacts() {
+		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts';
+		$type = 'GET';
+		return $this->apiQuery($type, $link);
+	}
 }
