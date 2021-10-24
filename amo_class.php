@@ -32,8 +32,8 @@ class AmoClass {
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
 				curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
 				break; 
-			case 'PUT':
-				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+			case 'PATCH':
+				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
 				curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
 				break; 
 			default: 
@@ -68,7 +68,7 @@ class AmoClass {
 		}
 		
 		$data[0]['custom_fields_values'] = array(array("field_id" => $this->customFields['yc_id'], "values" => array(array("value" => $item['yc_id']))), array("field_id" => $this->customFields['phone'], "values" => array(array("value" => $item['phone']))), array("field_id" => $this->customFields['visits'], "values" => array(array("value" => $item['visits']))), array("field_id" => $this->customFields['spent'], "values" => array(array("value" => $item['spent']))));
-		$result = $this->apiQuery($type, $link, $data[0]);
+		$result = $this->apiQuery($type, $link, $data);
 		$ycClass->recordHook(json_encode($result));
 		$resId = $result['_embedded']['contacts'][0]['id'];
 
