@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$resultDb = '';
 				break;
 		}
-		$ycClass->recordHook(1);
    	}
    	else {
    		require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
