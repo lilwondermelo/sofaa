@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$hookStatus = $payload['status'];
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
-	$ycClass->recordHook($payload['resource_id']);
+	
 	$company = '';
-
+	$ycClass->recordHook($payload['resource_id']);
     require 'accounts.php';
     foreach ($accData as $key => $item) {
     	if ($item['ycFilialId'] == $companyId) {
