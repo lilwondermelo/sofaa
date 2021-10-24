@@ -69,7 +69,7 @@ class AmoClass {
 		
 		$data[0]['custom_fields_values'] = array(array("field_id" => $this->customFields['yc_id'], "values" => array(array("value" => $item['yc_id']))), array("field_id" => $this->customFields['phone'], "values" => array(array("value" => $item['phone']))), array("field_id" => $this->customFields['visits'], "values" => array(array("value" => $item['visits']))), array("field_id" => $this->customFields['spent'], "values" => array(array("value" => $item['spent']))));
 		$result = $this->apiQuery($type, $link, $data);
-		$ycClass->recordHook(json_encode($result));
+		$ycClass->recordHook(json_encode($data));
 		$resId = $result['_embedded']['contacts'][0]['id'];
 
 		return $resId;
