@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				break;
 		}
 		$data = array('data_value' => $result);
-		$result = $ycClass->recordHook($data);
+		$result = $ycClass->recordHook($company);
    	}
 }
     
