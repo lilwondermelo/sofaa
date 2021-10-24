@@ -11,7 +11,7 @@ class AmoClass {
 		require_once 'accounts.php';
 		$this->authCode = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
-		$this->ycHeaders = array(
+		$this->amoHeaders = array(
 			"Content-Type : application/json",
 			"Authorization : Bearer " . $this->authCode
 		);
@@ -39,7 +39,7 @@ class AmoClass {
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $type); 
 		}
 		curl_setopt($curl,CURLOPT_URL,$link);
-		curl_setopt($curl,CURLOPT_HTTPHEADER, $this->ycHeaders);
+		curl_setopt($curl,CURLOPT_HTTPHEADER, $this->amoHeaders);
 		curl_setopt($curl,CURLOPT_HEADER,false);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
