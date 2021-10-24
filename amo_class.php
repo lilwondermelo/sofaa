@@ -58,9 +58,9 @@ class AmoClass {
 
 
 		$data[0]['custom_fields_values'] = array(array("field_id" => $this->customFields['yc_id'], "values" => array(array("value" => $item['yc_id']))), array("field_id" => $this->customFields['phone'], "values" => array(array("value" => $item['phone']))), array("field_id" => $this->customFields['visits'], "values" => array(array("value" => $item['visits']))), array("field_id" => $this->customFields['spent'], "values" => array(array("value" => $item['spent']))));
-		//$resId = $this->apiQuery($type, $link, $data)['_embedded']['contacts'][0]['id'];
-		//return $resId;
-		return $this->apiQuery($type, $link, $data);
+		$resId = $this->apiQuery($type, $link, $data)['_embedded']['contacts'][0]['id'];
+		return $resId;
+		//return $this->apiQuery($type, $link, $data);
 	}
 
 	public function getContacts() {
