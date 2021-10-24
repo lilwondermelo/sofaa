@@ -1,5 +1,5 @@
 <?php 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payload = json_decode(file_get_contents('php://input'), true);
     $hookType = $payload['resource'];
 	$hookStatus = $payload['status'];
