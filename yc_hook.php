@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 
     if ($company != '') {
-    	$ycClass->recordHook($hookStatus);
+    	
 		switch ($hookStatus) {
 			case 'create':
 			$ycClass->recordHook('crt');
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				
 
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-
+				$ycClass->recordHook($amoId);
 				
 				
 
