@@ -1,5 +1,5 @@
 <?php 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $payload = json_decode(file_get_contents('php://input'), true);
     $hookType = $payload['resource'];
 	$hookStatus = $payload['status'];
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$company = '';
 	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-   		$ycClass->recordHook(json_encode($payload));
+   		$ycClass->recordHook('11231231');
     require_once 'accounts.php';
     foreach ($accData as $key => $item) {
     	if ($item['ycFilialId'] == $companyId) {
