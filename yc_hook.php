@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
 	$company = '';
-	require 'ycClass.php'; //Класс для работы с API YCLIENTS
+	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
    		$ycClass->recordHook('11231231');
     require 'accounts.php';
