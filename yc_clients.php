@@ -7,7 +7,7 @@ if (!empty($_GET["company"])) {
 }
 if ($company != '') {
 	$resultDb = array(); //Массив для занесения результатов добавления данных в БД
-	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
+	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 	$ycClass = new YCClass($company, $isTest); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 	$pages = ($isTest == 1)?1:$ycClass->getCLientCount()['pages']; //Количество страниц в запросе пользователей;
 	for ($i = 0; $i < ceil($pages); $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)

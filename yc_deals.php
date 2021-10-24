@@ -8,7 +8,7 @@ if (!empty($_GET["company"])) {
 if ($company != '') {
 	$i = 0;
 	$result_db = array();
-	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
+	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 	$ycClass = new YCClass($company, $isTest); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 	$dataClients = $ycClass->getClientsDb();
 	foreach ($dataClients as $item) {	
