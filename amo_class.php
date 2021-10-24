@@ -13,10 +13,6 @@ class AmoClass {
 		$this->accData = $accData;
 		$this->amoBearer = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
-		$this->amoHeaders = array(
-			"Content-Type : application/json",
-			"Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg3ODhkMWQ3OTliOTNjMWRmZDFlZDY4Mjg1Yjk5NDU5ZGVjZDk5ZWIwYTdiNWU0MGVlNmYwOWRkYzI0ODIyOGVlZmVlY2RkYTUxODY4ZmE5In0.eyJhdWQiOiI2MTRkMzA1Yi00MmNjLTRhZTEtOWI4Ni1jMzUyNDI2ODZjYmYiLCJqdGkiOiI4Nzg4ZDFkNzk5YjkzYzFkZmQxZWQ2ODI4NWI5OTQ1OWRlY2Q5OWViMGE3YjVlNDBlZTZmMDlkZGMyNDgyMjhlZWZlZWNkZGE1MTg2OGZhOSIsImlhdCI6MTYzNTA1OTc2NCwibmJmIjoxNjM1MDU5NzY0LCJleHAiOjE2MzUxNDYxNjQsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTcxNTQ0Miwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.FRTFZxyc46Pqzia46rB5ijeZa8xjyjUubvLLoGddmW2P0cNOigThsME6Et0TLsC-CQK1mn78qR2qDD3L_mrkDB8RFDaWdNo3qZN6z_NzBWIzQ5NOrurn81ax309kxkeMlCqe6togw1EaUSFVl3YqS37b8fSFWDlNvUWJkwIsBjo7UnabVSEWr3LzilLyYzMXM30X789Ac6Ykkgr_LYYg4rany02RbagYnJRTzYm4zjoKINVMAQS260WBYunkFZ4eEm2H5JfUbDBHH2ILQiLIrIdbZXq1LQc3ngKaoHXpXfepmOz-detNQ_5Vri0dbfSlZCfbxxS-CPrYUvaNMXDebA"
-		);
 		$this->isTest = $isTest;
 	}
 
@@ -42,7 +38,7 @@ class AmoClass {
 		}
 		curl_setopt($curl,CURLOPT_URL,$link);
 		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
-    	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg3ODhkMWQ3OTliOTNjMWRmZDFlZDY4Mjg1Yjk5NDU5ZGVjZDk5ZWIwYTdiNWU0MGVlNmYwOWRkYzI0ODIyOGVlZmVlY2RkYTUxODY4ZmE5In0.eyJhdWQiOiI2MTRkMzA1Yi00MmNjLTRhZTEtOWI4Ni1jMzUyNDI2ODZjYmYiLCJqdGkiOiI4Nzg4ZDFkNzk5YjkzYzFkZmQxZWQ2ODI4NWI5OTQ1OWRlY2Q5OWViMGE3YjVlNDBlZTZmMDlkZGMyNDgyMjhlZWZlZWNkZGE1MTg2OGZhOSIsImlhdCI6MTYzNTA1OTc2NCwibmJmIjoxNjM1MDU5NzY0LCJleHAiOjE2MzUxNDYxNjQsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTcxNTQ0Miwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.FRTFZxyc46Pqzia46rB5ijeZa8xjyjUubvLLoGddmW2P0cNOigThsME6Et0TLsC-CQK1mn78qR2qDD3L_mrkDB8RFDaWdNo3qZN6z_NzBWIzQ5NOrurn81ax309kxkeMlCqe6togw1EaUSFVl3YqS37b8fSFWDlNvUWJkwIsBjo7UnabVSEWr3LzilLyYzMXM30X789Ac6Ykkgr_LYYg4rany02RbagYnJRTzYm4zjoKINVMAQS260WBYunkFZ4eEm2H5JfUbDBHH2ILQiLIrIdbZXq1LQc3ngKaoHXpXfepmOz-detNQ_5Vri0dbfSlZCfbxxS-CPrYUvaNMXDebA']);
+    	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:Bearer ' . $this->amoBearer]);
 		curl_setopt($curl,CURLOPT_HEADER,false);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
@@ -50,7 +46,7 @@ class AmoClass {
 		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 		curl_close($curl);
 		$result = json_decode($out, true);
-		return $out;
+		return $result;
 	}
 
 	public function setContact($item) {
