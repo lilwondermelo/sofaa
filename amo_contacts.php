@@ -19,8 +19,8 @@ if ($company != '') {
 
 	}
 	echo 'Компания: ' . $company . '<br>' . 'Тестовый режим ' . (($isTest == 1)?'ВКЛЮЧЕН':'не включен') . '<br>';
-	echo json_encode($result_db);
-	//echo json_encode($amoClass->getContacts(), true);
+	//echo json_encode($result_db);
+	echo json_encode($amoClass->getContacts(), true);
 }
 else {
 	echo 'Компания не выбрана';
