@@ -14,12 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     		$company = $key;
     	}
     }
+    require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
+		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
+		$ycClass->recordHook($company);
 
     if ($company != '') {
 
-    	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
-		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		$ycClass->recordHook($company);
+
 		switch ($hookStatus) {
 			case 'create':
 				$clientData = $payload;
