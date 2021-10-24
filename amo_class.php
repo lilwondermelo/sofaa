@@ -49,7 +49,7 @@ class AmoClass {
 		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 		curl_close($curl);
 		$result = json_decode($out, true);
-		return $result;
+		return $out;
 	}
 
 	public function setContact($item) {
@@ -65,7 +65,7 @@ class AmoClass {
 	public function getContacts() {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts';
 		$type = 'GET';
-		return $link;
+		return $this->apiQuery($type, $link);
 		//return $link;
 	}
 }
