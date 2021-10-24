@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $payload = json_decode(file_get_contents('php://input'));
+    $payload = json_decode(file_get_contents('php://input'), true);
     $ycClass->recordHook(json_encode($payload));
     $hookType = $payload['resource'];
 	$hookStatus = $payload['status'];
