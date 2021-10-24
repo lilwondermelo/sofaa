@@ -66,6 +66,6 @@ class AmoClass {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts';
 		$type = 'GET';
 		//return $this->apiQuery($type, $link);
-		return $this->host;
+		return $link;
 	}
 }
