@@ -1,6 +1,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payload = json_decode(file_get_contents('php://input'));
+    $ycClass->recordHook(file_get_contents('php://input'));
     $hookType = $payload['resource'];
 	$hookStatus = $payload['status'];
 	$companyId = $payload['company_id'];
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			case 'update':
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-				$ycClass->recordHook(2);
+				
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId);
 
 				
