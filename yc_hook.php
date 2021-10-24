@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-				$ycClass->recordHook($amoId);
+				$ycClass->recordHook(json_encode($tableData));
 				$result = $amoClass->setContact($tableData, $amoId);
 				
 				unset($tableData['yc_id']);
