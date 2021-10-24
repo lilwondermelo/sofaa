@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		
+		require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
+				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 
     if ($company != '') {
-    	require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
-				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
+    	
 		switch ($hookStatus) {
 			case 'create':
 			$ycClass->recordHook('crt');

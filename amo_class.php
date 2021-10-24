@@ -57,7 +57,7 @@ class AmoClass {
 		
 		require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($this->host, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		$ycClass->recordHook($result);
+		$ycClass->recordHook($link);
 
 		$type = 'POST';
 		$data = array();
