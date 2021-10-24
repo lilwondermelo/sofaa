@@ -13,7 +13,7 @@ class AmoClass {
 		$this->host = $accData[$host]['amoHost'];
 		$this->amoHeaders = array(
 			"Content-Type : application/json",
-			"Authorization : Bearer " . $this->authCode
+			"Authorization : Bearer " . $this->amoBearer
 		);
 		$this->isTest = $isTest;
 	}
