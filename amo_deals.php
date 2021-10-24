@@ -20,7 +20,7 @@ if ($company != '') {
 		$data[$i]['_embedded'] = array('contacts' => array(array('id' => (int)$item['amoId'])));
 		$i++;
 	}
-	$data = (count($data) > 200)?array_chunk($data, 200):$data;
+	$data = (count($data) > 200)?array_chunk($data, 200):array($data);
 	$result = array();
 	foreach ($data as $dataPack) {
 			$result[] = $amoClass->setDeals($dataPack);
