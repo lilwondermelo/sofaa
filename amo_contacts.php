@@ -15,7 +15,7 @@ if ($company != '') {
 	foreach ($dataClients as $item) {
 		$amoId = $amoClass->setContact($item);
 		$data = array('amo_id' => $amoId);
-		$result_db[] = $ycClass->recordInDb('clients', 'yc_id', $item['yc_id'], $data);
+		$resultDb = $ycClass->recordInDb('clients', 'yc_id', $item['yc_id'], $data);
 
 	}
 	echo 'Компания: ' . $company . '<br>' . 'Тестовый режим ' . (($isTest == 1)?'ВКЛЮЧЕН':'не включен') . '<br>';
