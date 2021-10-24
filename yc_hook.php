@@ -6,17 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
 	$company = '';
-	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
-		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-   		$ycClass->recordHook('11231231');
-    require 'accounts.php';
+    require_once 'accounts.php';
     foreach ($accData as $key => $item) {
     	if ($item['ycFilialId'] == $companyId) {
     		$company = $key;
     	}
     }
     if ($company != '') {
-    	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
+    	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 		switch ($hookStatus) {
 			case 'create':
@@ -44,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$resultDb = '';
 				break;
 		}
-		$ycClass->recordHook(json_encode($payload));
+		$ycClass->recordHook(json_encode($result));
    	}
    	else {
    		require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
