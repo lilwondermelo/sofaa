@@ -36,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
 				break;
 			case 'update':
-			$ycClass->recordHook('upd');
+			
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 
 				
-
+				$ycClass->recordHook('upd');
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId);
 
 				
