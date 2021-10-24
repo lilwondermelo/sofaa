@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 				$ycClass->recordHook(1);
 
-				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
+				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId);
 
 				$ycClass->recordHook($amoId);
 				require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
