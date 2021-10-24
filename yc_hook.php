@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
 	$company = '';
-	
+
     require_once 'accounts.php';
     foreach ($accData as $key => $item) {
     	if ($item['ycFilialId'] == $companyId) {
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($company != '') {
     	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		switch (variable) {
+		switch ($hookType) {
 			case 'create':
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
