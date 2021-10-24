@@ -49,7 +49,7 @@ class AmoClass {
 		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 		curl_close($curl);
 		$result = json_decode($out, true);
-		return $this->amoHeaders;
+		return $curl;
 	}
 
 	public function setContact($item) {
