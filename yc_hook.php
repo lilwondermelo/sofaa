@@ -36,10 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
 				
 				$result = $amoClass->setContact($tableData, $amoId);
-				
+				$ycClass->recordHook($result);
 				unset($tableData['yc_id']);
 				$result .= ' ' . $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
-				$ycClass->recordHook($result);
+				
 				break;
 			case 'delete':
 				//Добавить удаление клиента из базы и из amocrm
