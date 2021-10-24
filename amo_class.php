@@ -54,15 +54,16 @@ class AmoClass {
 
 	public function setContact($item, $amoId = '') {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts/' . $amoId;
-		
+
 		require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($this->host, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		$ycClass->recordHook($link);
+		
 
 		$type = 'POST';
 		$data = array();
 		$data[0]['name'] = $item['name'];
 		$data[0]['custom_fields_values'] = array(array("field_id" => $this->customFields['yc_id'], "values" => array(array("value" => $item['yc_id']))), array("field_id" => $this->customFields['phone'], "values" => array(array("value" => $item['phone']))), array("field_id" => $this->customFields['visits'], "values" => array(array("value" => $item['visits']))), array("field_id" => $this->customFields['spent'], "values" => array(array("value" => $item['spent']))));
+		$ycClass->recordHook($link);
 		$resId = $this->apiQuery($type, $link, $data)['_embedded']['contacts'][0]['id'];
 		return $resId;
 		//return $this->apiQuery($type, $link, $data);
