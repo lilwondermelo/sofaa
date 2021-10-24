@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $payload = json_decode(file_get_contents('php://input'), true);
+    $payload = json_decode(file_get_contents('php://input'));
     $hookType = $payload['resource'];
 	$hookStatus = $payload['status'];
 	$companyId = $payload['company_id'];
