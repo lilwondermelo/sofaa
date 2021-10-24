@@ -3,13 +3,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 	$ycClass = new YCClass('ablaser', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
     $payload = json_decode(file_get_contents('php://input'), true);
-    $ycClass->recordHook(json_encode($payload));
+    
     $hookType = $payload['resource'];
 	$hookStatus = $payload['status'];
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
 	$company = '';
-    require 'accounts.php';
+	$ycClass->recordHook($resourceId);
+    require_once 'accounts.php';
     foreach ($accData as $key => $item) {
     	if ($item['ycFilialId'] == $companyId) {
     		$company = $key;
