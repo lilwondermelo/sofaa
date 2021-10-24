@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$ycClass = new YCClass('data', 1); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 	$hookType = $data['resource_type'];
 	$data = array('data_value' => $raw_payload);
-	$result = $ycClass->recordInDb('sys', 'data_key', 'test_hook_' . date('Y-m-d H:i:s'), $data);
+	$result = $ycClass->recordInDb('sys', 'data_key', 'test_hook_' . date('Y-m-d H:i:s'), $hookType);
 	echo json_encode(json_decode($raw_payload, true));
    }
 ?>
