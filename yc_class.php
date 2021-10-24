@@ -112,7 +112,7 @@ class YCClass {
 
 	public function getClientsDb($filter = '') {
 		require_once '_dataSource.class.php';
-		$dataSource = new DataSource('select * from clients_' . $this->accData['tableName']);
+		$dataSource = new DataSource('select * from clients_' . $this->accData['tableName'] . $filter);
 		$data = $dataSource->getData();
 		if ($this->isTest == 1) {
 			return array($data[0]);
