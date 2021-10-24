@@ -54,6 +54,7 @@ class AmoClass {
 
 	public function setContact($item, $amoId = '') {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts/' . $amoId;
+		$this->recordHook($link);
 		$type = 'POST';
 		$data = array();
 		$data[0]['name'] = $item['name'];
