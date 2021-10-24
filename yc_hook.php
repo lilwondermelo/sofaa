@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     		$company = $key;
     	}
     }
-    $ycClass->recordHook($resourceId);
     if ($company != '') {
     	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
@@ -34,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			case 'update':
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-				
+				$ycClass->recordHook($resourceId);
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId);
 
 				
 				
-
+				
 				require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
 				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 				$result = $amoClass->setContact($tableData, $amoId);
