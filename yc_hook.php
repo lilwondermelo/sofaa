@@ -1,5 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$accIds = array('ablaser' => '543499');
     $payload = json_decode(file_get_contents('php://input'), true);
     
     $hookType = $payload['resource'];
@@ -8,9 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$resourceId = $payload['resource_id'];
 
 	$company = '';
-    require 'accounts.php';
-    foreach ($accData as $key => $item) {
-    	if ($item['ycFilialId'] == $companyId) {
+    foreach ($accIds as $key => $item) {
+    	if ($item == $companyId) {
     		$company = $key;
     	}
     }
