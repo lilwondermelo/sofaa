@@ -54,7 +54,7 @@ class AmoClass {
 
 	public function setContact($item, $amoId = '') {
 
-		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts/' . $amoId;
+		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts';
 	
 		require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($this->host, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
