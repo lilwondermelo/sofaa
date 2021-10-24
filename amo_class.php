@@ -64,7 +64,7 @@ class AmoClass {
 		$data = array();
 		$data[0]['name'] = $item['name'];
 		if ($amoId != '') {
-			$data[0]['id'] = $amoId;
+			$data[0]['id'] = (int)$amoId;
 		}
 		
 		$data[0]['custom_fields_values'] = array(array("field_id" => $this->customFields['yc_id'], "values" => array(array("value" => $item['yc_id']))), array("field_id" => $this->customFields['phone'], "values" => array(array("value" => $item['phone']))), array("field_id" => $this->customFields['visits'], "values" => array(array("value" => $item['visits']))), array("field_id" => $this->customFields['spent'], "values" => array(array("value" => $item['spent']))));
