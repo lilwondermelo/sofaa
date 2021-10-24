@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 
     if ($company != '') {
-    	
+    	$ycClass->recordHook(1);
 		switch ($hookStatus) {
 			case 'create':
 			$ycClass->recordHook('crt');
@@ -34,12 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-				
+
 				$result = $amoClass->setContact($tableData, $amoId);
 				$ycClass->recordHook($result);
 				unset($tableData['yc_id']);
 				$result .= ' ' . $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
-				
+
 				break;
 			case 'delete':
 				//Добавить удаление клиента из базы и из amocrm
