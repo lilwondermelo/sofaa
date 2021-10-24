@@ -16,7 +16,6 @@ if ($company != '') {
 			$clientData = $ycClass->getClientData($item['id']);
 			$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits']);
 			$result_db[] = $ycClass->recordInDb('clients', 'yc_id', $item['id'], $tableData);
-			
 		}
 	}
 	echo 'Компания: ' . $company . '<br>' . 'Тестовый режим ' . (($isTest == 1)?'ВКЛЮЧЕН':'не включен') . '<br>';
