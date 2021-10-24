@@ -28,8 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				break;
 			case 'update':
 				$clientData = $payload;
-
-				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourseId)['amo_id'];
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits']);
 				require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
 				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
