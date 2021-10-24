@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$accIds = array('ablaser' => '543499');
+	$accIds = array('543499' => 'ablaser');
     $payload = json_decode(file_get_contents('php://input'), true);
     
     $hookType = $payload['resource'];
@@ -8,17 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
 
-	$company = '';
-    foreach ($accIds as $key => $item) {
-    	if ($item == $companyId) {
-    		$company = $key;
-    	}
-    }
+	$company = ($companyId)?$accIds[$companyId]:'';
 
     require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
-		$ycClass = new YCClass('ablaser', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		$ycClass->recordHook('upd');
-		$ycClass->recordHook($hookStatus . ' ' . $company . ' ' . $resourceId);
+		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 		
 
     if ($company != '') {
@@ -40,8 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-				$ycClass->recordHook($amoId);
+				
 				$result = $amoClass->setContact($tableData, $amoId);
+				$ycClass->recordHook($result);
 				unset($tableData['yc_id']);
 				$result .= ' ' . $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
 
