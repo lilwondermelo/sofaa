@@ -12,9 +12,11 @@ class AmoClass {
 		require 'accounts.php';
 		$this->customFields = $accData[$host]['customFields'];
 		$this->statuses = $accData[$host]['statuses'];
+		$this->table = $accData[$host]['tableName'];
 		$this->amoBearer = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
 		$this->isTest = $isTest;
+
 	}
 
 	public function apiQuery($type, $link, $args = array()) {
@@ -95,10 +97,11 @@ class AmoClass {
 
 	public function getContactsDB() {
 		require_once '_dataSource.class.php';
-		$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_' . $this->host . ' r join clients_' . $this->host . ' c on r.yc_client_id = c.yc_id where c.spent >= 0');
+		$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_' . $this->table . ' r join clients_' . $this->table . ' c on r.yc_client_id = c.yc_id where c.spent >= 0');
 		$data = $dataSource->getData();
-		if ($this->isTest == 1) {
-			return array($data[0]);
+		if ($this->isTest == 1) { 
+			//return array($data[0]);
+			return $this->host
 		}
 		else {
 			return $data;
