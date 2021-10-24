@@ -65,6 +65,6 @@ class AmoClass {
 	public function getContacts() {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts';
 		$type = 'GET';
-		return $this->host;
+		return $this->accData;
 	}
 }
