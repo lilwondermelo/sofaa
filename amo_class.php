@@ -9,7 +9,7 @@ class AmoClass {
 
 	public function __construct($host, $isTest = 0){
 		require_once 'accounts.php';
-		$this->authCode = $accData[$host]['authCode'];
+		$this->amoBearer = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
 		$this->amoHeaders = array(
 			"Content-Type : application/json",
