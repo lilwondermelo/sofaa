@@ -42,8 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$resultDb = '';
 				break;
 		}
-		$data = array('data_value' => $result);
-		$result = $ycClass->recordHook(json_encode($payload));
+		$ycClass->recordHook(json_encode($payload));
+   	}
+   	else {
+   		require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
+		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
+   		$ycClass->recordHook(json_encode($payload));
    	}
 }
     
