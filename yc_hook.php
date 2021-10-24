@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 
     if ($company != '') {
-    	$ycClass->recordHook('comp');
+    	$ycClass->recordHook($hookStatus);
 		switch ($hookStatus) {
 			case 'create':
 			$ycClass->recordHook('crt');
