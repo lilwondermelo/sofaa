@@ -8,7 +8,6 @@ class AmoClass {
 	private $host;
 
 	public function __construct($host, $isTest = 0){
-		$host = strtolower(trim($host));
 		require_once 'accounts.php';
 		$this->ycBearer = $ycBearer;
 		$this->ycUser = $ycUser;
