@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			case 'update':
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-				$ycClass->recordHook(1);
+				$ycClass->recordHook($resourceId);
 
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId);
 
