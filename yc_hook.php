@@ -29,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			case 'update':
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-				$ycClass->recordHook(1);
-				$ycClass->recordHook('123');
 				$ycClass->recordHook(file_get_contents('php://input'));
 
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId);
@@ -49,12 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$resultDb = '';
 				break;
 		}
-		$ycClass->recordHook($amoId);
+		$ycClass->recordHook(1);
    	}
    	else {
    		require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-   		$ycClass->recordHook(json_encode($payload));
+   		$ycClass->recordHook(1);
    	}
 }
     
