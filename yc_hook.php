@@ -6,9 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
 	$company = '';
-
-
-
+	
     require_once 'accounts.php';
     foreach ($accData as $key => $item) {
     	if ($item['ycFilialId'] == $companyId) {
@@ -45,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				break;
 		}
 		$data = array('data_value' => $result);
-		$result = $ycClass->recordHook($companyId);
+		$result = $ycClass->recordHook($payload);
    	}
 }
     
