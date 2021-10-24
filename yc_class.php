@@ -96,7 +96,7 @@ class YCClass {
 		}
 	}
 
-	public function recordHook($data = '') {
+	public function recordHook($data = 'empty') {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');
 		$updater->setKey('data_key', 'test_hook_' . date('Y-m-d H:i:s'));
