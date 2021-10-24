@@ -11,6 +11,7 @@ class AmoClass {
 	public function __construct($host, $isTest = 0){
 		require 'accounts.php';
 		$this->customFields = $accData[$host]['customFields'];
+		$this->statuses = $accData[$host]['statuses'];
 		$this->amoBearer = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
 		$this->isTest = $isTest;
@@ -63,10 +64,44 @@ class AmoClass {
 		//return $this->apiQuery($type, $link, $data);
 	}
 
-	public function getContacts() {
-		$link='https://'.$this->host.'.amocrm.ru/api/v4/contacts';
-		$type = 'GET';
-		return $this->apiQuery($type, $link);
-		//return $link;
+
+	public function getStatus($stat) {
+		switch ($stat) {
+			case 0:
+				return $this->statuses['client_signed'];
+				break;
+			case -1:
+				return $this->statuses['client_declined'];
+				break;
+			case 1:
+				return $this->statuses['client_visited'];
+				break;
+			case 2:
+				return $this->statuses['client_confirm'];
+				break;
+			default:
+				return false;
+				break;
+		}
+	}
+
+
+	public function setDeals($data) {
+		$link='https://'.$this->host.'.amocrm.ru/api/v4/leads';
+		$type = 'POST';
+		$result = $this->apiQuery($type, $link, $data);
+		return $result;
+	}
+
+	public function getContactsDB() {
+		require_once '_dataSource.class.php';
+		$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_' . $this->host . ' r join clients_' . $this->host . ' c on r.yc_client_id = c.yc_id where c.spent >= 0');
+		$data = $dataSource->getData();
+		if ($this->isTest == 1) {
+			return array($data[0]);
+		}
+		else {
+			return $data;
+		}
 	}
 }
