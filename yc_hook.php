@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 				require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
 				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
+
 				$amoId = $amoClass->setContact($tableData);
 				unset($tableData['yc_id']);
 				$tableData['amo_id'] = $amoId;
@@ -33,8 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
 				$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
+				$ycClass->recordHook($amoId);
 				$result = $amoClass->setContact($tableData, $amoId);
-				$ycClass->recordHook($result);
+				
 				unset($tableData['yc_id']);
 				$result .= ' ' . $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
 
