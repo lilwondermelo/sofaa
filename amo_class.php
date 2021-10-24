@@ -100,8 +100,8 @@ class AmoClass {
 		$dataSource = new DataSource('select r.yc_id as recordId, r.yc_client_id as clientId, r.date_last as dateLast, r.stat as stat, r.is_deleted as isDeleted, c.name as name, c.spent as spent, c.amo_id as amoId from records_' . $this->table . ' r join clients_' . $this->table . ' c on r.yc_client_id = c.yc_id where c.spent >= 0');
 		$data = $dataSource->getData();
 		if ($this->isTest == 1) { 
-			//return array($data[0]);
-			return $this->host;
+			return array($data[0]);
+			//return $this->host;
 		}
 		else {
 			return $data;
