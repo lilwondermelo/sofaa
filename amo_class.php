@@ -10,7 +10,7 @@ class AmoClass {
 
 	public function __construct($host, $isTest = 0){
 		require 'accounts.php';
-		$this->accData = $accData;
+		$this->customFields = $accData[$host]['customFields'];
 		$this->amoBearer = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
 		$this->isTest = $isTest;
@@ -54,7 +54,7 @@ class AmoClass {
 		$type = 'POST';
 		$data = array();
 		$data[0]['name'] = $item['name'];
-		$data[0]['custom_fields_values'] = array(array("field_id" => 426545, "values" => array(array("value" => $item['yc_id']))), array("field_id" => 67857, "values" => array(array("value" => $item['phone']))), array("field_id" => 427107, "values" => array(array("value" => $item['visits']))), array("field_id" => 427109, "values" => array(array("value" => $item['spent']))));
+		$data[0]['custom_fields_values'] = array(array("field_id" => $this->customFields['yc_id'], "values" => array(array("value" => $item['yc_id']))), array("field_id" => $this->customFields['phone'], "values" => array(array("value" => $item['phone']))), array("field_id" => $this->customFields['visits'], "values" => array(array("value" => $item['visits']))), array("field_id" => $this->customFields['spent'], "values" => array(array("value" => $item['spent']))));
 		$resId = $this->apiQuery($type, $link, $data)['_embedded']['contacts'][0]['id'];
 		return $resId;
 	}

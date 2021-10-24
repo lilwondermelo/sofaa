@@ -9,7 +9,20 @@ $accData = array(
 		'amoHost' => 'ablaser', //субдомен в AMOCRM
 		'authCode' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg3ODhkMWQ3OTliOTNjMWRmZDFlZDY4Mjg1Yjk5NDU5ZGVjZDk5ZWIwYTdiNWU0MGVlNmYwOWRkYzI0ODIyOGVlZmVlY2RkYTUxODY4ZmE5In0.eyJhdWQiOiI2MTRkMzA1Yi00MmNjLTRhZTEtOWI4Ni1jMzUyNDI2ODZjYmYiLCJqdGkiOiI4Nzg4ZDFkNzk5YjkzYzFkZmQxZWQ2ODI4NWI5OTQ1OWRlY2Q5OWViMGE3YjVlNDBlZTZmMDlkZGMyNDgyMjhlZWZlZWNkZGE1MTg2OGZhOSIsImlhdCI6MTYzNTA1OTc2NCwibmJmIjoxNjM1MDU5NzY0LCJleHAiOjE2MzUxNDYxNjQsInN1YiI6IjM0OTMwNTciLCJhY2NvdW50X2lkIjoyOTcxNTQ0Miwic2NvcGVzIjpbInB1c2hfbm90aWZpY2F0aW9ucyIsImNybSIsIm5vdGlmaWNhdGlvbnMiXX0.FRTFZxyc46Pqzia46rB5ijeZa8xjyjUubvLLoGddmW2P0cNOigThsME6Et0TLsC-CQK1mn78qR2qDD3L_mrkDB8RFDaWdNo3qZN6z_NzBWIzQ5NOrurn81ax309kxkeMlCqe6togw1EaUSFVl3YqS37b8fSFWDlNvUWJkwIsBjo7UnabVSEWr3LzilLyYzMXM30X789Ac6Ykkgr_LYYg4rany02RbagYnJRTzYm4zjoKINVMAQS260WBYunkFZ4eEm2H5JfUbDBHH2ILQiLIrIdbZXq1LQc3ngKaoHXpXfepmOz-detNQ_5Vri0dbfSlZCfbxxS-CPrYUvaNMXDebA', //oauth код авторизации интеграции в AMOCRM
 		'refreshCode' => 'def502008ca51aafa625430c464c97e9df58fa79b6421fd3edeaa299430c646cfc7f5049c78157df84186d6fdfe2c06444a6505125030e66eef36203d4ec620cf2d85be1e3a2b8be0a248f8635c68573923ad7db4731429a799093e872ac6ccd1732d7b0fef7e1e65572f28e6816584ff7203f2a6e8f41a7461e0ce2da48ab3e7e475fea7bc1c57b6f75ffc4e6973869cce8c0a540f3260e8eb05f04dece76c317b2b2e184797582cb4a392e029b457299b6dcea0289695cc3be261fb007082e2318f462fc090f00e70809b195bed69c4223df26bbaea00476be1aae1b42e2d251abe4fb66f6e808e1b8ac91ecd21c219b87051eb2e4ccf0d7b27074d656363e7b56a2d021cdfb7656cd4af6f44c33a220f9b3b3f6183a5898bca4970bf180255749058e0639609b3883719fa71d265e94b401c12124563549bdf09a734903072940a864bc4734813d40f8f002238bacadcc7e0bc705cecdb295ec3af37bc21dbd0f1556cd8093b463003ffcb30bbf2e8617cba690bd2d5fcb197337a44f97a63a1daa2b96c913489f6295c82fc91d40f8fe1004317d06438e26efc6d017891bcd8776687da16da25e060d2845ee5b26863e3997f1a2662e408140580d75f4d73112713feabe1294307e', //oauth код обновления интеграции в AMOCRM
-		'ycFilialId' => '543499'
+		'ycFilialId' => '543499',
+		"customFields" => array(
+				"yc_id" => 629913,
+				"phone" => 159945,
+				"visits" => 629911,
+				"spent" => 629909
+				),
+		"statuses" => array(
+				"client_signed" 	=> 43315789,
+				"client_confirm" 	=> 43315792,
+				"client_declined" => 43315798,
+				"client_visited" 	=> 43315795,
+				"record_deleted" => 43315801
+			)
 	),
 	'autobeauty' => array(
 		'tableName' => 'autobeauty', //постфикс таблицы в БД
