@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($company != '') {
     	require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		switch ($hookType) {
+		switch ($hookStatus) {
 			case 'create':
 				$clientData = $payload;
 				$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
