@@ -101,7 +101,7 @@ class AmoClass {
 		$data = $dataSource->getData();
 		if ($this->isTest == 1) { 
 			//return array($data[0]);
-			return $this->host
+			return $this->host;
 		}
 		else {
 			return $data;
