@@ -9,8 +9,6 @@ class AmoClass {
 
 	public function __construct($host, $isTest = 0){
 		require_once 'accounts.php';
-		$this->ycBearer = $ycBearer;
-		$this->ycUser = $ycUser;
 		$this->authCode = $accData[$host]['authCode'];
 		$this->host = $accData[$host]['amoHost'];
 		$this->ycHeaders = array(
