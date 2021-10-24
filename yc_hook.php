@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				break;
 		}
 		$data = array('data_value' => $result);
-		$result = $ycClass->recordHook($result);
+		$result = $ycClass->recordHook(json_encode($payload));
    	}
 }
     
