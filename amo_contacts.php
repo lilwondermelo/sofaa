@@ -19,7 +19,7 @@ if ($company != '') {
 
 	}
 	echo 'Компания: ' . $company . '<br>' . 'Тестовый режим ' . (($isTest == 1)?'ВКЛЮЧЕН':'не включен') . '<br>';
-	echo json_encode($amoId);
+	echo json_encode($resultDb);
 }
 else {
 	echo 'Компания не выбрана';
