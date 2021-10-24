@@ -26,7 +26,7 @@ if ($company != '') {
 			$result[] = $amoClass->setDeals($dataPack);
 	}
 	echo 'Компания: ' . $company . '<br>' . 'Тестовый режим ' . (($isTest == 1)?'ВКЛЮЧЕН':'не включен') . '<br>';
-	echo json_encode($result);
+	echo json_encode($data);
 }
 else {
 	echo 'Компания не выбрана';
