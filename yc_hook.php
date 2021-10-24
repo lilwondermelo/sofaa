@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    	else {
    		require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
 		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-   		$ycClass->recordHook(1);
+   		$ycClass->recordHook(2);
    	}
 }
     
