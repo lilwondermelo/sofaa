@@ -43,13 +43,13 @@ class AmoClass {
 		curl_setopt($curl,CURLOPT_URL,$link);
 		curl_setopt($curl,CURLOPT_HTTPHEADER, $this->amoHeaders);
 		curl_setopt($curl,CURLOPT_HEADER,false);
-		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
+		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
 		$out=curl_exec($curl);
 		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 		curl_close($curl);
 		$result = json_decode($out, true);
-		return $curl;
+		return $result;
 	}
 
 	public function setContact($item) {
