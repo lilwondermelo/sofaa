@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
 					$amoData[0] = array(
-						'status_id' => $amoClass->getStatus($stat),
+						'status_id' => $amoClass->getStatus($stat)
 					);
 
 					$result = $amoClass->setDeals($amoData, $amoId);
@@ -85,5 +85,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    		$ycClass->recordHook(2);
    	}
 }
-    
+   
 ?>
