@@ -98,10 +98,12 @@ class AmoClass {
 			$data[0]['id'] = (int)$amoId;
 			$type = 'PATCH';
 		}
-		$result = $this->apiQuery($type, $link, $data)['_embedded']['leads'];
-		$i = 0;
 		require_once 'yc_class.php';
 		$ycClass = new YCClass($this->host, 0);
+		$result = $this->apiQuery($type, $link, $data)['_embedded']['leads'];
+		$ycClass->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		$i = 0;
+		
 		$resultDb = array();
 		foreach ($result as $item) {
 			$resId = $result[$i]['id'];
@@ -110,7 +112,7 @@ class AmoClass {
 			}
 			$i++;
 		}
-		$ycClass->recordHook(json_encode($this->apiQuery($type, $link, $data), JSON_UNESCAPED_UNICODE));
+		
 		return json_encode($resultDb);
 	}
 
