@@ -110,8 +110,8 @@ class AmoClass {
 			}
 			$i++;
 		}
-		$ycClass->recordHook(json_encode($this->apiQuery($type, $link, $data)));
-		return json_encode($resultDb, JSON_UNESCAPED_UNICODE);
+		$ycClass->recordHook(json_encode($this->apiQuery($type, $link, $data), JSON_UNESCAPED_UNICODE));
+		return json_encode($resultDb);
 	}
 
 	public function getContactsDB() {
