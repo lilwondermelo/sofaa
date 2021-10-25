@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$amoId = $ycClass->getDealsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
 
 					$stat = ($recordData['data']['attendance'])?$recordData['data']['attendance']:'0';
-					$amoData[0]['data'] = array(
+					$amoData[0] = array(
 						'status_id' => $amoClass->getStatus($stat),
 					);
 
