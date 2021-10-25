@@ -93,13 +93,13 @@ class AmoClass {
 	public function setDeals($data) {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/leads';
 		$type = 'POST';
-		$result = $this->apiQuery($type, $link, $data);
+		$result = $this->apiQuery($type, $link, $data)['_embedded']['leads'];
 		$i = 0;
 		require_once 'yc_class.php';
 		$ycClass = new YCClass($this->table, 0);
 		$resultDb = array();
 		foreach ($result as $item) {
-			$resId = $result['_embedded']['leads'][$i]['id'];
+			$resId = $result[$i]['id'];
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_class', $data[$i]['yc_id'], array('amo_id', $resId));
 			$i++;
 		}
