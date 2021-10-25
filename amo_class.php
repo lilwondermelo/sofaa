@@ -97,7 +97,8 @@ class AmoClass {
 		$i = 0;
 		require_once 'yc_class.php';
 		$ycClass = new YCClass($this->host, 0);
-		$resultDb = array();
+		$ycClass->recordHook();
+		$resultDb = array($link);
 		foreach ($result as $item) {
 			$resId = $result[$i]['_embedded']['leads'][0]['id'];
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_class', $data[$i]['yc_id'], array('amo_id', $resId));
