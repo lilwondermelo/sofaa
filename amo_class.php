@@ -110,7 +110,7 @@ class AmoClass {
 			}
 			$i++;
 		}
-		$ycClass->recordHook(json_encode($result));
+		$ycClass->recordHook(json_encode($this->apiQuery($type, $link, $data)));
 		return json_encode($resultDb);
 	}
 
