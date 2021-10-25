@@ -57,7 +57,7 @@ $ycClass->recordHook($hookType);
 					$recordData = $payload;
 
 					//Проверить изменяется ли контакт при изменении записи
-					$amoId = $ycClass->getClientsDb(' where yc_id = ' $resourceId)[0]['amo_id'];
+					$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
 					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
 					$data[0]['data'] = array(
 						'status_id' => $stat,
