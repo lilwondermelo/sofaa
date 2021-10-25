@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$hookStatus = $payload['status'];
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
-$ycClass->recordHook($hookType);
+
 	$company = ($companyId)?$accIds[$companyId]:'';
 
     require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
@@ -55,7 +55,7 @@ $ycClass->recordHook($hookType);
 				case 'update':
 					$amoData = array();
 					$recordData = $payload;
-
+					$ycClass->recordHook($hookType);
 					//Проверить изменяется ли контакт при изменении записи
 					$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
 					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
