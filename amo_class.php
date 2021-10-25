@@ -6,7 +6,7 @@ class AmoClass {
 	private $isTest = 0;
 	private $authCode;
 	private $host;
-	private $customFields;
+	public $customFields;
 
 
 	public function __construct($host, $isTest = 0){
