@@ -97,13 +97,13 @@ class AmoClass {
 		$i = 0;
 		require_once 'yc_class.php';
 		$ycClass = new YCClass($this->table, 0);
-		$resultDb = array($link);
+		$resultDb = array();
 		foreach ($result as $item) {
 			$resId = $result[$i]['_embedded']['leads'][0]['id'];
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_class', $data[$i]['yc_id'], array('amo_id', $resId));
 			$i++;
 		}
-		return $resultDb;
+		return json_encode($resultDb);
 	}
 
 	public function getContactsDB() {
