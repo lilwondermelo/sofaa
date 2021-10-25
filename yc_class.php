@@ -8,7 +8,7 @@ class YCClass {
 	private $accData = array();
 
 	public function __construct($host, $isTest = 0){
-		require_once 'accounts.php';
+		require 'accounts.php';
 		$this->ycBearer = $ycBearer;
 		$this->ycUser = $ycUser;
 		$this->accData = $accData[$host];
