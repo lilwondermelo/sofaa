@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$ycData['attendance'] = (int)$recordStatus;
 	$ycId = $ycClass->getDealsDb(' where amo_id = ' . $recordId)[0]['yc_id'];
 	$ycResult = $ycClass->editDeal($ycId, $ycData);
-	$resultDb = $ycClass->recordInDb('deals', 'yc_id', $ycId, array('stat' => $recordStatus));
+	$resultDb = $ycClass->recordInDb('deals', 'yc_id', $ycId, array('stat' => (int)$recordStatus));
 	$ycClass->recordHook($resultDb);
 	
 
