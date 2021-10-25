@@ -91,7 +91,7 @@ class AmoClass {
 
 
 	public function setDeals($data) {
-		$data[$i]['custom_fields_values'] = array(array("field_id" => $this->customFields['deal_yc_id'], "values" => array(array("value" => $item['recordId']))));
+		
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/leads';
 		$type = 'POST';
 		$result = $this->apiQuery($type, $link, $data)['_embedded']['leads'];
