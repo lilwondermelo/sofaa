@@ -94,7 +94,16 @@ class AmoClass {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/leads';
 		$type = 'POST';
 		$result = $this->apiQuery($type, $link, $data);
-		return $result;
+		$i = 0;
+		require_once 'yc_class.php';
+		$ycClass = new YCClass($this->host, 0);
+		$resultDb = array();
+		foreach ($result as $item) {
+			$resId = $result[$i]['_embedded']['leads'][0]['id'];
+			$resultDb[] = $ycClass->recordInDb('records', 'yc_class', $data[$i]['yc_id'], array('amo_id', $resId);
+			$i++;
+		}
+		return $resultDb;
 	}
 
 	public function getContactsDB() {
