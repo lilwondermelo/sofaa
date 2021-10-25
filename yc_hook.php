@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						'status_id' => $amoClass->getStatus($stat),
 					);
 
-					$result = $amoClass->setDeals($tableData, $amoId);
+					$result = $amoClass->setDeals($amoData, $amoId);
 
-					$ycClass->recordHook($resourceId);
+					$ycClass->recordHook(json_encode($resourceId, $stat));
 
 					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
 
