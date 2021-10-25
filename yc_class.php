@@ -133,5 +133,25 @@ class YCClass {
 			return $data;
 		}
 	}
+
+	public function getStatus($stat) {
+		switch ($stat) {
+			case $this->statuses['client_signed']:
+				return 0;
+				break;
+			case $this->statuses['client_declined']:
+				return -1;
+				break;
+			case $this->statuses['client_visited']:
+				return 1;
+				break;
+			case $this->statuses['client_confirm']:
+				return 2;
+				break;
+			default:
+				return false;
+				break;
+		}
+	}
 }
 ?>
