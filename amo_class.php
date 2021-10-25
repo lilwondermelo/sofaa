@@ -91,7 +91,7 @@ class AmoClass {
 
 
 	public function setDeals($data) {
-		
+		return json_encode($data[0]);
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/leads';
 		$type = 'POST';
 		$result = $this->apiQuery($type, $link, $data)['_embedded']['leads'];
@@ -104,8 +104,7 @@ class AmoClass {
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_id', $data[$i]['custom_fields_values'][0]['values'][0]['value'], array('amo_id' => $resId));
 			$i++;
 		}
-		return json_encode($resultDb);
-		return json_encode($data[0]);
+		//return json_encode($resultDb) . json_encode($data[0]);
 	}
 
 	public function getContactsDB() {
