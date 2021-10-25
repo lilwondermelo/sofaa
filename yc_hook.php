@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					//Проверить изменяется ли контакт при изменении записи
 					$amoId = $ycClass->getDealsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
 
-					$stat = ($recordData['data']['attendance'])?$recordData['data']['attendance']:'0';
+					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
 					$amoData[0] = array(
 						'status_id' => $amoClass->getStatus($stat),
 					);
@@ -69,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$ycClass->recordHook($result);
 
 					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
-
 					break;
 				case 'delete':
 					//Добавить удаление клиента из базы и из amocrm
