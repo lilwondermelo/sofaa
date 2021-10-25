@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$hookStatus = $payload['status'];
 	$companyId = $payload['company_id'];
 	$resourceId = $payload['resource_id'];
-
+$ycClass->recordHook($hookType);
 	$company = ($companyId)?$accIds[$companyId]:'';
 
     require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
@@ -46,15 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
     	}
     	else if ($hookType == 'record') {
-    		$ycClass->recordHook($hookType);
+    		
     		switch ($hookStatus) {
 				case 'create':
-					$recordData = $payload;
-					$tableData = array('phone' => $recordData['data']['phone'], 'name' => $recordData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-					$amoId = $amoClass->setContact($tableData);
-					unset($tableData['yc_id']);
-					$tableData['amo_id'] = $amoId;
-					$result = $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
+					
 					break;
 					
 				case 'update':
@@ -67,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$data[0]['data'] = array(
 						'status_id' => $stat,
 					);
-					$data[0]['custom_fields_values'] = array(array("field_id" => $amoClass->customFields['deal_yc_id'], "values" => array(array("value" => $item['recordId']))));
 					$result = $amoClass->setDeals($tableData, $amoId);
 
 					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
