@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
     	}
     	else if ($hookType == 'record') {
+    		$ycClass->recordHook($hookType);
     		switch ($hookStatus) {
 				case 'create':
 					$recordData = $payload;
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				case 'update':
 					$amoData = array();
 					$recordData = $payload;
-					$ycClass->recordHook(1);
+
 					//Проверить изменяется ли контакт при изменении записи
 					$amoId = $ycClass->getClientsDb(' where yc_id = ' $resourceId)[0]['amo_id'];
 					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
