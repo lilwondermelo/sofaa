@@ -13,7 +13,8 @@ if ($company != '') {
 	$i = 0;
 	$data = array();
 	foreach ($dataDb as $item) {
-		$data[$i]['name'] = $item['name'] . ' (YCLIENTS)';
+		$data[$i]['custom_fields_values'] = array(array("field_id" => $this->customFields['deal_yc_id'], "values" => array(array("value" => $item['recordId']))));
+		$data[$i]['name'] = $item['name'] . ' (YCLIENTS ' . $item['recordId'] . ')';
 		$data[$i]['price'] = (int)$item['spent'];
 		$data[$i]['status_id'] = $amoClass->getStatus($item['stat']);
 		$data[$i]['created_at'] = strtotime($item['dateLast']);
