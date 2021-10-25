@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					$result = $amoClass->setDeals($amoData, $amoId);
 
-					$ycClass->recordHook($result);
+					
 
 					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
 					break;
