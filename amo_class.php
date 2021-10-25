@@ -95,7 +95,7 @@ class AmoClass {
 		$link='https://'.$this->host.'.amocrm.ru/api/v4/leads';
 		$type = 'POST';
 		if ($amoId != '') {
-			$data[0]['id'] = (int)$amoId;
+			$data[0]['data']['id'] = (int)$amoId;
 			$type = 'PATCH';
 		}
 		$result = $this->apiQuery($type, $link, $data)['_embedded']['leads'];
