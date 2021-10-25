@@ -6,6 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
 	$recordStatus = $ycClass->getStatus($_POST['leads']['update'][0]['status']);
 	$ycClass->recordHook($recordStatus);
-	echo $recordStatus;
+	echo 1;
 }
 ?>
