@@ -153,5 +153,11 @@ class YCClass {
 				break;
 		}
 	}
+
+	public function editDeal($dealId, $args = array()) {
+		$type = 'PUT';
+		$link = 'https://api.yclients.com/api/v1/records/' . $this->accData['ycFilialId'] . '/' . $dealId;
+		return $this->apiQuery($type, $link, $args);
+	}
 }
 ?>
