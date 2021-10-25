@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
     	$ycClass->recordHook(0);
     }
+
 }
 
 ?>
