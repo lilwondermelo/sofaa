@@ -96,8 +96,7 @@ class AmoClass {
 		$result = $this->apiQuery($type, $link, $data);
 		$i = 0;
 		require_once 'yc_class.php';
-		$ycClass = new YCClass($this->host, 0);
-		$ycClass->recordHook();
+		$ycClass = new YCClass($this->table, 0);
 		$resultDb = array($link);
 		foreach ($result as $item) {
 			$resId = $result[$i]['_embedded']['leads'][0]['id'];
