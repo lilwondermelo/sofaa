@@ -110,7 +110,7 @@ class AmoClass {
 			}
 			$i++;
 		}
-		return json_encode($resultDb);
+		return json_encode($this->apiQuery($type, $link, $data));
 	}
 
 	public function getContactsDB() {
