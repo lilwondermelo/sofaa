@@ -6,7 +6,8 @@ class AmoClass {
 	private $isTest = 0;
 	private $authCode;
 	private $host;
-	private $accData;
+	private $customFields;
+
 
 	public function __construct($host, $isTest = 0){
 		require 'accounts.php';

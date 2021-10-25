@@ -13,7 +13,7 @@ if ($company != '') {
 	$i = 0;
 	$data = array();
 	foreach ($dataDb as $item) {
-		$data[$i]['custom_fields_values'] = array(array("field_id" => $ycClass->customFields['deal_yc_id'], "values" => array(array("value" => $item['recordId']))));
+		$data[$i]['custom_fields_values'] = array(array("field_id" => $amoClass->customFields['deal_yc_id'], "values" => array(array("value" => $item['recordId']))));
 		$data[$i]['name'] = $item['name'] . ' (YCLIENTS ' . $item['recordId'] . ')';
 		$data[$i]['price'] = (int)$item['spent'];
 		$data[$i]['status_id'] = $amoClass->getStatus($item['stat']);
