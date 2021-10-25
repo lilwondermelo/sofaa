@@ -8,10 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$recordStatus = $ycClass->getStatus($statusId);
 	$ycData = array();
 	$ycData['attendance'] = (int)$recordStatus;
-	$ycId = $ycClass->getDealsDb(' where amo_id = ' . $recordId)[0]['amo_id'];
-	$ycClass->recordHook($ycId);
+	$ycId = $ycClass->getDealsDb(' where amo_id = ' . $recordId)[0]['yc_id'];
 	$ycResult = $ycClass->editDeal($ycId, $ycData);
-	//$resultDb = 
+	$resultDb = $ycClass->recordInDb('deals', 'yc_id', $ycId, array('stat' => $recordStatus));
+	$ycClass->recordHook($resultDb);
 	
 
 }
