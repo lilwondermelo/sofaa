@@ -104,7 +104,7 @@ class AmoClass {
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_id', $data[$i]['custom_fields_values'][0]['values'][0]['value'], array('amo_id' => $resId));
 			$i++;
 		}
-		return json_encode($resultDb));
+		return json_encode($resultDb);
 	}
 
 	public function getContactsDB() {
