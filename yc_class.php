@@ -82,7 +82,7 @@ class YCClass {
 		return $this->apiQuery($type, $link, $args);
 	}
 
-	public getRecord($recordId) {
+	public function getRecord($recordId) {
 		$type = 'GET';
 		$link = 'https://api.yclients.com/api/v1/records/' . $this->accData['ycFilialId'] . '/' . $recordId;
 		return $this->apiQuery($type, $link, $args);
