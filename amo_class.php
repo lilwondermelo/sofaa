@@ -103,7 +103,7 @@ class AmoClass {
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_class', $data[$i]['yc_id'], array('amo_id', $resId));
 			$i++;
 		}
-		return json_encode($resId);
+		return json_encode($data);
 	}
 
 	public function getContactsDB() {
