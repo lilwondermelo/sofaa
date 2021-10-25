@@ -99,7 +99,7 @@ class AmoClass {
 		$ycClass = new YCClass($this->table, 0);
 		$resultDb = array();
 		foreach ($result as $item) {
-			$resId = $result[$i]['_embedded']['leads'][0]['id'];
+			$resId = $result['_embedded']['leads'][$i]['id'];
 			$resultDb[] = $ycClass->recordInDb('records', 'yc_class', $data[$i]['yc_id'], array('amo_id', $resId));
 			$i++;
 		}
