@@ -58,13 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					//Проверить изменяется ли контакт при изменении записи
 					$amoId = $ycClass->getDealsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-					$ycClass->recordHook($amoId);
+
 					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
 					$amoData[0]['data'] = array(
-						'status_id' => $stat,
+						'status_id' => $amoClass->getStatus($stat),
 					);
 
 					$result = $amoClass->setDeals($tableData, $amoId);
+
+					$ycClass->recordHook($amoId);
 
 					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
 
