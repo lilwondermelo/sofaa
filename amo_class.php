@@ -101,7 +101,7 @@ class AmoClass {
 		require_once 'yc_class.php';
 		$ycClass = new YCClass($this->host, 0);
 		$result = $this->apiQuery($type, $link, $data);
-		$ycClass->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		$ycClass->recordHook(json_encode(array($type, $link, $data), JSON_UNESCAPED_UNICODE));
 		$result = $result['_embedded']['leads'];
 		$i = 0;
 		
