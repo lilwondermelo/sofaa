@@ -100,7 +100,7 @@ class AmoClass {
 		$resultDb = array();
 		foreach ($result as $item) {
 			$resId = $result[$i]['id'];
-			$resultDb[] = $ycClass->recordInDb('records', 'yc_id', $data[$i]['yc_id'], array('amo_id', $resId));
+			$resultDb[] = $ycClass->recordInDb('records', 'yc_id', $data[$i]['yc_id'], array('amo_id' => $resId));
 			$i++;
 		}
 		return json_encode($this->table);
