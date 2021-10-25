@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$ycId = $ycClass->getDealsDb(' where amo_id = ' . $recordId)[0]['yc_id'];
 		$ycData = $ycClass->getRecord($ycId);
-		$ycData['attendance'] = (int)$recordStatus;
+		$ycData['data']['attendance'] = (int)$recordStatus;
+		$ycData['data']['visit_attendance'] = (int)$recordStatus;
 		$ycResult = $ycClass->editDeal($ycId, $ycData);
 		$resultDb = $ycClass->recordInDb('records', 'yc_id', $ycId, array('stat' => (int)$recordStatus));
 		$ycClass->recordHook(json_encode($ycData, JSON_UNESCAPED_UNICODE));
