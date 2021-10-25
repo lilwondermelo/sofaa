@@ -135,6 +135,7 @@ class YCClass {
 	}
 
 	public function getStatus($stat) {
+		
 		switch ($stat) {
 			case $this->accData['statuses']['client_signed']:
 				return 0;
