@@ -57,36 +57,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					break;
 					
 				case 'update':
+					$amoData = array();
 					$recordData = $payload;
-					//ПРоверить изменяется ли контакт при изменении записи
-					$clientData = getClientsDb(' where ');
-
+					//Проверить изменяется ли контакт при изменении записи
+					$amoId = $ycClass->getClientsDb(' where yc_id = ' $resourceId)[0]['amo_id'];
+					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
 					$data[0]['data'] = array(
-						'yc_client_id' => $recordData['data']['yc_id'],
-						'created_at' => substr($recordData['data']['last_change_date'], 0, 10),
-						'status_id' => ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0',
+						'status_id' => $stat,
 					);
+					$data[0]['custom_fields_values'] = array(array("field_id" => $amoClass->customFields['deal_yc_id'], "values" => array(array("value" => $item['recordId']))));
+					$result = $amoClass->setDeals($tableData, $amoId);
 
-					//Посмотреть на изменение цены
-
-					$data[$i]['name'] = $item['name'] . ' (YCLIENTS)';
-					$data[$i]['price'] = (int)$item['spent'];
-					$data[$i]['status_id'] = $amoClass->getStatus($item['stat']);
-					$data[$i]['created_at'] = strtotime($item['dateLast']);
-					$data[$i]['_embedded'] = array('contacts' => array(array('id' => (int)$item['amoId'])));
-					$i++;
-
-
-
-
-					$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-					$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-
-					$result = $amoClass->setContact($tableData, $amoId);
-					
-					unset($tableData['yc_id']);
-					$result .= ' ' . $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
-
+					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
+					$ycClass->recordHook($result);
 					break;
 				case 'delete':
 					//Добавить удаление клиента из базы и из amocrm

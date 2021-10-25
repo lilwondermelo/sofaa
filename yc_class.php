@@ -121,5 +121,17 @@ class YCClass {
 			return $data;
 		}
 	}
+
+	public function getDealsDb($filter = '') {
+		require_once '_dataSource.class.php';
+		$dataSource = new DataSource('select * from records_' . $this->accData['tableName'] . $filter);
+		$data = $dataSource->getData();
+		if ($this->isTest == 1) {
+			return array($data[0]);
+		}
+		else {
+			return $data;
+		}
+	}
 }
 ?>
