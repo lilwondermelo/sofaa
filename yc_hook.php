@@ -49,6 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     		
     		switch ($hookStatus) {
 				case 'create':
+
+				$recordData = $payload;
+				$ycClass->recordHook(json_encode($recordData));
 					
 					break;
 					
