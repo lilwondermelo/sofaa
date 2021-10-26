@@ -18,8 +18,8 @@ if ($company != '') {
 		if ($data[$i]['id']) {
 			$data[$i]['data'] = array(
 				'yc_client_id' => $item['yc_id'],
-				'date_last' => substr($result['date']),
-				'stat' => ($result['attendance'])?$result['attendance']:'0',
+				'date_last' => $result['last_change_date'],
+				'stat' => ($result['attendance'])?$result['visit_attendance']:'0',
 				'is_deleted' => ($result['deleted'])?'1':'0'
 			);
 			$result_db[] = $ycClass->recordInDb('records', 'yc_id', $data[$i]['id'], $data[$i]['data']);
