@@ -18,7 +18,7 @@ if ($company != '') {
 		if ($data[$i]['id']) {
 			$data[$i]['data'] = array(
 				'yc_client_id' => $item['yc_id'],
-				'date_last' => substr($result['last_change_date'], 0, 10),
+				'date_last' => substr($result['date']),
 				'stat' => ($result['attendance'])?$result['attendance']:'0',
 				'is_deleted' => ($result['deleted'])?'1':'0'
 			);

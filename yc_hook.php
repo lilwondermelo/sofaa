@@ -53,12 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				$recordData = $payload;
 
-				/* $data[$i]['data'] = array(
-					'yc_client_id' => $item['yc_id'],
-					'date_last' => substr($result['last_change_date'], 0, 10),
-					'stat' => ($result['attendance'])?$result['attendance']:'0',
-					'is_deleted' => ($result['deleted'])?'1':'0'
-				); */
 
 				$ycClass->recordHook(json_encode($recordData));
 					
@@ -97,5 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    		$ycClass->recordHook(2);
    	}
 }
+
    
 ?>
