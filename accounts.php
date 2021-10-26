@@ -15,7 +15,8 @@ $accData = array(
 				"phone" => 159945,
 				"visits" => 629911,
 				"spent" => 629909,
-				"deal_yc_id" => 629165
+				"deal_yc_id" => 629165,
+				"deal_date" => 629167
 				),
 		"statuses" => array(
 				"client_signed" 	=> 43315789,
