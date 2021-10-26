@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					unset($tableData['yc_id']);
 					$tableData['amo_id'] = $amoId;
 					$result = $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
+					$ycClass->recordHook($result);
 					break;
 				case 'update':
 					$clientData = $payload;
