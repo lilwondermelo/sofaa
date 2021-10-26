@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					unset($tableData['yc_id']);
 					$tableData['amo_id'] = $amoId;
 					$result = $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
-					$ycClass->recordHook($result);
+					$ycClass->recordHook(json_encode($clientData));
 					break;
 				case 'update':
 					$clientData = $payload;
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$amoData = array();
 					$recordData = $payload;
 
-					//Проверить изменяется ли контакт при изменении записи
+					
 					$amoId = $ycClass->getDealsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
 					
 					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
