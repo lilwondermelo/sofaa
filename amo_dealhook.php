@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$ycData['visit_attendance'] = (int)$recordStatus;
 			$ycResult = $ycClass->editDeal($ycId, $ycData);
 			$resultDb = $ycClass->recordInDb('records', 'yc_id', $ycId, array('stat' => (int)$recordStatus));
-			$ycClass->recordHook(json_encode($ycResult, JSON_UNESCAPED_UNICODE));*/
+			$ycClass->recordHook(json_encode($ycResult, JSON_UNESCAPED_UNICODE));
 		}
 		
     }
     else {
-    	//$ycClass->recordHook(0);
-    }
+    	$ycClass->recordHook(0);
+    }*/
 
 }
 
