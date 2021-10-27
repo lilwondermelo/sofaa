@@ -1,9 +1,8 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$company = $_POST['account']['subdomain'];
 	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
-	$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (
-	$ycClass->recordHook(json_encode($_POST));
+	$ycClass = new YCClass('ablaser', 0); //В конструктор класса передаем название (
+	$ycClass->recordHook(1);
 	/*$recordId = $_POST['leads']['update'][0]['id'];
     $company = $_POST['account']['subdomain'];
     $statusId = $_POST['leads']['update'][0]['status_id'];
