@@ -53,7 +53,7 @@ Class Contact {
 				"values" => [[
 					"value" => $this->getSpent()
 				]]
-			]],
+			],
 			[
 				"id" => $this->customFields['yc_id'],
 				"values" => [[
