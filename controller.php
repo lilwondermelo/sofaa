@@ -43,13 +43,13 @@ class Controller {
 		curl_close($curl);
 		$result = json_decode($out, true);
 		if ($result['status'] == 401) {
-			//$account->newAmoBearer();
-			//$this->apiQuery($args);
-			return 1;
+			$account->newAmoBearer();
+			$this->apiQuery($args);
 		}
 		else {
-			return 1;
+			return $result;
 		}
+		
 	}
 
 	public function checkAmoContact($contact) {
@@ -63,7 +63,6 @@ class Controller {
 			]
 		];
 		$result = $this->apiQuery($filter);
-
 		/*$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return $result;
