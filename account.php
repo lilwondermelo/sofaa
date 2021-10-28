@@ -27,7 +27,7 @@ Class Account {
 		$this->setStatuses($accData['statuses']);
 	}
 
-	public newAmoBearer() {
+	public function newAmoBearer() {
 		$host = 'https://ablaser.amocrm.ru/oauth2/access_token';
 		$requestData = [
             'client_secret' => $this->getClientSecret(),
