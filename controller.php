@@ -38,12 +38,12 @@ class Controller {
 		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
 		$out=curl_exec($curl);
-		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);
+		$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);
 		//Добавить обновление Bearer при ощибке авторизации!!!
 		curl_close($curl);
 		$result = json_decode($out, true);
 		//return $result;
-		return $out;
+		return $code;
 	}
 
 	public function checkAmoContact($contact) {
