@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoData = $contact->convertToAmo();
 				$amoId = $controller->checkAmoContact($contact);
 				$resId = $controller->setContactToAmo($amoData, $amoId);
-				echo $account->getCustomFields();
+				var_dump($account->getCustomFields());
 				break;
 			case 'delete':
 				//Добавить удаление клиента из базы и из amocrm
