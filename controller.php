@@ -86,7 +86,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return $resId;
+		return json_encode($contact);
 	}
 }
 ?>
