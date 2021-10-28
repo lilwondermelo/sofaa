@@ -55,7 +55,8 @@ class Controller {
 		$result = $this->apiQuery($filter);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return -1;
+			return $result;
+			//return -1;
 		}
 		return $result;
 		//return $resId;
@@ -75,7 +76,8 @@ class Controller {
 		$result = $this->apiQuery($daraArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return -1;
+			//return -1;
+			return $result;
 		}
 		return $result;
 		//return $resId;
