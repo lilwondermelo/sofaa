@@ -73,7 +73,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return count($result['_embedded']['contacts']);
+		return urldecode(http_build_query($filter));
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
