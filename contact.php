@@ -10,7 +10,7 @@ Class Contact {
 
 	//$contactData - данные в массиве с AMOCRM или YCLIENTS
 	public function __construct($contactData, $customFields) {
-		$this->customFields = $getCustomFields();
+		$this->customFields = $customFields;
 		$this->contactData = $contactData;
 	}
 	
