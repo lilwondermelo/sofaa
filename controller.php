@@ -71,9 +71,9 @@ class Controller {
 		$result = $this->apiQuery($filter);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return -1['_embedded']['contacts'];
+			return -1;
 		}
-		return count($result);
+		return count($result['_embedded']['contacts']);
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
