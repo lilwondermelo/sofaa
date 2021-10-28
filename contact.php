@@ -26,8 +26,8 @@ Class Contact {
 
 	public function convertToYC() {
 		$ycData = [
-			'name' : $this->getName(),
-			'phone' : $this->getPhone()
+			'name' => $this->getName(),
+			'phone' => $this->getPhone()
 		];
 		return $ycData;
 	}
