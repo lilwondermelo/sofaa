@@ -36,25 +36,25 @@ Class Contact {
 	public function convertToAmo() {
 		$amoData = [
 			'name' => $this->getName(),
-			'custom_fields' => [{
-				"id" : $this->customFields['phone'],
-				"values" : [{
-					"value" : $this->getPhone()
-				}]
-			},
-			{
-				"id" : $this->customFields['visits'],
-				"values" : [{
-					"value" : $this->getVisits()
-				}]
-			},
-			{
+			'custom_fields' => [[
+				"id" => $this->customFields['phone'],
+				"values" : [[
+					"value" => $this->getPhone()
+				]]
+			],
+			[
+				"id" => $this->customFields['visits'],
+				"values" => [[
+					"value" => $this->getVisits()
+				]]
+			],
+			[
 				"id" : $this->customFields['spent'],
-				"values" : [{
-					"value" : $this->getSpent()
-				}]
-			}]
-		}];
+				"values" => [[
+					"value" => $this->getSpent()
+				]]
+			]]
+		]];
 		if ($this->getId() != -1) {
 			$amoData['yc_id'] = $this->getId();
 		}
