@@ -25,10 +25,10 @@ Class Contact {
 	}
 
 	public function convertToYC() {
-		$ycData = {
+		$ycData = [
 			'name' : $this->getName(),
 			'phone' : $this->getPhone()
-		}
+		];
 		return $ycData;
 	}
 
