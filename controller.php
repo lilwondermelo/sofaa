@@ -42,8 +42,13 @@ class Controller {
 		//Добавить обновление Bearer при ощибке авторизации!!!
 		curl_close($curl);
 		$result = json_decode($out, true);
-		//return $result;
-		return $code;
+		if ($result['status'] == 401) {
+			$account->newAmoBearer();
+			$this->apiQuery($args);
+		}
+		else {
+			return $result;
+		}
 	}
 
 	public function checkAmoContact($contact) {
