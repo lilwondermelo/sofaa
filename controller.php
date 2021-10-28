@@ -11,7 +11,6 @@ class Controller {
 	public function apiQuery($args = array()) {
 		$curl=curl_init();
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
 		switch (mb_strtoupper($this->method)) {
 			case 'GET':
 				$this->link .= "?".http_build_query($args);
@@ -43,7 +42,7 @@ class Controller {
 		curl_close($curl);
 		$result = json_decode($out, true);
 		//return $result;
-		return $out;
+		return http_build_query($args);
 	}
 
 	public function checkAmoContact($contact) {
