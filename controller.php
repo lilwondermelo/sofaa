@@ -45,7 +45,7 @@ class Controller {
 		if ($result['status'] == 401) {
 			//$account->newAmoBearer();
 			//$this->apiQuery($args);
-			return $result['status'];
+			return 1;
 		}
 		else {
 			return 1;
