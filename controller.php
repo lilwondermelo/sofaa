@@ -42,7 +42,7 @@ class Controller {
 		curl_close($curl);
 		$result = json_decode($out, true);
 		//return $result;
-		return http_build_query($args);
+		return json_encode($args);
 	}
 
 	public function checkAmoContact($contact) {
