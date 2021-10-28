@@ -67,7 +67,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return count($result);
+		return count($result['_embedded']['contacts']);
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
