@@ -53,11 +53,14 @@ Class Contact {
 				"values" => [[
 					"value" => $this->getSpent()
 				]]
+			]],
+			[
+				"id" => $this->customFields['yc_id'],
+				"values" => [[
+					"value" => $this->getId()
+				]]
 			]]
 		];
-		if ($this->getId() != -1) {
-			$amoData['yc_id'] = $this->getId();
-		}
 		return $amoData;
 	}
 
