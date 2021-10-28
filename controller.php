@@ -58,11 +58,9 @@ class Controller {
 		$this->method = 'GET';
 		$filter = [
 			'filter' => [
-				[
-					'custom_fields_values' => [
-						$this->account->getCustomFields()['yc_id'] => $contact->getId(),
-						$this->account->getCustomFields()['phone'] => $contact->getPhone()
-					]
+				'custom_fields_values' => [
+					$this->account->getCustomFields()['yc_id'] => $contact->getId(),
+					$this->account->getCustomFields()['phone'] => $contact->getPhone()
 				]
 			]
 		];
