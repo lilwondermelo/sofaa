@@ -85,9 +85,9 @@ class Controller {
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return -1;
-			return json_encode($result);
+			return json_encode($contact);
 		}
-		return json_encode($result);
+		return json_encode($contact);
 	}
 }
 ?>
