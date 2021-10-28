@@ -48,7 +48,7 @@ class Controller {
 			return $result['status'];
 		}
 		else {
-			return $result;
+			return $out;
 		}
 	}
 
@@ -63,6 +63,7 @@ class Controller {
 			]
 		];
 		$result = $this->apiQuery($filter);
+
 		/*$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return $result;
