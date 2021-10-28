@@ -34,9 +34,9 @@ Class Contact {
 
 
 	public function convertToAmo() {
-		$amoData = [{
-			'name' : $this->getName(),
-			'custom_fields' : [{
+		$amoData = [
+			'name' => $this->getName(),
+			'custom_fields' => [{
 				"id" : $this->customFields['phone'],
 				"values" : [{
 					"value" : $this->getPhone()
