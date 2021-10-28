@@ -57,7 +57,8 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return $resId;
+		return $result;
+		//return $resId;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
@@ -77,6 +78,7 @@ class Controller {
 			return -1;
 		}
 		return $result;
+		//return $resId;
 	}
 }
 ?>
