@@ -54,7 +54,7 @@ Class Contact {
 					"value" => $this->getSpent()
 				]]
 			]]
-		]];
+		];
 		if ($this->getId() != -1) {
 			$amoData['yc_id'] = $this->getId();
 		}
