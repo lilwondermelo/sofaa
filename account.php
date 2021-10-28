@@ -17,7 +17,7 @@ Class Account {
 		$accData = $dataRowSource->getDataRow();
 		$this->setAmoBearer($accData['amo_bearer']);
 		$this->setAmoRefresh($accData['amo_refresh']);
-		$this->setAmoHost($accData['amo+host']);
+		$this->setAmoHost($accData['amo_host']);
 		$this->setYcFilialId($accData['yc_id']);
 		$this->setCustomFields($accData['custom_fields']);
 		$this->setStatuses($accData['statuses']);
