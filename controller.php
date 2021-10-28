@@ -12,7 +12,7 @@ class AmoClass {
 		$curl=curl_init();
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 		curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
-		switch (mb_strtoupper($this->method)) { 
+		switch (mb_strtoupper($this->method)) {
 			case 'GET':
 				$this->link .= "?".http_build_query($args);
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -48,10 +48,10 @@ class AmoClass {
 	public function checkAmoContact($contact) {
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		$this->method = 'GET';
-		$filter = {
-			$this->account->getCustomFields['yc_id'] : $contact->getId(),
-			$this->account->getCustomFields['phone'] : $contact->getPhone()
-		};
+		$filter = array(
+			$this->account->getCustomFields['yc_id'] => $contact->getId(),
+			$this->account->getCustomFields['phone'] => $contact->getPhone()
+		);
 		$result = $this->apiQuery($filter);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
