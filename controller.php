@@ -54,17 +54,15 @@ class Controller {
 
 	public function checkAmoContact($contact) {
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
 		$this->method = 'GET';
 		$filter = [
 			'filter' => [
-				'custom_fields_values' => [
-					$this->account->getCustomFields()['yc_id'] => [
-						$contact->getId()
-					],
-					$this->account->getCustomFields()['phone'] => [
-						$contact->getPhone()
-					]
+				$this->account->getCustomFields()['yc_id'] => [
+					$contact->getId()
+				],
+				$this->account->getCustomFields()['phone'] => [
+					$contact->getPhone()
 				]
 			]
 		];
@@ -73,7 +71,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return urldecode(http_build_query($filter));
+		return $resId;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
@@ -90,10 +88,9 @@ class Controller {
 		$result = $this->apiQuery($daraArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			//return -1;
-			return json_encode($contact);
+			return -1;
 		}
-		return json_encode($contact);
+		return $resId;
 	}
 }
 ?>
