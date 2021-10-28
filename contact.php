@@ -49,7 +49,7 @@ Class Contact {
 				]]
 			],
 			[
-				"id" : $this->customFields['spent'],
+				"id" => $this->customFields['spent'],
 				"values" => [[
 					"value" => $this->getSpent()
 				]]
