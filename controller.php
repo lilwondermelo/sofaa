@@ -67,7 +67,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return json_encode($result);
+		return json_encode($filter);
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
