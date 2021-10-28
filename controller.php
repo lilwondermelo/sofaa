@@ -1,5 +1,5 @@
 <?php 
-class AmoClass {
+class Controller {
 	private $account;
 	private $link;
 	private $method;
