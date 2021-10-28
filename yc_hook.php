@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoData = $contact->convertToAmo();
 				$amoId = $controller->checkAmoContact($contact);
 				$resId = $controller->setContactToAmo($amoData, $amoId);
-				
+				echo $amoId;
 				break;
 			case 'delete':
 				//Добавить удаление клиента из базы и из amocrm
@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				break;
 		}
 	}
-	echo $hookType;
 
 	/*else if ($hookType == 'record') {
 		switch ($hookStatus) {
