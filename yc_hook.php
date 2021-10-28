@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
-				$amoId = $controller->checkAmoContact($amoData);
+				$amoId = $controller->checkAmoContact($contact);
 				$resId = $controller->setContactToAmo($amoData, $amoId);
 				echo $resId;
 				break;

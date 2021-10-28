@@ -4,6 +4,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
+	private $contact;
 
 	public function __construct($account){
 		$this->account = $account;
