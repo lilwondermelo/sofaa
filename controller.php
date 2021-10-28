@@ -47,6 +47,7 @@ class Controller {
 	}
 
 	public function checkAmoContact($contact) {
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		$this->method = 'GET';
 		$filter = [
