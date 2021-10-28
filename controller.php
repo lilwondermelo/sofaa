@@ -69,7 +69,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return http_build_query($filter);
+		return encodeURI(http_build_query($filter));
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
