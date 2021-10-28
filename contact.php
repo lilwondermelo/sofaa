@@ -38,7 +38,7 @@ Class Contact {
 			'name' => $this->getName(),
 			'custom_fields' => [[
 				"id" => $this->customFields['phone'],
-				"values" : [[
+				"values" => [[
 					"value" => $this->getPhone()
 				]]
 			],
