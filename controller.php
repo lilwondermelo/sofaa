@@ -48,7 +48,7 @@ class Controller {
 			return $result['status'];
 		}
 		else {
-			return $out;
+			return 1;
 		}
 	}
 
