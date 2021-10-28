@@ -48,10 +48,10 @@ class Controller {
 	public function checkAmoContact($contact) {
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		$this->method = 'GET';
-		$filter = array(
+		$filter = [
 			$this->account->getCustomFields['yc_id'] => $contact->getId(),
 			$this->account->getCustomFields['phone'] => $contact->getPhone()
-		);
+		];
 		$result = $this->apiQuery($filter);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
