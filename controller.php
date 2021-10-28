@@ -1,17 +1,20 @@
 <?php 
 class AmoClass {
 	private $account;
+	private $link;
+	private $method;
+	private $authHeader;
 
 	public function __construct($account){
 		$this->account = $account;
 	}
-	public function apiQuery($method, $link, $args = array()) {
+	public function apiQuery($args = array()) {
 		$curl=curl_init();
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 		curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
-		switch (mb_strtoupper($method)) { 
+		switch (mb_strtoupper($this->method)) { 
 			case 'GET':
-				$link .= "?".http_build_query($args);
+				$this->link .= "?".http_build_query($args);
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
 				break; 
 			case 'POST':
@@ -27,11 +30,11 @@ class AmoClass {
 				curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($args));
 				break; 
 			default: 
-				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method); 
+				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->$method); 
 		}
-		curl_setopt($curl,CURLOPT_URL,$link);
+		curl_setopt($curl,CURLOPT_URL,$this->link);
 		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
-    	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:Bearer ' . $this->amoBearer]);
+    	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:' . $this->authHeader]);
 		curl_setopt($curl,CURLOPT_HEADER,false);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
@@ -43,13 +46,13 @@ class AmoClass {
 	}
 
 	public function checkAmoContact($contact) {
-		$link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
-		$method = 'GET';
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
+		$this->method = 'GET';
 		$filter = {
 			$this->account->getCustomFields['yc_id'] : $contact->getId(),
 			$this->account->getCustomFields['phone'] : $contact->getPhone()
 		};
-		$result = $this->apiQuery($method, $link, $filter);
+		$result = $this->apiQuery($filter);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return -1;
@@ -58,27 +61,22 @@ class AmoClass {
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$daraArray = [$contact];
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		if ($amoId != -1) {
-			$method = 'PATCH';
-			$contact['id'] = (int)$amoId;
-			$result = $this->apiQuery($method, $link, $daraArray);
+			$this->method = 'PATCH';
+			$contact['id'] = $amoId;
 		}
 		else {
-			$result = $this->setContactsToAmo($daraArray);
-
+			$this->method = 'POST';
 		}
+		$result = $this->apiQuery($daraArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return -1;
 		}
 		return $resId;
 	}
-
-	public function setContactsToAmo($daraArray) {
-		$method = 'POST';
-		$link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
-		$result = $this->apiQuery($method, $link, $daraArray);
-		return $result;
-	}
 }
+?>
