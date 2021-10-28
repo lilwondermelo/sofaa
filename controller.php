@@ -43,8 +43,9 @@ class Controller {
 		curl_close($curl);
 		$result = json_decode($out, true);
 		if ($result['status'] == 401) {
-			$account->newAmoBearer();
-			$this->apiQuery($args);
+			//$account->newAmoBearer();
+			//$this->apiQuery($args);
+			return $result['status'];
 		}
 		else {
 			return $result;
