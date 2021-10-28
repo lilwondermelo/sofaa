@@ -82,10 +82,10 @@ class Controller {
 			$this->method = 'POST';
 		}
 		$result = $this->apiQuery($daraArray);
-		$resId = $result['_embedded']['contacts'][0]['id'];
+		/*$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return -1;
-		}
+			return json_encode($result);
+		}*/
 		return $resId;
 	}
 }
