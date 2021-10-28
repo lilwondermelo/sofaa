@@ -1,96 +1,62 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$accIds = array('543499' => 'ablaser');
-    $payload = json_decode(file_get_contents('php://input'), true);
-    
-    $hookType = $payload['resource'];
-	$hookStatus = $payload['status'];
-	$companyId = $payload['company_id'];
-	$resourceId = $payload['resource_id'];
+	$postData = json_decode(file_get_contents('php://input'), true);
+	$contactData = $postData['data'];
+	$hookType = $postData['resource'];
+	$hookStatus = $postData['status'];
+	$companyId = $postData['company_id'];
+	$resourceId = $postData['resource_id'];// Не нужен???
 
-	$company = ($companyId)?$accIds[$companyId]:'';
+	require_once 'account.php';
+	$account = new Account($companyId);
 
-    require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
-		$ycClass = new YCClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-		require_once 'amo_class.php'; //Класс для работы с API YCLIENTS
-				$amoClass = new AmoClass($company, 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
+	require_once 'controller.php';
+	$controller = new Controller($account);
 
-    if ($company != '') {
-    	if ($hookType == 'client') {
-    		switch ($hookStatus) {
-				case 'create':
-					$clientData = $payload;
-					$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-					$amoId = $amoClass->setContact($tableData);
-					unset($tableData['yc_id']);
-					$tableData['amo_id'] = $amoId;
-					$result = $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
-					$ycClass->recordHook(json_encode($clientData));
-					break;
-				case 'update':
-					$clientData = $payload;
-					$tableData = array('phone' => $clientData['data']['phone'], 'name' => $clientData['data']['name'], 'spent' => $clientData['data']['spent'], 'visits' => $clientData['data']['visits'], 'yc_id' => $resourceId);
-					$amoId = $ycClass->getClientsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
+	if ($hookType == 'client') {
+		switch ($hookStatus) {
+			case 'create':
+			case 'update':
+				require_once 'contact.php';
+				$contact = new Contact($contactData, $account->getCustomFields());
+				$contact->createFromYC();
+				$amoData = $contact->convertToAmo();
+				$amoId = $controller->checkAmoContact($amoData);
+				$resId = $controller->setContactToAmo($amoData, $amoId);
+				echo $resId;
+				break;
+			case 'delete':
+				//Добавить удаление клиента из базы и из amocrm
+				break;
+			default:
+				break;
+		}
+	}
 
-					$result = $amoClass->setContact($tableData, $amoId);
-					
-					unset($tableData['yc_id']);
-					$result .= ' ' . $ycClass->recordInDb('clients', 'yc_id', $resourceId, $tableData);
-
-					break;
-				case 'delete':
-					//Добавить удаление клиента из базы и из amocrm
-					break;
-				default:
-					$resultDb = '';
-					break;
-			}
-    	}
-    	else if ($hookType == 'record') {
-    		
-    		switch ($hookStatus) {
-				case 'create':
-
+	/*else if ($hookType == 'record') {
+		switch ($hookStatus) {
+			case 'create':
+			$recordData = $payload;
+			$ycClass->recordHook(json_encode($recordData));
+				break;
+			case 'update':
+				$amoData = array();
 				$recordData = $payload;
-
-
-				$ycClass->recordHook(json_encode($recordData));
-					
-					break;
-					
-				case 'update':
-					$amoData = array();
-					$recordData = $payload;
-
-					
-					$amoId = $ycClass->getDealsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
-					
-					$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
-					$amoData[0] = array(
-						'status_id' => $amoClass->getStatus($stat)
-					);
-					
-					$result = $amoClass->setDeals($amoData, $amoId);
-
-					
-
-					$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
-					break;
-				case 'delete':
-					//Добавить удаление клиента из базы и из amocrm
-					break;
-				default:
-					$resultDb = '';
-					break;
-			}
-    	}	
-   	}
-   	else {
-   		require_once 'ycClass.php'; //Класс для работы с API YCLIENTS
-		$ycClass = new YCClass('data', 0); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-   		$ycClass->recordHook(2);
-   	}
-}
-
-   
+				$amoId = $ycClass->getDealsDb(' where yc_id = ' . $resourceId)[0]['amo_id'];
+				$stat = ($recordData['data']['visit_attendance'])?$recordData['data']['visit_attendance']:'0';
+				$amoData[0] = array(
+					'status_id' => $amoClass->getStatus($stat)
+				);
+				$result = $amoClass->setDeals($amoData, $amoId);
+				$result .= ' ' . $ycClass->recordInDb('records', 'yc_id', $resourceId, array('stat' => $stat));
+				break;
+			case 'delete':
+				//Добавить удаление клиента из базы и из amocrm
+				break;
+			default:
+				$resultDb = '';
+				break;
+		}
+    }*/
+}  
 ?>
