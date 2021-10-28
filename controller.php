@@ -42,7 +42,8 @@ class Controller {
 		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);  
 		curl_close($curl);
 		$result = json_decode($out, true);
-		return $result;
+		//return $result;
+		return $out;
 	}
 
 	public function checkAmoContact($contact) {
