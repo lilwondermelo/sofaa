@@ -76,7 +76,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return $resId;
+		return $result;
 	}
 }
 ?>
