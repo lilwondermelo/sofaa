@@ -93,7 +93,7 @@ class Controller {
 		$result = $this->apiQuery($daraArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return json_encode($result);
+			return json_encode($contact);
 		}
 		return $resId;
 	}
