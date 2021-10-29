@@ -109,7 +109,7 @@ class Controller {
 		$clientCount = $result['meta']['total_count'];
 		$pagesCount = $clientCount/$this->dataPerPage;
 		//return array('clients' => $clientCount, 'pages' => $pagesCount);
-		return $this->account->getYcFilialId();
+		return $this->account->getCustomFields();
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
