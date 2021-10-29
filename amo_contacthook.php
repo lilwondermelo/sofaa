@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	$amoData = $contact->convertToYC();
 	$result = $controller->setContactToYC($amoData);
-	echo json_encode($result, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHE);
+	echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }
 
 	/*
