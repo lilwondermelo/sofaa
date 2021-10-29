@@ -67,11 +67,15 @@ class Controller {
 			]
 		];
 		$result = $this->apiQuery($filterId);
-		/*$resId = $result['_embedded']['contacts'][0]['id'];
+		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return json_encode($result);
-		}*/
-		return $result;
+			$result = $this->apiQuery($filterPhone);
+			$resId = $result['_embedded']['contacts'][0]['id'];
+		}
+		if (!$resId) {
+			return -1;
+		}
+		return $resId;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
