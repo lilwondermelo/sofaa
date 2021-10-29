@@ -66,14 +66,17 @@ class Controller {
 				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
 		];
-		
-			$result = $this->apiQuery($filterPhone);
-			$resId = $result['_embedded']['contacts'][0]['id'];
-		
-		if (!$resId) {
-			return -1;
+		$result1 = $this->apiQuery($filterId);
+		$resId1 = $result['_embedded']['contacts'][0]['id'];
+		if (!$resId1) {
+			$result2 = $this->apiQuery($filterPhone);
+			$resId2 = $result['_embedded']['contacts'][0]['id'];
+			if (!$resId2) {
+				return -1;
+			}
+			return $resId2;
 		}
-		return $resId;
+		return $resId1;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
