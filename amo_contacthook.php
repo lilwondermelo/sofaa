@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$contactData = $_POST['contacts']['update'][0]['id'];
+	$contactData = $_POST;
 	//$recordId = $_POST['leads']['update'][0]['id'];
 	echo json_encode($contactData);
 	echo 1;
