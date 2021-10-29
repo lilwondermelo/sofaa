@@ -58,8 +58,8 @@ class Controller {
 		$this->method = 'GET';
 		$filter = [
 			'filter' => [
-				$this->account->getCustomFields()['yc_id'] => $contact->getId(),
-				$this->account->getCustomFields()['phone'] => $contact->getPhone()
+				//$this->account->getCustomFields()['yc_id'] => $contact->getId(),
+				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
 		];
 		$result = $this->apiQuery($filter);

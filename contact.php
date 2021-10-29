@@ -3,6 +3,7 @@ Class Contact {
 	private $id = -1;
 	private $name;
 	private $phone;
+	private $phoneApi;
 	private $visits;
 	private $spent;
 	private $customFields;
@@ -40,6 +41,12 @@ Class Contact {
 				"id" => $this->customFields['phone'],
 				"values" => [[
 					"value" => $this->getPhone()
+				]]
+			],
+			[
+				"id" => $this->customFields['phone_api'],
+				"values" => [[
+					"value" => getPhoneApi()
 				]]
 			],
 			[
@@ -99,6 +106,9 @@ Class Contact {
 	public function getPhone() {
 		return $this->phone;
 	}
+	public function getPhoneApi() {
+		return $this->phoneApi;
+	}
 	public function getVisits() {
 		return $this->visits;
 	}
@@ -114,6 +124,12 @@ Class Contact {
 	}
 	public function setPhone($phone) {
 		$this->phone = $phone;
+		$this->setPhoneApi();
+	}
+	public function setPhoneApi() {
+		$phoneApi = preg_replace("/[^0-9]/", '', $this->getPhone());
+		$phoneApi = (strlen($phoneApi) == 11)?substr($phoneApi, 1):$phoneApi;
+		$this->phoneApi = $phoneApi;
 	}
 	public function setVisits($visits) {
 		$this->visits = $visits;
