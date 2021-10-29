@@ -1,9 +1,8 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$postData = $_POST;
-	$entityType = array_key_first($postData);
-	$amoHost = $postData['account']['subdomain'];
-	$actionType = array_key_first($postData[$entityType]);
+	$entityType = 'contact';
+	$amoHost = $_POST['account']['subdomain'];
+	$actionType = array_key_first($_POST[$entityType]);
 	$entityData = $postData[$entityType][$actionType][0];
 
 
