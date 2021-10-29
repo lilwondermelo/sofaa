@@ -17,12 +17,12 @@ if ($company != '') {
 	$clientList = $controller->getCLientCount();
 	$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
-		$pageData = $controller->getClientList($i+1)['data']; //$i+1 - номер текущей страницы
-		foreach ($pageData as $item) {
+		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
+		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
 			$amoRequestData[] = $clientData;
 		}
-		echo json_encode($controller->getClientList($i+1)) . '<br><br>';
+		echo json_encode($pageData) . '<br><br>';
 	}
 	echo 'Компания: ' . $company . '<br>';
 }
