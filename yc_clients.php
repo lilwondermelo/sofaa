@@ -21,8 +21,9 @@ if ($company != '') {
 		foreach ($pageData as $item) {
 			$clientData = $controller->getClientData($item['id']);
 			$amoRequestData[] = $clientData;
+			
 		}
-		echo json_encode($amoRequestData) . '<br><br>';
+		echo json_encode($pageData) . '<br><br>';
 	}
 	
 	echo 'Компания: ' . $company . '<br>';
