@@ -96,7 +96,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return json_encode($daraArray);
+		return json_encode($result);
 	}
 }
 ?>
