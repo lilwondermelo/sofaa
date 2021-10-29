@@ -112,9 +112,9 @@ class Controller {
 		$result = $this->apiQuery($contact);
 		$resId = $result['data']['id'];
 		if (!$resId) {
-			return json_encode($contact);
+			return json_encode($result);
 		}
-		return $resId;
+		return $contact;
 	}
 
 	public function getClientData($id) {
