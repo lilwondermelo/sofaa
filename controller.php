@@ -91,10 +91,10 @@ class Controller {
 		else {
 			$this->method = 'POST';
 		}
-		$result = $this->apiQuery($daraArray);
+		$result = $this->apiQuery(contact);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return $this->method;
+			return -1;
 		}
 		return $resId;
 	}
