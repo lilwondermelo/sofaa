@@ -36,8 +36,8 @@ class Controller {
 		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
     	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:' . $this->authHeader]);
 		curl_setopt($curl,CURLOPT_HEADER,false);
-		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
-		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 0);
 		$out=curl_exec($curl);
 		$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);
 		//Добавить обновление Bearer при ощибке авторизации!!!
@@ -70,8 +70,8 @@ class Controller {
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
 		$this->type = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
-		return count($this->apiQuery($args)['data']);
-		//return $args;
+		//return count($this->apiQuery($args)['data']);
+		return array($args, $this->authHeader, $this->link);
 	}
 
 	public function checkAmoContact($contact) {
