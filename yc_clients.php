@@ -24,7 +24,7 @@ if ($company != '') {
 		}
 		
 	}
-	echo json_encode($amoRequestData) . '<br><br>';
+	echo count($amoRequestData) . '<br><br>';
 	echo 'Компания: ' . $company . '<br>';
 }
 else {
