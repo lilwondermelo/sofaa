@@ -10,7 +10,6 @@ if (!empty($_GET["page"])) {
 if ($company != '') {
 	require_once 'account.php';
 	$account = new Account($company);
-
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	$amoRequestData = [];

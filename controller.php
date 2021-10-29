@@ -62,18 +62,7 @@ class Controller {
 		
 	}
 
-	public function getClientData($id) {
-		$this->isYc = 1;
-		$this->authHeader = $this->account->getYcAuth();
-		$this->method = 'GET';
-		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $id;
-		$contactData = $this->apiQuery()['data'];
-		require_once 'contact.php';
-		$contact = new Contact($contactData, $this->account->getCustomFields());
-		$contact->createFromYC();
-		$amoData = $contact->convertToAmo();
-		return $amoData;
-	}
+	
 
 	
 
@@ -104,11 +93,24 @@ class Controller {
 		return $resId;
 	}
 
+	public function getClientData($id) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $id;
+		$contactData = $this->apiQuery()['data'];
+		require_once 'contact.php';
+		$contact = new Contact($contactData, $this->account->getCustomFields());
+		$contact->createFromYC();
+		$amoData = $contact->convertToAmo();
+		return $amoData;
+	}
+
 	public function getClientList($page) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
-		$this->type = 'POST';
+		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		return $this->apiQuery($args);
 	}
