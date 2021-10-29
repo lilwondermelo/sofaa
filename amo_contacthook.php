@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-	$contact->createFromAmo();
+	$contact->editFromAmo();
 	$amoData = $contact->convertToYC();
 
 	echo json_encode($amoData);
