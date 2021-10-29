@@ -93,6 +93,8 @@ class Controller {
 		return $resId;
 	}
 
+
+
 	public function getClientData($id) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
@@ -125,6 +127,11 @@ class Controller {
 		$clientCount = $result['meta']['total_count'];
 		$pagesCount = $clientCount/$this->dataPerPage;
 		return array('clients' => $clientCount, 'pages' => $pagesCount);
+	}
+
+	public function setManyContactsToAmo($dataArray) {
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		return;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
