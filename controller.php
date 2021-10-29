@@ -85,7 +85,8 @@ class Controller {
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		if ($amoId != -1) {
 			$this->method = 'PATCH';
-			$contact['id'] = $amoId;
+			$contact = ['id' => $amoId] + $contact;
+
 		}
 		else {
 			$this->method = 'POST';
@@ -93,7 +94,7 @@ class Controller {
 		$result = $this->apiQuery($daraArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return json_encode($contact);
+			return $this->method;
 		}
 		return $resId;
 	}
