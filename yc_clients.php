@@ -20,9 +20,9 @@ if ($company != '') {
 		$pageData = $controller->getClientList($i+1)['data']; //$i+1 - номер текущей страницы
 		foreach ($pageData as $item) {
 			$clientData = $controller->getClientData($item['id']);
-			$amoRequestData[$i] = $clientData;
+			$amoRequestData[] = $clientData;
 		}
-		echo json_encode($amoRequestData[$i]) . '<br><br>';
+		echo json_encode($amoRequestData) . '<br><br>';
 	}
 	
 	echo 'Компания: ' . $company . '<br>';
