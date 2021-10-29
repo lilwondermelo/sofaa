@@ -3,6 +3,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$contactData = $_POST;
 	//$recordId = $_POST['leads']['update'][0]['id'];
 	return json_encode($contactData);
+}
+
 	/*
     $company = $_POST['account']['subdomain'];
     $statusId = $_POST['leads']['update'][0]['status_id'];
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     */
 
 
-
+?>
 
 
 
