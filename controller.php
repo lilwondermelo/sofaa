@@ -43,14 +43,15 @@ class Controller {
 		$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);
 		//Добавить обновление Bearer при ощибке авторизации!!!
 		curl_close($curl);
-		$result = json_decode($out, true);
+		/*$result = json_decode($out, true);
 		if ($result['status'] == 401) {
 			$account->newAmoBearer();
 			$this->apiQuery($args);
 		}
 		else {
 			return $out;
-		}
+		}*/
+		return $out;
 		
 	}
 
