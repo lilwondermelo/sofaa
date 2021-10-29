@@ -66,12 +66,10 @@ class Controller {
 				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
 		];
-		$result = $this->apiQuery($filterId);
-		$resId = $result['_embedded']['contacts'][0]['id'];
-		if (!$resId) {
+		
 			$result = $this->apiQuery($filterPhone);
 			$resId = $result['_embedded']['contacts'][0]['id'];
-		}
+		
 		if (!$resId) {
 			return -1;
 		}
