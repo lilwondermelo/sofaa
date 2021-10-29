@@ -67,12 +67,12 @@ class Controller {
 			]
 		];
 		$result1 = $this->apiQuery($filterId);
-		$resId1 = $result['_embedded']['contacts'][0]['id'];
+		$resId1 = $result1['_embedded']['contacts'][0]['id'];
 		if (!$resId1) {
 			$result2 = $this->apiQuery($filterPhone);
-			$resId2 = $result['_embedded']['contacts'][0]['id'];
+			$resId2 = $result2['_embedded']['contacts'][0]['id'];
 			if (!$resId2) {
-				return -1;
+				return $resId1 . $resId2;
 			}
 			return $resId2;
 		}
