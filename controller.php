@@ -85,13 +85,13 @@ class Controller {
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		if ($amoId != -1) {
 			$this->method = 'PATCH';
-			$contact = ['id' => $amoId] + $contact;
+			$daraArray[0]['id'] = $amoId;
 
 		}
 		else {
 			$this->method = 'POST';
 		}
-		$result = $this->apiQuery(contact);
+		$result = $this->apiQuery($daraArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return -1;
