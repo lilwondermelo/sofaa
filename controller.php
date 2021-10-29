@@ -70,7 +70,8 @@ class Controller {
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
 		$this->type = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
-		return $this->apiQuery($args);
+		//return $this->apiQuery($args);
+		return $args;
 	}
 
 	public function checkAmoContact($contact) {
