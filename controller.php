@@ -55,16 +55,15 @@ class Controller {
 				$account->newAmoBearer();
 				$this->apiQuery($args);
 			}
-			return 1;	
-		}
-		else {
 			if ($this->check == 1) {
 				return $args;
 			}
 			else {
 				return $result;
 			}
-			
+		}
+		else {
+			return $result;
 		}
 		
 	}
