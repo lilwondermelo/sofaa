@@ -34,6 +34,7 @@ class Controller {
 		}
 		curl_setopt($curl,CURLOPT_URL,$this->link);
 		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
+		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:Accept: application/vnd.yclients.v2+json']);
     	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:' . $this->authHeader]);
 		curl_setopt($curl,CURLOPT_HEADER,false);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 0);
@@ -70,7 +71,7 @@ class Controller {
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
 		$this->type = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
-		return count($this->apiQuery($args)['data']);
+		return $this->apiQuery($args);
 		//return array($args, $this->authHeader, $this->link);
 	}
 
