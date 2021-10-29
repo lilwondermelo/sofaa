@@ -62,6 +62,10 @@ Class Account {
 		}
 	}
 
+	public function getYcAuth() {
+		return 'Bearer ' . $this->ycBearer . ', User ' . $this->ycUser;
+	}
+
 	public function getAmoBearer() {
 		return $this->amoBearer;
 	}

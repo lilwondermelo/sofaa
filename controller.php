@@ -54,6 +54,7 @@ class Controller {
 	}
 
 	public function getClientData($id) {
+		$this->authHeader = $this->account->getYcAuth();
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $clientId;
 		$contactData = $this->apiQuery()['data'];
@@ -65,6 +66,7 @@ class Controller {
 	}
 
 	public function getClientList() {
+		$this->authHeader = $this->account->getYcAuth();
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
 		$this->type = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
@@ -99,6 +101,7 @@ class Controller {
 	}
 
 	public function getClientCount() {
+		$this->authHeader = $this->account->getYcAuth();
 		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
 		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
