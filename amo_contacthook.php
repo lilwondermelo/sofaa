@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-	$contact->createFromAmo();
-	$amoData = $contact->convetToAmo();
+	//$contact->createFromAmo();
+	//amoData = $contact->convetToAmo();
 
-	echo json_encode($amoData);
+	echo json_encode($entityData);
 }
 
 	/*
