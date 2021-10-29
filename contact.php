@@ -38,31 +38,31 @@ Class Contact {
 		$amoData = [
 			'name' => $this->getName(),
 			'custom_fields_values' => [[
-				"id" => $this->customFields['phone'],
+				"field_id" => $this->customFields['phone'],
 				"values" => [[
 					"value" => $this->getPhone()
 				]]
 			],
 			[
-				"id" => $this->customFields['phone_api'],
+				"field_id" => $this->customFields['phone_api'],
 				"values" => [[
 					"value" => $this->getPhoneApi()
 				]]
 			],
 			[
-				"id" => $this->customFields['visits'],
+				"field_id" => $this->customFields['visits'],
 				"values" => [[
 					"value" => $this->getVisits()
 				]]
 			],
 			[
-				"id" => $this->customFields['spent'],
+				"field_id" => $this->customFields['spent'],
 				"values" => [[
 					"value" => $this->getSpent()
 				]]
 			],
 			[
-				"id" => $this->customFields['yc_id'],
+				"field_id" => $this->customFields['yc_id'],
 				"values" => [[
 					"value" => $this->getId()
 				]]
