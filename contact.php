@@ -97,9 +97,6 @@ Class Contact {
 		$this->setName($this->contactData['name']);
 	}
 
-	public function unsetId() {
-		unset($this->id);
-	}
 
 	public function getId() {
 		return $this->id;
