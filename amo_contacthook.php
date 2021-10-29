@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	else if ($actionType == 'update') {
 		$contact->editFromAmo();
 	}
-	$amoData = ($actionType ==$contact->convertToYC();
+	$amoData = $contact->convertToYC();
 	echo json_encode($amoData);
 }
 
