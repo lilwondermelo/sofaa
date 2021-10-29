@@ -22,7 +22,7 @@ if ($company != '') {
 			$amoRequestData[] = $clientData;
 		}	
 	}
-	$result = $controller->setContactToAmo($amoRequestData);
+	$result = $controller->setManyContactsToAmo($amoRequestData);
 	echo json_encode($result) . '<br><br>';
 	echo 'Компания: ' . $company . '<br>';
 }
