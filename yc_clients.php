@@ -14,8 +14,6 @@ if ($company != '') {
 	require_once 'controller.php';
 	$controller = new Controller($account);
 
-	$clientCount = $controller->getClientCount();
-
 
 	$pages = ((ceil($controller->getCLientCount()['pages']) > 5)?5:ceil($controller->getCLientCount()['pages']);
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
