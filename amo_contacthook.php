@@ -2,6 +2,14 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$entityType = 'contact';
 	$amoHost = $_POST['account']['subdomain'];
+
+	require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('sys_data');
+		$updater->setKey('data_key', 'test_hook_' . date('Y-m-d H:i:s'));
+		$updater->setDataFields(array('data_value' => $amoHost);
+		$result_upd = $updater->update();
+	/*
+
 	$actionType = array_key_first($_POST[$entityType]);
 	$entityData = $postData[$entityType][$actionType][0];
 
@@ -14,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	
 
-$controller->recordHook(1);
+
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
 	if ($actionType == 'create') {
@@ -26,7 +34,7 @@ $controller->recordHook(1);
 	$amoData = $contact->convertToYC();
 	$result = $controller->setContactToYC($amoData);
 
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);
+	echo json_encode($result, JSON_UNESCAPED_UNICODE);*/
 }
 
 	/*
