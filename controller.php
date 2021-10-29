@@ -54,7 +54,7 @@ class Controller {
 				$account->newAmoBearer();
 				$this->apiQuery($args);
 			}
-			return $result;
+			return $result;	
 		}
 		else {
 			return $result;
@@ -66,7 +66,7 @@ class Controller {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$this->method = 'GET';
-		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $clientId;
+		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $id;
 		$contactData = $this->apiQuery()['data'];
 		require_once 'contact.php';
 		$contact = new Contact($contactData, $this->account->getCustomFields());
