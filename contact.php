@@ -80,7 +80,6 @@ Class Contact {
 		$this->setPhone($phone);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
-
 	}
 
 	public function editFromAmo() {
@@ -96,6 +95,10 @@ Class Contact {
 		$this->setPhone($phone);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
+	}
+
+	public function unsetId() {
+		unset($this->id);
 	}
 
 	public function getId() {

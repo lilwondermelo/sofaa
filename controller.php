@@ -106,6 +106,7 @@ class Controller {
 		else {
 			$this->link = 'https://api.yclients.com/api/v1/clients/' . $this->account->getYcFilialId();
 			$this->method = 'POST';
+			$contact->unsetId();
 		}
 		$result = $this->apiQuery($contact);
 		$resId = $result['data']['id'];
