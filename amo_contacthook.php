@@ -1,11 +1,27 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$contactData = json_decode(file_get_contents('php://input'), true);
-	$entityType = array_key_first($contactData);
-	$amoHost = $contactData['account']['subdomain'];
-	$actionType = array_key_first($contactData[$entityType]);
-	//$recordId = $_POST['leads']['update'][0]['id'];
-	echo json_encode($amoHost);
+	$postData = json_decode(file_get_contents('php://input'), true);
+	$entityType = array_key_first($postData);
+	$amoHost = $postData['account']['subdomain'];
+	$actionType = array_key_first($postData[$entityType]);
+	$entityData = $postData[$entityType][$actionType];
+
+
+
+	require_once 'account.php';
+	$account = new Account($amoHost);
+	require_once 'controller.php';
+	$controller = new Controller($account);
+
+	
+
+
+	require_once 'contact.php';
+	$contact = new Contact($entityData, $account->getCustomFields());
+	$contact->createFromAmo();
+
+
+	echo json_encode($amoData);
 }
 
 	/*
