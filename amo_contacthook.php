@@ -18,9 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-	$contact->editFromAmo();
-	$amoData = $contact->convertToYC();
-
+	if ($actionType == 'create') {
+		$contact->createFromAmo();
+	}
+	else if ($actionType == 'update') {
+		$contact->editFromAmo();
+	}
+	$amoData = ($actionType ==$contact->convertToYC();
 	echo json_encode($amoData);
 }
 

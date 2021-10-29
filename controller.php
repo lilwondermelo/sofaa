@@ -96,7 +96,24 @@ class Controller {
 		return $resId;
 	}
 
-
+	public function setContactToYC($contact) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		if ($contact->getId() != -1) {
+			$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $contact->getId();
+			$this->method = 'PUT';
+		}
+		else {
+			$this->link = 'https://api.yclients.com/api/v1/clients/' . $this->account->getYcFilialId();
+			$this->method = 'POST';
+		}
+		$result = $this->apiQuery($contact);
+		$resId = $result['data']['id'];
+		if (!$resId) {
+			return json_encode($result);
+		}
+		return $resId;
+	}
 
 	public function getClientData($id) {
 		$this->isYc = 1;
@@ -142,6 +159,9 @@ class Controller {
 		$result = $this->apiQuery($dataArray);
 		return $result;
 	}
+
+
+
 
 	public function setContactToAmo($contact, $amoId = -1) {
 		$this->isYc = 0;
