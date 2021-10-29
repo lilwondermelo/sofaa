@@ -30,6 +30,6 @@ else {
 	echo 'Компания не выбрана';
 }
 
-{"name":"\u0410\u043b\u044c\u0444\u0438\u044f \u0425\u0430\u043d\u0438\u0442\u043e\u0432\u0430","custom_fields_values":[{"field_id":159945,"values":[{"value":"+79059588573"}]},{"field_id":790135,"values":[{"value":"9059588573"}]},{"field_id":629911,"values":[{"value":1}]},{"field_id":629909,"values":[{"value":450}]},{"field_id":629913,"values":[{"value":112479717}]}]}
+
 ?>
 
