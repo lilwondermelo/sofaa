@@ -23,7 +23,7 @@ if ($company != '') {
 			//$clientData = $controller->getClientData($item['id']);
 			$amoRequestData[] = $item;
 		}
-		echo json_encode(array($pageData['data'], $i+1, $pages, $clientList)) . '<br><br>';
+		echo json_encode(array($amoRequestData, $i+1, $pages, $clientList)) . '<br><br>';
 	}
 	echo 'Компания: ' . $company . '<br>';
 }
