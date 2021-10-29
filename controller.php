@@ -47,7 +47,7 @@ class Controller {
 			$this->apiQuery($args);
 		}
 		else {
-			return http_build_query($args);
+			return $out;
 		}
 		
 	}
