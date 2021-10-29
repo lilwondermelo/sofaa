@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$contactData = $_POST;
+	$contactData = json_decode(file_get_contents('php://input'), true);
 	//$recordId = $_POST['leads']['update'][0]['id'];
 	echo json_encode($contactData);
 	echo 1;
