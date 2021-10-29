@@ -56,12 +56,7 @@ class Controller {
 				//Обновить данный аккаунта
 				$this->apiQuery($args);
 			}
-			if ($this->check == 1) {
-				return $args;
-			}
-			else {
-				return $result;
-			}
+			return $result;
 		}
 		else {
 			return $result;
