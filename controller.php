@@ -56,13 +56,17 @@ class Controller {
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
 		$this->method = 'GET';
-		$filter = [
+		$filterId = [
 			'filter' => [
-				$this->account->getCustomFields()['yc_id'] => $contact->getId(),
+				$this->account->getCustomFields()['yc_id'] => $contact->getId()
+			]
+		];
+		$filterPhone = [
+			'filter' => [
 				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
 		];
-		$result = $this->apiQuery($filter);
+		$result = $this->apiQuery($filterId);
 		/*$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return json_encode($result);
