@@ -25,7 +25,7 @@ if ($company != '') {
 	}
 	
 	echo 'Компания: ' . $company . '<br>';
-	echo json_encode($pageData);
+	echo json_encode($pages);
 }
 else {
 	echo 'Компания не выбрана';
