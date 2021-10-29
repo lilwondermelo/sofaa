@@ -22,7 +22,7 @@ if ($company != '') {
 	}
 	
 	echo 'Компания: ' . $company . '<br>';
-	echo json_encode($pageData);
+	echo count($pageData[0]);
 }
 else {
 	echo 'Компания не выбрана';
