@@ -24,7 +24,7 @@ if ($company != '') {
 		}
 	}
 	echo 'Компания: ' . $company . '<br>';
-	echo json_encode($amoRequestData[]);
+	echo json_encode($amoRequestData[0]);
 }
 else {
 	echo 'Компания не выбрана';
