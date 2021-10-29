@@ -104,7 +104,8 @@ class Controller {
 		return $resId;
 	}
 
-	public function getClientList($page) {
+	public function getClientList($page, $dataPerPage = 200) {
+		$this->dataPerPage = ($this->dataPerPage > $dataPerPage)?$dataPerPage:$this->dataPerPage;
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
