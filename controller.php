@@ -101,7 +101,7 @@ class Controller {
 		$this->authHeader = $this->account->getYcAuth();
 		return $contact;
 		if ($contact['id'] != -1) {
-			$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $contact->getId();
+			$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $contact['id'];
 			$this->method = 'PUT';
 		}
 		else {
