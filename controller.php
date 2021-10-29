@@ -52,7 +52,7 @@ class Controller {
 		$result = json_decode($out, true);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
-				$this->$account->newAmoBearer();
+				$this->account->newAmoBearer();
 				$this->apiQuery($args);
 			}
 			if ($this->check == 1) {
