@@ -55,10 +55,10 @@ Class Account {
 		$updater->setDataFields(['amo_bearer' => $decodedResponse['access_token'], 'amo_refresh' => $decodedResponse['refresh_token']]);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
-			return $updater->error;
+			return 1;
 		}
 		else {
-			return $result_upd;
+			return 2;
 		}
 	}
 
