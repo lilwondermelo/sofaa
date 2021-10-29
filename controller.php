@@ -99,7 +99,6 @@ class Controller {
 	public function setContactToYC($contact) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		return $contact;
 		if ($contact['id'] != -1) {
 			$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $contact['id'];
 			$this->method = 'PUT';
