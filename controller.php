@@ -67,7 +67,7 @@ class Controller {
 	
 
 	public function checkAmoContact($contact) {
-		$this->isYc == 0;
+		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
 		$this->method = 'GET';
@@ -131,7 +131,7 @@ class Controller {
 	}
 
 	public function setManyContactsToAmo($dataArray) {
-		$this->isYc == 0;
+		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		$this->method = 'POST';
@@ -140,7 +140,7 @@ class Controller {
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
-		$this->isYc == 0;
+		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$daraArray = [$contact];
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
