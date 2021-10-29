@@ -131,7 +131,10 @@ class Controller {
 
 	public function setManyContactsToAmo($dataArray) {
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		return;
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
+		$this->method = 'POST';
+		$result = $this->apiQuery($daraArray);
+		return $result;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
