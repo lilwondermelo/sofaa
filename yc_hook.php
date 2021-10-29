@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$hookStatus = $postData['status'];
 	$companyId = $postData['company_id'];
 	$resourceId = $postData['resource_id'];// Не нужен???
-
 	require_once 'account.php';
 	$account = new Account($companyId);
 

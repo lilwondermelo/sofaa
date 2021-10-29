@@ -20,11 +20,10 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
 			$amoRequestData[] = $clientData;
-		}
-		
+		}	
 	}
-	$result = $controller->setManyContactsToAmo($amoRequestData);
-	echo json_encode($result) . '<br><br>';
+	//$result = $controller->setManyContactsToAmo($amoRequestData);
+	echo json_encode($amoRequestData) . '<br><br>';
 	echo 'Компания: ' . $company . '<br>';
 }
 else {
