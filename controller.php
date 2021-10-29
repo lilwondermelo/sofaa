@@ -67,14 +67,7 @@ class Controller {
 		return $amoData;
 	}
 
-	public function getClientList($page) {
-		$this->authHeader = $this->account->getYcAuth();
-		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
-		$this->type = 'POST';
-		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
-		return $this->apiQuery($args);
-		//return array($args, $this->authHeader, $this->link);
-	}
+	
 
 	public function checkAmoContact($contact) {
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
@@ -101,6 +94,15 @@ class Controller {
 			return -1;
 		}
 		return $resId;
+	}
+
+	public function getClientList($page) {
+		$this->authHeader = $this->account->getYcAuth();
+		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
+		$this->type = 'POST';
+		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
+		return $this->apiQuery($args);
+		//return array($args, $this->authHeader, $this->link);
 	}
 
 	public function getClientCount() {
