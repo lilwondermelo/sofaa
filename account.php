@@ -34,7 +34,7 @@ Class Account {
             'client_id' => $this->getClientId(),
             'grant_type' => 'refresh_token',
             'refresh_token' => $this->getAmoRefresh(),
-            'redirect_uri' => 'https://ingeniouslife.space/amo_getcode.php',
+            'redirect_uri' => 'https://ingeniouslife.space/amo_getcode.php'
         ];
 		$curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -53,9 +53,13 @@ Class Account {
 		$updater = new DataRowUpdater('accounts');
 		$updater->setKey('amo_host', $this->getAmoHost());
 		$updater->setDataFields(['amo_bearer' => $decodedResponse['access_token'], 'amo_refresh' => $decodedResponse['refresh_token']]);
-		$updater->update();
-			return 1;
-		
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return $updater->error;
+		}
+		else {
+			return $decodedResponse;
+		}
 	}
 
 	public function getYcAuth() {
