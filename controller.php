@@ -47,7 +47,7 @@ class Controller {
 			$this->apiQuery($args);
 		}
 		else {
-			return $result;
+			return $out;
 		}
 		
 	}
@@ -67,16 +67,9 @@ class Controller {
 			]
 		];
 		$result1 = $this->apiQuery($filterId);
-		$resId1 = $result1['_embedded']['contacts'][0]['id'];
-		if (!$resId1) {
-			$result2 = $this->apiQuery($filterPhone);
-			$resId2 = $result2['_embedded']['contacts'][0]['id'];
-			if (!$resId2) {
-				return $resId1 . $resId2;
-			}
-			return $resId2;
-		}
-		return $resId1;
+		$result2 = $this->apiQuery($filterPhone);
+		
+		return $result1 . $result2;
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
