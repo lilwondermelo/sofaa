@@ -4,6 +4,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
+	private $dataPerPage = 200;
 
 	public function __construct($account){
 		$this->account = $account;
@@ -52,6 +53,24 @@ class Controller {
 		
 	}
 
+	public function getClientData($id) {
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $clientId;
+		$contactData = $this->apiQuery()['data'];
+		require_once 'contact.php';
+		$contact = new Contact($contactData, $this->account->getCustomFields());
+		$contact->createFromYC();
+		$amoData = $contact->convertToAmo();
+		return $amoData;
+	}
+
+	public function getClientList() {
+		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
+		$this->type = 'POST';
+		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
+		return $this->apiQuery($args);
+	}
+
 	public function checkAmoContact($contact) {
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
@@ -77,6 +96,16 @@ class Controller {
 			return -1;
 		}
 		return $resId;
+	}
+
+	public function getClientCount() {
+		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
+		$this->method = 'POST';
+		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
+		$result = $this->apiQuery($args);
+		$clientCount = $result['meta']['total_count'];
+		$pagesCount = $clientCount/$this->dataPerPage;
+		return array('clients' => $clientCount, 'pages' => $pagesCount);
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
