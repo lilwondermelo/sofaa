@@ -12,17 +12,20 @@ if ($company != '') {
 	$account = new Account($company);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	$amoRequestData = [];
+	
 	$clientList = $controller->getCLientCount();
 	$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
+		$amoRequestData = [];
 		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
 			$amoRequestData[] = $clientData;
-		}	
+
+		}
+		$result[] = $controller->setManyContactsToAmo($amoRequestData);	
 	}
-	$result = $controller->setManyContactsToAmo($amoRequestData);
+	
 	echo json_encode($result) . '<br><br>';
 	echo 'Компания: ' . $company . '<br>';
 }
