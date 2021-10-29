@@ -52,7 +52,7 @@ class Controller {
 		$result = json_decode($out, true);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
-				$account->newAmoBearer();
+				$this->$account->newAmoBearer();
 				$this->apiQuery($args);
 			}
 			if ($this->check == 1) {
@@ -143,7 +143,7 @@ class Controller {
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		$this->method = 'POST';
-		$result = $this->apiQuery($daraArray);
+		$result = $this->apiQuery($dataArray);
 		return $result;
 	}
 
