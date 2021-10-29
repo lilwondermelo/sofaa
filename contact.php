@@ -46,7 +46,7 @@ Class Contact {
 			[
 				"id" => $this->customFields['phone_api'],
 				"values" => [[
-					"value" => getPhoneApi()
+					"value" => $this->getPhoneApi()
 				]]
 			],
 			[
