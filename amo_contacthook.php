@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$entityType = array_key_first($postData);
 	$amoHost = $postData['account']['subdomain'];
 	$actionType = array_key_first($postData[$entityType]);
-	$entityData = $postData[$entityType][$actionType];
+	$entityData = $postData[$entityType][$actionType][0];
 
 
 
@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-	//$contact->createFromAmo();
-	//amoData = $contact->convetToAmo();
+	$contact->createFromAmo();
+	$amoData = $contact->convetToAmo();
 
-	echo json_encode($entityData);
+	echo json_encode($amoData);
 }
 
 	/*
