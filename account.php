@@ -53,13 +53,9 @@ Class Account {
 		$updater = new DataRowUpdater('accounts');
 		$updater->setKey('amo_host', $this->getAmoHost());
 		$updater->setDataFields(['amo_bearer' => $decodedResponse['access_token'], 'amo_refresh' => $decodedResponse['refresh_token']]);
-		$result_upd = $updater->update();
-		if (!$result_upd) {
+		$updater->update();
 			return 1;
-		}
-		else {
-			return 2;
-		}
+		
 	}
 
 	public function getYcAuth() {
