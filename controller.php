@@ -6,6 +6,7 @@ class Controller {
 	private $method;
 	private $authHeader;
 	private $dataPerPage = 200;
+	private $check = 0;
 
 	public function __construct($account){
 		$this->account = $account;
@@ -57,7 +58,13 @@ class Controller {
 			return $result;	
 		}
 		else {
-			return $result;
+			if ($this->check == 1) {
+				return $args;
+			}
+			else {
+				return $result;
+			}
+			
 		}
 		
 	}
@@ -132,6 +139,7 @@ class Controller {
 	}
 
 	public function setManyContactsToAmo($dataArray) {
+		$this->check = 1;
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
