@@ -100,7 +100,7 @@ class Controller {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		return $contact;
-		/*if ($contact->getId() != -1) {
+		if ($contact['id'] != -1) {
 			$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $contact->getId();
 			$this->method = 'PUT';
 		}
@@ -114,7 +114,7 @@ class Controller {
 		if (!$resId) {
 			return json_encode($result);
 		}
-		return $resId;*/
+		return $resId;
 	}
 
 	public function getClientData($id) {
