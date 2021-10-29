@@ -113,7 +113,7 @@ class Controller {
 		if (!$resId) {
 			return json_encode($result);
 		}
-		return $contact;
+		return $resId;
 	}
 
 	public function getClientData($id) {
