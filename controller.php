@@ -33,9 +33,11 @@ class Controller {
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->$method); 
 		}
 		curl_setopt($curl,CURLOPT_URL,$this->link);
-		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
-		curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:Accept: application/vnd.yclients.v2+json']);
-    	curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:' . $this->authHeader]);
+		curl_setopt($curl,CURLOPT_HTTPHEADER,array(
+			"Content-Type: application/json",
+			"Accept: application/vnd.yclients.v2+json",
+			"Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
+		));
 		curl_setopt($curl,CURLOPT_HEADER,false);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 0);
