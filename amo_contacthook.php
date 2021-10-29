@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$contact->editFromAmo();
 	}
 	$amoData = $contact->convertToYC();
-	echo json_encode($amoData);
+	$result = $controller->setContactToYC($amoData);
+	echo json_encode($result);
 }
 
 	/*
