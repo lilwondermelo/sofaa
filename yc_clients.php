@@ -16,7 +16,7 @@ if ($company != '') {
 
 	$clientList = $controller->getCLientCount();
 	echo json_encode($clientList);
-	$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
+	/*$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		foreach ($pageData['data'] as $item) {
@@ -25,7 +25,7 @@ if ($company != '') {
 		}
 	}
 	echo 'Компания: ' . $company . '<br>';
-	echo json_encode($clientList);
+	echo json_encode($clientList);*/
 }
 else {
 	echo 'Компания не выбрана';
