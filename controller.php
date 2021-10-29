@@ -108,8 +108,7 @@ class Controller {
 		$result = $this->apiQuery($args);
 		$clientCount = $result['meta']['total_count'];
 		$pagesCount = $clientCount/$this->dataPerPage;
-		//return array('clients' => $clientCount, 'pages' => $pagesCount);
-		return $this->account->getCustomFields();
+		return array('clients' => $clientCount, 'pages' => $pagesCount);
 	}
 
 	public function setContactToAmo($contact, $amoId = -1) {
