@@ -1,5 +1,6 @@
 <?php 
 class Controller {
+	private $isYc = 0;
 	private $account;
 	private $link;
 	private $method;
@@ -33,14 +34,16 @@ class Controller {
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->$method); 
 		}
 		curl_setopt($curl,CURLOPT_URL,$this->link);
-		curl_setopt($curl,CURLOPT_HTTPHEADER,array(
-			"Content-Type: application/json",
-			"Accept: application/vnd.yclients.v2+json",
-			"Authorization: Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897"
-		));
+		if ($this->isYc == 0) {
+			curl_setopt($curl,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
+			curl_setopt($curl,CURLOPT_HTTPHEADER,['Authorization:' . $this->authHeader]);
+		}
+		else {
+			curl_setopt($curl,CURLOPT_HTTPHEADER,$this->authHeader);
+		}
 		curl_setopt($curl,CURLOPT_HEADER,false);
-		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
+		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
 		$out=curl_exec($curl);
 		//$code=curl_getinfo($curl,CURLINFO_HTTP_CODE);
 		//Добавить обновление Bearer при ощибке авторизации!!!
@@ -57,6 +60,7 @@ class Controller {
 	}
 
 	public function getClientData($id) {
+		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $clientId;
@@ -98,15 +102,16 @@ class Controller {
 	}
 
 	public function getClientList($page) {
+		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
 		$this->type = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		return $this->apiQuery($args);
-		//return array($args, $this->authHeader, $this->link);
 	}
 
 	public function getClientCount() {
+		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999)))));
 		$this->method = 'POST';

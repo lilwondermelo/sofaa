@@ -63,7 +63,11 @@ Class Account {
 	}
 
 	public function getYcAuth() {
-		return 'Bearer ' . $this->ycBearer . ', User ' . $this->ycUser;
+		return array(
+			"Content-Type: application/json",
+			"Accept: application/vnd.yclients.v2+json",
+			"Authorization: Bearer ". $this->ycBearer .", User ". $this->ycUser
+		);
 	}
 
 	public function getAmoBearer() {
