@@ -2,8 +2,10 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$contactData = json_decode(file_get_contents('php://input'), true);
 	$entityType = array_key_first($contactData);
+	$amoHost = $contactData['account']['subdomain'];
+	$actionType = array_key_first($contactData[$entityType]);
 	//$recordId = $_POST['leads']['update'][0]['id'];
-	echo json_encode($entityType);
+	echo json_encode($amoHost);
 }
 
 	/*
