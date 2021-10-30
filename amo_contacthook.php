@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$entityType = 'contact';
+	$entityType = array_key_first($_POST);
 	$amoHost = $_POST['account']['subdomain'];
 	$actionType = array_key_first($_POST[$entityType]);
 	$entityData = $postData[$entityType][$actionType][0];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	
 
-$controller->recordHook(json_encode($_POST));
+
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
 	if ($actionType == 'create') {
@@ -25,7 +25,8 @@ $controller->recordHook(json_encode($_POST));
 	}
 	$amoData = $contact->convertToYC();
 	$result = $controller->setContactToYC($amoData);
-
+	
+	$controller->recordHook(json_encode($result));
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }
 
