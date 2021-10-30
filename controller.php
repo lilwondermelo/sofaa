@@ -64,7 +64,19 @@ class Controller {
 		
 	}
 
-	
+	public function recordHook($data = 'empty') {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('sys_data');
+		$updater->setKey('data_key', 'test_hook_' . date('Y-m-d H:i:s'));
+		$updater->setDataFields(array('data_value' => $data));
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return $updater->error;
+		}
+		else {
+			return $result_upd;
+		}
+	}
 
 
 	public function checkAmoContact($contact) {
