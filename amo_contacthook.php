@@ -1,12 +1,12 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$entityType = 'contact';
-	$amoHost = $_POST['account']['subdomain'];
+	//$entityType = 'contact';
+	//$amoHost = $_POST['account']['subdomain'];
 
 	require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');
 		$updater->setKey('data_key', 'test_hook_' . date('Y-m-d H:i:s'));
-		$updater->setDataFields(array('data_value' => 1);
+		$updater->setDataFields(array('data_value' => '1');
 		$result_upd = $updater->update();
 	/*
 
