@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	
 
-$controller->recordHook(1);
+$controller->recordHook(json_encode($_POST));
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
 	if ($actionType == 'create') {
