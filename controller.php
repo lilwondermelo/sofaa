@@ -116,18 +116,21 @@ class Controller {
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		$this->method = 'POST';
 
-		$filter = [
-			'filters' => [
-				[
-					'type' => 'id',
-					'state' => [
-						'value' => [
-							$contact->getId()
+
+		if ($contact->getId() != -1) {
+			$filter = [
+				'filters' => [
+					[
+						'type' => 'id',
+						'state' => [
+							'value' => [
+								'+7' . $contact->getPhoneApi()
+							]
 						]
 					]
 				]
-			]
-		];
+			];
+		}
 
 		$result = $this->apiQuery($filter);
 
