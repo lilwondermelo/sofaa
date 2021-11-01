@@ -77,12 +77,10 @@ Class Contact {
 		$indexPhone = array_search($this->customFields['phone]'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
 		//Проверку телефона добавить !!!
 		$phone = $this->contactData['custom_fields'][$indexPhone]['values'][0]['value'];
-		if (!$phone) {
-			$phone = +79999999999;
-		}
 		$this->setPhone($phone);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
+		return $this->getName();
 	}
 
 	public function editFromAmo() {
@@ -98,6 +96,7 @@ Class Contact {
 		$this->setPhone($phone);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
+		return $this->getName();
 	}
 
 
