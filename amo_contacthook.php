@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$contact = new Contact($entityData, $account->getCustomFields());
 	if ($actionType == 'add') {
 		$contact->createFromAmo();
-		//$amoData = $contact->convertToAmo();
+		$amoData = $contact->convertToAmo();
 		$amoId = $entityData['id'];
 		//$resId = $controller->setContactToAmo($amoData, $amoId);
 		$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE));
