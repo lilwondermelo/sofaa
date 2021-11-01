@@ -87,7 +87,7 @@ Class Contact {
 	public function editFromAmo() {
 		$dataCustomFieldIds = array_column($this->contactData['custom_fields'], 'id'); //Создает массив из значений id
 		$indexId = array_search($this->customFields['yc_id'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный id
-		$indexPhone = array_search($this->customFields['phone]'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
+		$indexPhone = array_search($this->customFields['phone'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
 		//Разделить в бд на YC поля и AMO поля чтобы сделать через цикл ???
 
 		$id = $this->contactData['custom_fields'][$indexId]['values'][0]['value']; //Сложная конструкция поиска Custom Values AMOCRM
@@ -97,7 +97,7 @@ Class Contact {
 		$this->setPhone($phone);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
-		return $this->customFields['phone]';
+		return $indexPhone;
 	}
 
 
