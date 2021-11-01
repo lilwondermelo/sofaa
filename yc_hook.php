@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$controller = new Controller($account);
 
 	if ($hookType == 'client') {
-		if (($hookStatus == 'create') || ($hookStatus == 'updete')){
+		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
 				$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
