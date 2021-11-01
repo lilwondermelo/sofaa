@@ -1,8 +1,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$postData = $_POST;
-	echo json_encode($_POST, JSON_UNESCAPED_UNICODE);
-	/*$entityType = array_key_first($_POST);
+	$entityType = array_key_first($_POST);
 	$amoHost = $_POST['account']['subdomain'];
 	$actionType = array_key_first($_POST[$entityType]);
 	$entityData = $_POST[$entityType][$actionType][0];
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$result = $controller->setContactToYC($amoData);
 
 	$controller->recordHook(json_encode($entityData, JSON_UNESCAPED_UNICODE) . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);*/
+	echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }
 
 	/*
