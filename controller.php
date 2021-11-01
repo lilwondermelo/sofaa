@@ -106,7 +106,7 @@ class Controller {
 		/*if (!$resId) {
 			return -1;
 		}*/
-		return $result;
+		return $filterPhone;
 	}
 
 
