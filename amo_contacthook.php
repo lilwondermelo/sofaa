@@ -1,10 +1,11 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$postData = json_decode($_POST, true);
-	$entityType = array_key_first($postData);
-	$amoHost = $postData['account']['subdomain'];
-	$actionType = array_key_first($postData[$entityType]);
-	$entityData = $postData[$entityType][$actionType][0];
+	$postData = $_POST;
+	echo json_encode($_POST, JSON_UNESCAPED_UNICODE);
+	$entityType = array_key_first($_POST);
+	$amoHost = $_POST['account']['subdomain'];
+	$actionType = array_key_first($_POST[$entityType]);
+	$entityData = $_POST[$entityType][$actionType][0];
 
 
 
