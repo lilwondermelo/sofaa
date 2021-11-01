@@ -97,7 +97,7 @@ class Controller {
 			]
 		];
 		$result = $this->apiQuery($filterId);
-		$resId = $result['_embedded']['contacts'][0]['id'];
+		/*$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
 			$result = $this->apiQuery($filterPhone);
@@ -105,8 +105,8 @@ class Controller {
 		}
 		if (!$resId) {
 			return -1;
-		}
-		return $resId;
+		}*/
+		return $result;
 	}
 
 
