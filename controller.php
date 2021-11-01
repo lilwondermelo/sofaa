@@ -121,7 +121,7 @@ class Controller {
 			$filter = [
 				'filters' => [
 					[
-						'type' => 'id',
+						'type' => 'phone',
 						'state' => [
 							'value' => [
 								$contact->getPhone()
