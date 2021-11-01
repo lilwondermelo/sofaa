@@ -124,7 +124,7 @@ class Controller {
 						'type' => 'id',
 						'state' => [
 							'value' => [
-								'+7' . $contact->getPhoneApi()
+								$contact->getPhone()
 							]
 						]
 					]
