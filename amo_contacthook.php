@@ -18,14 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$amoData = $contact->convertToAmo();
 		$amoId = $entityData['id'];
 		$resId = $controller->setContactToAmo($amoData, $amoId);
-		$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 	}
 	else if ($actionType == 'update') {
 		$kek = $contact->editFromAmo();
 		$amoData = $contact->convertToYC();
 		$result = $controller->setContactToYC($amoData);
 
-		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 		
 		echo json_encode($entityType, JSON_UNESCAPED_UNICODE);
 	}
