@@ -61,15 +61,18 @@ Class Contact {
 				"values" => [[
 					"value" => $this->getSpent()
 				]]
-			],
-			[
+			]
+			]
+		];
+
+
+		$amoData['custom_fields_values'][] = 
+		[
 				"field_id" => $this->customFields['yc_id'],
 				"values" => [[
 					"value" => $this->getId()
 				]]
-			]
-			]
-		];
+			];
 
 		
 		return $amoData;
