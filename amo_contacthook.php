@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-	if ($actionType == 'create') {
+	if ($actionType == 'add') {
 		$name = $contact->createFromAmo();
 	}
 	else if ($actionType == 'update') {
