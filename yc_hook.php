@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 	}
 	else {
+		sleep(2);
 		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 	}
 
