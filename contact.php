@@ -65,14 +65,16 @@ Class Contact {
 			]
 		];
 
-
-		$amoData['custom_fields_values'][] = 
+		if ($this->getId() != -1) {
+			$amoData['custom_fields_values'][] = 
 		[
 				"field_id" => $this->customFields['yc_id'],
 				"values" => [[
 					"value" => $this->getId()
 				]]
 			];
+		}
+		
 
 		
 		return $amoData;
