@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$postData = file_get_contents('php://input');
+	$postData = $_POST;
 	$entityType = array_key_first($postData);
 	$amoHost = $postData['account']['subdomain'];
 	$actionType = array_key_first($postData[$entityType]);
