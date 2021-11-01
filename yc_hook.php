@@ -13,22 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$controller = new Controller($account);
 
 	if ($hookType == 'client') {
-		switch ($hookStatus) {
-			case 'create':
-			case 'update':
-				require_once 'contact.php';
+		if (($hookStatus == 'create') || ($hookStatus == 'updete')){
+			require_once 'contact.php';
 				$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
 				$amoId = $controller->checkAmoContact($contact);
-				//$resId = $controller->setContactToAmo($amoData, $amoId);
+				$resId = $controller->setContactToAmo($amoData, $amoId);
 				echo $resId;
-				break;
-			case 'delete':
-				//Добавить удаление клиента из базы и из amocrm
-				break;
-			default:
-				break;
 		}
 	}
 
