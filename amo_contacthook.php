@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$entityType = array_key_first($_POST);
 	$amoHost = $_POST['account']['subdomain'];
 	$actionType = array_key_first($_POST[$entityType]);
-	$entityData = $postData[$entityType][$actionType][0];
+	$entityData = $_POST[$entityType][$actionType][0];
 
 
 
