@@ -23,6 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE));
 		}
 	}
+	else {
+		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+	}
 
 	/*else if ($hookType == 'record') {
 		switch ($hookStatus) {

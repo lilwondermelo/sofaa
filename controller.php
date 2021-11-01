@@ -64,9 +64,6 @@ class Controller {
 		
 	}
 
-
-
-
 	public function recordHook($data = 'empty') {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');
