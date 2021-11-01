@@ -84,7 +84,7 @@ Class Contact {
 		//$phone = '+79999999999';
 		$this->setPhone($phone);
 		$this->setId(-1);
-		$this->setSpant(0);
+		$this->setSpent(0);
 		$this->setVisits(0);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
