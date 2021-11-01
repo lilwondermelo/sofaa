@@ -61,18 +61,17 @@ Class Contact {
 				"values" => [[
 					"value" => $this->getSpent()
 				]]
-			]
-			]
-		];
-
-		if($this->getId()!=-1) {
-			$amoData['custom_fields_values'][] = [
+			],
+			[
 				"field_id" => $this->customFields['yc_id'],
 				"values" => [[
 					"value" => $this->getId()
 				]]
 			]
-		}
+			]
+		];
+
+		
 		return $amoData;
 	}
 
@@ -83,9 +82,9 @@ Class Contact {
 		$phone = $this->contactData['custom_fields'][$indexPhone]['values'][0]['value'];
 		//$phone = '+79999999999';
 		$this->setPhone($phone);
-		$this->setId(-1);
-		$this->setSpent(0);
-		$this->setVisits(0);
+		//$this->setId(-1);
+		//$this->setSpent(0);
+		//$this->setVisits(0);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
 		return $this->getName();
