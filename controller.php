@@ -110,32 +110,7 @@ class Controller {
 	}
 
 
-	public function checkYcContact($contact) {
-		$this->isYc = 1;
-		$this->authHeader = $this->account->getYcAuth();
-		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
-		$this->method = 'POST';
 
-
-		if ($contact->getId() != -1) {
-			$filter = [
-				'filters' => [
-					[
-						'type' => 'phone',
-						'state' => [
-							'value' => [
-								$contact->getPhone()
-							]
-						]
-					]
-				]
-			];
-		}
-
-		$result = $this->apiQuery($filter);
-
-		return $result;
-	}
 
 	public function setContactToYC($contact) {
 		$this->isYc = 1;
