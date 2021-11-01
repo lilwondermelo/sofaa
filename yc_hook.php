@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
 				$amoId = $controller->checkAmoContact($contact);
-				$resId = $controller->setContactToAmo($amoData, $amoId);
+				//$resId = $controller->setContactToAmo($amoData, $amoId);
 				echo $resId;
 				break;
 			case 'delete':
