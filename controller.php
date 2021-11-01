@@ -106,10 +106,10 @@ class Controller {
 			$result = $this->apiQuery($filterPhone);
 			$resId = $result['_embedded']['contacts'][0]['id'];
 		}
-		/*if (!$resId) {
+		if (!$resId) {
 			return -1;
-		}*/
-		return http_build_query($filterPhone);
+		}
+		return $resId;
 	}
 
 
