@@ -127,7 +127,7 @@ class Controller {
 					]
 				]
 			]
-		]
+		];
 
 		$result = $this->apiQuery($filter);
 
