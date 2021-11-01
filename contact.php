@@ -90,7 +90,12 @@ Class Contact {
 		$indexPhone = array_search($this->customFields['phone'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
 		//Разделить в бд на YC поля и AMO поля чтобы сделать через цикл ???
 
-		$id = $this->contactData['custom_fields'][$indexId]['values'][0]['value']; //Сложная конструкция поиска Custom Values AMOCRM
+		if ($indexId === false) {
+			$id = -1;
+		}
+		else {
+			$id = $this->contactData['custom_fields'][$indexId]['values'][0]['value']; //Сложная конструкция поиска Custom Values AMOCRM
+		}
 		$phone = $this->contactData['custom_fields'][$indexPhone]['values'][0]['value'];
 		$this->setId($id);
 		//Проверку телефона добавить !!!
