@@ -190,7 +190,7 @@ class Controller {
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		if ($amoId != -1) {
 			$this->method = 'PATCH';
-			$dataArray[0]['id'] = $amoId;
+			$dataArray[0]['id'] = (int)$amoId;
 
 		}
 		else {
