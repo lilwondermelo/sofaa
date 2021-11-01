@@ -97,7 +97,7 @@ Class Contact {
 		$this->setPhone($phone);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
-		return array_search($this->customFields['phone]'], $dataCustomFieldIds);
+		return $this->customFields['phone]';
 	}
 
 
