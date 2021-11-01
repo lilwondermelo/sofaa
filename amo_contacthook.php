@@ -1,10 +1,10 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$postData = $_POST;
-	$entityType = array_key_first($_POST);
-	$amoHost = $_POST['account']['subdomain'];
-	$actionType = array_key_first($_POST[$entityType]);
-	$entityData = $_POST[$entityType][$actionType][0];
+	$postData = file_get_contents('php://input');
+	$entityType = array_key_first($postData);
+	$amoHost = $postData['account']['subdomain'];
+	$actionType = array_key_first($postData[$entityType]);
+	$entityData = $postData[$entityType][$actionType][0];
 
 
 
