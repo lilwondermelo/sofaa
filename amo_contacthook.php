@@ -19,13 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
 	if ($actionType == 'add') {
-		$name = $contact->createFromAmo();
+		$contact->createFromAmo();
 	}
 	else if ($actionType == 'update') {
-		$name = $contact->editFromAmo();
+		$contact->editFromAmo();
 	}
 	$amoData = $contact->convertToYC();
-	$result = $controller->setContactToYC($amoData);
+	$result = $controller->checkYcContact($contact);
+	//$result = $controller->setContactToYC($amoData);
 
 	$controller->recordHook(json_encode($name, JSON_UNESCAPED_UNICODE) . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 	echo json_encode($entityType, JSON_UNESCAPED_UNICODE);

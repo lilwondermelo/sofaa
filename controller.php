@@ -78,6 +78,8 @@ class Controller {
 		}
 	}
 
+	
+
 
 	public function checkAmoContact($contact) {
 		$this->isYc = 0;
@@ -105,6 +107,31 @@ class Controller {
 			return -1;
 		}
 		return $resId;
+	}
+
+
+	public function checkYcContact($contact) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
+		$this->method = 'POST';
+
+		$filter = [
+			'filters' => [
+				[
+					'type' => 'id',
+					'state' => [
+						'value' => [
+							$contact->getId()
+						]
+					]
+				]
+			]
+		]
+
+		$result = $this->apiQuery($filter);
+
+		return $result;
 	}
 
 	public function setContactToYC($contact) {
