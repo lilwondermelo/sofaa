@@ -29,7 +29,7 @@ Class Contact {
 		$ycData = [
 			'id' => $this->getId(),
 			'name' => $this->getName(),
-			'phone' => '+7' . $this->getPhoneApi()
+			'phone' => $this->getPhone()
 		];
 		return $ycData;
 	}
@@ -85,7 +85,7 @@ Class Contact {
 	}
 
 	public function editFromAmo() {
-		$dataCustomFieldIds = array_column($this->contactData['custom_fields'], 'field_id'); //Создает массив из значений id
+		$dataCustomFieldIds = array_column($this->contactData['custom_fields'], 'id'); //Создает массив из значений id
 		$indexId = array_search($this->customFields['yc_id'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный id
 		$indexPhone = array_search($this->customFields['phone]'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
 		//Разделить в бд на YC поля и AMO поля чтобы сделать через цикл ???
