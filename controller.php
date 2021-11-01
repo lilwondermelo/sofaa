@@ -67,7 +67,7 @@ class Controller {
 	public function recordHook($data = 'empty') {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');
-		$updater->setKey('id');
+		$updater->setKeyField('id');
 		$updater->setDataFields(array('data_key' => 'test_hook_' . date('Y-m-d H:i:s'), 'data_value' => $data));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
