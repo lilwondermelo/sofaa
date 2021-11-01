@@ -6,15 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$actionType = array_key_first($postData[$entityType]);
 	$entityData = $postData[$entityType][$actionType][0];
 
-
-
 	require_once 'account.php';
 	$account = new Account($amoHost);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-
-	
-
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
@@ -25,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$kek = $contact->editFromAmo();
 	}
 	$amoData = $contact->convertToYC();
-	$result = $controller->setContactToYC($amoData);
+	//$result = $controller->setContactToYC($amoData);
 
 	$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE) . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 	echo json_encode($entityType, JSON_UNESCAPED_UNICODE);
