@@ -64,6 +64,9 @@ class Controller {
 		
 	}
 
+
+
+
 	public function recordHook($data = 'empty') {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');
@@ -106,7 +109,7 @@ class Controller {
 		/*if (!$resId) {
 			return -1;
 		}*/
-		return $filterPhone;
+		return http_build_query($filterPhone);
 	}
 
 
