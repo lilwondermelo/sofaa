@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$result = $controller->checkYcContact($contact);
 	//$result = $controller->setContactToYC($amoData);
 
-	$controller->recordHook(json_encode($name, JSON_UNESCAPED_UNICODE) . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
+	$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE) . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 	echo json_encode($entityType, JSON_UNESCAPED_UNICODE);
 }
 
