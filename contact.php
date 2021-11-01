@@ -87,7 +87,6 @@ Class Contact {
 		$phone = $this->contactData['custom_fields'][$indexPhone]['values'][0]['value'];
 		//$phone = '+79999999999';
 		$this->setPhone($phone);
-		$this->setId(-1);
 		$this->setSpent(0);
 		$this->setVisits(0);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!

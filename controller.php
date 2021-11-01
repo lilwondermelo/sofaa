@@ -186,22 +186,25 @@ class Controller {
 	public function setContactToAmo($contact, $amoId = -1) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$daraArray = [$contact];
+		$dataArray = [$contact];
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
 		if ($amoId != -1) {
 			$this->method = 'PATCH';
-			$daraArray[0]['id'] = $amoId;
+			$dataArray[0]['id'] = $amoId;
 
 		}
 		else {
 			$this->method = 'POST';
 		}
-		$result = $this->apiQuery($daraArray);
+		$result = $this->apiQuery($dataArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return $daraArray;
+			return $dataArray;
 		}
-		return $resId;
+		else {
+			return $resId;
+		}
+		
 	}
 }
 ?>
