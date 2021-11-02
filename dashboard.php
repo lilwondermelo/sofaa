@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-	
+	<div class="button clientListButton">Получить список клиентов</div>
 	<script src="js/main.js"></script>
 </body>
 </html>
