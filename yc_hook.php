@@ -44,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		else {
 			$data['id'] = $amoDeal['id'];
-			 $result = $controller->setDealToAmo($amoContactData, '1');
+			 $result = $controller->setDealToAmo($data, '1');
 		}
-		$controller->recordHook(json_encode($data, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($amoContactData, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
