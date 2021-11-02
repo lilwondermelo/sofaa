@@ -94,7 +94,7 @@ class Controller {
 	public function getAmoContact($ycId) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
 		$this->method = 'GET';
 		$filterId = [
 			'filter' => [
