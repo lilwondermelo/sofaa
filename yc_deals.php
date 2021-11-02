@@ -1,33 +1,38 @@
 <?php
-$isTest = 0;
+$page = 1;
 $company = '';
-$isTest = (!empty($_GET["isTest"]))?(!empty($_GET["isTest"])):0;
 if (!empty($_GET["company"])) {
 	$company = (!empty($_GET["company"]))?$_GET["company"]:'';
 }
+if (!empty($_GET["page"])) {
+	$page = (!empty($_GET["page"]))?$_GET["page"]:'';
+}
 if ($company != '') {
-	$i = 0;
-	$result_db = array();
-	require_once 'yc_class.php'; //Класс для работы с API YCLIENTS
-	$ycClass = new YCClass($company, $isTest); //В конструктор класса передаем название (название - поддомен компании из AMOCRM)
-	$dataClients = $ycClass->getClientsDb();
-	foreach ($dataClients as $item) {	
-		$clientId = $item['yc_id'];
-		$result = $ycClass->getLastClientRecord($clientId)['data'][0];
-		$data[$i]['id'] = $result['id'];
-		if ($data[$i]['id']) {
-			$data[$i]['data'] = array(
-				'yc_client_id' => $item['yc_id'],
-				'date_last' => $result['date'],
-				'stat' => ($result['attendance'])?$result['visit_attendance']:'0',
-				'is_deleted' => ($result['deleted'])?'1':'0'
-			);
-			$result_db[] = $ycClass->recordInDb('records', 'yc_id', $data[$i]['id'], $data[$i]['data']);
-		$i++;
+	require_once 'account.php';
+	$account = new Account($company);
+	require_once 'controller.php';
+	$controller = new Controller($account);
+	
+	$clientList = $controller->getCLientCount();
+	$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
+	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
+		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
+		$amoRequestData = [];
+		$amoDealsData = [];
+		foreach ($pageData['data'] as $item) {
+			$clientData = $controller->getClientData($item['id']);
+			$dealData = $controller->getLastClientRecord($item['id']);
+			$amoRequestData[] = $clientData;
+			$amoDealsData[] = $dealData;
+
 		}
+		//$result[] = $controller->setManyContactsToAmo($amoRequestData);	
+		//$result[] = $controller->setManyDealsToAmo($amoDealsData);	
+		echo json_encode($amoDealsData);
 	}
-	echo 'Компания: ' . $company . '<br>' . 'Тестовый режим ' . (($isTest == 1)?'ВКЛЮЧЕН':'не включен') . '<br>';
-	echo json_encode($result_db);
+	
+	//echo json_encode($result) . '<br><br>';
+	echo 'Компания: ' . $company . '<br>';
 }
 else {
 	echo 'Компания не выбрана';
