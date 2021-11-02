@@ -67,7 +67,7 @@ class Controller {
 	public function getLastClientRecord($clientId) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
+		$this->link = 'https://api.yclients.com/api/v1/records/' . $this->account->getYcFilialId();
 		$this->method = 'GET';
 		$args = array('client_id' => $clientId);
 		return $this->apiQuery($args);
