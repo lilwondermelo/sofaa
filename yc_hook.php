@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//$amoContactData = $controller->getAmoContact($clientId);
 		//$amoId = $amoContactData['_embedded']['contacts'][0]['id'];
 		//$amoDeal = $amoContactData['_embedded']['contacts']['_embedded']['leads'];
+			echo $clientId;
 		$controller->recordHook(json_encode($clientId, JSON_UNESCAPED_UNICODE));
 	}
 
