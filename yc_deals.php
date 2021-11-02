@@ -21,17 +21,18 @@ if ($company != '') {
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
-			$dealData = $controller->getLastClientRecord($item['id']);
+			//$dealData = $controller->getLastClientRecord($item['id']);
+			
 			$amoRequestData[] = $clientData;
-			$amoDealsData[] = $dealData['data'];
+			//$amoDealsData[] = $data;
 
 		}
-		//$result[] = $controller->setManyContactsToAmo($amoRequestData);	
+		$result[] = $controller->setManyContactsToAmo($amoRequestData);	
 		//$result[] = $controller->setManyDealsToAmo($amoDealsData);	
-		echo json_encode($amoDealsData) . '<br><br>';
+		//echo json_encode($amoDealsData) . '<br><br>';
 	}
 	
-	//echo json_encode($result) . '<br><br>';
+	echo json_encode($result) . '<br><br>';
 	echo 'Компания: ' . $company . '<br>';
 }
 else {
