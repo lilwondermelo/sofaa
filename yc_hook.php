@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		sleep(2);
 		$clientId = $contactData['client']['id'];
 		$amoContactData = $controller->getAmoContact($clientId);
-		$amoId = $amoContactData['_embedded']['contacts']['id'];
+		$amoId = $amoContactData['_embedded']['contacts'][0]['id'];
 		$amoDeal = $amoContactData['_embedded']['contacts'][0]['_embedded']['leads'][0];
 		$stat = $contactData['visit_attendance'];
 		$data = array(
@@ -44,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		else {
 			$data['id'] = $amoDeal['id'];
-			 $result = $controller->setDealToAmo($data, '1');
+			$result = $controller->setDealToAmo($data, '1');
 		}
-		$controller->recordHook(json_encode($amoContactData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
