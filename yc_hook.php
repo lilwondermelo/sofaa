@@ -29,7 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		sleep(2);
 		$clientId = $postData['client']['id'];
 		$recordData = $controller->getLastClientRecord($clientId)['data'][0];
-		$controller->recordHook(json_encode($recordData, JSON_UNESCAPED_UNICODE));
+
+		/*$data = array(
+				'yc_client_id' => $clientId,
+				'date_last' => $result['date'],
+				'stat' => ($result['attendance'])?$result['visit_attendance']:'0',
+				'is_deleted' => ($result['deleted'])?'1':'0'
+			);*/
+		$amoId = $controller->checkAmoDeals($clientId);
+		$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {

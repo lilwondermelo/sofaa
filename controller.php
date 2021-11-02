@@ -72,6 +72,18 @@ class Controller {
 		$args = array('client_id' => $clientId);
 		return $this->apiQuery($args);
 	}
+
+
+	public function checkAmoDeals($clientId) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/leads';
+		$this->method = 'GET';
+		$args = [
+			'with' => $clientId
+		];
+		return $this->apiQuery($args);
+	}
 		
 
 	public function recordHook($data = 'empty') {
