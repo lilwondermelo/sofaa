@@ -90,10 +90,9 @@ class Controller {
 	}
 
 	public function setManyDealsToAmo($dataArray) {
-		$this->check = 1;
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/contacts';
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/leads';
 		$this->method = 'POST';
 		$result = $this->apiQuery($dataArray);
 		return $result;
