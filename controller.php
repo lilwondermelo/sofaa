@@ -91,6 +91,19 @@ class Controller {
 	}
 
 
+	public function setDealToAmo($data, $amoId = -1) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
+		$this->method = 'POST';
+		if ($amoId != '') {
+			$this->method = 'PATCH';
+		}
+		$result = $this->apiQuery([$data]);
+		return $result;
+	}
+
+
 	public function getAmoContact($ycId) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
