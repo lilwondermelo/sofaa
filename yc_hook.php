@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	else {
 		sleep(2);
-		//$clientId = $postData['client']['id'];
+		$clientId = $postData['client']['id'];
 		//$recordData = $controller->getLastClientRecord($clientId)['data'][0];
 
 		/*$data = array(
@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				'stat' => ($result['attendance'])?$result['visit_attendance']:'0',
 				'is_deleted' => ($result['deleted'])?'1':'0'
 			);*/
-		//$amoContactData = $controller->getAmoContact($clientId);
+		$amoContactData = $controller->getAmoContact($clientId);
 		//$amoId = $amoContactData['_embedded']['contacts'][0]['id'];
 		//$amoDeal = $amoContactData['_embedded']['contacts']['_embedded']['leads'];
 			//echo $clientId;
-		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($amoContactData, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
