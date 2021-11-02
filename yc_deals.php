@@ -18,6 +18,7 @@ if ($company != '') {
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		$amoRequestData = [];
+		$data = [];
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
