@@ -24,7 +24,7 @@ if ($company != '') {
 			//$dealData = $controller->getLastClientRecord($item['id']);
 			
 			$amoRequestData[] = $clientData;
-			//$amoDealsData[] = $data;
+			$amoDealsData[] = $data;
 
 		}
 		$result[] = $controller->setManyContactsToAmo($amoRequestData);	
@@ -33,7 +33,23 @@ if ($company != '') {
 	}
 	
 	echo json_encode($result) . '<br><br>';
-	
+	$counter = 0;
+	foreach ($result as $item) {
+		foreach ($item['_embedded']['contacts'] as $contact)  {
+			$amoId = $contact['id'];
+			$stat = $dealData['visit_attendance'];
+			$data = array(
+			'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_date'], "values" => array(array("value" => $dealData['date'])))),
+			'name' => 'Запись из YCLIENTS',
+			'price' => 1,
+			'status_id' => $account->getStatuses()[$stat],
+			'_embedded' => array('contacts' => array(array('id' => $amoId)))
+		);
+
+		}
+	}
+	$result = $controller->setManyDealsToAmo($data);
+	echo json_encode($result);
 	echo 'Компания: ' . $company . '<br>';
 }
 else {
