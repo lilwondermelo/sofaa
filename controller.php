@@ -103,7 +103,7 @@ class Controller {
 		];
 		$result = $this->apiQuery($filterId);
 		//return $result;
-		return http_build_query($filterId);
+		return $filterId;
 	}
 
 	
