@@ -47,7 +47,7 @@ if ($company != '') {
 		}
 		$result = $controller->setManyDealsToAmo($data);	
 		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	
 	
