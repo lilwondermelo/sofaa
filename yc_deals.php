@@ -34,16 +34,15 @@ if ($company != '') {
 
 		}
 		$result = $controller->setManyContactsToAmo($amoRequestData);
+		echo json_encode($result) . '<br><br>';
 		$counter = 0;
 		foreach ($result['_embedded']['contacts'] as $contact)  {
 			$amoId = $contact['id'];
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}
-		//echo json_encode($result) . '<br><br>';
-		echo json_encode($amoDealsData, JSON_UNESCAPED_UNICODE);
-		//$result[] = $controller->setManyDealsToAmo($amoDealsData);	
-		//echo json_encode($amoDealsData) . '<br><br>';
+		$result = $controller->setManyDealsToAmo($amoDealsData);	
+		echo json_encode($result) . '<br><br>';
 	}
 	
 	
