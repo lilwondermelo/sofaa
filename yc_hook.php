@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$amoDeal = $amoContactData['_embedded']['contacts'][0]['_embedded']['leads'][0];
 		$stat = $contactData['visit_attendance'];
 		$data = array(
-			'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => (int)$contactData['id']))), array("field_id" => $account->getCustomFields()['deal_date'], "values" => array(array("value" => $contactData['date'])))),
+			'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => $contactData['id']))), array("field_id" => $account->getCustomFields()['deal_date'], "values" => array(array("value" => $contactData['date'])))),
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
 			'status_id' => $account->getStatuses()[$stat],
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$data['id'] = $amoDeal['id'];
 			 $result = $controller->setDealToAmo($data, '1');
 		}
-		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($contactData, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
