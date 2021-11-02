@@ -64,6 +64,16 @@ class Controller {
 		
 	}
 
+	public function getLastClientRecord($clientId) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
+		$this->method = 'GET';
+		$args = array('client_id' => $clientId);
+		return $this->apiQuery($args);
+	}
+		
+
 	public function recordHook($data = 'empty') {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');

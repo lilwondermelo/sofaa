@@ -27,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	else {
 		sleep(2);
-		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$clientId = $postData['client']['id'];
+		$recordData = $controller->getLastClientRecord($clientId)['data'][0];
+		$controller->recordHook(json_encode($recordData, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
