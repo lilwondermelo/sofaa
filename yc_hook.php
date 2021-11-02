@@ -27,12 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	else {
 		sleep(2);
 		$clientId = $contactData['client']['id'];
-		//$recordData = $controller->getLastClientRecord($clientId)['data'][0];
 		$amoContactData = $controller->getAmoContact($clientId);
-		//$amoId = $amoContactData['_embedded']['contacts'][0]['id'];
-		//$amoDeal = $amoContactData['_embedded']['contacts']['_embedded']['leads'];
+		$amoId = $amoContactData['_embedded']['contacts'][0]['id'];
+		$amoDeal = $amoContactData['_embedded']['contacts']['_embedded']['leads'][0];
 			//echo $clientId;
-		$controller->recordHook(json_encode($amoContactData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($amoDeal, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
