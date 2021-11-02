@@ -41,7 +41,7 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}
-		$result = $controller->setManyDealsToAmo($amoDealsData);	
+		$result = $controller->setManyDealsToAmo($data);	
 		echo json_encode($result) . '<br><br>';
 	}
 	
