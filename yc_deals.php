@@ -33,6 +33,7 @@ if ($company != '') {
 	}
 	
 	echo json_encode($result) . '<br><br>';
+	
 	echo 'Компания: ' . $company . '<br>';
 }
 else {
