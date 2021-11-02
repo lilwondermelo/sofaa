@@ -23,7 +23,7 @@ if ($company != '') {
 			$clientData = $controller->getClientData($item['id']);
 			$dealData = $controller->getLastClientRecord($item['id']);
 			$amoRequestData[] = $clientData;
-			$amoDealsData[] = $dealData;
+			$amoDealsData[] = $dealData['data'];
 
 		}
 		//$result[] = $controller->setManyContactsToAmo($amoRequestData);	
