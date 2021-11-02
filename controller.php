@@ -74,16 +74,6 @@ class Controller {
 	}
 
 
-	public function checkAmoDeals($clientId) {
-		$this->isYc = 0;
-		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/leads';
-		$this->method = 'GET';
-		$args = [
-			'with' => $clientId
-		];
-		return $this->apiQuery($args);
-	}
 		
 
 	public function recordHook($data = 'empty') {
@@ -112,11 +102,7 @@ class Controller {
 			]
 		];
 		$result = $this->apiQuery($filterId);
-		$resId = $result['_embedded']['contacts'][0]['id'];
-		if (!$resId) {
-			return -1;
-		}
-		return $resId;
+		return $result;
 	}
 
 	
