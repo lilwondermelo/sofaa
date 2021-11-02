@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				'is_deleted' => ($result['deleted'])?'1':'0'
 			);*/
 		$amoContact = $controller->getAmoContact($clientId);
-		//$amoId = $controller->checkAmoDeals($clientId);
-		$controller->recordHook(json_encode($amoContact, JSON_UNESCAPED_UNICODE));
+		$amoId = $controller->checkAmoDeals($amoContact);
+		$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
