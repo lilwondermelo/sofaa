@@ -45,7 +45,7 @@ if ($company != '') {
 		}
 		$result = $controller->setManyDealsToAmo($data);	
 		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		echo strtotime($keks). '<br><br>' . date() . '<br><br>';
+		echo strtotime($keks). '<br><br>' . strtotime(date('Y-m-d')) . '<br><br>';
 	}
 	
 	
