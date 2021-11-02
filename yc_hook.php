@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
 			'status_id' => $account->getStatuses()[$stat],
-			'_embedded' => array('contacts' => array(array('id' => (int)$amoId)))
+			'_embedded' => array('contacts' => array(array('id' => $amoId)))
 		);
 
 		if (!$amoDeal) {
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		else {
 			$data['id'] = $amoDeal['id'];
-			 $result = $controller->setDealToAmo($data, '1');
+			 $result = $controller->setDealToAmo($amoContactData, '1');
 		}
 		$controller->recordHook(json_encode($data, JSON_UNESCAPED_UNICODE));
 	}
