@@ -1,5 +1,5 @@
 <?php
-$host = 'https://ablaser.amocrm.ru/oauth2/access_token';
+$host = 'https://3asti.amocrm.ru/oauth2/access_token';
 
 $requestData = [
             'client_secret' => 'idWx4rxrdXaHCjrhLNFc5IaIvUNxiXVbfRJu1qI2U0MpLcb0Szpe5X0FMvOCdl5z',

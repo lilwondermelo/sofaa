@@ -28,7 +28,7 @@ Class Account {
 	}
 
 	public function newAmoBearer() {
-		$host = 'https://ablaser.amocrm.ru/oauth2/access_token';
+		$host = 'https://' . $amoHost . '.amocrm.ru/oauth2/access_token';
 		$requestData = [
             'client_secret' => $this->getClientSecret(),
             'client_id' => $this->getClientId(),
