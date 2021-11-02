@@ -21,7 +21,7 @@ if ($company != '') {
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
-			$dealData = $controller->getLastClientRecord($item['id']);
+			$dealData = $controller->getLastClientRecord($item['id'])['data'];
 			$stat = $dealData['visit_attendance'];
 			$data[] = array(
 				'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_date'], "values" => array(array("value" => $dealData['date'])))),
@@ -40,8 +40,8 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}
-		echo json_encode($result) . '<br><br>';
-		echo json_encode($amoDealsData);
+		//echo json_encode($result) . '<br><br>';
+		echo json_encode($amoDealsData, JSON_UNESCAPED_UNICODE);
 		//$result[] = $controller->setManyDealsToAmo($amoDealsData);	
 		//echo json_encode($amoDealsData) . '<br><br>';
 	}
