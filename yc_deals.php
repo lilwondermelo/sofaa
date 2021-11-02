@@ -28,7 +28,7 @@ if ($company != '') {
 		}
 		//$result[] = $controller->setManyContactsToAmo($amoRequestData);	
 		//$result[] = $controller->setManyDealsToAmo($amoDealsData);	
-		echo json_encode($amoDealsData);
+		echo json_encode($amoDealsData) . '<br><br>';
 	}
 	
 	//echo json_encode($result) . '<br><br>';
