@@ -21,7 +21,7 @@ if ($company != '') {
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
 			$clientData = $controller->getClientData($item['id']);
-			$dealData = $controller->getLastClientRecord($item['id'])['data'];
+			$dealData = $controller->getLastClientRecord($item['id'])['data'][0];
 			$stat = $dealData['visit_attendance'];
 			$data[] = array(
 				'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_date'], "values" => array(array("value" => $dealData['date'])))),
