@@ -48,8 +48,8 @@ if ($company != '') {
 			$i++;
 		}
 	}
-	$result = $controller->setManyDealsToAmo($data);
-	echo json_encode($result);
+	//$result = $controller->setManyDealsToAmo($data);
+	echo json_encode($data);
 	echo 'Компания: ' . $company . '<br>';
 }
 else {
