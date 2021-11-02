@@ -24,6 +24,7 @@ if ($company != '') {
 			$clientData = $controller->getClientData($item['id']);
 			$dealData = $controller->getLastClientRecord($item['id'])['data'][0];
 			$stat = $dealData['visit_attendance'];
+			$keks = $dealData['date'];
 			$data[] = array(
 				'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_date'], "values" => array(array("value" => $dealData['date'])))),
 				'name' => 'Запись из YCLIENTS',
@@ -43,8 +44,8 @@ if ($company != '') {
 			$counter++;
 		}
 		$result = $controller->setManyDealsToAmo($data);	
-		echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo json_encode($keks, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	
 	
