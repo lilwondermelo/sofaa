@@ -100,6 +100,25 @@ class Controller {
 		}
 	}
 
+
+	public function getAmoContact($ycId) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
+		$this->method = 'GET';
+		$filterId = [
+			'filter' => [
+				$this->account->getCustomFields()['yc_id'] => $ycId
+			]
+		];
+		$result = $this->apiQuery($filterId);
+		$resId = $result['_embedded']['contacts'][0]['id'];
+		if (!$resId) {
+			return -1;
+		}
+		return $resId;
+	}
+
 	
 
 

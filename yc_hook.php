@@ -36,8 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				'stat' => ($result['attendance'])?$result['visit_attendance']:'0',
 				'is_deleted' => ($result['deleted'])?'1':'0'
 			);*/
-		$amoId = $controller->checkAmoDeals($clientId);
-		$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE));
+		$amoContact = $controller->getAmoContact($clientId);
+		//$amoId = $controller->checkAmoDeals($clientId);
+		$controller->recordHook(json_encode($amoContact, JSON_UNESCAPED_UNICODE));
 	}
 
 	/*else if ($hookType == 'record') {
