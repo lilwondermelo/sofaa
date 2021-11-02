@@ -101,7 +101,7 @@ class Controller {
 				$this->account->getCustomFields()['yc_id'] => $ycId
 			]
 		];
-		$result = $this->apiQuery();
+		$result = $this->apiQuery($filterId);
 		return $result;
 	}
 
