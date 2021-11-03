@@ -43,20 +43,19 @@ if ($company != '') {
 					'status_id' => $account->getStatuses()[$stat]
 				);
 				$amoRequestData[] = $clientData;
-				$amoDealsData[] = $dealData;
 			
 		}
-		//$result = $controller->setManyContactsToAmo($amoRequestData);
-		echo json_encode($amoRequestData) . '<br><br>';
+		$result = $controller->setManyContactsToAmo($amoRequestData);
+		echo json_encode($result) . '<br><br>';
 		$counter = 0;
 		foreach ($result['_embedded']['contacts'] as $contact)  {
 			$amoId = $contact['id'];
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}
-		//$result = $controller->setManyDealsToAmo($data);	
+		$result1 = $controller->setManyDealsToAmo($data);	
 		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo json_encode($result1, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	
 	
