@@ -36,7 +36,6 @@ if ($company != '') {
 			if (strtotime($dealData['date']) < strtotime($account->getActiveDate())) {
 				$stat = 'y';
 			}
-			if (strtotime($dealData['date']) >= strtotime($account->getAllDate())) {
 				$data[] = array(
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['date']))))),
 					'name' => 'Запись из YCLIENTS',
@@ -45,19 +44,19 @@ if ($company != '') {
 				);
 				$amoRequestData[] = $clientData;
 				$amoDealsData[] = $dealData;
-			}
+			
 		}
-		$result = $controller->setManyContactsToAmo($amoRequestData);
-		echo json_encode($result) . '<br><br>';
+		//$result = $controller->setManyContactsToAmo($amoRequestData);
+		echo json_encode($amoRequestData) . '<br><br>';
 		$counter = 0;
 		foreach ($result['_embedded']['contacts'] as $contact)  {
 			$amoId = $contact['id'];
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}
-		$result = $controller->setManyDealsToAmo($data);	
+		//$result = $controller->setManyDealsToAmo($data);	
 		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	
 	
