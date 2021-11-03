@@ -48,7 +48,7 @@ if ($company != '') {
 			}
 		}
 		$result = $controller->setManyContactsToAmo($amoRequestData);
-		//echo json_encode($result) . '<br><br>';
+		echo json_encode($result) . '<br><br>';
 		$counter = 0;
 		foreach ($result['_embedded']['contacts'] as $contact)  {
 			$amoId = $contact['id'];
