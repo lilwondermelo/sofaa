@@ -8,6 +8,8 @@ Class Account {
 	private $amoHost;
 	private $clientSecret;
 	private $clientId;
+	private $allDate;
+	private $activeDate;
 	private $ycFilialId;
 	private $customFields = array();
 	private $statuses = array();
@@ -25,6 +27,8 @@ Class Account {
 		$this->setYcFilialId($accData['yc_id']);
 		$this->setCustomFields($accData['custom_fields']);
 		$this->setStatuses($accData['statuses']);
+		$this->setActiveDate($accData['active_date']);
+		$this->setAllDate($accData['all_date']);
 	}
 
 	public function newAmoBearer() {
@@ -102,6 +106,14 @@ Class Account {
 		return $this->statuses;
 	}
 
+	public function getAllDate() {
+		return $this->allDate;
+	}
+
+	public function getActiveDate() {
+		return $this->activeDate;
+	}
+
 	public function setAmoBearer($amoBearer) {
 		$this->amoBearer = $amoBearer;
 	}
@@ -132,5 +144,11 @@ Class Account {
 
 	public function setStatuses($statuses) {
 		$this->statuses = json_decode($statuses, true);
+	}
+	public function setAllDate($allDate) {
+		$this->allDate = $allDate;
+	}
+	public function setActiveDate($activeDate) {
+		$this->activeDate = $activeDate;
 	}
 }
