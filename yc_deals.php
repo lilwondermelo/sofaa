@@ -36,7 +36,7 @@ if ($company != '') {
 			if (strtotime($dealData['date']) < strtotime($account->getActiveDate())) {
 				$stat = 'y';
 			}
-			if (strtotime($dealData['date']) > strtotime($account->getAllDate())) {
+			if (strtotime($dealData['date']) >= strtotime($account->getAllDate())) {
 				$data[] = array(
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['date']))))),
 					'name' => 'Запись из YCLIENTS',
