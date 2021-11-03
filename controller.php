@@ -5,7 +5,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
-	private $dataPerPage = 200;
+	private $dataPerPage = 100;
 
 	public function __construct($account){
 		$this->account = $account;
@@ -198,7 +198,7 @@ class Controller {
 		$this->isYc = 1;
 
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('page_size' => 5, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999), 'created' => array("from"=> "2020-01-01", "to"=> "2025-03-23")))));
+		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999), 'created' => array("from"=> "2020-01-01", "to"=> "2025-03-23")))));
 		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		return $this->apiQuery($args);
