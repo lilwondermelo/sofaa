@@ -63,7 +63,7 @@ if ($company != '') {
 	
 	//$result = $controller->setManyDealsToAmo($data);
 	echo 'Компания: ' . $company . '<br>';
-	header('Location: http://ingeniouslife.space/yc_deals.php?company=jkamogolovaorg&page=' . ($page+1));
+	header('Location: ingeniouslife.space/yc_deals.php?company=jkamogolovaorg&page=' . ($page+1));
 }
 else {
 	echo 'Компания не выбрана';
