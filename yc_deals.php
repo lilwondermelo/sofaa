@@ -41,21 +41,23 @@ if ($company != '') {
 					'name' => 'Запись из YCLIENTS',
 					'price' => 1,
 					'status_id' => $account->getStatuses()[$stat]
+					'_embedded' => [
+						'contacts' => [$clientData]
+					]
 				);
-				$amoRequestData[] = $clientData;
-			
-				
+				//$amoRequestData[] = $clientData;	
 		}
 		//$result = $controller->setManyContactsToAmo($amoRequestData);
-		echo json_encode($amoRequestData) . '<br><br>';
+		/*echo json_encode($amoRequestData) . '<br><br>';
 		$counter = 0;
 		foreach ($result['_embedded']['contacts'] as $contact)  {
 			$amoId = $contact['id'];
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
-		}
+		}*/
 		//$result1 = $controller->setManyDealsToAmo($data);	
-		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo count($data) . '<br><br>';
 		//echo json_encode($result1, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	
