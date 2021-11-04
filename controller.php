@@ -146,7 +146,7 @@ class Controller {
 			]
 		];
 		$result = $this->apiQuery($filterId);
-		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE) . '1');
+		$controller->recordHook(json_encode($filterId, JSON_UNESCAPED_UNICODE) . '1');
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
