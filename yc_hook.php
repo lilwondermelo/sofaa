@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	$controller->recordHook(file_get_contents('php://input'));
 	if ($hookType == 'client') {
 		//$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
@@ -22,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoData = $contact->convertToAmo();
 				//$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE) . '3');
 				$amoId = $controller->checkAmoContact($contact);
-				$controller->recordHook('result' . json_encode($amoId, JSON_UNESCAPED_UNICODE));
+				//$controller->recordHook('result' . json_encode($amoId, JSON_UNESCAPED_UNICODE));
 				$resId = $controller->setContactToAmo($amoData, $amoId);
-				
+				echo 'result' . json_encode($amoId, JSON_UNESCAPED_UNICODE);
 		}
 	}
 	else {
