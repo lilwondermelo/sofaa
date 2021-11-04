@@ -3,8 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$postData = json_decode(file_get_contents('php://input'), true);
 
-	
-
 	$contactData = $postData['data'];
 	$hookType = $postData['resource'];
 	$hookStatus = $postData['status'];
@@ -80,7 +78,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
     }*/
 }  
-
-{"name":"asda","custom_fields_values":[{"field_id":162683,"values":[{"value":"+79963814070"}]},{"field_id":288031,"values":[{"value":"9963814070"}]},{"field_id":287973,"values":[{"value":0}]},{"field_id":288023,"values":[{"value":0}]},{"field_id":287969,"values":[{"value":120811805}]}]}3
 ?>
 
