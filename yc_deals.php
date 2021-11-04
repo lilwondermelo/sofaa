@@ -1,4 +1,5 @@
 <?php
+echo '<br><br><br><br><br><br><br><br><br>ГОТОВО<br><br><br>';
 $page = 1;
 $company = '';
 if (!empty($_GET["company"])) {
