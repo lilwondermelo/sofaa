@@ -131,7 +131,7 @@ class Controller {
 
 
 	public function checkAmoContact($contact) {
-		$controller->recordHook('1');
+		$this->recordHook('1');
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
@@ -146,14 +146,15 @@ class Controller {
 				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
 		];
-		$controller->recordHook(json_encode($filterId, JSON_UNESCAPED_UNICODE) . '1');
+		$this->recordHook('filter' . json_encode($filterId, JSON_UNESCAPED_UNICODE));
 		$result = $this->apiQuery($filterId);
 		
 		$resId = $result['_embedded']['contacts'][0]['id'];
+		$this->recordHook(json_encode('resFilterId' . $result, JSON_UNESCAPED_UNICODE));
 		if (!$resId) {
 			$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
 			$result = $this->apiQuery($filterPhone);
-			$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE) . '2');
+			$this->recordHook('resFilterPhone' . json_encode($result, JSON_UNESCAPED_UNICODE));
 			$resId = $result['_embedded']['contacts'][0]['id'];
 		}
 		if (!$resId) {
