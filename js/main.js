@@ -1,17 +1,30 @@
+var company = '';
+var current = 1;
+var finish = 1;
+
+
 function sendPost(company, page) {
-    $.get( "https://ingeniouslife.space/yc_deals.php?company=" + company + "&page=" + page, function( data ) { 
-        console.log(data);
-        //$( "div" ).html( data ); 
-    })
+    $.ajax({
+        url : "https://ingeniouslife.space/yc_deals.php?company=" + company + "&page=" + page,
+        type : "get",
+        async: false,
+        success : function(response) {
+            console.log(response);
+            $('.response').append(company + '<br><br>');
+            current++;
+            if (current <= finish) {
+                sendPost(company, current);
+            }
+        },
+        error: function() {
+           console.log('error');
+        }
+     });
 }
 
 function start() {
-    var company = $('#company').val();
-    var current = $('#from').val();
-    var finish = $('#to').val();
-    for (var i = current; i <= finish; i++) {
-        sendPost(company, i);
-        $('.response').append(company + '<br><br>');
-    }
-    
+    company = $('#company').val();
+    current = $('#from').val();
+    finish = $('#to').val();
+    sendPost(company, current);
 }
