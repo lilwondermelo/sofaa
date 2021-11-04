@@ -1,5 +1,5 @@
 <?php
-echo '<br><br><br><br><br><br><br><br><br>ГОТОВО<br><br><br><br><br><br><br><br><br>';
+//echo '<br><br><br><br><br><br><br><br><br>ГОТОВО<br><br><br><br><br><br><br><br><br>';
 $page = 1;
 $company = '';
 if (!empty($_GET["company"])) {
@@ -56,10 +56,11 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}*/
-		$result = $controller->setManyDealsToAmo($data);	
-		echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		echo count($data) . '<br><br>';
-		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		//$result = $controller->setManyDealsToAmo($data);	
+		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		//$dataResult[] = count($data);
+		//echo count($data) . '<br><br>';
+		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	
 	

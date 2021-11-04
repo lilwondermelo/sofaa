@@ -7,7 +7,11 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-	<div class="button clientListButton">Получить список клиентов</div>
+	<div class="button clientListButton" onclick="start()">Запустить интеграцию</div>
+	<input type="text" id="company" placeholder="Название филиала">
+	<input type="number" id="from" placeholder="С какой страницы начать">
+	<input type="number" id="to" placeholder="До какой страницы считать">
+	<div class="response"></div>
 	<script src="js/main.js"></script>
 </body>
 </html>
