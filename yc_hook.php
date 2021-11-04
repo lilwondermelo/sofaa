@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$companyId = $postData['company_id'];
 	require_once 'account.php';
 	$account = new Account($companyId);
-
+	echo json_encode($account->getCustomFields(), JSON_UNESCAPED_UNICODE);
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	if ($hookType == 'client') {

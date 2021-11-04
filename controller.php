@@ -161,9 +161,6 @@ class Controller {
 		return $resId;*/
 	}
 
-
-
-
 	public function setContactToYC($contact) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
