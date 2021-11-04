@@ -141,8 +141,7 @@ class Controller {
 				$this->account->getCustomFields()['yc_id'] => $contact->getId()
 			]
 		];
-		return ($filterId);
-		/*$filterPhone = [
+		$filterPhone = [
 			'filter' => [
 				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
@@ -158,7 +157,7 @@ class Controller {
 		if (!$resId) {
 			return -1;
 		}
-		return $resId;*/
+		return $resId;
 	}
 
 	public function setContactToYC($contact) {

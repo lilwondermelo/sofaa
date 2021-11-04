@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$companyId = $postData['company_id'];
 	require_once 'account.php';
 	$account = new Account($companyId);
-	echo json_encode($account->getCustomFields(), JSON_UNESCAPED_UNICODE);
+
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	if ($hookType == 'client') {
@@ -19,11 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
-				//$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE) . '3');
 				$amoId = $controller->checkAmoContact($contact);
-				//$controller->recordHook('result' . json_encode($amoId, JSON_UNESCAPED_UNICODE));
-				//$resId = $controller->setContactToAmo($amoData, $amoId);
-				echo 'result' . json_encode($amoId, JSON_UNESCAPED_UNICODE);
+				$resId = $controller->setContactToAmo($amoData, $amoId);
+				echo 'result' . json_encode($resId, JSON_UNESCAPED_UNICODE);
 		}
 	}
 	else {

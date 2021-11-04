@@ -29,7 +29,6 @@ Class Account {
 		$this->setStatuses($accData['statuses']);
 		$this->setActiveDate($accData['active_date']);
 		$this->setAllDate($accData['all_date']);
-		return $this->getCustomFields();
 	}
 
 	public function newAmoBearer() {
