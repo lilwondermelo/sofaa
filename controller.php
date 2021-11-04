@@ -131,6 +131,7 @@ class Controller {
 
 
 	public function checkAmoContact($contact) {
+		$controller->recordHook('1');
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
