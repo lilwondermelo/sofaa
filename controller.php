@@ -145,8 +145,9 @@ class Controller {
 				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
 			]
 		];
-		$result = $this->apiQuery($filterId);
 		$controller->recordHook(json_encode($filterId, JSON_UNESCAPED_UNICODE) . '1');
+		$result = $this->apiQuery($filterId);
+		
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';

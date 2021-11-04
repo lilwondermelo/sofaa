@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
-				$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE) . '3');
+				//$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE) . '3');
 				$amoId = $controller->checkAmoContact($contact);
 				$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE) . '4');
 				$resId = $controller->setContactToAmo($amoData, $amoId);
@@ -77,4 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
     }*/
 }  
+
+{"name":"asda","custom_fields_values":[{"field_id":162683,"values":[{"value":"+79963814070"}]},{"field_id":288031,"values":[{"value":"9963814070"}]},{"field_id":287973,"values":[{"value":0}]},{"field_id":288023,"values":[{"value":0}]},{"field_id":287969,"values":[{"value":120811805}]}]}3
 ?>
+
