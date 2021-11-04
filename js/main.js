@@ -7,7 +7,6 @@ function sendPost(company, page) {
     $.ajax({
         url : "https://ingeniouslife.space/yc_deals.php?company=" + company + "&page=" + page,
         type : "get",
-        async: false,
         success : function(response) {
             console.log(response);
             $('.response').append(company + '<br><br>');
