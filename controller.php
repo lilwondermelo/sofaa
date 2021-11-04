@@ -5,7 +5,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
-	private $dataPerPage = 10;
+	private $dataPerPage = 30;
 
 	public function __construct($account){
 		$this->account = $account;
