@@ -8,11 +8,14 @@ function sendPost(company, page) {
         url : "https://ingeniouslife.space/yc_deals.php?company=" + company + "&page=" + page,
         type : "get",
         success : function(response) {
-            console.log(response);
-            $('.response').append(company + '<br><br>');
+            console.log(page);
+            $('.response').append(response + '<br><br>');
             current++;
             if (current <= finish) {
                 sendPost(company, current);
+            }
+            else {
+                console.log('FINISH');
             }
         },
         error: function() {
@@ -27,3 +30,5 @@ function start() {
     finish = $('#to').val();
     sendPost(company, current);
 }
+
+//JSON.parse(response)

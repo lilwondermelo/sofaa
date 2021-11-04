@@ -16,6 +16,8 @@ if ($company != '') {
 	
 	$clientList = $controller->getCLientCount();
 	$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
+
+	$dataResult = [];
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		$amoRequestData = [];
@@ -58,14 +60,12 @@ if ($company != '') {
 		}*/
 		//$result = $controller->setManyDealsToAmo($data);	
 		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
-		//$dataResult[] = count($data);
+		$dataResult[] = count($data);
 		//echo count($data) . '<br><br>';
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
-	
-	
-
-	echo 'Компания: ' . $company . '<br>';
+	echo json_encode($dataResult, JSON_UNESCAPED_UNICODE);
+	//echo 'Компания: ' . $company . '<br>';
 }
 else {
 	echo 'Компания не выбрана';
