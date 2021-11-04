@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
-				$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE));
 				$amoId = $controller->checkAmoContact($contact);
 				$controller->recordHook(json_encode($amoId, JSON_UNESCAPED_UNICODE));
 				$resId = $controller->setContactToAmo($amoData, $amoId);
