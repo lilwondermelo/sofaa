@@ -56,17 +56,13 @@ class Controller {
 				//$this->recordHook($this->account->newAmoBearer());
 				//Обновить данный аккаунта
 				//$this->apiQuery($args);
-				return '1' . $result;
+				return $result;
 			}
 			else {
-				return '2' . $result;
+				return $out;
 			}
 			
 		}
-		else {
-			return '3' . $result;
-		}
-		
 	}
 
 	public function getLastClientRecord($clientId) {
