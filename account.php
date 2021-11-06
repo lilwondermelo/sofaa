@@ -63,7 +63,6 @@ Class Account {
 
 			return $updater->error;
 		}
-		}
 		else {
 			$this->setAmoBearer($decodedResponse['access_token']);
 			$this->setAmoRefresh($decodedResponse['refresh_token']);
