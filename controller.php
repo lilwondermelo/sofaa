@@ -236,12 +236,11 @@ class Controller {
 		if ($amoId != -1) {
 			$this->method = 'PATCH';
 			$dataArray[0]['id'] = (int)$amoId;
-
 		}
 		else {
 			$this->method = 'POST';
 		}
-		$controller->recordHook($amoId);
+		$this->recordHook($amoId);
 		$result = $this->apiQuery($dataArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
