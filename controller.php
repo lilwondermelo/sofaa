@@ -51,14 +51,13 @@ class Controller {
 		$result = json_decode($out, true);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
-				//$result = $this->account->newAmoBearer();
-				//$this->recordHook($this->account->newAmoBearer());
+				$result = $this->account->newAmoBearer();
 				//Обновить данный аккаунта
-				//$this->apiQuery($args);
+				$this->apiQuery($args);
 				return $this->authHeader;
 			}
 			else {
-				return $out;
+				return $result;
 			}
 			
 		}
@@ -243,10 +242,10 @@ class Controller {
 		
 		$result = $this->apiQuery($dataArray);
 		 $resId = 0;
-		//$resId = $result['_embedded']['contacts'][0]['id'];
+		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			//return $dataArray;
-			return $result;
+			return $dataArray;
+			//return $result;
 		}
 		else {
 			return $resId;
