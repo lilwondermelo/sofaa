@@ -247,8 +247,8 @@ class Controller {
 		}
 		
 		$result = $this->apiQuery($dataArray);
-		 
-		$resId = $result['_embedded']['contacts'][0]['id'];
+		 $resId = 0;
+		//$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return $dataArray;
 			return $result;
