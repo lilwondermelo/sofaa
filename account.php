@@ -62,7 +62,9 @@ Class Account {
 			return $updater->error;
 		}
 		else {
-			return $decodedResponse;
+			$this->setAmoBearer($decodedResponse['access_token']);
+			$this->setAmoRefresh($decodedResponse['refresh_token']);
+			return $this;
 		}
 	}
 
