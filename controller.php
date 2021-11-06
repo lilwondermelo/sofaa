@@ -241,6 +241,7 @@ class Controller {
 		else {
 			$this->method = 'POST';
 		}
+		$controller->recordHook($amoId));
 		$result = $this->apiQuery($dataArray);
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
