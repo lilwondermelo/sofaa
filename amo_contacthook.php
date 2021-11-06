@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		//$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 		$resId = $controller->setContactToAmo($amoData, $amoId);
-		echo json_encode($resId, JSON_UNESCAPED_UNICODE));;
+		echo json_encode($resId, JSON_UNESCAPED_UNICODE);
 		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 	}
 	else if ($actionType == 'update') {
