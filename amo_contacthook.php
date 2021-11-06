@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$contact->createFromAmo();
 		$amoData = $contact->convertToAmo();
 		$amoId = $entityData['id'];
-		$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook($amoId);
 		$resId = $controller->setContactToAmo($amoData, $amoId);
 		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 	}
