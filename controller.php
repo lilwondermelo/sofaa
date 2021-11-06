@@ -55,15 +55,16 @@ class Controller {
 				$result = $this->account->newAmoBearer();
 				//$this->recordHook($this->account->newAmoBearer());
 				//Обновить данный аккаунта
-				$this->apiQuery($args);
+				//$this->apiQuery($args);
+				return '1' . $result;
 			}
 			else {
-				return $result;
+				return '2' . $result;
 			}
 			
 		}
 		else {
-			return $result;
+			return '3' . $result;
 		}
 		
 	}

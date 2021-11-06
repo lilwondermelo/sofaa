@@ -60,7 +60,6 @@ Class Account {
 		$result_upd = $updater->update();
 
 		if (!$result_upd) {
-
 			return $updater->error;
 		}
 		else {
