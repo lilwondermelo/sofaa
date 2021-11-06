@@ -58,7 +58,7 @@ class Controller {
 				//$this->apiQuery($args);
 			}
 			else {
-				
+
 			}
 			return $result;
 		}
@@ -249,7 +249,8 @@ class Controller {
 		 
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
-			return $dataArray;
+			//return $dataArray;
+			return $result;
 		}
 		else {
 			return $resId;
