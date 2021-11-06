@@ -49,22 +49,18 @@ class Controller {
 		//Добавить обновление Bearer при ощибке авторизации!!!
 		curl_close($curl);
 		$result = json_decode($out, true);
+		$this->recordHook($out);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
 				$this->account = $this->account->newAmoBearer();
-				$this->recordHook($this->account->newAmoBearer());
+				//$this->recordHook($this->account->newAmoBearer());
 				//Обновить данный аккаунта
 				$this->apiQuery($args);
-
-
 			}
 			return $result;
-			$this->recordHook('1' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 		else {
-
 			return $result;
-			$this->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 		
 	}
