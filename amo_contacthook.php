@@ -1,5 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	
 	$postData = $_POST;
 	$entityType = array_key_first($postData);
 	$amoHost = $postData['account']['subdomain'];
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-
+	$controller->recordHook(1);
 
 	
 	if ($actionType == 'add') {
