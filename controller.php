@@ -49,7 +49,6 @@ class Controller {
 		//Добавить обновление Bearer при ощибке авторизации!!!
 		curl_close($curl);
 		$result = json_decode($out, true);
-		$this->recordHook($result['status']);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
 				$result = $this->account->newAmoBearer();
