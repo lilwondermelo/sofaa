@@ -53,15 +53,14 @@ class Controller {
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
 				$result = $this->account->newAmoBearer();
-				//$this->account = $this->account->newAmoBearer();
 				//$this->recordHook($this->account->newAmoBearer());
 				//Обновить данный аккаунта
-				//$this->apiQuery($args);
+				$this->apiQuery($args);
 			}
 			else {
-
+				return $result;
 			}
-			return $result;
+			
 		}
 		else {
 			return $result;

@@ -32,7 +32,7 @@ Class Account {
 	}
 
 	public function newAmoBearer() {
-		$host = 'https://' . $amoHost . '.amocrm.ru/oauth2/access_token';
+		$host = 'https://' . $this->getAmoHost() . '.amocrm.ru/oauth2/access_token';
 		$requestData = [
             'client_secret' => $this->getClientSecret(),
             'client_id' => $this->getClientId(),
@@ -60,8 +60,9 @@ Class Account {
 		$result_upd = $updater->update();
 
 		if (!$result_upd) {
-			
-			return $amoHost;
+
+			return $updater->error;
+		}
 		}
 		else {
 			$this->setAmoBearer($decodedResponse['access_token']);
