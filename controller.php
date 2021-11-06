@@ -55,11 +55,16 @@ class Controller {
 				$this->recordHook($this->account->newAmoBearer());
 				//Обновить данный аккаунта
 				$this->apiQuery($args);
+
+
 			}
 			return $result;
+			$this->recordHook('1' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 		else {
+
 			return $result;
+			$this->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 		
 	}
@@ -242,7 +247,7 @@ class Controller {
 		}
 		
 		$result = $this->apiQuery($dataArray);
-		 $this->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		 
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			return $dataArray;
