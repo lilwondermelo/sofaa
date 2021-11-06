@@ -1,7 +1,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$postData = json_decode($_POST, true);
-	//$postData = $_POST;
+	//$postData = json_decode(file_get_contents('php://input'), true);
+	$postData = $_POST;
 	$entityType = array_key_first($postData);
 	$amoHost = $postData['account']['subdomain'];
 	$actionType = array_key_first($postData[$entityType]);
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$contact->createFromAmo();
 		$amoData = $contact->convertToAmo();
 		$amoId = $entityData['id'];
-		$controller->recordHook(json_encode($entityData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 		$resId = $controller->setContactToAmo($amoData, $amoId);
 		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 	}
