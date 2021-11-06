@@ -1,7 +1,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-	$postData = $_POST;
+	$postData = json_decode(file_get_contents('php://input'), true);
+	//$postData = $_POST;
 	$entityType = array_key_first($postData);
 	$amoHost = $postData['account']['subdomain'];
 	$actionType = array_key_first($postData[$entityType]);
