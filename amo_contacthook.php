@@ -28,9 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	else if ($actionType == 'update') {
 		if (!$resDb) {
-			$controller->recordHook(1);
-		}
-		else {
 			$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 		}
 		//$kek = $contact->editFromAmo();
