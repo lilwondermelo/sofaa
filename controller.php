@@ -101,7 +101,7 @@ class Controller {
 		else {
 			$updater->setKeyField('amo_id', $id);
 		}
-		$updater->setDataFields(array('yc_id' => $contact->getYcId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()));
+		$updater->setDataFields(array('yc_id' => $contact->getId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
 			return false;
