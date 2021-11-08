@@ -62,6 +62,9 @@ class Controller {
 			}
 			
 		}
+		else {
+			return $result;
+		}
 	}
 
 
