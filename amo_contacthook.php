@@ -18,7 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($actionType == 'add') {
 		$resId = $contact->createFromAmo();
-		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
+		if (!$resDb) {
+			$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
+		}
 	}
 	else if ($actionType == 'update') {
 		$resId = $contact->createFromAmo();
