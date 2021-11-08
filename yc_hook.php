@@ -12,8 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'controller.php';
 	$controller = new Controller($account);
+
+
+
 	if ($hookType == 'client') {
-		//$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+		
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
 				$contact = new Contact($contactData, $account->getCustomFields());
@@ -21,9 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoData = $contact->convertToAmo();
 				$amoId = $controller->checkAmoContact($contact);
 				$resId = $controller->setContactToAmo($amoData, $amoId);
-				echo 'result' . json_encode($resId, JSON_UNESCAPED_UNICODE);
+				$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 		}
 	}
+
+
+
+
 	else {
 		sleep(2);
 		$clientId = $contactData['client']['id'];

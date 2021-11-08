@@ -43,28 +43,9 @@ Class Contact {
 				"values" => [[
 					"value" => $this->getPhone()
 				]]
-			],
-			[
-				"field_id" => $this->customFields['phone_api'],
-				"values" => [[
-					"value" => $this->getPhoneApi()
-				]]
-			],
-			[
-				"field_id" => $this->customFields['visits'],
-				"values" => [[
-					"value" => $this->getVisits()
-				]]
-			],
-			[
-				"field_id" => $this->customFields['spent'],
-				"values" => [[
-					"value" => $this->getSpent()
-				]]
 			]
 			]
 		];
-
 		if ($this->getId() != -1) {
 			$amoData['custom_fields_values'][] = 
 		[

@@ -10,6 +10,7 @@ class Controller {
 	public function __construct($account){
 		$this->account = $account;
 	}
+	
 	public function apiQuery($args = array()) {
 		$curl=curl_init();
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
@@ -71,6 +72,7 @@ class Controller {
 		$args = array('client_id' => $clientId);
 		return $this->apiQuery($args);
 	}
+
 
 
 		
@@ -141,19 +143,9 @@ class Controller {
 				$this->account->getCustomFields()['yc_id'] => $contact->getId()
 			]
 		];
-		$filterPhone = [
-			'filter' => [
-				$this->account->getCustomFields()['phone_api'] => $contact->getPhoneApi()
-			]
-		];
 		$result = $this->apiQuery($filterId);
 		
 		$resId = $result['_embedded']['contacts'][0]['id'];
-		if (!$resId) {
-			$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v3/contacts';
-			$result = $this->apiQuery($filterPhone);
-			$resId = $result['_embedded']['contacts'][0]['id'];
-		}
 		if (!$resId) {
 			return -1;
 		}
