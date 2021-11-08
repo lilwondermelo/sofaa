@@ -16,15 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 	if ($hookType == 'client') {
-		
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
-				$contact = new Contact($contactData, $account->getCustomFields());
+				/*$contact = new Contact($contactData, $account->getCustomFields());
 				$contact->createFromYC();
 				$amoData = $contact->convertToAmo();
 				$amoId = $controller->checkAmoContact($contact);
 				$resId = $controller->setContactToAmo($amoData, $amoId);
-				$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
+				$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));*/
 		}
 	}
 
