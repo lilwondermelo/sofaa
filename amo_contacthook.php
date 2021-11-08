@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$resYc = false;
 		}
-		$controller->recordHook(json_encode($amoData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($resYc, JSON_UNESCAPED_UNICODE));
 		if ($resYc) {
 			$contact->setId($resYc);
 			$result = $controller->recordContactFromYc($contact, $resYc);
