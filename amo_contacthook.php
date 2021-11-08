@@ -16,14 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$contact = new Contact($entityData, $account->getCustomFields());
 
 
-	
 	if ($actionType == 'add') {
-		$contact->createFromAmo();
-		$amoData = $contact->convertToAmo();
-		$amoId = $entityData['id'];
-		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
-		$resId = $controller->setContactToAmo($amoData, $amoId);
-		echo json_encode($resId, JSON_UNESCAPED_UNICODE);
+		$resId = $contact->createFromAmo();
 		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 	}
 	else if ($actionType == 'update') {
@@ -31,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$amoData = $contact->convertToYC();
 		$result = $controller->setContactToYC($amoData);
 		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
-		echo json_encode($entityType, JSON_UNESCAPED_UNICODE);
 	}
 	
 }

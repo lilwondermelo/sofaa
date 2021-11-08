@@ -1,9 +1,9 @@
 <?
 Class Contact {
 	private $id = -1;
+	private $amoId;
 	private $name;
 	private $phone;
-	private $phoneApi;
 	private $visits;
 	private $spent;
 	private $customFields;
@@ -66,13 +66,11 @@ Class Contact {
 		$indexPhone = array_search($this->customFields['phone'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
 		//Проверку телефона добавить !!!
 		$phone = $this->contactData['custom_fields'][$indexPhone]['values'][0]['value'];
-		//$phone = '+79999999999';
 		$this->setPhone($phone);
-		$this->setSpent(0);
-		$this->setVisits(0);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
+		$this->setAmoId($this->contactData['id']);
 		$this->setName($this->contactData['name']);
-		return $this->getName();
+		return $this->getAmoId();
 	}
 
 	public function editFromAmo() {
@@ -100,14 +98,14 @@ Class Contact {
 	public function getId() {
 		return $this->id;
 	}
+	public function getAmoId() {
+		return $this->amoId;
+	}
 	public function getName() {
 		return $this->name;
 	}
 	public function getPhone() {
 		return $this->phone;
-	}
-	public function getPhoneApi() {
-		return $this->phoneApi;
 	}
 	public function getVisits() {
 		return $this->visits;
@@ -119,17 +117,14 @@ Class Contact {
 	public function setId($id) {
 		$this->id = $id;
 	}
+	public function setAmoId($amoId) {
+		$this->amoId = $amoId;
+	}
 	public function setName($name) {
 		$this->name = $name;
 	}
 	public function setPhone($phone) {
 		$this->phone = $phone;
-		$this->setPhoneApi();
-	}
-	public function setPhoneApi() {
-		$phoneApi = preg_replace("/[^0-9]/", '', $this->getPhone());
-		$phoneApi = (strlen($phoneApi) == 11)?substr($phoneApi, 1):$phoneApi;
-		$this->phoneApi = $phoneApi;
 	}
 	public function setVisits($visits) {
 		$this->visits = $visits;
