@@ -223,7 +223,7 @@ class Controller {
 		$result = $this->apiQuery($contact);
 		$resId = $result['data']['id'];
 		if (!$resId) {
-			return false;
+			return $contact['id'];
 		}
 		return $resId;
 	}
