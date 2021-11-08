@@ -20,28 +20,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	else if ($actionType == 'update') {
 		$resId = $contact->createFromAmo();
-		$ycId = $controller->checkClient($contact);
+		$ycId = $controller->checkClient($contact, 'amo');
 		
 		if (!$ycId) {
 			$ycId = -1;
 		}
+
+
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
+
 		if ($resultDb) {
 			$contact->setId($ycId);
 			$amoData = $contact->convertToYC();
 			$resYc = $controller->setContactToYC($amoData);
-			$controller->recordHook(json_encode($resYc, JSON_UNESCAPED_UNICODE));
 		}
 		else {
 			$resYc = false;
 		}
 		if ($resYc) {
-			$result = $controller->recordContactFromAmo(array(), $result);
+			//$contact->setId($resYc);
+			$result = $controller->recordContactFromYc($contact, $resYc);
 		}
 		else {
 			$result = false;
 		}
-		
+		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 		
 		//$kek = $contact->editFromAmo();
 

@@ -64,6 +64,8 @@ class Controller {
 		}
 	}
 
+
+
 	public function getLastClientRecord($clientId) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
@@ -73,16 +75,42 @@ class Controller {
 		return $this->apiQuery($args);
 	}
 
-	public function checkClient($contact) {
+	public function checkClient($contact, $source = 'yc') {
 		require_once '_dataRowSource.class.php';
-		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId());
+		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . 'or yc_id = ' . $contact->getId());
 		if ($dataRow->getData()) {
-			return $dataRow->getValue('yc_id');
+			if ($source == 'yc') {
+				return $dataRow->getValue('amo_id');
+			}
+			else {
+				return $dataRow->getValue('yc_id');
+			}
 		}
 		else {
 			return false;
 		}
 	}
+
+
+	public function recordContactFromYc($contact, $id = -1) {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('clients');
+		if ($id == -1) {
+			$updater->setKeyField('id');
+		}
+		else {
+			$updater->setKeyField('amo_id', $id);
+		}
+		$updater->setDataFields(array('yc_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()));
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return false;
+		}
+		else {
+			return $id;
+		}
+	}
+
 
 
 	public function recordContactFromAmo($contact, $id = -1) {

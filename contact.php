@@ -56,9 +56,6 @@ Class Contact {
 				]]
 			];
 		}
-		
-
-		
 		return $amoData;
 	}
 
