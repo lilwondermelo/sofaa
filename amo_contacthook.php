@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	else if ($actionType == 'update') {
 		$resId = $contact->createFromAmo();
 		$dbId = $controller->checkClient($contact);
-		$controller->recordHook(json_encode($dbId, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($contact->getPhone(), JSON_UNESCAPED_UNICODE));
 		if (!$dbId) {
 			$resultDb = $controller->recordContactFromAmo($contact);
 		}
