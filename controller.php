@@ -80,7 +80,7 @@ class Controller {
 
 	public function checkClient($contact, $source = 'yc') {
 		require_once '_dataRowSource.class.php';
-		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . 'or yc_id = ' . $contact->getId());
+		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId());
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
 				return $dataRow->getValue('amo_id');
