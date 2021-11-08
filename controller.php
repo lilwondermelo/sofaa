@@ -94,7 +94,7 @@ class Controller {
 		else {
 			$updater->setKeyField('id', $id);
 		}
-		$updater->setDataFields(array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()))));
+		$updater->setDataFields(array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
 			return $updater->error;
