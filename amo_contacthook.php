@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$result = false;
 		}
-		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($resYc, JSON_UNESCAPED_UNICODE));
 		
 		//$kek = $contact->editFromAmo();
 
