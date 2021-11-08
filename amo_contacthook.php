@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (!$ycId) {
 			$ycId = -1;
 		}
-
+		$controller->recordHook('1 '. json_encode($ycId, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 
 		if ($resultDb) {
 			$contact->setId($ycId);
 			$amoData = $contact->convertToYC();
 			$resYc = $controller->setContactToYC($amoData);
-			$controller->recordHook('1 '. json_encode($resYc, JSON_UNESCAPED_UNICODE));
+			
 		}
 		else {
 			$resYc = false;
