@@ -85,10 +85,15 @@ class Controller {
 	}
 
 
-	public function recordContact($contact) {
+	public function recordContactFromAmo($contact, $id = -1) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
-		$updater->setKeyField('id');
+		if ($id == -1) {
+			$updater->setKeyField('id');
+		}
+		else {
+			$updater->setKeyField('id', $id);
+		}
 		$updater->setDataFields(array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
