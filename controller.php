@@ -73,11 +73,16 @@ class Controller {
 		return $this->apiQuery($args);
 	}
 
-	public function checkClient($phone) {
+	public function checkClient($contact) {
 		require_once '_dataRowSource.class.php';
-		$dataRow = new DataRowSource('select * from clients where phone = ' . $phone);
+		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId());
 		if ($dataRow->getData()) {
-			return $dataRow->getValue('id');
+			if($dataRow->getValue('amo_id') == $contact->getAmoId()) {
+				return true;
+			}
+			else if ($dataRow->getValue('phone') == $contact->getPhone()) {
+				return $dataRow->getValue('phone');
+			}
 		}
 		else {
 			return false;
@@ -85,11 +90,11 @@ class Controller {
 	}
 
 
-	public function recordContact($data = array()) {
+	public function recordContact($contact) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
 		$updater->setKeyField('id');
-		$updater->setDataFields(array('amo_id' => $data['id']));
+		$updater->setDataFields(array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
 			return $updater->error;

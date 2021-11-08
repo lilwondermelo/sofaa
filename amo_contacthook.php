@@ -17,18 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 	if ($actionType == 'add') {
-		$resId = $contact->createFromAmo();
-		if (!$resDb) {
-			$controller->recordHook(1);
-		}
-		else {
-			$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
-		}
-		
 	}
 	else if ($actionType == 'update') {
-		if ($resDb) {
-			$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
+		$resId = $contact->createFromAmo();
+		$checkDb = $controller->checkClient($contact);
+		if ($checkDb == false) {
+			$controller->recordHook(json_encode(1 . $checkDb, JSON_UNESCAPED_UNICODE));
+		}
+		else if ($checkDb == true) {
+			$controller->recordHook(json_encode(2 . $checkDb, JSON_UNESCAPED_UNICODE));
+		}
+		else {
+			$controller->recordHook(json_encode(3 . $checkDb, JSON_UNESCAPED_UNICODE));
 		}
 		//$kek = $contact->editFromAmo();
 		//$amoData = $contact->convertToYC();
