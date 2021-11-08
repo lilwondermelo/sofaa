@@ -21,10 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
 	}
 	else if ($actionType == 'update') {
-		$kek = $contact->editFromAmo();
-		$amoData = $contact->convertToYC();
-		$result = $controller->setContactToYC($amoData);
-		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+		$resId = $contact->createFromAmo();
+		$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
+		//$kek = $contact->editFromAmo();
+		//$amoData = $contact->convertToYC();
+		//$result = $controller->setContactToYC($amoData);
+		//$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 	}
 	
 }
