@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (!$ycId) {
 			$ycId = -1;
 		}
-		$controller->recordHook('1 '. json_encode($ycId, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('1 '. json_encode($contact->getAmoId(), JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 
 		if ($resultDb) {
