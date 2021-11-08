@@ -73,8 +73,31 @@ class Controller {
 		return $this->apiQuery($args);
 	}
 
+	public function checkClient($phone) {
+		require_once '_dataRowSource.class.php';
+		$dataRow = new DataRowSource('select * from clients where phone = ' . $phone);
+		if ($dataRow->getData()) {
+			return $dataRow->getValue('id');
+		}
+		else {
+			return false;
+		}
+	}
 
 
+	public function recordContact($data = array()) {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('clients');
+		$updater->setKeyField('id');
+		$updater->setDataFields(array('amo_id' => $data['id']));
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return $updater->error;
+		}
+		else {
+			return $result_upd;
+		}
+	}
 		
 
 	public function recordHook($data = 'empty') {
