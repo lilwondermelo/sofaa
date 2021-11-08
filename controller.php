@@ -77,7 +77,7 @@ class Controller {
 		require_once '_dataRowSource.class.php';
 		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId());
 		if ($dataRow->getData()) {
-			return $dataRow->getValue('id');
+			return $dataRow->getValue('yc_id');
 		}
 		else {
 			return false;
@@ -92,15 +92,15 @@ class Controller {
 			$updater->setKeyField('id');
 		}
 		else {
-			$updater->setKeyField('id', $id);
+			$updater->setKeyField('yc_id', $id);
 		}
 		$updater->setDataFields(array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
-			return $updater->error;
+			return false;
 		}
 		else {
-			return $result_upd;
+			return $yc_id;
 		}
 	}
 		

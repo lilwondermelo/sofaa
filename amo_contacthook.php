@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	else if ($actionType == 'update') {
 		$resId = $contact->createFromAmo();
-		$dbId = $controller->checkClient($contact);
+		$ycId = $controller->checkClient($contact);
 		
-		if (!$dbId) {
+		if (!$ycId) {
 			$resultDb = $controller->recordContactFromAmo($contact);
 		}
 		else {
-			$resultDb = $controller->recordContactFromAmo($contact, $dbId);
+			$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		}
 		$controller->recordHook(json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 		//$controller->recordHook(json_encode($resultDb, JSON_UNESCAPED_UNICODE));
