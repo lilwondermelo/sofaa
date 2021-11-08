@@ -23,13 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$ycId = $controller->checkClient($contact);
 		
 		if (!$ycId) {
-			$ycId = -1
+			$ycId = -1;
 		}
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
 			$contact->setId($ycId);
 			$amoData = $contact->convertToYC();
-			$result = $controller->setContactToYC($amoData);
+			$resYc = $controller->setContactToYC($amoData);
+		}
+		else {
+			$resYc = false;
+		}
+		if ($resYc) {
+			$result = $controller->recordContactFromAmo(array(), $result);
 		}
 		else {
 			$result = false;

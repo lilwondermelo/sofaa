@@ -25,6 +25,7 @@ Class Contact {
 		$this->setPhone($this->contactData['phone']);
 	}
 
+
 	public function convertToYC() {
 		$ycData = [
 			'id' => $this->getId(),
