@@ -100,7 +100,7 @@ class Controller {
 			return false;
 		}
 		else {
-			return $yc_id;
+			return $id;
 		}
 	}
 		
