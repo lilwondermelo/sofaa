@@ -23,11 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$ycId = $controller->checkClient($contact);
 		
 		if (!$ycId) {
-			$resultDb = $controller->recordContactFromAmo($contact);
+			$ycId = -1
 		}
-		else {
-			$resultDb = $controller->recordContactFromAmo($contact, $ycId);
-		}
+		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
 			$contact->setId($ycId);
 			$amoData = $contact->convertToYC();
