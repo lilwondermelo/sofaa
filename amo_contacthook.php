@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$resultDb = $controller->recordContactFromAmo($contact, $dbId);
 		}
-		$controller->recordHook(json_encode($contact->getPhone(), JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 		//$controller->recordHook(json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 		//$kek = $contact->editFromAmo();
 		//$amoData = $contact->convertToYC();
