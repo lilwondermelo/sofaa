@@ -37,8 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$resYc = false;
 		}
+
 		if ($resYc) {
-			//$contact->setId($resYc);
+			$contact->setId($resYc);
 			$result = $controller->recordContactFromYc($contact, $resYc);
 		}
 		else {
