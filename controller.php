@@ -77,12 +77,7 @@ class Controller {
 		require_once '_dataRowSource.class.php';
 		$dataRow = new DataRowSource('select * from clients where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId());
 		if ($dataRow->getData()) {
-			if($dataRow->getValue('amo_id') == $contact->getAmoId()) {
-				return true;
-			}
-			else if ($dataRow->getValue('phone') == $contact->getPhone()) {
-				return $dataRow->getValue('phone');
-			}
+			return $dataRow->getValue('id');
 		}
 		else {
 			return false;

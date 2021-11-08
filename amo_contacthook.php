@@ -21,14 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	else if ($actionType == 'update') {
 		$resId = $contact->createFromAmo();
 		$checkDb = $controller->checkClient($contact);
-		if ($checkDb == false) {
-			$controller->recordHook(json_encode(1 . $checkDb, JSON_UNESCAPED_UNICODE));
-		}
-		else if ($checkDb == true) {
-			$controller->recordHook(json_encode(2 . $checkDb, JSON_UNESCAPED_UNICODE));
+		if (!$checkDb) {
+			$controller->recordHook(json_encode($checkDb, JSON_UNESCAPED_UNICODE));
 		}
 		else {
-			$controller->recordHook(json_encode(3 . $checkDb, JSON_UNESCAPED_UNICODE));
+			$controller->recordHook(json_encode($checkDb, JSON_UNESCAPED_UNICODE));
 		}
 		//$kek = $contact->editFromAmo();
 		//$amoData = $contact->convertToYC();
