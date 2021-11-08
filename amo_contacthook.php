@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact->setId($ycId);
 			$amoData = $contact->convertToYC();
 			$resYc = $controller->setContactToYC($amoData);
-			$controller->recordHook(json_encode($resYc, JSON_UNESCAPED_UNICODE));
+			$controller->recordHook('1 '. json_encode($resYc, JSON_UNESCAPED_UNICODE));
 		}
 		else {
 			$resYc = false;
