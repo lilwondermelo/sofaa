@@ -28,12 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		}
+		if ($resultDb) {
+			$amoData = $contact->convertToYC();
+			$result = $controller->setContactToYC($amoData);
+		}
+		else {
+			$result = false;
+		}
+		
+		
 		$controller->recordHook(json_encode($resultDb, JSON_UNESCAPED_UNICODE));
-		//$controller->recordHook(json_encode($resultDb, JSON_UNESCAPED_UNICODE));
+		
 		//$kek = $contact->editFromAmo();
-		//$amoData = $contact->convertToYC();
-		//$result = $controller->setContactToYC($amoData);
-		//$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
+
 	}
 	
 }
