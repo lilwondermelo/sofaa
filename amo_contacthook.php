@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($actionType == 'add') {
 		$resId = $contact->createFromAmo();
-		if ($resDb == false) {
+		if (!$resDb) {
 			$controller->recordHook(1);
 		}
 		else {
@@ -27,9 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 	}
 	else if ($actionType == 'update') {
-		$resId = $contact->createFromAmo();
-		$resDb = $controller->checkClient($contact->getPhone());
-		$controller->recordHook(json_encode($resDb, JSON_UNESCAPED_UNICODE));
+		if (!$resDb) {
+			$controller->recordHook(1);
+		}
+		else {
+			$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));
+		}
 		//$kek = $contact->editFromAmo();
 		//$amoData = $contact->convertToYC();
 		//$result = $controller->setContactToYC($amoData);
