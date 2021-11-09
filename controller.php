@@ -155,7 +155,13 @@ class Controller {
 		}
 	}
 
-	
+	public function getLeadId($clientId) {
+		require_once '_dataSource.class.php';
+		$query = 'select * from records_jkamogolovaorg r join clients_' . $this->account->getAmoHost() . ' c on r.client_id = c.yc_id order by r.datetime desc where r.client_id = ' . $clientId;
+		$dataRow = new DataSource($query);
+		$data = $dataRow->getData();
+		return;
+	}
 
 	public function setRecord($data, $recordId) {
 		require_once '_dataRowUpdater.class.php';
