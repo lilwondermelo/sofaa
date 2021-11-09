@@ -78,8 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'comment' => $contactData['comment'],
 			'services' => json_encode($services, JSON_UNESCAPED_UNICODE),
 			'filial_id' => $companyId
-		]
-		$contactData[]
+		];
 		$controller->recordHook('333' . json_encode($recordData, JSON_UNESCAPED_UNICODE));
 		
 	}
