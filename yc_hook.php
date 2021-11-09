@@ -75,9 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'attendance' => $contactData['attendance'],
 			'deleted' => $contactData['deleted']?1:0,
 			'cost' => $cost,
-			'comment' => $contactData['comment'],
+			'comment' => $contactData['comment']?$contactData['comment']:'',
 			'services' => mb_substr($services, 0, -1),
-			'filial_id' => $companyId
+			'filial_id' => $companyId,
+			'2h' => 0,
+			'24h' => 0
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$controller->recordHook('333' . json_encode($resultDb, JSON_UNESCAPED_UNICODE));
