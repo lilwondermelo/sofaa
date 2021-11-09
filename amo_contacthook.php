@@ -23,8 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($resultDb) {
 			$contact->setId($ycId);
 			$ycData = $contact->convertToYC();
-			$resYc = $controller->setContactToYC($ycData);
-			
+			$resYc = $controller->setContactToYC($ycData);	
 		}
 		else {
 			$resYc = false;

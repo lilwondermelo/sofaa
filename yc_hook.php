@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
 			$amoId = $controller->checkClient($contact, 'yc');
+			$controller->recordHook('2 '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
 			if (!$amoId) {
 				$amoId = -1;
 			}
@@ -40,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$result = false;
 			}
-			$controller->recordHook('1 '. json_encode($result, JSON_UNESCAPED_UNICODE));
+			
 		}
 	}
 
