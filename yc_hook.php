@@ -62,7 +62,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	else {
 		sleep(2);
-		$controller->recordHook('333' . json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$recordId = $contactData['id'];
+		$services = [];
+		$cost = 0;
+		foreach ($contactData['services'] as $service) {
+			$services[] = $service['title'];
+			$cost += $service['cost'];
+		}
+		$recordData = [
+			'client_id' => $contactData['client']['id'],
+			'datetime' => strtotime($dealData['datetime']),
+			'attendance' => $contactData['attendance'],
+			'deleted' => $contactData['deleted'],
+			'cost' => $cost,
+			'comment' => $contactData['comment'],
+			'services' => json_encode($services, JSON_UNESCAPED_UNICODE),
+			'filial_id' => $companyId
+		]
+		$contactData[]
+		$controller->recordHook('333' . json_encode($recordData, JSON_UNESCAPED_UNICODE));
 		
 	}
 }  
