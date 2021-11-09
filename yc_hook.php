@@ -34,23 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$resAmo = $controller->setContactToAmo($amoData, $amoId);
 				}
 				else {
-					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
-					$resAmo = false;
+					$resAmo = $controller->setDealToAmo($amoData, $amoId, $leadId);
 				}
 			}
 			else {
 				$resAmo = false;
 			}
-			$controller->recordHook('222' . json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
 			if ($resAmo) {
 				$contact->setAmoId($resAmo);
-				$result = $controller->recordContactFromAmo($contact, $contact->getId());
-
+				$result = $controller->recordContactFromAmo($contact, $contact->getId(), $resAmo);
 			}
 			else {
 				$result = false;
 			}
 
+			$controller->recordHook('222' . json_encode($result, JSON_UNESCAPED_UNICODE));
 			
 		}
 	}

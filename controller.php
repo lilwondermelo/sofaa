@@ -117,7 +117,7 @@ class Controller {
 
 
 
-	public function recordContactFromAmo($contact, $id = -1) {
+	public function recordContactFromAmo($contact, $id = -1, $leadId = -1) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients_' . $this->account->getAmoHost());
 		if ($id == -1) {
@@ -126,7 +126,11 @@ class Controller {
 		else {
 			$updater->setKeyField('yc_id', $id);
 		}
-		$updater->setDataFields(array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone()));
+		$data = array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone());
+		if ($leadId != -1) {
+			$data['lead_id'] = $leadId;
+		}
+		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
 			return false;
@@ -273,14 +277,12 @@ class Controller {
 		if ($amoId != -1) {
 			$data['_embedded'] = array('contacts' => array(array('id' => (int)$amoId)));
 			$result = $this->apiQuery([$data]);
-			return $result;
 		}
 		else {
 			$data['_embedded'] = array('contacts' => array($amoData));
 			$result = $this->setManyDealsToAmo([$data]);
-			return $result;
 		}
-		
+		return $result['_embedded']['leads'][0]['id'];
 		
 	}
 
