@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'controller.php';
 	$controller = new Controller($account);
 
-
+	sleep(2);
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
