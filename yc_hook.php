@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($companyId);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	
 	sleep(2);
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
@@ -36,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				}
 				else {
 					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
+					$controller->recordHook(222 . json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
 					$resAmo = false;
 				}
 			}
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resAmo) {
 				$contact->setAmoId($resAmo);
 				$result = $controller->recordContactFromAmo($contact, $contact->getId());
+
 			}
 			else {
 				$result = false;
