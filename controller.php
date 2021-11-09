@@ -266,7 +266,7 @@ class Controller {
 		return $result;
 	}
 
-	public function setDealToAmo($amoId = -1, $leadId = -1, $amoData = array()) {
+	public function setDealToAmo($amoData = array(), $amoId = -1, $leadId = -1) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
