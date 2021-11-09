@@ -31,10 +31,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				if (($amoId != -1) && ($leadId != -1)) {
-					$resAmo = $controller->setContactToAmo($amoData, $amoId);
+					$amoId = $controller->setContactToAmo($amoData, $amoId);
+					$resAmo = $amoId;
+				}
+				else if ($amoId != -1) {
+					$leadId = $controller->setDealToAmo($amoData, $amoId);
+					$resAmo = $leadId;
 				}
 				else {
-					$resAmo = $controller->setDealToAmo($amoData, $amoId, $leadId);
+					$resAmo = $controller->setComplexToAmo($amoData);
+					$amoId = $resAmo[0]['contact_id'];
+					$leadId = $resAmo[0]['id'];
 				}
 			}
 			else {
@@ -42,13 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			if ($resAmo) {
 				$contact->setAmoId($resAmo);
-				$result = $controller->recordContactFromAmo($contact, $contact->getId(), $resAmo);
+				$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
 			}
 			else {
 				$result = false;
 			}
 
-			$controller->recordHook('222' . json_encode($resAmo, JSON_UNESCAPED_UNICODE));
+			$controller->recordHook('222' . json_encode($result, JSON_UNESCAPED_UNICODE));
 			
 		}
 	}
