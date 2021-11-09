@@ -284,7 +284,7 @@ class Controller {
 		else {
 			$data['_embedded'] = array('contacts' => array($amoData));
 		}
-		$controller->recordHook('122' . json_encode($data, JSON_UNESCAPED_UNICODE));
+		$this->recordHook('122' . json_encode($data, JSON_UNESCAPED_UNICODE));
 		$result = $this->apiQuery([$data]);
 		return $result;
 	}
