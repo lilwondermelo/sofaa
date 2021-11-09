@@ -21,6 +21,7 @@ Class Contact {
 		$this->setName($this->contactData['name']);
 		//Проверку телефона добавить !!!
 		$this->setPhone($this->contactData['phone']);
+		$this->setAmoId(0);
 		return $this->getId();
 	}
 
@@ -55,6 +56,7 @@ Class Contact {
 		//Проверку телефона добавить !!!
 		$phone = $this->contactData['custom_fields'][$indexPhone]['values'][0]['value'];
 		$this->setPhone($phone);
+		$this->setId(0);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setAmoId($this->contactData['id']);
 		$this->setName($this->contactData['name']);
