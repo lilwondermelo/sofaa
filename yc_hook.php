@@ -30,12 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
+				$controller->recordHook($amoId);
+				//$controller->recordHook('222' . json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
 				if (($amoId != -1) && ($leadId != -1)) {
 					$resAmo = $controller->setContactToAmo($amoData, $amoId);
 				}
 				else {
 					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
-					$controller->recordHook('222' . json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
+
 					$resAmo = false;
 				}
 			}
