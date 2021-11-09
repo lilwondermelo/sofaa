@@ -25,24 +25,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			
 			$resultDb = $controller->recordContactFromYc($contact, $amoId);
-			$controller->recordHook('1 '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
-				$amoData = $contact->convertToYC();
+				$amoData = $contact->convertToAmo();
 				$resAmo = $controller->setContactToAmo($amoData);
 			}
 			else {
-				$resYc = false;
+				$resAmo = false;
 			}
-
-			if ($resYc) {
-				$contact->setId($resYc);
-				$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
+			if ($resAmo) {
+				$contact->setAmoId($resAmo);
+				$result = $controller->recordContactFromAmo($contact, $contact->getId());
 			}
 			else {
 				$result = false;
 			}
-			
+			$controller->recordHook('1 '. json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 	}
 
