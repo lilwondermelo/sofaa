@@ -18,10 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
 			$check = $controller->checkClient($contact, 'yc');
-			$amoId = $check['amo_id'];
-			$leadId = $check['lead_id'];
-			if (!$amoId) {
+			if (!$check) {
 				$amoId = -1;
+				$leadId = -1;
+			}
+			else {
+				$amoId = $check['amo_id'];
+				$leadId = $check['lead_id']?$check['lead_id']:-1;
 			}
 			$resultDb = $controller->recordContactFromYc($contact, $amoId);
 			if ($resultDb) {
