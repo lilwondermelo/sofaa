@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if (!$amoId) {
 				$amoId = -1;
 			}
+			$controller->recordHook('1 '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
 			$resultDb = $controller->recordContactFromAmo($contact, $amoId);
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$resYc = false;
 			}
-			$controller->recordHook('1 '. json_encode($resYc, JSON_UNESCAPED_UNICODE));
+
 			if ($resYc) {
 				$contact->setId($resYc);
 				$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
