@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$amoId = -1;
 			}
 			$controller->recordHook('1 '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
-			$resultDb = $controller->recordContactFromAmo($contact, $amoId);
+			$resultDb = $controller->recordContactFromYc($contact, $amoId);
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToYC();
