@@ -275,7 +275,7 @@ class Controller {
 		$data = array(
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
-			'status_id' => $account->getStatuses()['7']
+			'status_id' => $this->account->getStatuses()['7']
 		);
 
 		if ($amoId != -1) {
