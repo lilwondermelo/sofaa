@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'client_id' => $contactData['client']['id'],
 			'datetime' => strtotime($contactData['datetime']),
 			'attendance' => $contactData['attendance'],
-			'deleted' => $contactData['deleted'],
+			'deleted' => $contactData['deleted']?1:0,
 			'cost' => $cost,
 			'comment' => $contactData['comment'],
 			'services' => mb_substr($services, 0, -1),
