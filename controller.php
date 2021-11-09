@@ -151,14 +151,7 @@ class Controller {
 		}
 	}
 
-	public function setManyDealsToAmo($dataArray) {
-		$this->isYc = 0;
-		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/leads/complex';
-		$this->method = 'POST';
-		$result = $this->apiQuery($dataArray);
-		return $result;
-	}
+	
 
 
 	
@@ -277,18 +270,29 @@ class Controller {
 			'price' => 1,
 			'status_id' => $this->account->getStatuses()['7']
 		);
-
 		if ($amoId != -1) {
 			$data['_embedded'] = array('contacts' => array(array('id' => (int)$amoId)));
+			$result = $this->apiQuery([$data]);
+			return $result;
 		}
 		else {
 			$data['_embedded'] = array('contacts' => array($amoData));
+			$result = $this->setManyDealsToAmo([$data]);
+			return $result;
 		}
-		$this->recordHook('111' . json_encode($data, JSON_UNESCAPED_UNICODE));
 		
-		$result = $this->apiQuery([$data]);
+		
+	}
+
+	public function setManyDealsToAmo($dataArray) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/leads/complex';
+		$this->method = 'POST';
+		$result = $this->apiQuery($dataArray);
 		return $result;
 	}
+
 
 
 	public function setContactToAmo($contact, $amoId = -1) {

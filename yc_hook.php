@@ -30,14 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-
-				
 				if (($amoId != -1) && ($leadId != -1)) {
 					$resAmo = $controller->setContactToAmo($amoData, $amoId);
 				}
 				else {
 					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
-
 					$resAmo = false;
 				}
 			}
