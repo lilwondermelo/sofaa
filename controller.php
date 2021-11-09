@@ -80,7 +80,7 @@ class Controller {
 
 	public function checkClient($contact, $source = 'yc') {
 		require_once '_dataRowSource.class.php';
-		$dataRow = new DataRowSource('select * from clients_' . $account->getAmoHost() . ' where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId());
+		$dataRow = new DataRowSource('select * from clients_' . $this->account->getAmoHost() . ' where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId());
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
 				return $dataRow->getValue('amo_id');
@@ -97,7 +97,7 @@ class Controller {
 
 	public function recordContactFromYc($contact, $id = -1) {
 		require_once '_dataRowUpdater.class.php';
-		$updater = new DataRowUpdater('clients_' . $account->getAmoHost());
+		$updater = new DataRowUpdater('clients_' . $this->account->getAmoHost());
 		if ($id == -1) {
 			$updater->setKeyField('id');
 		}
@@ -118,7 +118,7 @@ class Controller {
 
 	public function recordContactFromAmo($contact, $id = -1) {
 		require_once '_dataRowUpdater.class.php';
-		$updater = new DataRowUpdater('clients_' . $account->getAmoHost());
+		$updater = new DataRowUpdater('clients_' . $this->account->getAmoHost());
 		if ($id == -1) {
 			$updater->setKeyField('id');
 		}
