@@ -279,7 +279,7 @@ class Controller {
 		);
 
 		if ($amoId != -1) {
-			$data['_embedded'] = array('contacts' => array(array('id' => $amoId)));
+			$data['_embedded'] = array('contacts' => array(array('id' => (int)$amoId)));
 		}
 		else {
 			$data['_embedded'] = array('contacts' => array($amoData));
