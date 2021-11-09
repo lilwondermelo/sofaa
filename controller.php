@@ -277,12 +277,14 @@ class Controller {
 		if ($amoId != -1) {
 			$data['_embedded'] = array('contacts' => array(array('id' => (int)$amoId)));
 			$result = $this->apiQuery([$data]);
+			return $result['_embedded']['leads'][0]['id'];
 		}
 		else {
 			$data['_embedded'] = array('contacts' => array($amoData));
 			$result = $this->setManyDealsToAmo([$data]);
+			return $result;
 		}
-		return $result['_embedded']['leads'][0]['id'];
+		
 		
 	}
 

@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = false;
 			}
 
-			$controller->recordHook('222' . json_encode($result, JSON_UNESCAPED_UNICODE));
+			$controller->recordHook('222' . json_encode($resAmo, JSON_UNESCAPED_UNICODE));
 			
 		}
 	}
