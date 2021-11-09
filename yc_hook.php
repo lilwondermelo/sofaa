@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				}
 				else {
 					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
-					$controller->recordHook(222 . json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
+					$controller->recordHook('222' . json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
 					$resAmo = false;
 				}
 			}
