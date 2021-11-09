@@ -17,12 +17,11 @@ Class Contact {
 	
 	public function createFromYC() {
 		$this->setId($this->contactData['id']);
-		$this->setVisits($this->contactData['visits']);
-		$this->setSpent($this->contactData['spent']);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setName($this->contactData['name']);
 		//Проверку телефона добавить !!!
 		$this->setPhone($this->contactData['phone']);
+		return $this->getId();
 	}
 
 

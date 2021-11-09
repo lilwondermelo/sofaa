@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
 			$contact = new Contact($contactData, $account->getCustomFields());
+			$resId = $contact->createFromYc();
 			$amoId = $controller->checkClient($contact, 'yc');
 			if (!$amoId) {
 				$amoId = -1;
