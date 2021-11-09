@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	else {
 		sleep(2);
-		$controller->recordHook('333' . json_encode($contactData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('333' . json_encode($postData, JSON_UNESCAPED_UNICODE));
 		
 	}
 }  
