@@ -293,7 +293,7 @@ class Controller {
 		}
 		
 		$result = $this->apiQuery($dataArray);
-		$controller->recordHook('2 '. json_encode($result, JSON_UNESCAPED_UNICODE));
+		$this->recordHook('2 '. json_encode($result, JSON_UNESCAPED_UNICODE));
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return $dataArray;
