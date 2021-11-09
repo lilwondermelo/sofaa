@@ -30,8 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				$resAmo = $controller->setContactToAmo($amoData, $amoId, $leadId);
-				//$resAmoDeal = $controller->setDealToAmo($amoData, $resAmo);
+				if (($amoId != -1) && ($leadId != -1)) {
+					$resAmo = $controller->setContactToAmo($amoData, $amoId);
+				}
+				else {
+					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
+					$resAmo = false;
+					$controller->recordHook(json_encode($resAmoArray, JSON_UNESCAPED_UNICODE));
+				}
 			}
 			else {
 				$resAmo = false;
@@ -43,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$result = false;
 			}
+
 			
 		}
 	}
@@ -50,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-	else {
+	/*else {
 		sleep(2);
 		$clientId = $contactData['client']['id'];
 		$amoContactData = $controller->getAmoContact($clientId);
@@ -75,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$controller->recordHook(json_encode($result, JSON_UNESCAPED_UNICODE));
 	}
 
-	/*else if ($hookType == 'record') {
+	else if ($hookType == 'record') {
 		switch ($hookStatus) {
 			case 'create':
 			$recordData = $payload;

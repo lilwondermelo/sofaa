@@ -84,7 +84,7 @@ class Controller {
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
-				return array('amo_id' => $dataRow->getValue('amo_id'), 'lead_id' => $dataRow->getValue('lead_id'));
+				return array('amo_id' => $dataRow->getValue('amo_id'), 'amo_deal' => $dataRow->getValue('lead_id'));
 			}
 			else {
 				return $dataRow->getValue('yc_id');
@@ -266,20 +266,31 @@ class Controller {
 		return $result;
 	}
 
-	public function setDealToAmo($data, $amoId = '') {
+	public function setDealToAmo($amoId = -1, $leadId = -1, $amoData = array()) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
 		$this->method = 'POST';
-		if ($amoId != '') {
-			$this->method = 'PATCH';
+
+		$data = array(
+			'name' => 'Запись из YCLIENTS',
+			'price' => 1,
+			'status_id' => $account->getStatuses()['7']
+		);
+
+		if ($amoId != -1) {
+			$data['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 		}
+		else {
+			$data['_embedded'] = array('contacts' => array($amoData));
+		}
+
 		$result = $this->apiQuery([$data]);
 		return $result;
 	}
 
 
-	public function setContactToAmo($contact, $amoId = -1, $leadId = -1) {
+	public function setContactToAmo($contact, $amoId = -1) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$dataArray = [$contact];
@@ -293,7 +304,6 @@ class Controller {
 		}
 		
 		$result = $this->apiQuery($dataArray);
-		$this->recordHook('2 '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return $dataArray;
