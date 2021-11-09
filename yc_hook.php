@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$postData = json_decode(file_get_contents('php://input'), true);
-
+	$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 	$contactData = $postData['data'];
 	$hookType = $postData['resource'];
 	$hookStatus = $postData['status'];
@@ -36,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				else {
 					$resAmoArray = $controller->setDealToAmo($amoData, $amoId, $leadId);
 					$resAmo = false;
-					
 				}
 			}
 			else {
