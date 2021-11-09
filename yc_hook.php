@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$resAmo = false;
 			}
 			if ($resAmo) {
-				$contact->setAmoId($resAmo);
+				$contact->setAmoId($amoId);
 				$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
 			}
 			else {
