@@ -9,10 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$companyId = $postData['company_id'];
 	require_once 'account.php';
 	$account = new Account($companyId);
-
 	require_once 'controller.php';
 	$controller = new Controller($account);
-
 	sleep(2);
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
@@ -20,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
 			$amoId = $controller->checkClient($contact, 'yc');
-			
 			if (!$amoId) {
 				$amoId = -1;
 			}
@@ -28,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				
 				$resAmo = $controller->setContactToAmo($amoData, $amoId);
+				//$resAmoDeal = $controller->setDealToAmo($amoData, $resAmo);
 			}
 			else {
 				$resAmo = false;
@@ -41,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$result = false;
 			}
-			$controller->recordHook('2 '. json_encode($result, JSON_UNESCAPED_UNICODE));
+			
 		}
 	}
 

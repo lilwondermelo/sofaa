@@ -161,17 +161,7 @@ class Controller {
 	}
 
 
-	public function setDealToAmo($data, $amoId = '') {
-		$this->isYc = 0;
-		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
-		$this->method = 'POST';
-		if ($amoId != '') {
-			$this->method = 'PATCH';
-		}
-		$result = $this->apiQuery([$data]);
-		return $result;
-	}
+	
 
 
 	public function getAmoContact($ycId) {
@@ -276,7 +266,17 @@ class Controller {
 		return $result;
 	}
 
-
+	public function setDealToAmo($data, $amoId = '') {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
+		$this->method = 'POST';
+		if ($amoId != '') {
+			$this->method = 'PATCH';
+		}
+		$result = $this->apiQuery([$data]);
+		return $result;
+	}
 
 
 	public function setContactToAmo($contact, $amoId = -1) {
@@ -293,7 +293,7 @@ class Controller {
 		}
 		
 		$result = $this->apiQuery($dataArray);
-		 $resId = 0;
+		$controller->recordHook('2 '. json_encode($result, JSON_UNESCAPED_UNICODE));
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return $dataArray;
