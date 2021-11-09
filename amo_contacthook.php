@@ -14,26 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
-
 		$resId = $contact->createFromAmo();
 		$ycId = $controller->checkClient($contact, 'amo');
-		
 		if (!$ycId) {
 			$ycId = -1;
 		}
-		
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
-
 		if ($resultDb) {
 			$contact->setId($ycId);
-			$amoData = $contact->convertToYC();
-			$resYc = $controller->setContactToYC($amoData);
+			$ycData = $contact->convertToYC();
+			$resYc = $controller->setContactToYC($ycData);
 			
 		}
 		else {
 			$resYc = false;
 		}
-		
 		if ($resYc) {
 			$contact->setId($resYc);
 			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
@@ -43,8 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		$controller->recordHook('1 '. json_encode($result, JSON_UNESCAPED_UNICODE));
 		//$kek = $contact->editFromAmo();
-
-	
 }
 
 	/*

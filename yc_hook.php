@@ -18,12 +18,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
-				/*$contact = new Contact($contactData, $account->getCustomFields());
-				$contact->createFromYC();
-				$amoData = $contact->convertToAmo();
-				$amoId = $controller->checkAmoContact($contact);
-				$resId = $controller->setContactToAmo($amoData, $amoId);
-				$controller->recordHook(json_encode($resId, JSON_UNESCAPED_UNICODE));*/
+			$contact = new Contact($contactData, $account->getCustomFields());
+			$amoId = $controller->checkClient($contact, 'yc');
+			if (!$amoId) {
+				$amoId = -1;
+			}
+			$resultDb = $controller->recordContactFromAmo($contact, $amoId);
+			if ($resultDb) {
+				$contact->setAmoId($amoId);
+				$amoData = $contact->convertToYC();
+				$resAmo = $controller->setContactToAmo($amoData);
+			}
+			else {
+				$resYc = false;
+			}
+			if ($resYc) {
+				$contact->setId($resYc);
+				$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
+			}
+			else {
+				$result = false;
+			}
+			$controller->recordHook('1 '. json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 	}
 
