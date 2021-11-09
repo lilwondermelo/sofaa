@@ -1,5 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	sleep(2);
 	require_once 'account.php';
 	$account = new Account($companyId);
 
