@@ -84,10 +84,10 @@ class Controller {
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
-				return array('amo_id' => $dataRow->getValue('amo_id'), 'amo_deal' => $dataRow->getValue('lead_id'));
+				return array('amo_id' => $dataRow->getValue('amo_id'), 'lead_id' => $dataRow->getValue('lead_id'));
 			}
 			else {
-				return $dataRow->getValue('yc_id');
+				return array('yc_id' => $dataRow->getValue('yc_id'), 'lead_id' => $dataRow->getValue('lead_id'));
 			}
 		}
 		else {

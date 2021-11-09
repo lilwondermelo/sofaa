@@ -15,10 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'contact.php';
 	$contact = new Contact($entityData, $account->getCustomFields());
 		$resId = $contact->createFromAmo();
-		$ycId = $controller->checkClient($contact, 'amo');
-		if (!$ycId) {
-			$ycId = -1;
-		}
+		$check = $controller->checkClient($contact, 'amo');
+		$ycId = $check['yc_id']?$check['yc_id']:-1;
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
 			$contact->setId($ycId);
