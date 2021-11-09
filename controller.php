@@ -296,7 +296,7 @@ class Controller {
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return $dataArray;
-			return $result;
+			return false;
 		}
 		else {
 			return $resId;

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				$resAmo = $controller->setContactToAmo($amoData);
+				$resAmo = $controller->setContactToAmo($amoData, $amoId);
 			}
 			else {
 				$resAmo = false;
