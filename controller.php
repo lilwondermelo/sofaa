@@ -80,7 +80,8 @@ class Controller {
 
 	public function checkClient($contact, $source = 'yc') {
 		require_once '_dataRowSource.class.php';
-		$dataRow = new DataRowSource('select * from clients_' . $this->account->getAmoHost() . ' where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId());
+		$query = 'select * from clients_' . $this->account->getAmoHost() . ' where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId();
+		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
 				return $dataRow->getValue('amo_id');
@@ -90,7 +91,7 @@ class Controller {
 			}
 		}
 		else {
-			return false;
+			return $query;
 		}
 	}
 
