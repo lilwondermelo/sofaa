@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		$recordData = [
 			'client_id' => $contactData['client']['id'],
-			'datetime' => UTCdatestringToTime($contactData['datetime']),
+			'datetime' => strtotime($contactData['datetime']),
 			'attendance' => $contactData['attendance'],
 			'deleted' => $contactData['deleted'],
 			'cost' => $cost,
