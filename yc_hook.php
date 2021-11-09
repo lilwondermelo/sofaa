@@ -79,7 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'services' => json_encode($services, JSON_UNESCAPED_UNICODE),
 			'filial_id' => $companyId
 		];
-		$controller->recordHook('333' . json_encode($recordData, JSON_UNESCAPED_UNICODE));
+		$resultDb = $controller->setRecord($recordData, $recordId);
+		$controller->recordHook('333' . json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 		
 	}
 }  

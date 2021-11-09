@@ -157,7 +157,19 @@ class Controller {
 
 	
 
-
+	public function setRecord($data, $recordId) {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('records_' . $this->account->getAmoHost());
+		$updater->setKeyField('record_id', $recordId);
+		$updater->setDataFields($data);
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return false;
+		}
+		else {
+			return $recordId;
+		}
+	}
 	
 
 
