@@ -84,7 +84,7 @@ class Controller {
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
-				return $dataRow->getValue('amo_id');
+				return array('amo_id' => $dataRow->getValue('amo_id'), 'amo_deal' => $dataRow->getValue('lead_id'));
 			}
 			else {
 				return $dataRow->getValue('yc_id');
@@ -279,7 +279,7 @@ class Controller {
 	}
 
 
-	public function setContactToAmo($contact, $amoId = -1) {
+	public function setContactToAmo($contact, $amoId = -1, $leadId = -1) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$dataArray = [$contact];
@@ -293,7 +293,7 @@ class Controller {
 		}
 		
 		$result = $this->apiQuery($dataArray);
-		$this->recordHook('2 '. json_encode($result, JSON_UNESCAPED_UNICODE));
+		$this->recordHook('2 '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 		$resId = $result['_embedded']['contacts'][0]['id'];
 		if (!$resId) {
 			//return $dataArray;

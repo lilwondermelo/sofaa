@@ -17,7 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			require_once 'contact.php';
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
-			$amoId = $controller->checkClient($contact, 'yc');
+			$check = $controller->checkClient($contact, 'yc');
+			$amoId = $check['amo_id'];
+			$leadId = $check['lead_id'];
 			if (!$amoId) {
 				$amoId = -1;
 			}
@@ -25,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				$resAmo = $controller->setContactToAmo($amoData, $amoId);
+				$resAmo = $controller->setContactToAmo($amoData, $amoId, $leadId);
 				//$resAmoDeal = $controller->setDealToAmo($amoData, $resAmo);
 			}
 			else {
