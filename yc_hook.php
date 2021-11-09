@@ -63,10 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	else {
 		sleep(2);
 		$recordId = $contactData['id'];
-		$services = [];
+		$services = '';
 		$cost = 0;
 		foreach ($contactData['services'] as $service) {
-			$services[] = $service['title'];
+			$services .= $service['title'] . ', ';
 			$cost += $service['cost'];
 		}
 		$recordData = [
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'deleted' => $contactData['deleted'],
 			'cost' => $cost,
 			'comment' => $contactData['comment'],
-			'services' => json_encode($services, JSON_UNESCAPED_UNICODE),
+			'services' => mb_substr($services, 0, -1),
 			'filial_id' => $companyId
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
