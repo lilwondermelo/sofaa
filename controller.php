@@ -203,6 +203,8 @@ order by r.datetime desc';
 		if (strtotime($dealData['date']) < strtotime($this->account->getActiveDate())) {
 			$stat = 'n';
 		}
+		$this->recordHook('1 ' . json_encode($this->account->getCustomFields()['deal_yc_id'], JSON_UNESCAPED_UNICODE));
+		
 		$data = array(
 					'id' => (int)$dealData['lead_id'],
 					'custom_fields_values' => array(array("field_id" => $this->account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => (int)$dealData['yc_id']))), array("field_id" => $this->account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['datetime'])))), array("field_id" => $this->account->getCustomFields()['comment'], "values" => array(array("value" => $dealData['comment']))), array("field_id" => $this->account->getCustomFields()['services'], "values" => array(array("value" => $dealData['services'])))),
