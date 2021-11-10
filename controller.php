@@ -191,16 +191,16 @@ order by r.datetime desc';
 		$this->method = 'PATCH';
 
 		$stat = $dealData['attendance'];
-		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-1 day")))) {
+		if ($dealData['date'] < strtotime(date('Y-m-d H:i:s', strtotime("-1 day")))) {
 				$stat = '4';
 		}
-		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-14 days")))) {
+		if ($dealData['date'] < strtotime(date('Y-m-d H:i:s', strtotime("-14 days")))) {
 			$stat = '9';
 		}
-		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-28 days")))) {
+		if ($dealData['date'] < strtotime(date('Y-m-d H:i:s', strtotime("-28 days")))) {
 			$stat = '7';
 		}
-		if (strtotime($dealData['date']) < strtotime($this->account->getActiveDate())) {
+		if ($dealData['date'] < strtotime($this->account->getActiveDate())) {
 			$stat = 'n';
 		}
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
