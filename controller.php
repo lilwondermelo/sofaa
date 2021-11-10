@@ -165,7 +165,22 @@ and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
-		return $data[0]['record_id'];
+		if (!$data) {
+			$query = 'select * from records_' . $this->account->getAmoHost() . ' r 
+join clients_' . $this->account->getAmoHost() . ' c 
+on r.client_id = c.yc_id 
+where r.client_id = ' . $clientId . '
+and r.datetime <= ' . 1637951867 . '
+order by r.datetime desc';
+
+			$dataRow = new DataSource($query);
+		$data = $dataRow->getData();
+		}
+
+		if (!$data) {
+			return false;
+		}
+		return $data[0]['lead_id'];
 	}
 
 
