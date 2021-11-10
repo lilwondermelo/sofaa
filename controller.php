@@ -155,13 +155,22 @@ class Controller {
 		}
 	}
 
-	public function getLeadId($clientId) {
+	public function getLastRecord($clientId) {
 		require_once '_dataSource.class.php';
-		$query = 'select * from records_jkamogolovaorg r join clients_' . $this->account->getAmoHost() . ' c on r.client_id = c.yc_id order by r.datetime desc where r.client_id = ' . $clientId;
+		$query = 'select * from records_' . $this->account->getAmoHost() . ' r 
+join clients_' . $this->account->getAmoHost() . ' c 
+on r.client_id = c.yc_id 
+where r.client_id = ' . $clientId . '
+and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
+order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
-		return;
+		return $data[0]['record_id'];
 	}
+
+
+
+
 
 	public function setRecord($data, $recordId) {
 		require_once '_dataRowUpdater.class.php';
