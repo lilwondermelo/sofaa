@@ -184,7 +184,7 @@ order by r.datetime desc';
 	}
 
 
-	public setRecordToAmo($dealData) {
+	public function setRecordToAmo($dealData) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
