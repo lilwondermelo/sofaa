@@ -200,14 +200,14 @@ order by r.datetime desc';
 		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-28 days")))) {
 			$stat = '7';
 		}
-		if (strtotime($dealData['date']) < strtotime($account->getActiveDate())) {
+		if (strtotime($dealData['date']) < strtotime($this->account->getActiveDate())) {
 			$stat = 'n';
 		}
 		$data = array(
 					'id' => $dealData['lead_id'],
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['datetime'])))), array("field_id" => $account->getCustomFields()['comment'], "values" => array(array("value" => strtotime($dealData['comment'])))), array("field_id" => $account->getCustomFields()['services'], "values" => array(array("value" => strtotime($dealData['services']))))),
 					'price' => $dealData['cost'],
-					'status_id' => $account->getStatuses()[$stat]
+					'status_id' => $this->account->getStatuses()[$stat]
 				);
 
 		$result = $this->apiQuery([$data]);
