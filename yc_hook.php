@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 	else {
-		sleep(2);
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -83,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		
+
 		$controller->recordHook($hookStatus . ' ' . json_encode($active, JSON_UNESCAPED_UNICODE));
 		
 	}

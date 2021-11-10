@@ -161,7 +161,7 @@ class Controller {
 join clients_' . $this->account->getAmoHost() . ' c 
 on r.client_id = c.yc_id 
 where r.client_id = ' . $clientId . '
-and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
+and r.datetime >= ' . 1637951867 . '
 order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
