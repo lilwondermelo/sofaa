@@ -1,8 +1,8 @@
 <?php 
 
+	recordHook();
 
-
-	function recordHook($data = 'empty') {
+	function recordHook() {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('sys_data');
 		$updater->setKeyField('id');
