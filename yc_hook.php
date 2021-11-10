@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		$result = $controller->setRecordToAmo($active);
 		$controller->recordHook($hookStatus . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
-		
+		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
 }  
 ?>

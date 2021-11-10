@@ -203,7 +203,7 @@ order by r.datetime desc';
 		if (strtotime($dealData['date']) < strtotime($this->account->getActiveDate())) {
 			$stat = 'n';
 		}
-		$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
+		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
 		
 		$data = array(
 					'id' => (int)$dealData['lead_id'],
