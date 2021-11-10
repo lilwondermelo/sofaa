@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		$controller->recordHook(json_encode($active, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook($hookStatus . ' ' . json_encode($active, JSON_UNESCAPED_UNICODE));
 		
 	}
 }  
