@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$services .= $service['title'] . ', ';
 			$cost += $service['cost'];
 		}
-		$controller->recordHook($hookStatus . ' ' . json_encode($postData, JSON_UNESCAPED_UNICODE));
+
 		$recordData = [
 			'client_id' => $contactData['client']['id'],
 			'datetime' => strtotime($contactData['datetime']),
@@ -83,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
+		$controller->recordHook($hookStatus . ' ' . json_encode($active, JSON_UNESCAPED_UNICODE));
 		$result = $controller->setRecordToAmo($active);
 		$controller->recordHook($hookStatus . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		
