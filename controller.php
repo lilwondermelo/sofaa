@@ -205,7 +205,7 @@ order by r.datetime desc';
 		}
 		$data = array(
 					'id' => $dealData['lead_id'],
-					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['datetime'])))), array("field_id" => $account->getCustomFields()['comment'], "values" => array(array("value" => strtotime($dealData['comment'])))), array("field_id" => $account->getCustomFields()['services'], "values" => array(array("value" => strtotime($dealData['services']))))),
+					'custom_fields_values' => array(array("field_id" => $this->account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $this->account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['datetime'])))), array("field_id" => $this->account->getCustomFields()['comment'], "values" => array(array("value" => strtotime($dealData['comment'])))), array("field_id" => $this->account->getCustomFields()['services'], "values" => array(array("value" => strtotime($dealData['services']))))),
 					'price' => $dealData['cost'],
 					'status_id' => $this->account->getStatuses()[$stat]
 				);
