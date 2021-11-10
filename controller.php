@@ -161,7 +161,7 @@ class Controller {
 join clients_' . $this->account->getAmoHost() . ' c 
 on r.client_id = c.yc_id 
 where r.client_id = ' . $clientId . '
-and r.datetime >= ' . 1637951867 . '
+and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
@@ -170,7 +170,7 @@ order by r.datetime';
 join clients_' . $this->account->getAmoHost() . ' c 
 on r.client_id = c.yc_id 
 where r.client_id = ' . $clientId . '
-and r.datetime <= ' . 1637951867 . '
+and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime desc';
 
 			$dataRow = new DataSource($query);
@@ -180,10 +180,39 @@ order by r.datetime desc';
 		if (!$data) {
 			return false;
 		}
-		return $data[0]['services'];
+		return $data[0];
 	}
 
 
+	public setRecordToAmo($dealData) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
+		$this->method = 'PATCH';
+
+		$stat = $dealData['attendance'];
+		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-1 day")))) {
+				$stat = '4';
+		}
+		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-14 days")))) {
+			$stat = '9';
+		}
+		if (strtotime($dealData['date']) < strtotime(date('Y-m-d H:i:s', strtotime("-28 days")))) {
+			$stat = '7';
+		}
+		if (strtotime($dealData['date']) < strtotime($account->getActiveDate())) {
+			$stat = 'n';
+		}
+		$data = array(
+					'id' => $dealData['lead_id'],
+					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['datetime'])))), array("field_id" => $account->getCustomFields()['comment'], "values" => array(array("value" => strtotime($dealData['comment'])))), array("field_id" => $account->getCustomFields()['services'], "values" => array(array("value" => strtotime($dealData['services']))))),
+					'price' => $dealData['cost'],
+					'status_id' => $account->getStatuses()[$stat]
+				);
+
+		$result = $this->apiQuery([$data]);
+		return $result;
+	}
 
 
 
