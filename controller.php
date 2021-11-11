@@ -191,18 +191,7 @@ order by r.datetime desc';
 		$this->method = 'PATCH';
 
 		$stat = (int)$dealData['attendance'];
-		if ((int)$dealData['datetime'] < strtotime(date('Y-m-d H:i:s', strtotime("-1 day")))) {
-				$stat = '4';
-		}
-		if ((int)$dealData['datetime'] < strtotime(date('Y-m-d H:i:s', strtotime("-14 days")))) {
-			$stat = '9';
-		}
-		if ((int)$dealData['datetime'] < strtotime(date('Y-m-d H:i:s', strtotime("-28 days")))) {
-			$stat = '7';
-		}
-		if ((int)$dealData['datetime'] < strtotime($this->account->getActiveDate())) {
-			$stat = 'n';
-		}
+		
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
 		
 		$data = array(
@@ -220,7 +209,7 @@ order by r.datetime desc';
 
 	public function setRecord($data, $recordId) {
 		require_once '_dataRowUpdater.class.php';
-		$updater = new DataRowUpdater('records_' . $this->account->getAmoHost());
+		$updater = new DataRowUpdater('records');
 		$updater->setKeyField('record_id', $recordId);
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
