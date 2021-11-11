@@ -79,7 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'services' => mb_substr($services, 0, -1),
 			'filial_id' => $companyId,
 			'2h' => 0,
-			'24h' => 0
+			'24h' => 0,
+			'req' => 0
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
@@ -88,6 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$controller->recordHook($hookStatus . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
-}  
+}
 ?>
 
