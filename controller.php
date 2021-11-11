@@ -80,7 +80,7 @@ class Controller {
 
 	public function checkClient($contact, $source = 'yc') {
 		require_once '_dataRowSource.class.php';
-		$query = 'select * from clients_' . $this->account->getAmoHost() . ' where phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId();
+		$query = 'select * from clients where (phone = ' . $contact->getPhone() . ' or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId() . ') and amo_host = ' . $this->account->getAmoHost();
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
 			if ($source == 'yc') {
@@ -157,8 +157,8 @@ class Controller {
 
 	public function getLastRecord($clientId) {
 		require_once '_dataSource.class.php';
-		$query = 'select * from records_' . $this->account->getAmoHost() . ' r 
-join clients_' . $this->account->getAmoHost() . ' c 
+		$query = 'select * from records r 
+join clients c 
 on r.client_id = c.yc_id 
 where r.client_id = ' . $clientId . '
 and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
@@ -166,8 +166,8 @@ order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
 		if (!$data) {
-			$query = 'select * from records_' . $this->account->getAmoHost() . ' r 
-join clients_' . $this->account->getAmoHost() . ' c 
+			$query = 'select * from records r 
+join clients c 
 on r.client_id = c.yc_id 
 where r.client_id = ' . $clientId . '
 and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
