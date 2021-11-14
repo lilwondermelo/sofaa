@@ -189,7 +189,7 @@ order by r.datetime desc';
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
 		$this->method = 'PATCH';
 
-		$stat = (int)$dealData['attendance'];
+		$stat = (int)$dealData['attendance'] + 2;
 		
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
 		
