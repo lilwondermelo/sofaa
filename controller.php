@@ -95,7 +95,6 @@ class Controller {
 		}
 	}
 
-
 	public function recordContactFromYc($contact, $id = -1) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
@@ -196,9 +195,9 @@ order by r.datetime desc';
 		
 		$data = array(
 					'id' => (int)$dealData['lead_id'],
-					'custom_fields_values' => array(array("field_id" => $this->account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => (int)$dealData['yc_id']))), array("field_id" => $this->account->getCustomFields()['deal_datetime'], "values" => array(array("value" => (int)$dealData['datetime']))), array("field_id" => $this->account->getCustomFields()['comment'], "values" => array(array("value" => $dealData['comment']))), array("field_id" => $this->account->getCustomFields()['services'], "values" => array(array("value" => $dealData['services'])))),
-					'price' => (int)$dealData['cost'],
-					'status_id' => $this->account->getStatuses()[$stat]
+					'custom_fields_values' => array(array("field_id" => $this->account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => (int)$dealData['yc_id']))), array("field_id" => $this->account->getCustomFields()['deal_datetime'], "values" => array(array("value" => (int)$dealData['datetime']))), array("field_id" => $this->account->getCustomFields()['comment'], "values" => array(array("value" => $dealData['comment']))), array("field_id" => $this->account->getCustomFields()['services'], "values" => array(array("value" => $dealData['services']))), array("field_id" => $this->account->getCustomFields()['status'], "values" => array(array("value" => $stat)))),
+					'price' => (int)$dealData['cost']
+					//'status_id' => $this->account->getStatuses()[$stat]
 				);
 
 		$result = $this->apiQuery([$data]);
