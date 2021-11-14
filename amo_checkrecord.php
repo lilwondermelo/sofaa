@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($amoHost);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-=
-	$controller->recordHook('1 '. json_encode($postData, JSON_UNESCAPED_UNICODE));
+
+	$controller->recordHook('154 '. json_encode($postData, JSON_UNESCAPED_UNICODE));
 }
 ?>

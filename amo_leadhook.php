@@ -1,13 +1,11 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	sleep(2);
 	require_once 'account.php';
 	$account = new Account($companyId);
 
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	$r = $_POST;
-	$controller->recordHook(json_encode($r, JSON_UNESCAPED_UNICODE));
+	
 	/*$recordId = $_POST['leads']['update'][0]['id'];
     $company = $_POST['account']['subdomain'];
     $statusId = $_POST['leads']['update'][0]['status_id'];
