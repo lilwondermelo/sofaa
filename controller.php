@@ -348,8 +348,8 @@ order by r.datetime desc';
 			'status_id' => $this->account->getStatuses()['7']
 		);
 		$data['_embedded'] = array('contacts' => array($amoData));
-		$result = $this->setManyDealsToAmo([$data]);
-		return $result;
+		//$result = $this->setManyDealsToAmo([$data]);
+		return $data;
 	}
 
 	public function setManyDealsToAmo($dataArray) {
