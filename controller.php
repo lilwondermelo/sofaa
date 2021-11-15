@@ -325,7 +325,10 @@ order by r.datetime desc';
 	}
 
 	public function setDealToAmo($amoData = array(), $amoId = -1) {
-		
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
+		$this->method = 'POST';
 
 		$data = array(
 			'name' => 'Запись из YCLIENTS',
@@ -349,8 +352,8 @@ order by r.datetime desc';
 			'status_id' => $this->account->getStatuses()['7']
 		);
 		$data['_embedded'] = array('contacts' => array($amoData));
-		//$result = $this->setManyDealsToAmo([$data]);
-		return $data;
+		$result = $this->setManyDealsToAmo([$data]);
+		return $result;
 	}
 
 	public function setManyDealsToAmo($dataArray) {
