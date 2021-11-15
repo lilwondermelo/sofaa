@@ -54,16 +54,15 @@ class Controller {
 			if ($result['status'] == 401) {
 				$result = $this->account->newAmoBearer();
 				//Обновить данный аккаунта
-				//$this->apiQuery($args);
-				return $result;
+				return $this->apiQuery($args);
 			}
 			else {
-				return 2;
+				return $result;
 			}
 			
 		}
 		else {
-			return 3;
+			return $result;
 		}
 	}
 
@@ -342,10 +341,7 @@ order by r.datetime desc';
 	}
 
 	public function setComplexToAmo($amoData = array()) {
-		$this->isYc = 0;
-		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
-		$this->method = 'POST';
+		
 		$data = array(
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
