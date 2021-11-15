@@ -10,6 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'controller.php';
 	$controller = new Controller($account);
 
+	$active = $controller->getLastRecordByAmo($postData['leads']['add'][0]['id']);
+	$result = $controller->setRecordToAmo($active);
+
 	$controller->recordHook('1 '. json_encode($postData, JSON_UNESCAPED_UNICODE));
 }
 ?>
