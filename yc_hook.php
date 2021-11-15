@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				
-				echo $amoData;
+				echo json_encode($amoData, JSON_UNESCAPED_UNICODE);
 				/*
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
