@@ -28,12 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$leadId = $check['lead_id']?$check['lead_id']:-1;
 			}
 			$resultDb = $controller->recordContactFromYc($contact, $amoId);
-			if ($resultDb) {
+			echo $result;
+			/*if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 
 				$controller->recordHook('чек' . json_encode($amoData, JSON_UNESCAPED_UNICODE));
-				
+
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
 					$resAmo = $amoId;
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			else {
 				$result = false;
-			}
+			}*/
 			
 			//$active = $controller->getLastRecord($contact->getId());
 			//$result = $controller->setRecordToAmo($active);
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 		}
 	}
-
+/*
 	else {
 		$recordId = $contactData['id'];
 		$services = '';
@@ -96,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$result = $controller->setRecordToAmo($active);
 		$controller->recordHook($hookStatus . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
-	}
+	}*/
 }
 ?>
 
