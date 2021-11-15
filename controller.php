@@ -55,7 +55,7 @@ class Controller {
 				$result = $this->account->newAmoBearer();
 				//Обновить данный аккаунта
 				//$this->apiQuery($args);
-				return 1;
+				return $result;
 			}
 			else {
 				return 2;
