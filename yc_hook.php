@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($companyId);
 	require_once 'controller.php';
 	$controller = new Controller($account);
+	$controller->recordHook('check');
 	sleep(2);
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
@@ -56,10 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = false;
 			}
 			
-			$active = $controller->getLastRecord($contact->getId());
-			$result = $controller->setRecordToAmo($active);
+			//$active = $controller->getLastRecord($contact->getId());
+			//$result = $controller->setRecordToAmo($active);
 
-			$controller->recordHook('222' . json_encode($result, JSON_UNESCAPED_UNICODE));
+			
 			
 		}
 	}
