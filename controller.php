@@ -54,8 +54,8 @@ class Controller {
 			if ($result['status'] == 401) {
 				$result = $this->account->newAmoBearer();
 				//Обновить данный аккаунта
-				$this->apiQuery($args);
-				return $this->authHeader;
+				//$this->apiQuery($args);
+				return $result;
 			}
 			else {
 				return $result;
