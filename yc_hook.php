@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$resAmo = false;
 			}
+			$controller->recordHook('чек' . json_encode($resAmo, JSON_UNESCAPED_UNICODE));
 			if ($resAmo) {
 				$contact->setAmoId($amoId);
 				$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
