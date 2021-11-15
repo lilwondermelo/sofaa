@@ -45,13 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				}
 				else {
 					$resAmo = $controller->setComplexToAmo($amoData);
-					//$amoId = $resAmo[0]['contact_id'];
-					//$leadId = $resAmo[0]['id'];
-					echo json_encode($resAmo, JSON_UNESCAPED_UNICODE);
+					$amoId = $resAmo[0]['contact_id'];
+					$leadId = $resAmo[0]['id'];
 				}
 				
 			}
-			/*
+			
 			else {
 				$resAmo = false;
 			}
@@ -64,14 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = false;
 			}
 			
-			//$active = $controller->getLastRecord($contact->getId());
-			//$result = $controller->setRecordToAmo($active);
+			$active = $controller->getLastRecord($contact->getId());
+			$result = $controller->setRecordToAmo($active);
 
 			
-			*/
+			
 		}
 	}
-/*
+
 	else {
 		$recordId = $contactData['id'];
 		$services = '';
@@ -100,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$result = $controller->setRecordToAmo($active);
 		$controller->recordHook($hookStatus . ' ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
-	}*/
+	}
 }
 ?>
 
