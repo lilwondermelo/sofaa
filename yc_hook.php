@@ -65,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			//$result = $controller->setRecordToAmo($active);
 
 			
-			
-		}*/
+			*/
+		}
 	}
 /*
 	else {
