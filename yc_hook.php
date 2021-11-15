@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				
-				echo json_encode($amoData, JSON_UNESCAPED_UNICODE);
-				/*
+				
+
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
 					$resAmo = $amoId;
@@ -48,8 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$amoId = $resAmo[0]['contact_id'];
 					$leadId = $resAmo[0]['id'];
 				}
-				*/
+				echo json_encode($resAmo, JSON_UNESCAPED_UNICODE);
 			}
+			
 			/*
 			else {
 				$resAmo = false;
