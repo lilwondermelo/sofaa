@@ -59,14 +59,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			else {
 				$result = false;
-			}*/
+			}
 			
 			//$active = $controller->getLastRecord($contact->getId());
 			//$result = $controller->setRecordToAmo($active);
 
 			
 			
-		}
+		}*/
 	}
 /*
 	else {
