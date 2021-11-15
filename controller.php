@@ -153,6 +153,35 @@ class Controller {
 		}
 	}
 
+
+	public function getLastRecordByAmo($leadId) {
+		require_once '_dataSource.class.php';
+		$query = 'select * from records r 
+join clients c 
+on r.client_id = c.yc_id 
+where c.lead_id = ' . $leadId. '
+and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
+order by r.datetime';
+		$dataRow = new DataSource($query);
+		$data = $dataRow->getData();
+		if (!$data) {
+			$query = 'select * from records r 
+join clients c 
+on r.client_id = c.yc_id 
+where c.lead_id = ' . $leadId. '
+and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
+order by r.datetime desc';
+
+			$dataRow = new DataSource($query);
+		$data = $dataRow->getData();
+		}
+
+		if (!$data) {
+			return false;
+		}
+		return $data[0];
+	}
+
 	public function getLastRecord($clientId) {
 		require_once '_dataSource.class.php';
 		$query = 'select * from records r 
@@ -341,7 +370,7 @@ order by r.datetime desc';
 	}
 
 	public function setComplexToAmo($amoData = array()) {
-		
+
 		$data = array(
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
