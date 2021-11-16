@@ -6,6 +6,7 @@ and r.datetime <= ' . strtotime(date('Y-m-d H:i:s', '+1 day')) . '
 and r.`24h` = 0 and attendance != -1';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
+	echo json_encode($data, JSON_UNESCAPED_UNICODE);
 	if ($data) {
 		foreach ($data as $item) {
 			$amoHost = $item['amoHost'];
