@@ -19,10 +19,10 @@ and r.`24h` = 0 and attendance != -1';
 					'id' => (int)$leadId,
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
 				);
-
-		$result = $controller->setRequestToAmo($dataReq);
-		$resDb = $controller->setRecord(array('24h' => 1), $recordId);
-		echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
+			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
+		//$result = $controller->setRequestToAmo($dataReq);
+		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
+		
 		}
 	}
 
