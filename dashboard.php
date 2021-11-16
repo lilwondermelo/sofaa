@@ -1,3 +1,14 @@
+<?php
+
+
+echo strtotime(date('Y-m-d H:i:s') . '+1 day');
+
+
+
+
+?>
+
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">

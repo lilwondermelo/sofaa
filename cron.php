@@ -1,10 +1,8 @@
 <?php 
-
-
 require_once '_dataSource.class.php';
 	$query24 = 'select c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
-and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . '
+and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . ' 
 and r.creating = 0 and attendance != -1 
 and c.lead_id is not null';
 	$dataSource = new DataSource($query24);
@@ -31,7 +29,7 @@ and c.lead_id is not null';
 		}
 	}
 
-
+sleep(2);
 
 	require_once '_dataSource.class.php';
 	$query24 = 'select c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
@@ -62,6 +60,8 @@ and c.lead_id is not null';
 		
 		}
 	}
+
+	sleep(2);
 
 require_once '_dataSource.class.php';
 	$query24 = 'select c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
