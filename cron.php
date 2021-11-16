@@ -20,7 +20,7 @@ and r.`24h` = 0 and attendance != -1';
 				);
 
 		$result = $controller->setRequestToAmo([$dataReq]);
-		echo $result;
+		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 		}
 	}
 
