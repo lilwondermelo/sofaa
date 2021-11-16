@@ -21,9 +21,10 @@ and c.lead_id is not null';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
 				);
 			
-		//$result = $controller->setRequestToAmo($dataReq);
-		echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
-		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
+		$result = $controller->setRequestToAmo($dataReq);
+		
+		$resDb = $controller->setRecord(array('24h' => 1), $recordId);
+			echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
 		
 		}
 	}
