@@ -19,7 +19,7 @@ class DataConnector {
     var $server = 'egogr.beget.tech';
     //var $server = '127.0.0.1';
     var $user = 'egogr_ycamo';
-    var $password = 'qq%Rz6tF';
+    var $password = 'THnV7tn%';
     var $dbase = 'egogr_ycamo';
 
     //подключаем
