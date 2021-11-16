@@ -237,7 +237,7 @@ order by r.datetime desc';
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
 		$this->method = 'PATCH';
-		$result = $this->apiQuery([$data]);
+		$result = $this->apiQuery([$dealData]);
 		return $result;
 	}
 
