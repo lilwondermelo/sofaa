@@ -88,10 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'cost' => $cost,
 			'comment' => $contactData['comment']?$contactData['comment']:'',
 			'services' => mb_substr($services, 0, -1),
-			'filial_id' => $companyId,
-			'2h' => 0,
-			'24h' => 0,
-			'req' => 0
+			'filial_id' => $companyId
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
