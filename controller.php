@@ -232,6 +232,15 @@ order by r.datetime desc';
 		return $result;
 	}
 
+	public function setRequestToAmo($dealData) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
+		$this->method = 'PATCH';
+		$result = $this->apiQuery([$data]);
+		return $result;
+	}
+
 
 
 	public function setRecord($data, $recordId) {
