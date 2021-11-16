@@ -1,6 +1,6 @@
 <?php 
 	require_once '_dataSource.class.php';
-	$query24 = 'select c.lead_id as leadId, c.amo_host as amoHost from records r 
+	$query24 = 'select c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '+1 day') . '
 and r.`24h` = 0 and attendance != -1';
@@ -10,6 +10,7 @@ and r.`24h` = 0 and attendance != -1';
 		foreach ($data as $item) {
 			$amoHost = $item['amoHost'];
 			$leadId = $item['leadId'];
+			$recordId = $item['recordId'];
 			require_once 'account.php';
 			$account = new Account($amoHost);
 			require_once 'controller.php';
@@ -20,7 +21,8 @@ and r.`24h` = 0 and attendance != -1';
 				);
 
 		$result = $controller->setRequestToAmo($dataReq);
-		echo json_encode($result, JSON_UNESCAPED_UNICODE);
+		$resDb = $controller->setRecord(array('24h' => 1), $recordId)
+		echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
 		}
 	}
 	
