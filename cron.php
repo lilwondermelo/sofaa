@@ -21,7 +21,7 @@ and r.`24h` = 0 and attendance != -1';
 				);
 
 		$result = $controller->setRequestToAmo($dataReq);
-		$resDb = $controller->setRecord(array('24h' => 1), $recordId)
+		$resDb = $controller->setRecord(array('24h' => 1), $recordId);
 		echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
 		}
 	}
