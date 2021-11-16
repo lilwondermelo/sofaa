@@ -25,7 +25,7 @@ and r.`24h` = 0 and attendance != -1';
 	}
 
 
-
+echo 1;
 	
 
 ?>
