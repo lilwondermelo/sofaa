@@ -223,9 +223,20 @@ order by r.datetime desc';
 
 		$stat = (int)$dealData['attendance'] + 2;
 
-		if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-1 day')) {
-			if (($stat == 1) || ($stat == 3))
-				$stat = 5;
+		if ($stat == 3) {
+			if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-1 day')) {
+				$stat = 5; // 5 - ожидает отзыва
+			}
+			else if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-2 days')) {
+				$stat = 6; //6 - стагнация
+			}
+			else if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-14 days')) {
+				$stat = 7; //7 - реклама
+			}
+			else if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-28 days')) {
+				$stat = 8; //8 - позвонить сегодня
+			}
+
 		}
 		
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
