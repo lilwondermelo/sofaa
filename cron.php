@@ -1,6 +1,6 @@
 <?php 
 require_once '_dataSource.class.php';
-	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
+	$query24 = 'select DISTINCT r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
 and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . ' 
 and r.creating = 0 and attendance != -1 
@@ -33,7 +33,7 @@ and c.lead_id is not null';
 sleep(2);
 
 	require_once '_dataSource.class.php';
-	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
+	$query24 = 'select DISTINCT r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '+1 day') . '
 and r.`24h` = 0 and attendance != -1 
@@ -66,7 +66,7 @@ and c.lead_id is not null';
 	sleep(2);
 
 require_once '_dataSource.class.php';
-	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
+	$query24 = 'select DISTINCT r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '-1 day') . '
 and r.req = 0 and attendance = 1 
