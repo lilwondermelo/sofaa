@@ -24,7 +24,7 @@ and c.lead_id is not null';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
-			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
+			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
 	}
@@ -56,7 +56,7 @@ and c.lead_id is not null';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
-			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
+			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
 	}
@@ -88,7 +88,7 @@ and c.lead_id is not null';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('req' => 1), $recordId);
-			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
+			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
 	}
