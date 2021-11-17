@@ -44,7 +44,9 @@ and c.lead_id is not null order by r.datetime desc';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
 	if ($data) {
+		$data24 = array();
 		foreach ($data as $item) {
+			$data24[$item['leadId']] = $item;
 			$amoHost = $item['amoHost'];
 			$leadId = $item['leadId'];
 			$recordId = $item['recordId'];
@@ -60,9 +62,10 @@ and c.lead_id is not null order by r.datetime desc';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
-			echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
+			//echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
+		echo json_encode($data24, JSON_UNESCAPED_UNICODE) . '<br>';
 		echo '<br><br>';
 	}
 
@@ -77,7 +80,9 @@ and c.lead_id is not null order by r.datetime ';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
 	if ($data) {
+		$dataR = array();
 		foreach ($data as $item) {
+			$dataR[$item['leadId']] = $item;
 			$amoHost = $item['amoHost'];
 			$leadId = $item['leadId'];
 			$recordId = $item['recordId'];
@@ -93,10 +98,10 @@ and c.lead_id is not null order by r.datetime ';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('req' => 1), $recordId);
-			echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
+			//echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
-		echo '<br><br>';
-	}
+		echo json_encode($dataR, JSON_UNESCAPED_UNICODE) . '<br>';
+		echo '<br><br>';	}
 
 ?>
