@@ -106,7 +106,7 @@ and c.lead_id is not null order by r.datetime ';
 		foreach ($data24 as $item) {
 			$request24[] = $item;
 			if ($data24count > 0) {
-				$where24 .= ' or '
+				$where24 .= ' or ';
 			}
 			$where24 .= 'client_id = ' . $item['clientId'];
 		}
