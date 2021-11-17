@@ -8,6 +8,7 @@ and c.lead_id is not null';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
 	if ($data) {
+		$dataQ = array();
 		foreach ($data as $item) {
 			$dataQ[$item['lead_id']] = $item;
 			$amoHost = $item['amoHost'];
