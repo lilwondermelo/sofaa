@@ -1,4 +1,4 @@
 <?php 
-header('Location: https://taplink.cc/sashasymphony');
+header('Location: https://music.youtube.com/watch?v=ZNRgKHTVwzc&feature=share');
 
  ?>
