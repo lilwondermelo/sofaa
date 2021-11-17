@@ -4,7 +4,7 @@ require_once '_dataSource.class.php';
 join clients c on r.client_id = c.yc_id
 and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . ' 
 and r.creating = 0 and attendance != -1 
-and c.lead_id is not null order by r.datetime';
+and c.lead_id is not null order by r.datetime desc';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
 	if ($data) {
