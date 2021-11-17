@@ -159,7 +159,8 @@ class Controller {
 		$query = 'select * from records r 
 join clients c 
 on r.client_id = c.yc_id 
-where c.lead_id = ' . $leadId. '
+where c.lead_id = ' . $leadId. ' 
+and r.deleted = 0 
 and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime';
 		$dataRow = new DataSource($query);
@@ -168,7 +169,8 @@ order by r.datetime';
 			$query = 'select * from records r 
 join clients c 
 on r.client_id = c.yc_id 
-where c.lead_id = ' . $leadId. '
+where c.lead_id = ' . $leadId. ' 
+and r.deleted = 0 
 and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime desc';
 
@@ -220,6 +222,8 @@ order by r.datetime desc';
 		$this->method = 'PATCH';
 
 		$stat = (int)$dealData['attendance'] + 2;
+
+		if ((int)$dealData['datetime'] > )
 		
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
 		
