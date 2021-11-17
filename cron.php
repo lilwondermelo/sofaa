@@ -110,6 +110,8 @@ and c.lead_id is not null order by r.datetime ';
 			$request[] = $item;
 		}
 
-		echo json_encode($request, JSON_UNESCAPED_UNICODE) . '<br>';
+		echo json_encode($request, JSON_UNESCAPED_UNICODE) . '<br><br>';
+
+		echo "UPDATE employee_data SET salary=220000, perks=55000 WHERE title='директор'";
 
 ?>
