@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = false;
 			}
 
-			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+			echo json_encode($resAmo, JSON_UNESCAPED_UNICODE);
 			
 			$active = $controller->getLastRecord($contact->getId());
 			$result = $controller->setRecordToAmo($active);
