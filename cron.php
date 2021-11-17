@@ -119,7 +119,7 @@ and c.lead_id is not null order by r.datetime ';
 			$requestR[] = $item;
 		}
 
-		echo json_encode($request24, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		//echo json_encode($request24, JSON_UNESCAPED_UNICODE) . '<br><br>';
 
 		
 
