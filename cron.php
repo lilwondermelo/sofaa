@@ -101,10 +101,15 @@ and c.lead_id is not null order by r.datetime ';
 	}
 
 
-		echo json_encode($data24, JSON_UNESCAPED_UNICODE) . '<br>';
-		echo '<br><br>';
 
-		echo json_encode($dataR, JSON_UNESCAPED_UNICODE) . '<br>';
-		echo '<br><br>';	
+		foreach ($data24 as $item) {
+			$request[] = $item;
+		}
+
+		foreach ($dataR as $item) {
+			$request[] = $item;
+		}
+
+		echo json_encode($request, JSON_UNESCAPED_UNICODE) . '<br>';
 
 ?>
