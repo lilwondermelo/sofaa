@@ -114,7 +114,6 @@ and c.lead_id is not null order by r.datetime ';
 
 		echo "UPDATE clients SET `24h` = 1 " . $where24;
 
-
 		foreach ($dataR as $item) {
 			$requestR[] = $item;
 		}
