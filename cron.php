@@ -9,6 +9,7 @@ and c.lead_id is not null';
 	$data = $dataSource->getData();
 	if ($data) {
 		foreach ($data as $item) {
+			$dataQ[$item['lead_id']] = $item;
 			$amoHost = $item['amoHost'];
 			$leadId = $item['leadId'];
 			$recordId = $item['recordId'];
@@ -24,7 +25,7 @@ and c.lead_id is not null';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
-			echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
+			echo json_encode($dataQ, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
 		echo '<br><br>';
