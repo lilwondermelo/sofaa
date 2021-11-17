@@ -188,7 +188,8 @@ order by r.datetime desc';
 join clients c 
 on r.client_id = c.yc_id 
 where r.client_id = ' . $clientId . '
-and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . '
+and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . ' 
+and r.deleted = 0 
 order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
@@ -196,7 +197,8 @@ order by r.datetime';
 			$query = 'select * from records r 
 join clients c 
 on r.client_id = c.yc_id 
-where r.client_id = ' . $clientId . '
+where r.client_id = ' . $clientId . ' 
+and r.deleted = 0 
 and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime desc';
 
