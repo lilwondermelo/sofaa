@@ -27,6 +27,7 @@ and c.lead_id is not null';
 			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
+		echo '<br><br>';
 	}
 
 sleep(2);
@@ -59,6 +60,7 @@ and c.lead_id is not null';
 			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
+		echo '<br><br>';
 	}
 
 	sleep(2);
@@ -91,6 +93,7 @@ and c.lead_id is not null';
 			echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
+		echo '<br><br>';
 	}
 
 ?>
