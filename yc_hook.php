@@ -38,22 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
 					$resAmo = $amoId;
-					echo json_encode(1, JSON_UNESCAPED_UNICODE);
 				}
 				else if ($amoId != -1) {
 					$leadId = $controller->setDealToAmo($amoData, $amoId);
 					$resAmo = $leadId;
-					echo json_encode(2, JSON_UNESCAPED_UNICODE);
 				}
 				else {
 					$resAmo = $controller->setComplexToAmo($amoData);
 					$amoId = $resAmo[0]['contact_id'];
 					$leadId = $resAmo[0]['id'];
-					echo json_encode(3, JSON_UNESCAPED_UNICODE);
 				}
-				echo json_encode($amoData, JSON_UNESCAPED_UNICODE);
-				echo json_encode($amoId, JSON_UNESCAPED_UNICODE);
-				echo json_encode($leadId, JSON_UNESCAPED_UNICODE);
 			}
 			
 			else {
