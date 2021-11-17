@@ -26,9 +26,10 @@ and c.lead_id is not null';
 		//$result = $controller->setRequestToAmo($dataReq);
 		
 		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
-			echo json_encode($dataQ, JSON_UNESCAPED_UNICODE) . '<br>';
+			
 		
 		}
+		echo json_encode($dataQ, JSON_UNESCAPED_UNICODE) . '<br>';
 		echo '<br><br>';
 	}
 
