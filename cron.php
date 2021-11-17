@@ -112,7 +112,7 @@ and c.lead_id is not null order by r.datetime ';
 		}
 		$where24 .= ')';
 
-		echo "UPDATE employee_data SET salary=220000, perks=55000" . $where24;
+		echo "UPDATE clients SET `24h` = 1 " . $where24;
 
 
 		foreach ($dataR as $item) {
