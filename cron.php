@@ -110,7 +110,7 @@ and c.lead_id is not null order by r.datetime ';
 			}
 			$where24 .= 'client_id = ' . $item['clientId'];
 		}
-		echo ')';
+		$where24 .= ')';
 
 		echo "UPDATE employee_data SET salary=220000, perks=55000" . $where24;
 
