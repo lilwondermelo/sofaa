@@ -34,7 +34,7 @@ and c.lead_id is not null order by r.datetime desc';
 
 
 	require_once '_dataSource.class.php';
-	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
+	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId, r.client_id as clientId from records r 
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '+1 day') . '
 and r.`24h` = 0 and attendance != -1 
@@ -101,17 +101,26 @@ and c.lead_id is not null order by r.datetime ';
 	}
 
 
-
+	$where24 = ' WHERE datetime < ' . strtotime(date('Y-m-d') . '+2 days') . ' and datetime > ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
+		$data24count = 0;
 		foreach ($data24 as $item) {
-			$request[] = $item;
+			$request24[] = $item;
+			if ($data24count > 0) {
+				$where24 .= ' or '
+			}
+			$where24 .= 'client_id = ' . $item['clientId'];
 		}
+		echo ')';
+
+		echo "UPDATE employee_data SET salary=220000, perks=55000" . $where24;
+
 
 		foreach ($dataR as $item) {
-			$request[] = $item;
+			$requestR[] = $item;
 		}
 
-		echo json_encode($request, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo json_encode($request24, JSON_UNESCAPED_UNICODE) . '<br><br>';
 
-		echo "UPDATE employee_data SET salary=220000, perks=55000 WHERE title='директор'";
+		
 
 ?>
