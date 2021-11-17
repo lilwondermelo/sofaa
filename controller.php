@@ -224,16 +224,16 @@ order by r.datetime desc';
 		$stat = (int)$dealData['attendance'] + 2;
 
 		if ($stat == 3) {
-			if (((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-1 days')) && ((int)$dealData['datetime'] <= strtotime(date("Y-m-d H:i:s") . '-2 days'))) {
+			if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-1 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-2 days'))) {
 				$stat = 5; // 5 - ожидает отзыва
 			}
-			else if (((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-2 days')) && ((int)$dealData['datetime'] <= strtotime(date("Y-m-d H:i:s") . '-14 days'))) {
+			else if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-2 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-14 days'))) {
 				$stat = 6; //6 - стагнация
 			}
-			else if (((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-14 days')) && ((int)$dealData['datetime'] <= strtotime(date("Y-m-d H:i:s") . '-28 days'))) {
+			else if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-14 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-28 days'))) {
 				$stat = 7; //7 - реклама
 			}
-			else if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-28 days')) {
+			else if ((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-28 days')) {
 				$stat = 8; //8 - позвонить сегодня
 			}
 
