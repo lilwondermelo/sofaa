@@ -4,7 +4,7 @@ require_once '_dataSource.class.php';
 join clients c on r.client_id = c.yc_id
 and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . ' 
 and r.creating = 0 and attendance != -1 
-and r.delete = 0 
+and r.deleted = 0 
 and c.lead_id is not null order by r.datetime desc';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
@@ -38,7 +38,7 @@ and c.lead_id is not null order by r.datetime desc';
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '+1 day') . '
 and r.`24h` = 0 and attendance != -1 
-and r.delete = 0 
+and r.deleted = 0 
 and c.lead_id is not null order by r.datetime desc';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
@@ -72,7 +72,7 @@ require_once '_dataSource.class.php';
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '-1 day') . '
 and r.req = 0 and attendance = 1 
-and r.delete = 0 
+and r.deleted = 0 
 and c.lead_id is not null order by r.datetime ';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
