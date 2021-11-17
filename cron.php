@@ -21,9 +21,9 @@ and c.lead_id is not null';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo($dataReq);
+		//$result = $controller->setRequestToAmo($dataReq);
 		
-		$resDb = $controller->setRecord(array('creating' => 1), $recordId);
+		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
 			echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
 		
 		}
@@ -53,9 +53,9 @@ and c.lead_id is not null';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo($dataReq);
+		//$result = $controller->setRequestToAmo($dataReq);
 		
-		$resDb = $controller->setRecord(array('24h' => 1), $recordId);
+		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
 			echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
 		
 		}
@@ -85,9 +85,9 @@ and c.lead_id is not null';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo($dataReq);
+		//$result = $controller->setRequestToAmo($dataReq);
 		
-		$resDb = $controller->setRecord(array('req' => 1), $recordId);
+		//$resDb = $controller->setRecord(array('req' => 1), $recordId);
 			echo json_encode($resDb, JSON_UNESCAPED_UNICODE);
 		
 		}
