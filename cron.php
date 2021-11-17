@@ -40,7 +40,7 @@ sleep(2);
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '+1 day') . '
 and r.`24h` = 0 and attendance != -1 
-and c.lead_id is not null';
+and c.lead_id is not null order by r.datetime desc';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
 	if ($data) {
@@ -73,7 +73,7 @@ require_once '_dataSource.class.php';
 join clients c on r.client_id = c.yc_id
 and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '-1 day') . '
 and r.req = 0 and attendance = 1 
-and c.lead_id is not null';
+and c.lead_id is not null order by r.datetime ';
 	$dataSource = new DataSource($query24);
 	$data = $dataSource->getData();
 	if ($data) {
