@@ -223,7 +223,10 @@ order by r.datetime desc';
 
 		$stat = (int)$dealData['attendance'] + 2;
 
-		if ((int)$dealData['datetime'] > )
+		if ((int)$dealData['datetime'] > strtotime(date("Y-m-d H:i:s") . '-1 day')) {
+			if (($stat == 1) || ($stat == 3))
+				$stat = 5;
+		}
 		
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
 		
