@@ -10,7 +10,7 @@ and c.lead_id is not null';
 	if ($data) {
 		$dataQ = array();
 		foreach ($data as $item) {
-			$dataQ[(string)$item['lead_id']] = $item;
+			$dataQ[$item['leadId']] = $item;
 			$amoHost = $item['amoHost'];
 			$leadId = $item['leadId'];
 			$recordId = $item['recordId'];
