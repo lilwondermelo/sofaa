@@ -48,9 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$amoId = $resAmo[0]['contact_id'];
 					$leadId = $resAmo[0]['id'];
 				}
-				
+				echo json_encode($amoData, JSON_UNESCAPED_UNICODE);
 			}
-			echo json_encode($amoData, JSON_UNESCAPED_UNICODE);
+			
 			else {
 				$resAmo = false;
 			}
