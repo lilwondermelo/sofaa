@@ -24,8 +24,19 @@ if ($company != '') {
 		$data = [];
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
-		$clientData = $controller->getClientData($item['id']);
-			
+
+			$clientData = $controller->getClientData($item['id']);
+			require_once '_dataRowUpdater.class.php';
+			$updater = new DataRowUpdater('clients');
+			$updater->setKeyField('id');
+			$updater->setDataFields(array('yc_id' => $item['id'], 'name' => $item['name'], 'phone' => $item['phone'], 'amo_host' => $company));
+			$result_upd = $updater->update();
+			if (!$result_upd) {
+				return $updater->error;
+			}
+			else {
+				return $result_upd;
+			}
 				$stat = 'y';
 				$data[] = array(
 					'name' => 'Запись из YCLIENTS',
