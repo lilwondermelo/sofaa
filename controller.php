@@ -414,7 +414,7 @@ order by r.datetime desc';
 		$data = array(
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
-			'status_id' => $this->account->getStatuses()['7']
+			'status_id' => $this->account->getStatuses()['y']
 		);
 		$data['_embedded'] = array('contacts' => array(array('id' => (int)$amoId)));
 		$result = $this->apiQuery([$data]);
