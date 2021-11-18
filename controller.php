@@ -387,7 +387,7 @@ order by r.datetime desc';
 	public function getClientCount() {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record")));
+		$args = array('page_size' => 1);
 		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		$result = $this->apiQuery($args);

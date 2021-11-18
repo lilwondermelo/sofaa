@@ -24,8 +24,7 @@ if ($company != '') {
 		$data = [];
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
-
-			$clientData = $controller->getClientData($item['id']);
+		$clientData = $controller->getClientData($item['id']);
 			
 				$stat = 'y';
 				$data[] = array(
