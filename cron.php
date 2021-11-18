@@ -24,7 +24,7 @@ and c.lead_id is not null order by r.datetime desc';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo($dataReq);
+		$result = $controller->setRequestToAmo([$dataReq]);
 		$resDb = $controller->setRecord(array('creating' => 1), $recordId);
 			
 		
@@ -46,6 +46,11 @@ and c.lead_id is not null order by r.datetime desc';
 		$data24 = array();
 		foreach ($data as $item) {
 			$data24[$item['leadId']] = $item;
+
+
+
+
+
 			$amoHost = $item['amoHost'];
 			$leadId = $item['leadId'];
 			$recordId = $item['recordId'];
@@ -59,9 +64,7 @@ and c.lead_id is not null order by r.datetime desc';
 				);
 			
 		//$result = $controller->setRequestToAmo($dataReq);
-		
 		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
-			//echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
 		
 		}
 	}
@@ -93,12 +96,13 @@ and c.lead_id is not null order by r.datetime ';
 				);
 			
 		//$result = $controller->setRequestToAmo($dataReq);
-		
 		//$resDb = $controller->setRecord(array('req' => 1), $recordId);
-			//echo json_encode($item, JSON_UNESCAPED_UNICODE) . '<br>';
+		
 		
 		}
 	}
+
+
 
 
 	$where24 = ' WHERE datetime < ' . strtotime(date('Y-m-d') . '+2 days') . ' and datetime > ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
@@ -109,17 +113,40 @@ and c.lead_id is not null order by r.datetime ';
 				$where24 .= ' or ';
 			}
 			$where24 .= 'client_id = ' . $item['clientId'];
+			$data24count++;
 		}
 		$where24 .= ')';
 
-		echo "UPDATE clients SET `24h` = 1 " . $where24;
 
+		require_once '_dataConnector.class.php';
+        $db = new DataConnector();
+        $db->sqlConnect()
+        $db_query = $db->sqlQuery();
+        $queryRez = $db_query->query("UPDATE records SET `24h` = 1 " . $where24);
+
+
+
+
+		$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 days') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
+		$dataRcount = 0;
 		foreach ($dataR as $item) {
 			$requestR[] = $item;
+			if ($dataRcount > 0) {
+				$whereR .= ' or ';
+			}
+			$whereR .= 'client_id = ' . $item['clientId'];
+			$dataRcount++;
 		}
+		$whereR .= ')';
 
-		//echo json_encode($request24, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		require_once '_dataConnector.class.php';
+        $db = new DataConnector();
+        $db->sqlConnect()
+        $db_query = $db->sqlQuery();
+        $queryRez = $db_query->query("UPDATE records SET req = 1 " . $whereR);
 
-		
+
+
+        echo json_encode($data24, JSON_UNESCAPED_UNICODE) . '<br>';
 
 ?>
