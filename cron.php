@@ -24,7 +24,7 @@ and c.lead_id is not null order by r.datetime desc';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo([$dataReq]);
+		//$result = $controller->setRequestToAmo([$dataReq]);
 		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
 			
 		
