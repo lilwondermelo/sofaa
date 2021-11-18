@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromAmo();
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = $check['yc_id']?$check['yc_id']:-1;
-		$controller->recordHook('newtest '. json_encode($ycId, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('newtest '. json_encode($check, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
 			$contact->setId($ycId);
