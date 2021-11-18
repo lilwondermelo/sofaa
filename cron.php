@@ -56,7 +56,7 @@ and c.lead_id is not null order by r.datetime desc';
 		}
 	}
 
-
+$data = array();
 require_once '_dataSource.class.php';
 	$query24 = 'select r.datetime as dateTime, r.client_id as clientId, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
