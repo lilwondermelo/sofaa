@@ -51,20 +51,7 @@ and c.lead_id is not null order by r.datetime desc';
 
 
 
-			$amoHost = $item['amoHost'];
-			$leadId = $item['leadId'];
-			$recordId = $item['recordId'];
-			require_once 'account.php';
-			$account = new Account($amoHost);
-			require_once 'controller.php';
-			$controller = new Controller($account);
-			$dataReq = array(
-					'id' => (int)$leadId,
-					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
-				);
 			
-		//$result = $controller->setRequestToAmo($dataReq);
-		//$resDb = $controller->setRecord(array('24h' => 1), $recordId);
 		
 		}
 	}
@@ -83,20 +70,7 @@ and c.lead_id is not null order by r.datetime ';
 		$dataR = array();
 		foreach ($data as $item) {
 			$dataR[$item['leadId']] = $item;
-			$amoHost = $item['amoHost'];
-			$leadId = $item['leadId'];
-			$recordId = $item['recordId'];
-			require_once 'account.php';
-			$account = new Account($amoHost);
-			require_once 'controller.php';
-			$controller = new Controller($account);
-			$dataReq = array(
-					'id' => (int)$leadId,
-					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
-				);
 			
-		//$result = $controller->setRequestToAmo($dataReq);
-		//$resDb = $controller->setRecord(array('req' => 1), $recordId);
 		
 		
 		}
@@ -110,7 +84,20 @@ and c.lead_id is not null order by r.datetime ';
 			$where24 = ' WHERE datetime < ' . strtotime(date('Y-m-d') . '+2 days') . ' and datetime > ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$data24count = 0;
 			foreach ($data24 as $item) {
-				$request24[] = $item;
+				$amoHost = $item['amoHost'];
+			$leadId = $item['leadId'];
+			$recordId = $item['recordId'];
+			require_once 'account.php';
+			$account = new Account($amoHost);
+			require_once 'controller.php';
+			$controller = new Controller($account);
+			$dataReq = array(
+					'id' => (int)$leadId,
+					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
+				);
+			
+			$result = $controller->setRequestToAmo([$dataReq]);
+
 				if ($data24count > 0) {
 					$where24 .= ' or ';
 				}
@@ -133,7 +120,21 @@ and c.lead_id is not null order by r.datetime ';
 			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 days') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$dataRcount = 0;
 		foreach ($dataR as $item) {
-			$requestR[] = $item;
+			
+			$amoHost = $item['amoHost'];
+			$leadId = $item['leadId'];
+			$recordId = $item['recordId'];
+			require_once 'account.php';
+			$account = new Account($amoHost);
+			require_once 'controller.php';
+			$controller = new Controller($account);
+			$dataReq = array(
+					'id' => (int)$leadId,
+					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
+				);
+			
+		$result = $controller->setRequestToAmo([$dataReq]);
+			
 			if ($dataRcount > 0) {
 				$whereR .= ' or ';
 			}
@@ -154,5 +155,6 @@ and c.lead_id is not null order by r.datetime ';
 
 
         echo json_encode($data24, JSON_UNESCAPED_UNICODE) . '<br>';
+          echo json_encode($dataR, JSON_UNESCAPED_UNICODE) . '<br>';
 
 ?>
