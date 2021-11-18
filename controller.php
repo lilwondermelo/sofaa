@@ -311,14 +311,29 @@ order by r.datetime desc';
 		return $resId;
 	}
 
-	public function confirmRecordToYC($recordId) {
+	public function confirmRecordToYC($recordId, $data) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
 		$this->link = 'https://api.yclients.com/api/v1/record/' . $this->account->getYcFilialId() . '/' . $recordId;
 		$this->method = 'PUT';
 
-		$result = $this->apiQuery(array("attendance" => 1));
+		$result = $this->apiQuery($data);
 		$resId = $result['success'];
+		if (!$resId) {
+			return $result;
+		}
+		return $resId;
+	}
+
+
+	public function getRecord($recordId) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->link = 'https://api.yclients.com/api/v1/record/' . $this->account->getYcFilialId() . '/' . $recordId;
+		$this->method = 'GET';
+
+		$result = $this->apiQuery();
+		$resId = $result['data'];
 		if (!$resId) {
 			return $result;
 		}

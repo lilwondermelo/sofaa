@@ -50,8 +50,6 @@ and c.lead_id is not null order by r.datetime desc';
 
 
 
-
-			
 		
 		}
 	}

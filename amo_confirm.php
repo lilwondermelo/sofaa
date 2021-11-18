@@ -27,7 +27,11 @@ $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	foreach ($data as $item) {
 		$recordId = $item['recordId'];
-		$rez[] = $controller->confirmRecordToYC($recordId);
+		$recData = $controller->getRecord($recordId);
+		$recData['attendance'] = 2;
+		$recData['visit_attendance'] = 2;
+		$recData['confirmed'] = 1;
+		$rez[] = $controller->confirmRecordToYC($recordId, $recData);
 
 	}
 }
@@ -36,3 +40,15 @@ if ($data = $dataSource->getData()) {
 	$controller->recordHook('confirm '. json_encode($rez, JSON_UNESCAPED_UNICODE));
 }
 ?>
+
+confirm [{"success":false,"data":null,"meta":{"message":"Произошла ошибка","errors":{"staff_id":["Не передан обязательный параметр staff_id."],
+"services":["Не передан обязательный параметр services."],
+"client":["Не передан обязательный параметр client."],
+"seance_length":["Не передан обязательный параметр seance_length."],
+"datetime":["Не передан обязательный параметр datetime."]}}},
+
+
+{"success":false,"data":null,"meta":{"message":"Произошла ошибка","errors":{"staff_id":["Не передан обязательный параметр staff_id."],"services":["Не передан обязательный параметр services."],"client":["Не передан обязательный параметр client."],"seance_length":["Не передан обязательный параметр seance_length."],"datetime":["Не передан обязательный параметр datetime."]}}},
+
+
+{"success":false,"data":null,"meta":{"message":"Произошла ошибка","errors":{"staff_id":["Не передан обязательный параметр staff_id."],"services":["Не передан обязательный параметр services."],"client":["Не передан обязательный параметр client."],"seance_length":["Не передан обязательный параметр seance_length."],"datetime":["Не передан обязательный параметр datetime."]}}}]
