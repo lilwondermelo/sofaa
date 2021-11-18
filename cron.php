@@ -106,7 +106,7 @@ and c.lead_id is not null order by r.datetime ';
 
 
 	
-		if (count($data24)>0) {
+		if ($data24) {
 			$where24 = ' WHERE datetime < ' . strtotime(date('Y-m-d') . '+2 days') . ' and datetime > ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$data24count = 0;
 			foreach ($data24 as $item) {
@@ -129,7 +129,7 @@ and c.lead_id is not null order by r.datetime ';
 		
 
 
-		if (count($dataR)>0) {
+		if ($dataR) {
 			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 days') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$dataRcount = 0;
 		foreach ($dataR as $item) {
