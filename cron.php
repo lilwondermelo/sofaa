@@ -56,11 +56,10 @@ and c.lead_id is not null order by r.datetime desc';
 		}
 	}
 
-$data = array();
 require_once '_dataSource.class.php';
 	$query24 = 'select r.datetime as dateTime, r.client_id as clientId, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
 join clients c on r.client_id = c.yc_id
-and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '-1 day') . '
+and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '-1 day') . ' 
 and r.req = 0 and attendance = 1 
 and r.deleted = 0 
 and c.lead_id is not null order by r.datetime ';
@@ -120,7 +119,7 @@ and c.lead_id is not null order by r.datetime ';
 
 
 		if ($dataR) {
-			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-1 day') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
+			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 day') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$dataRcount = 0;
 		foreach ($dataR as $item) {
 			
@@ -136,7 +135,7 @@ and c.lead_id is not null order by r.datetime ';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
 				);
 			
-		//$resultR = $controller->setRequestToAmo([$dataReq]);
+		$resultR = $controller->setRequestToAmo([$dataReq]);
 
 			if ($dataRcount > 0) {
 				$whereR .= ' or ';
