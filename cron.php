@@ -47,10 +47,6 @@ and c.lead_id is not null order by r.datetime desc';
 		foreach ($data as $item) {
 			$data24[$item['leadId']] = $item;
 
-
-
-
-		
 		}
 	}
 
