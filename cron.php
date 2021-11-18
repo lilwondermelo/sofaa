@@ -134,7 +134,7 @@ and c.lead_id is not null order by r.datetime ';
 				);
 			
 		$result = $controller->setRequestToAmo([$dataReq]);
-			
+
 			if ($dataRcount > 0) {
 				$whereR .= ' or ';
 			}
@@ -154,7 +154,6 @@ and c.lead_id is not null order by r.datetime ';
 
 
 
-        echo json_encode($data24, JSON_UNESCAPED_UNICODE) . '<br>';
-          echo json_encode($dataR, JSON_UNESCAPED_UNICODE) . '<br>';
-
+        $controller->recordHook('24' . json_encode($data24, JSON_UNESCAPED_UNICODE)) ;
+         $controller->recordHook(json_encode($data24, JSON_UNESCAPED_UNICODE)) ;
 ?>
