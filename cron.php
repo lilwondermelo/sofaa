@@ -25,7 +25,7 @@ and c.lead_id is not null order by r.datetime desc';
 				);
 			
 		$result = $controller->setRequestToAmo([$dataReq]);
-		$resDb = $controller->setRecord(array('creating' => 1), $recordId);
+		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
 			
 		
 		}
