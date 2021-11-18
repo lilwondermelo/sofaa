@@ -105,29 +105,32 @@ and c.lead_id is not null order by r.datetime ';
 
 
 
-	$where24 = ' WHERE datetime < ' . strtotime(date('Y-m-d') . '+2 days') . ' and datetime > ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
+	
+		if (count($data24)>0) {
+			$where24 = ' WHERE datetime < ' . strtotime(date('Y-m-d') . '+2 days') . ' and datetime > ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$data24count = 0;
-		foreach ($data24 as $item) {
-			$request24[] = $item;
-			if ($data24count > 0) {
-				$where24 .= ' or ';
+			foreach ($data24 as $item) {
+				$request24[] = $item;
+				if ($data24count > 0) {
+					$where24 .= ' or ';
+				}
+				$where24 .= 'client_id = ' . $item['clientId'];
+				$data24count++;
 			}
-			$where24 .= 'client_id = ' . $item['clientId'];
-			$data24count++;
+			$where24 .= ')';
+
+
+			require_once '_dataConnector.class.php';
+	        $db = new DataConnector();
+	        $db->sqlConnect();
+	        $db_query = $db->sqlQuery();
+	        $queryRez = $db_query->query("UPDATE records SET `24h` = 1 " . $where24);
 		}
-		$where24 .= ')';
+		
 
 
-		require_once '_dataConnector.class.php';
-        $db = new DataConnector();
-        $db->sqlConnect();
-        $db_query = $db->sqlQuery();
-        $queryRez = $db_query->query("UPDATE records SET `24h` = 1 " . $where24);
-
-
-
-
-		$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 days') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
+		if (count($dataR)>0) {
+			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 days') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$dataRcount = 0;
 		foreach ($dataR as $item) {
 			$requestR[] = $item;
@@ -144,6 +147,9 @@ and c.lead_id is not null order by r.datetime ';
         $db->sqlConnect();
         $db_query = $db->sqlQuery();
         $queryRez = $db_query->query("UPDATE records SET req = 1 " . $whereR);
+		}
+
+		
 
 
 
