@@ -24,23 +24,11 @@ if ($company != '') {
 		$data = [];
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
+
 			$clientData = $controller->getClientData($item['id']);
-			$dealData = $controller->getLastClientRecord($item['id'])['data'][0];
-			$stat = $dealData['visit_attendance'];
-			if (strtotime($dealData['date']) < strtotime(date('Y-m-d', strtotime("-1 day")))) {
-				$stat = '4';
-			}
-			if (strtotime($dealData['date']) < strtotime(date('Y-m-d', strtotime("-14 days")))) {
-				$stat = '9';
-			}
-			if (strtotime($dealData['date']) < strtotime(date('Y-m-d', strtotime("-28 days")))) {
-				$stat = '7';
-			}
-			if (strtotime($dealData['date']) < strtotime($account->getActiveDate())) {
+			
 				$stat = 'y';
-			}
 				$data[] = array(
-					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['deal_yc_id'], "values" => array(array("value" => '' . $dealData['id']))), array("field_id" => $account->getCustomFields()['deal_datetime'], "values" => array(array("value" => strtotime($dealData['date']))))),
 					'name' => 'Запись из YCLIENTS',
 					'price' => 1,
 					'status_id' => $account->getStatuses()[$stat],
