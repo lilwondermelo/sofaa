@@ -37,7 +37,7 @@ if ($company != '') {
 			else {
 				$rezdb = $result_upd;
 			}*/
-			echo json_encode($clientData, JSON_UNESCAPED_UNICODE);
+			echo json_encode($item, JSON_UNESCAPED_UNICODE);
 				$stat = 'y';
 				$data[] = array(
 					'name' => 'Запись из YCLIENTS',
