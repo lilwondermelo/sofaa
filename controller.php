@@ -90,7 +90,7 @@ class Controller {
 			}
 		}
 		else {
-			return false;
+			return $query;
 		}
 	}
 
