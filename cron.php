@@ -96,7 +96,7 @@ and c.lead_id is not null order by r.datetime ';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
 				);
 			
-			$result24 = $controller->setRequestToAmo([$dataReq]);
+			//$result24 = $controller->setRequestToAmo([$dataReq]);
 
 				if ($data24count > 0) {
 					$where24 .= ' or ';
@@ -133,7 +133,7 @@ and c.lead_id is not null order by r.datetime ';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
 				);
 			
-		$resultR = $controller->setRequestToAmo([$dataReq]);
+		//$resultR = $controller->setRequestToAmo([$dataReq]);
 
 			if ($dataRcount > 0) {
 				$whereR .= ' or ';
