@@ -4,6 +4,7 @@ var finish = 1;
 
 
 function sendPost(company, page) {
+    console.log('START');
     $.ajax({
         url : "https://ingeniouslife.space/yc_deals.php?company=" + company + "&page=" + page,
         type : "get",
