@@ -135,7 +135,7 @@ and c.lead_id is not null order by r.datetime ';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
 				);
 			
-		//$resultR = $controller->setRequestToAmo([$dataReq]);
+		$resultR = $controller->setRequestToAmo([$dataReq]);
 
 			if ($dataRcount > 0) {
 				$whereR .= ' or ';
