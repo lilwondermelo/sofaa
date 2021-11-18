@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$contact = new Contact($entityData, $account->getCustomFields());
 		$resId = $contact->createFromAmo();
 		$check = $controller->checkClient($contact, 'amo');
-		$ycId = $check['yc_id']?$check['yc_id']:-1;
+		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
 		$controller->recordHook('newtes1t '. json_encode($ycId, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
