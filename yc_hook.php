@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				
-				
-
+				$controller->recordHook('user1 '. json_encode($amo_id, JSON_UNESCAPED_UNICODE));
+				$controller->recordHook('user2 '. json_encode($lead_id, JSON_UNESCAPED_UNICODE));
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
 					$resAmo = $amoId;
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = false;
 			}
 
-				$controller->recordHook('user '. json_encode($result, JSON_UNESCAPED_UNICODE));
+				$controller->recordHook('user3 '. json_encode($result, JSON_UNESCAPED_UNICODE));
 
 			$active = $controller->getLastRecord($contact->getId());
 			$result = $controller->setRecordToAmo($active);
