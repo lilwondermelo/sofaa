@@ -96,7 +96,7 @@ and c.lead_id is not null order by r.datetime ';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['24h'], "values" => array(array("value" => 1))))
 				);
 			
-			//$result = $controller->setRequestToAmo([$dataReq]);
+			$result24 = $controller->setRequestToAmo([$dataReq]);
 
 				if ($data24count > 0) {
 					$where24 .= ' or ';
@@ -117,7 +117,7 @@ and c.lead_id is not null order by r.datetime ';
 
 
 		if ($dataR) {
-			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-2 days') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
+			$whereR = ' WHERE datetime > ' . strtotime(date('Y-m-d') . '-1 day') . ' and datetime < ' . strtotime(date('Y-m-d H:i:s')) . ' and (';
 		$dataRcount = 0;
 		foreach ($dataR as $item) {
 			
@@ -133,7 +133,7 @@ and c.lead_id is not null order by r.datetime ';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['req'], "values" => array(array("value" => 1))))
 				);
 			
-		//$result = $controller->setRequestToAmo([$dataReq]);
+		$resultR = $controller->setRequestToAmo([$dataReq]);
 
 			if ($dataRcount > 0) {
 				$whereR .= ' or ';
@@ -154,6 +154,6 @@ and c.lead_id is not null order by r.datetime ';
 
 
 
-        $controller->recordHook('24' . json_encode($data24, JSON_UNESCAPED_UNICODE)) ;
-         $controller->recordHook(json_encode($data24, JSON_UNESCAPED_UNICODE)) ;
+        echo json_encode($data24, JSON_UNESCAPED_UNICODE) ;
+         echo json_encode($dataR, JSON_UNESCAPED_UNICODE) ;
 ?>
