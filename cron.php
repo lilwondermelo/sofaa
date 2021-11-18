@@ -159,6 +159,6 @@ and c.lead_id is not null order by r.datetime ';
 
 
 
-        //echo json_encode($data24, JSON_UNESCAPED_UNICODE) ;
+        echo json_encode($dataR, JSON_UNESCAPED_UNICODE) ;
          
 ?>
