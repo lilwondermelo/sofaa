@@ -378,7 +378,7 @@ order by r.datetime desc';
 		$this->isYc = 1;
 
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999), 'created' => array("from"=> "2020-01-01", "to"=> "2023-03-23")))));
+		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
 		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		return $this->apiQuery($args);
@@ -387,7 +387,7 @@ order by r.datetime desc';
 	public function getClientCount() {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record","state" => array("records_count"=> array("from"=>1,"to"=> 99999), 'created' => array("from"=> "2020-01-01", "to"=> "2023-03-23")))));
+		$args = array('page_size' => 1, "filters"=> array(array("type"=> "record")));
 		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		$result = $this->apiQuery($args);
