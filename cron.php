@@ -112,6 +112,7 @@ and c.lead_id is not null order by r.datetime ';
 	        $db->sqlConnect();
 	        $db_query = $db->sqlQuery();
 	        $queryRez = $db_query->query("UPDATE records SET `24h` = 1 " . $where24);
+	        $db->sqlClose();
 		}
 		
 
@@ -148,6 +149,7 @@ and c.lead_id is not null order by r.datetime ';
         $db->sqlConnect();
         $db_query = $db->sqlQuery();
         $queryRez = $db_query->query("UPDATE records SET req = 1 " . $whereR);
+        $db->sqlClose();
 		}
 
 		
