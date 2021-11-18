@@ -24,8 +24,8 @@ and c.lead_id is not null order by r.datetime desc';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo([$dataReq]);
-		$resDb = $controller->setRecord(array('creating' => 1), $recordId);
+		//$result = $controller->setRequestToAmo([$dataReq]);
+		//$resDb = $controller->setRecord(array('creating' => 1), $recordId);
 			
 		
 		}
@@ -112,7 +112,7 @@ and c.lead_id is not null order by r.datetime ';
 	        $db = new DataConnector();
 	        $db->sqlConnect();
 	        $db_query = $db->sqlQuery();
-	        $queryRez = $db_query->query("UPDATE records SET `24h` = 1 " . $where24);
+	        //$queryRez = $db_query->query("UPDATE records SET `24h` = 1 " . $where24);
 	        $db->sqlClose();
 		}
 		
@@ -150,7 +150,7 @@ and c.lead_id is not null order by r.datetime ';
         $db->sqlConnect();
         $db_query = $db->sqlQuery();
         echo json_encode("UPDATE records SET req = 1 " . $whereR) ;
-        $queryRez = $db_query->query("UPDATE records SET req = 1 " . $whereR);
+        //$queryRez = $db_query->query("UPDATE records SET req = 1 " . $whereR);
         $db->sqlClose();
 		}
 
