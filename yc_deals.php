@@ -58,7 +58,7 @@ if ($company != '') {
 			$counter++;
 		}*/
 		$result = $controller->setManyDealsToAmo($data);	
-		//echo json_encode($data, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 		$dataResult[] = $result;
 		//echo count($data) . '<br><br>';
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
