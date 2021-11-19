@@ -21,7 +21,7 @@ Class Contact {
 		$this->setName($this->contactData['name']);
 		//Проверку телефона добавить !!!
 		$this->setPhone($this->contactData['phone']);
-		$this->setAmoId(0);
+		$this->setAmoId(-1);
 		return $this->getId();
 	}
 
