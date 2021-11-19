@@ -380,7 +380,24 @@ order by r.datetime desc';
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/record/' . $this->account->getYcFilialId() . '/' . $id;
 		$contactData = $this->apiQuery()['data'];
-		return $contactData;
+		$recordId = $contactData['id'];
+		$services = '';
+		$cost = 0;
+		foreach ($contactData['services'] as $service) {
+			$services .= $service['title'] . ', ';
+			$cost += $service['cost'];
+		}
+		$recordData = [
+			'client_id' => $contactData['client']['id'],
+			'datetime' => strtotime($contactData['datetime']),
+			'attendance' => $contactData['attendance'],
+			'deleted' => $contactData['deleted']?1:0,
+			'cost' => $cost,
+			'comment' => $contactData['comment']?$contactData['comment']:'',
+			'services' => mb_substr($services, 0, -1),
+			'filial_id' => $this->account->getYcFilialId()
+		];
+		return $recordData;
 	}
 
 	public function getClientData($id) {
