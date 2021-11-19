@@ -52,9 +52,10 @@ class Controller {
 		$result = json_decode($out, true);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
-				$result = $this->account->newAmoBearer();
+				//$result = $this->account->newAmoBearer();
 				//Обновить данный аккаунта
-				return $this->apiQuery($args);
+				//return $this->apiQuery($args);
+				return $result;
 			}
 			else {
 				return $result;
