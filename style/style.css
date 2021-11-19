@@ -8,5 +8,9 @@ input {
 
 
 .button {
-	display: flex;
+	display: inline-block;
+	padding:  5px;
+	border-radius:  5px;
+	border-color:  #333333;
+	cursor:  pointer;
 }
