@@ -100,7 +100,7 @@ class Controller {
 		}
 	}
 
-	public function recordContactFromYc($contact, $id = -1) {
+	public function recordContactFromYc($contact, $id = -1, $leadId = -1) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
 		if ($id == -1) {
@@ -109,7 +109,11 @@ class Controller {
 		else {
 			$updater->setKeyField('amo_id', $id);
 		}
-		$updater->setDataFields(array('yc_id' => $contact->getId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost()));
+		$data = array('yc_id' => $contact->getId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost());
+		if ($leadId != -1) {
+			$data['lead_id'] = $leadId;
+		}
+		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
 			return false;
