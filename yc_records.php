@@ -77,7 +77,7 @@ if ($company != '') {
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	$recordList = $controller->getrecordCount();
-	echo $recordList;
+	echo json_encode($recordList, JSON_UNESCAPED_UNICODE);
 	//$pages = (ceil($recordList['pages']) > 5)?5:ceil($recordList['pages']);
 }
 ?>
