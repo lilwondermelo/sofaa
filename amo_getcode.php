@@ -10,10 +10,10 @@ if (!empty($_GET["code"])) {
 require_once 'account.php';
 $account = new Account($company);
 if ($code != '') {
-     $result = $account->newAmoBearer($code); 
+     $result = $account->newAmoBearer('authorization_code', $code); 
 }
 else {
-   $result = $account->newAmoBearer($account->getAmoRefresh());     
+   $result = $account->newAmoBearer('refresh_token', $account->getAmoRefresh());     
 }
 
 
