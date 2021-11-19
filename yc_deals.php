@@ -26,7 +26,6 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 
 			$clientData = $controller->getClientData($item['id']);
-			$result = $controller->setManyDealsToAmo($data);	
 		require_once '_dataRowUpdater.class.php';
 			$updater = new DataRowUpdater('clients');
 			$updater->setKeyField('id');
