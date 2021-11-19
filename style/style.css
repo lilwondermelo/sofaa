@@ -5,3 +5,8 @@ input {
 .response {
 	width:  100%;
 }
+
+
+.button {
+	display: flex;
+}

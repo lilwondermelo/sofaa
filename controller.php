@@ -396,6 +396,18 @@ order by r.datetime desc';
 		return $this->apiQuery($args);
 	}
 
+	public function getRecordCount() {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$args = array('count' => 1);
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/records/' . $this->account->getYcFilialId();
+		$result = $this->apiQuery($args);
+		$recordCount = $result['meta']['total_count'];
+		$pagesCount = $recordCount/$this->dataPerPage;
+		return array('records' => $recordCount, 'pages' => $pagesCount);
+	}
+
 	public function getClientCount() {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();

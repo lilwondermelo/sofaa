@@ -3,7 +3,7 @@ var current = 1;
 var finish = 1;
 
 
-function sendPost(company, page) {
+function sendPostClients(company, page) {
     console.log('START');
     $.ajax({
         url : "https://ingeniouslife.space/yc_deals.php?company=" + company + "&page=" + page,
@@ -13,7 +13,7 @@ function sendPost(company, page) {
             $('.response').append(response + '<br><br>');
             current++;
             if (current <= finish) {
-                sendPost(company, current);
+                sendPostClients(company, current);
             }
             else {
                 console.log('FINISH');
@@ -25,11 +25,39 @@ function sendPost(company, page) {
      });
 }
 
-function start() {
+function sendPostRecords(company, page) {
+    console.log('START');
+    $.ajax({
+        url : "https://ingeniouslife.space/yc_records.php?company=" + company + "&page=" + page,
+        type : "get",
+        success : function(response) {
+            console.log(page);
+            $('.response').append(response + '<br><br>');
+            current++;
+            if (current <= finish) {
+                sendPostRecords(company, current);
+            }
+            else {
+                console.log('FINISH');
+            }
+        },
+        error: function() {
+           console.log('error');
+        }
+     });
+}
+
+
+function startClients() {
     company = $('#company').val();
     current = $('#from').val();
     finish = $('#to').val();
-    sendPost(company, current);
+    sendPostClients(company, current);
 }
-
+function startRecords() {
+    company = $('#company').val();
+    current = $('#from').val();
+    finish = $('#to').val();
+    sendPostRecords(company, current);
+}
 //JSON.parse(response)

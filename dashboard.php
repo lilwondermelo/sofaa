@@ -1,14 +1,3 @@
-<?php
-
-
-echo strtotime(date('Y-m-d H:i:s') . '+1 day');
-
-
-
-
-?>
-
-
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -18,7 +7,8 @@ echo strtotime(date('Y-m-d H:i:s') . '+1 day');
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-	<div class="button clientListButton" onclick="start()">Запустить интеграцию</div>
+	<div class="button clientListButton" onclick="startClients()">Интеграция клиентов</div>
+	<div class="button recordListButton" onclick="startRecords()">Интеграция записей</div>
 	<input type="text" id="company" placeholder="Название филиала">
 	<input type="number" id="from" placeholder="С какой страницы начать">
 	<input type="number" id="to" placeholder="До какой страницы считать">
