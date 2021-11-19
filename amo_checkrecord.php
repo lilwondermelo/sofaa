@@ -13,7 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	
 	$active = $controller->getLastRecordByAmo($postData['leads'][$entityType][0]['id']);
-	$result = $controller->setRecordToAmo($active);
+	if ($active) {
+		$result = $controller->setRecordToAmo($active);
+	}
+	
 
 	$controller->recordHook('123 '. json_encode($active, JSON_UNESCAPED_UNICODE));
 }
