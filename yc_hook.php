@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($companyId);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	$controller->recordHook('check' . json_encode($postData, JSON_UNESCAPED_UNICODE));
+	
 	sleep(2);
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
 			$check = $controller->checkClient($contact, 'yc');
+			$controller->recordHook('check '. json_encode($check, JSON_UNESCAPED_UNICODE));
 			if (!$check) {
 				$amoId = -1;
 				$leadId = -1;
@@ -28,17 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$leadId = $check['lead_id']?$check['lead_id']:-1;
 			}
 			$resultDb = $controller->recordContactFromYc($contact, $amoId);
-
+$controller->recordHook('db result '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				
-				$controller->recordHook('user1 '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
-				$controller->recordHook('user2 '. json_encode($amoData, JSON_UNESCAPED_UNICODE));
+				$controller->recordHook('user amo id '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
+				$controller->recordHook('user amo data '. json_encode($amoData, JSON_UNESCAPED_UNICODE));
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
 					$resAmo = $amoId;
 					$controller->recordHook(1);
+					
 				}
 				else if ($amoId != -1) {
 					$leadId = $controller->setDealToAmo($amoData, $amoId);
