@@ -59,8 +59,9 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}*/
-		$result = $controller->setManyDealsToAmo($data);
+		//$result = $controller->setManyDealsToAmo($data);
 	
+			
 		
 		$dataResult[] = $result;
 		//echo count($data) . '<br><br>';

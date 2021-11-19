@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$resYc = false;
 		}
-		$controller->recordHook('newtes2t '. json_encode($postData, JSON_UNESCAPED_UNICODE));
-		/*if ($resYc) {
+		$controller->recordHook('newtes2t '. json_encode($resYc, JSON_UNESCAPED_UNICODE));
+		if ($resYc) {
 			$contact->setId($resYc);
 			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
 		}
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$result = false;
 		}
-		$controller->recordHook('newtes3t '. json_encode($check['lead_id'], JSON_UNESCAPED_UNICODE));*/
+		$controller->recordHook('newtes3t '. json_encode($check['lead_id'], JSON_UNESCAPED_UNICODE));
 		//$kek = $contact->editFromAmo();
 }
 
