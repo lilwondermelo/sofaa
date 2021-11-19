@@ -90,7 +90,7 @@ class Controller {
 			}
 		}
 		else {
-			return  array('yc_id' => 0, 'lead_id' => 0);
+			return  array('yc_id' => -1, 'lead_id' => -1);
 		}
 	}
 
@@ -106,7 +106,7 @@ class Controller {
 		$updater->setDataFields(array('yc_id' => $contact->getId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
-			return false;
+			return  $updater->error;
 		}
 		else {
 			return $id;
