@@ -82,11 +82,17 @@ class Controller {
 		$query = 'select * from clients where (phone = "' . $contact->getPhone() . '" or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId() . ') and amo_host = "' . $this->account->getAmoHost() . '"';
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
-			if ($source == 'yc') {
-				return array('amo_id' => $dataRow->getValue('amo_id'), 'lead_id' => $dataRow->getValue('lead_id'));
+			if (!$dataRow->getValue('lead_id')) {
+				$leadId = -1;
 			}
 			else {
-				return array('yc_id' => $dataRow->getValue('yc_id'), 'lead_id' => $dataRow->getValue('lead_id'));
+				$leadId = $dataRow->getValue('lead_id');
+			}
+			if ($source == 'yc') {
+				return array('amo_id' => $dataRow->getValue('amo_id'), 'lead_id' => $leadId);
+			}
+			else {
+				return array('yc_id' => $dataRow->getValue('yc_id'), 'lead_id' => $leadId);
 			}
 		}
 		else {
