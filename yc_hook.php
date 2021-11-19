@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$resultDb = $controller->recordContactFromYc($contact, $amoId);
 			$controller->recordHook('db result '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 			if ($resultDb) {
+				$controller->recordHook('user amo id '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				

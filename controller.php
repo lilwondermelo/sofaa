@@ -90,7 +90,7 @@ class Controller {
 			}
 		}
 		else {
-			return  array('yc_id' => -1, 'lead_id' => -1);
+			return  array('amo_id' => -1, 'lead_id' => -1);
 		}
 	}
 
