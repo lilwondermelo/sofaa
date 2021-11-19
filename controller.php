@@ -379,7 +379,7 @@ order by r.datetime desc';
 		$this->authHeader = $this->account->getYcAuth();
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/record/' . $this->account->getYcFilialId() . '/' . $id;
-		$contactData = $this->apiQuery()['data'];=
+		$contactData = $this->apiQuery()['data'];
 		$services = '';
 		$cost = 0;
 		foreach ($contactData['services'] as $service) {
