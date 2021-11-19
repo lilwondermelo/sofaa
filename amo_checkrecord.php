@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	
 	$active = $controller->getLastRecordByAmo($postData['leads'][$entityType][0]['id']);
-	if ($active) {
+	if ($active != false) {
 		$result = $controller->setRecordToAmo($active);
 	}
 	
