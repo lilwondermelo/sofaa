@@ -32,14 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact->setId($resYc);
 			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
 		}
-		else if ($check['lead_id'] == -1) {
+		else if ($check['lead_id'] == '0') {
 			$contact->setId($ycId);
 			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
 		}
 		else {
 			$result = false;
 		}
-		$controller->recordHook('newtes3t '. json_encode($result, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('newtes3t '. json_encode($check['lead_id'], JSON_UNESCAPED_UNICODE));
 		//$kek = $contact->editFromAmo();
 }
 
