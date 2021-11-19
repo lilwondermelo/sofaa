@@ -106,10 +106,12 @@ class Controller {
 		$updater->setDataFields(array('yc_id' => $contact->getId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost()));
 		$result_upd = $updater->update();
 		if (!$result_upd) {
-			return  $updater->error;
+			return false;
+			$controller->recordHook(1);
 		}
 		else {
 			return $id;
+			$controller->recordHook(2);
 		}
 	}
 
