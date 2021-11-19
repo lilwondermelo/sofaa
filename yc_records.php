@@ -8,11 +8,8 @@
 	
 
 	 { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
-		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
-		$amoRequestData = [];
-		$data = [];
-		$amoDealsData = [];
-		foreach ($pageData['data'] as $item) {
+		
+		 {
 
 			$clientData = $controller->getClientData($item['id']);
 		require_once '_dataRowUpdater.class.php';
@@ -83,7 +80,14 @@ if ($company != '') {
 		$amoRequestData = [];
 		$data = [];
 		$amoDealsData = [];
-		echo json_encode($pageData, JSON_UNESCAPED_UNICODE);
+		foreach ($pageData['data'] as $item) {
+			$recordData = $controller->getRecordData($item['id']);
+			$resultDb = $controller->setRecord($recordData, $item['id']);
+			$active = $controller->getLastRecord($contactData['client']['id']);
+			$result = $controller->setRecordToAmo($active);
+
+			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+		}
 	}
 
 

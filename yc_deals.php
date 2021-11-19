@@ -64,7 +64,7 @@ if ($company != '') {
 		
 		$dataResult[] = $result;
 		//echo count($data) . '<br><br>';
-		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	echo json_encode($dataResult, JSON_UNESCAPED_UNICODE);
 	//echo 'Компания: ' . $company . '<br>';

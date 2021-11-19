@@ -374,6 +374,15 @@ order by r.datetime desc';
 		return $resId;
 	}
 
+	public function getRecordData($id) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/record/' . $this->account->getYcFilialId() . '/' . $id;
+		$contactData = $this->apiQuery()['data'];
+		return $contactData;
+	}
+
 	public function getClientData($id) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
