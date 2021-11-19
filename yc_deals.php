@@ -26,7 +26,8 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 
 			$clientData = $controller->getClientData($item['id']);
-			require_once '_dataRowUpdater.class.php';
+			$result = $controller->setManyDealsToAmo($data);	
+		require_once '_dataRowUpdater.class.php';
 			$updater = new DataRowUpdater('clients');
 			$updater->setKeyField('id');
 			$updater->setDataFields(array('yc_id' => $item['id'], 'name' => $clientData['name'], 'phone' => $clientData['custom_fields_values'][0]['values'][0]['value'], 'amo_host' => $company));
@@ -38,6 +39,7 @@ if ($company != '') {
 				$rezdb = $result_upd;
 			}
 			echo json_encode($rezdb, JSON_UNESCAPED_UNICODE);
+
 				$stat = 'y';
 				$data[] = array(
 					'name' => 'Запись из YCLIENTS',
@@ -57,8 +59,9 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}*/
-		$result = $controller->setManyDealsToAmo($data);	
-		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		$result = $controller->setManyDealsToAmo($data);
+	
+		
 		$dataResult[] = $result;
 		//echo count($data) . '<br><br>';
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';

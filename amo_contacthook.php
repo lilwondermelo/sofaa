@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact->setId($resYc);
 			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
 		}
-		else if ($check['lead_id'] == '0') {
+		else if ($check['lead_id'] == -1) {
 			$contact->setId($ycId);
 			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
 		}
