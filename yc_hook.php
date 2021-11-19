@@ -20,14 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$resId = $contact->createFromYc();
 			$check = $controller->checkClient($contact, 'yc');
 			$controller->recordHook('check '. json_encode($check, JSON_UNESCAPED_UNICODE));
-			if (!$check) {
-				$amoId = -1;
-				$leadId = -1;
-			}
-			else {
-				$amoId = $check['amo_id'];
-				$leadId = $check['lead_id']?$check['lead_id']:-1;
-			}
+			$amoId = $check['amo_id'];
+			$leadId = $check['lead_id'];
+
 			$resultDb = $controller->recordContactFromYc($contact, $amoId);
 $controller->recordHook('db result '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 			if ($resultDb) {
