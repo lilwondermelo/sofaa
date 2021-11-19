@@ -31,15 +31,20 @@ Class Account {
 		$this->setAllDate($accData['all_date']);
 	}
 
-	public function newAmoBearer() {
+	public function newAmoBearer($type = 'refresh_token', $code = '') {
 		$host = 'https://' . $this->getAmoHost() . '.amocrm.ru/oauth2/access_token';
 		$requestData = [
             'client_secret' => $this->getClientSecret(),
             'client_id' => $this->getClientId(),
-            'grant_type' => 'refresh_token',
-            'refresh_token' => $this->getAmoRefresh(),
+            'grant_type' => $type,
             'redirect_uri' => 'https://ingeniouslife.space/amo_getcode.php'
         ];
+        if ($type == 'refresh_token') {
+        	$requestData['refresh_token'] = $this->getAmoRefresh();
+        }
+        else {
+        	$requestData['code'] = $code;
+        }
 		$curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_USERAGENT, 'amoCRM-Example-API-client/1.0');

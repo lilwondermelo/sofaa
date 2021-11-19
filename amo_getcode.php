@@ -1,9 +1,21 @@
 <?php
-$company = 'jkamogolovaorg';
+$company = '';
+$code = '';
+if (!empty($_GET["company"])) {
+        $company = (!empty($_GET["company"]))?$_GET["company"]:'';
+}
+if (!empty($_GET["code"])) {
+        $code = (!empty($_GET["code"]))?$_GET["code"]:'';
+}
 require_once 'account.php';
 $account = new Account($company);
-$result = '1';
-//$result = $account->newAmoBearer();
+if ($code != '') {
+     $result = $account->newAmoBearer($code); 
+}
+else {
+   $result = $account->newAmoBearer($account->getAmoRefresh());     
+}
+
 
 
 echo json_encode('result ' . $result, JSON_UNESCAPED_UNICODE);
