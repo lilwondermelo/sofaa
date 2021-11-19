@@ -7,8 +7,7 @@
 	
 	
 
-	$dataResult = [];
-	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
+	 { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		$amoRequestData = [];
 		$data = [];
@@ -77,7 +76,19 @@ if ($company != '') {
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	$recordList = $controller->getrecordCount();
-	echo json_encode($recordList, JSON_UNESCAPED_UNICODE);
-	//$pages = (ceil($recordList['pages']) > 5)?5:ceil($recordList['pages']);
+	$pages = (ceil($recordList['pages']) > 5)?5:ceil($recordList['pages']);
+	$dataResult = [];
+	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) {
+		$pageData = $controller->getRecordList($i+1); //$i+1 - номер текущей страницы
+		$amoRequestData = [];
+		$data = [];
+		$amoDealsData = [];
+		echo json_encode($pageData, JSON_UNESCAPED_UNICODE);
+	}
+
+
+
+
+	
 }
 ?>

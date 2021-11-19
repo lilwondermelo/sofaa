@@ -386,6 +386,15 @@ order by r.datetime desc';
 		return $amoData;
 	}
 
+	public function getRecordList($page) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$args = array('count' => $this->dataPerPage, 'page' => $page);
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/records/' . $this->account->getYcFilialId();
+		return $this->apiQuery($args);
+	}
+
 	public function getClientList($page) {
 		$this->isYc = 1;
 
