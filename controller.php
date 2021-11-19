@@ -389,7 +389,7 @@ order by r.datetime desc';
 	public function getRecordList($page) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('count' => $this->dataPerPage, 'page' => $page);
+		$args = array('count' => $this->dataPerPage, 'page' => $page, 'with_deleted' => 1);
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/records/' . $this->account->getYcFilialId();
 		return $this->apiQuery($args);
