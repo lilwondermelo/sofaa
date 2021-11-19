@@ -8,6 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$entityData = $postData[$entityType][$actionType][0];
 
 
+	$leadId = $entityData['linked_leads_id'];
+
+	if (is_array($leadId)) {
+		$leadId = array_key_first($leadId);
+	}
+	else {
+		$leadId = -1;
+	}
 
 
 
@@ -21,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromAmo();
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
-		$controller->recordHook('newtes1t '. json_encode($entityData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('newtes1t '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
 			$contact->setId($ycId);
@@ -34,11 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$controller->recordHook('newtes2t '. json_encode($resYc, JSON_UNESCAPED_UNICODE));
 		if ($resYc) {
 			$contact->setId($resYc);
-			$result = $controller->recordContactFromYc($contact, $contact->getAmoId(), -1);
+			$result = $controller->recordContactFromYc($contact, $contact->getAmoId(), $leadId);
 		}
 		else if ($check['lead_id'] == -1) {
 			$contact->setId($ycId);
-			$result = $controller->recordContactFromYc($contact, $contact->getAmoId(), -1);
+			$result = $controller->recordContactFromYc($contact, $contact->getAmoId(), $leadId);
 		}
 		else {
 			$result = false;
@@ -69,7 +77,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     	$ycClass->recordHook(0);
     }
 
-newtes1t {"contacts":{"add":[{"id":"6057677","name":"Алишер","responsible_user_id":"3493057","date_create":"1637293716","last_modified":"1637293716","custom_fields":[{"id":"304133","name":"Телефон","values":[{"value":"+79963814070","enum":"148225"}],"code":"PHONE"}],"linked_leads_id":{"4082065":{"ID":"4082065"}},"created_at":"1637293716","updated_at":"1637293716","type":"contact"}]},"account":{"subdomain":"jkamogolovaorg","id":"29796412","_links":{"self":"https:\/\/jkamogolovaorg.amocrm.ru"}}}
+newtes1t {
+
+	"id":"6057953",
+	"name":"Сашка1",
+	"responsible_user_id":"3493057",
+	"date_create":"1637294438",
+	"last_modified":"1637294438",
+	"custom_fields":[
+		{
+			"id":"304133",
+			"name":"Телефон",
+			"values":[
+				{
+					"value":"+79963778082",
+					"enum":"148225"
+				}
+			],
+			"code":"PHONE"
+		}
+	],
+	"linked_leads_id":{
+		"4083321":{
+			"ID":"4083321"
+		}
+	},
+	"created_at":"1637294438",
+	"updated_at":"1637294438",
+	"type":"contact"
+
+
+}
 
 {"contacts":{"update":[{"id":"9824361","name":"Alisher Mikhtad32ov3d12341","responsible_user_id":"3493057","date_create":"1635231850","last_modified":"1635332398","modified_user_id":"3493057","custom_fields":[{"id":"159945","name":"\u0422\u0435\u043b\u0435\u0444\u043e\u043d","values":[{"value":"+79513864070","enum":"75965"}],"code":"PHONE"},{"id":"159947","name":"Email","values":[{"value":"123455252","enum":"75977"}],"code":"EMAIL"},{"id":"629913","name":"ID \u043a\u043b\u0438\u0435\u043d\u0442\u0430, Yclients","values":[{"value":"119800280"}]},{"id":"629911","name":"\u041a\u043e\u043b-\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432, Yclients","values":[{"value":"0"}]},{"id":"629909","name":"\u041e\u0431\u0449\u0430\u044f \u0441\u0443\u043c\u043c\u0430 (LTV), Yclients","values":[{"value":"0"}]}],"linked_leads_id":{"5788299":{"ID":"5788299"}},"old_responsible_user_id":"3493057","created_at":"1635231850","updated_at":"1635332398","type":"contact"}]},"account":{"subdomain":"ablaser","id":"29715442","_links":{"self":"https:\/\/ablaser.amocrm.ru"}}}
 
