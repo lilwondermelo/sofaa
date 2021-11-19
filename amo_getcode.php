@@ -6,9 +6,9 @@ $result = '1';
 //$result = $account->newAmoBearer();
 
 
-echo json_encode('result ' . $result, JSON_UNESCAPED_UNICODE));
-echo json_encode('bearer ' . $account->getAmoBearer(), JSON_UNESCAPED_UNICODE));
-echo json_encode('refresh ' . $account->getAmoRefresh(), JSON_UNESCAPED_UNICODE));
+echo json_encode('result ' . $result, JSON_UNESCAPED_UNICODE);
+echo json_encode('bearer ' . $account->getAmoBearer(), JSON_UNESCAPED_UNICODE);
+echo json_encode('refresh ' . $account->getAmoRefresh(), JSON_UNESCAPED_UNICODE);
 /*
 require_once 'controller.php';  
 $controller = new Controller($account);
