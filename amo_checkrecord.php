@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'controller.php';
 	$controller = new Controller($account);
 
+	
 	$active = $controller->getLastRecordByAmo($postData['leads'][$entityType][0]['id']);
 	$result = $controller->setRecordToAmo($active);
 
