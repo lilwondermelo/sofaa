@@ -65,7 +65,7 @@ Class Account {
 		$result_upd = $updater->update();
 
 		if (!$result_upd) {
-			return $updater->error;
+			return $requestData;
 		}
 		else {
 			$this->setAmoBearer($decodedResponse['access_token']);
