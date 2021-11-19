@@ -8,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$entityData = $postData[$entityType][$actionType][0];
 
 
+
+
+
 	require_once 'account.php';
 	$account = new Account($amoHost);
 	require_once 'controller.php';
@@ -18,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromAmo();
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
-		$controller->recordHook('newtes1t '. json_encode($contact->getAmoId(), JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('newtes1t '. json_encode($entityData, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
 			$contact->setId($ycId);
@@ -31,16 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$controller->recordHook('newtes2t '. json_encode($resYc, JSON_UNESCAPED_UNICODE));
 		if ($resYc) {
 			$contact->setId($resYc);
-			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
+			$result = $controller->recordContactFromYc($contact, $contact->getAmoId(), -1);
 		}
 		else if ($check['lead_id'] == -1) {
 			$contact->setId($ycId);
-			$result = $controller->recordContactFromYc($contact, $contact->getAmoId());
+			$result = $controller->recordContactFromYc($contact, $contact->getAmoId(), -1);
 		}
 		else {
 			$result = false;
 		}
-		$controller->recordHook('newtes3t '. json_encode($check['lead_id'], JSON_UNESCAPED_UNICODE));
 		//$kek = $contact->editFromAmo();
 }
 

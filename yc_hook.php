@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
 
-			$resultDb = $controller->recordContactFromYc($contact, $amoId);
+			$resultDb = $controller->recordContactFromYc($contact, $amoId, $leadId);
 			$controller->recordHook('db result '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 			if ($resultDb) {
 				$controller->recordHook('user amo id '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
