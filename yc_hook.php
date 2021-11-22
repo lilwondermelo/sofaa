@@ -75,8 +75,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	else {
 		sleep(2);
 		$clientData = $contactData['client'];
+		require_once 'contact.php';
+		$contact = new Contact($clientData, $account->getCustomFields());
+		$resId = $contact->createFromYc();
+		$check = $controller->checkClient($contact, 'yc');
 
-		$controller->recordHook('no amo '. json_encode($clientData, JSON_UNESCAPED_UNICODE));
+		
+
+		$controller->recordHook('no amo '. json_encode($check, JSON_UNESCAPED_UNICODE));
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
