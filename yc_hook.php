@@ -87,12 +87,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$leadId = $resAmo[0]['id'];
 			$contact->setAmoId($amoId);
 			$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
-			$active = $controller->getLastRecord($contact->getId());
-			$result = $controller->setRecordToAmo($active);
+			$controller->recordHook('noamo ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
 
 
-		$controller->recordHook('no amo '. json_encode($check, JSON_UNESCAPED_UNICODE));
+		//$controller->recordHook('no amo '. json_encode($check, JSON_UNESCAPED_UNICODE));
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
