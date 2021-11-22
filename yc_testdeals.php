@@ -22,7 +22,7 @@ if ($company != '') {
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		
 		foreach ($pageData['data'] as $item) {
-			$clientData[] = $item;
+			$clientData[] = $controller->getClientData($item['id']);
 			
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
