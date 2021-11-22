@@ -74,7 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	else {
 		sleep(2);
-		$controller->recordHook('no amo '. json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$clientData = $contactData['client'];
+
+		$controller->recordHook('no amo '. json_encode($clientData, JSON_UNESCAPED_UNICODE));
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -102,5 +104,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 ?>
-
-
