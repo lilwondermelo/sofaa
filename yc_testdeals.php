@@ -1,7 +1,7 @@
 <?php
 //echo '<br><br><br><br><br><br><br><br><br>ГОТОВО<br><br><br><br><br><br><br><br><br>';
 $page = 1;
-$company = '';
+$company = '';	
 if (!empty($_GET["company"])) {
 	$company = (!empty($_GET["company"]))?$_GET["company"]:'';
 }
@@ -22,7 +22,8 @@ if ($company != '') {
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		
 		foreach ($pageData['data'] as $item) {
-			echo $item["last_change_date"];
+			$clientData = $controller->getClientData($item['id']);
+			echo $clientData["last_change_date"];
 
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
