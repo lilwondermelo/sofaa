@@ -23,13 +23,14 @@ if ($company != '') {
 		
 		foreach ($pageData['data'] as $item) {
 			$clientData[] = $controller->getClientData($item['id']);
-			echo json_encode('11kek1' . $clientData, JSON_UNESCAPED_UNICODE);
-
+			
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	//echo json_encode($dataResult, JSON_UNESCAPED_UNICODE);
 	//echo 'Компания: ' . $company . '<br>';
 }
+echo json_encode($clientData, JSON_UNESCAPED_UNICODE);
+
 }
 else {
 	echo 'Компания не выбрана';
