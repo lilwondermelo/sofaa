@@ -23,10 +23,10 @@ if ($company != '') {
 		
 		foreach ($pageData['data'] as $item) {
 			$time = $controller->getClientData($item['id'])['last_change_date'];
-			if (strtotime($time) < 1635711967) {
+			if (strtotime($time) < 1636489567) {
 				$clientData['before']++;
 			}
-			else if (strtotime($time) < 1636489567) {
+			else if (strtotime($time) < 1635711967) {
 				$clientData['y']++;
 			}
 			else {
