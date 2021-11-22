@@ -43,7 +43,7 @@ if ($company != '') {
 			else {
 				$rezdb = $result_upd;
 			}
-			echo json_encode($rezdb, JSON_UNESCAPED_UNICODE);
+			echo json_encode($leadDate, JSON_UNESCAPED_UNICODE);
 
 
 
@@ -70,13 +70,13 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}*/
-		$result = $controller->setManyDealsToAmo($data);
+		//$result = $controller->setManyDealsToAmo($data);
 	
 			
 		
 		$dataResult[] = $result;
 		//echo count($data) . '<br><br>';
-		echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
+		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
 	echo json_encode($dataResult, JSON_UNESCAPED_UNICODE);
 	//echo 'Компания: ' . $company . '<br>';
