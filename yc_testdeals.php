@@ -17,7 +17,7 @@ if ($company != '') {
 	$clientList = $controller->getCLientCount();
 	$pages = (ceil($clientList['pages']) > 5)?5:ceil($clientList['pages']);
 
-	$clientData = ['before' => 0, 'y' => 0 'after' => 0];
+	$clientData = ['before' => 0, 'y' => 0, 'after' => 0];
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) { //цикл перебирает страницы (API YCLIENTS не дает больше 200 значений на одну страницу)
 		$pageData = $controller->getClientList($i+1); //$i+1 - номер текущей страницы
 		
