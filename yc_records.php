@@ -86,7 +86,7 @@ if ($company != '') {
 			//$active = $controller->getLastRecord['id']);
 
 			//$result = $controller->setRecordToAmo($active);
-			echo json_encode(($item, JSON_UNESCAPED_UNICODE);
+			echo json_encode($item, JSON_UNESCAPED_UNICODE);
 			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
 		}
 	}
