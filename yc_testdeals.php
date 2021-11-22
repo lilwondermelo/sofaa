@@ -29,6 +29,7 @@ if ($company != '') {
 	//echo json_encode($dataResult, JSON_UNESCAPED_UNICODE);
 	//echo 'Компания: ' . $company . '<br>';
 }
+}
 else {
 	echo 'Компания не выбрана';
 }
