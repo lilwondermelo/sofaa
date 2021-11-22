@@ -30,8 +30,6 @@ if ($company != '') {
 
 
 
-
-
 			require_once '_dataRowUpdater.class.php';
 			$updater = new DataRowUpdater('clients');
 			$updater->setKeyField('id');
@@ -43,7 +41,7 @@ if ($company != '') {
 			else {
 				$rezdb = $result_upd;
 			}
-			echo json_encode($leadDate, JSON_UNESCAPED_UNICODE);
+			echo json_encode($clientData, JSON_UNESCAPED_UNICODE);
 
 
 
