@@ -78,6 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$contact = new Contact($clientData, $account->getCustomFields());
 		$resId = $contact->createFromYc();
 		$check = $controller->checkClient($contact, 'yc');
+		$amoId = $check['amo_id'];
+		$leadId = $check['lead_id'];
 		if ($amoId == -1) {
 			$contact->setAmoId($amoId);
 			$amoData = $contact->convertToAmo();
