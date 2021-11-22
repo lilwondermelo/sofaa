@@ -400,7 +400,11 @@ order by r.datetime desc';
 			'cost' => $cost,
 			'comment' => $contactData['comment']?$contactData['comment']:'',
 			'services' => mb_substr($services, 0, -1),
-			'filial_id' => $this->account->getYcFilialId()
+			'filial_id' => $this->account->getYcFilialId(),
+			'24h' => 1,
+			'req' => 1,
+			'creating' => 1,
+			'2h' => 1
 		];
 		return $recordData;
 	}
