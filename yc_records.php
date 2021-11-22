@@ -83,10 +83,10 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 			$recordData = $controller->getRecordData($item['id']);
 			$resultDb = $controller->setRecord($recordData, $item['id']);
-			$active = $controller->getLastRecord($item['id']);
+			//$active = $controller->getLastRecord['id']);
 
-			$result = $controller->setRecordToAmo($active);
-			echo json_encode($active, JSON_UNESCAPED_UNICODE);
+			//$result = $controller->setRecordToAmo($active);
+			echo json_encode(($item, JSON_UNESCAPED_UNICODE);
 			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
 		}
 	}

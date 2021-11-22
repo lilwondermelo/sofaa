@@ -224,7 +224,7 @@ and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime desc';
 
 			$dataRow = new DataSource($query);
-		$data = $dataRow->getData();
+			$data = $dataRow->getData();
 		}
 
 		if (!$data) {
