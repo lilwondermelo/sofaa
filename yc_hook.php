@@ -62,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$result = false;
 			}
-			echo json_encode($result, JSON_UNESCAPED_UNICODE
 				$controller->recordHook('user3 '. json_encode($resAmo, JSON_UNESCAPED_UNICODE));
 
 			$active = $controller->getLastRecord($contact->getId());
