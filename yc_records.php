@@ -83,7 +83,7 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 			$recordData = $controller->getRecordData($item['id']);
 			$resultDb = $controller->setRecord($recordData, $item['id']);
-			$active = $controller->getLastRecord($contactData['client']['id']);
+			$active = $controller->getLastRecord($item['id']);
 			
 			//$result = $controller->setRecordToAmo($active);
 			echo json_encode($contactData['client']['id'], JSON_UNESCAPED_UNICODE);
