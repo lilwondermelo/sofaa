@@ -84,8 +84,8 @@ if ($company != '') {
 			$recordData = $controller->getRecordData($item['id']);
 			$resultDb = $controller->setRecord($recordData, $item['id']);
 			$active = $controller->getLastRecord($item['id']);
-			
-			//$result = $controller->setRecordToAmo($active);
+
+			$result = $controller->setRecordToAmo($active);
 			echo json_encode($contactData['client']['id'], JSON_UNESCAPED_UNICODE);
 			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
 		}
