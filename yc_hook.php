@@ -79,8 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$contact = new Contact($clientData, $account->getCustomFields());
 		$resId = $contact->createFromYc();
 		$check = $controller->checkClient($contact, 'yc');
+		if ($amoId == -1) {
+			$contact->setAmoId($amoId);
+			$amoData = $contact->convertToAmo();
+			$resAmo = $controller->setComplexToAmo($amoData);
+			$amoId = $resAmo[0]['contact_id'];
+			$leadId = $resAmo[0]['id'];
+			$contact->setAmoId($amoId);
+			$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
+			$active = $controller->getLastRecord($contact->getId());
+			$result = $controller->setRecordToAmo($active);
+		}
 
-		
 
 		$controller->recordHook('no amo '. json_encode($check, JSON_UNESCAPED_UNICODE));
 		$recordId = $contactData['id'];

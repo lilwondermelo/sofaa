@@ -86,6 +86,9 @@ class Controller {
 			if (!$dataRow->getValue('lead_id')) {
 				$leadId = -1;
 			}
+			if (!$dataRow->getValue('amo_id')) {
+				$amoId = -1;
+			}
 			else {
 				$leadId = $dataRow->getValue('lead_id');
 			}
