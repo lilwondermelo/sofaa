@@ -435,7 +435,7 @@ order by r.datetime desc';
 		$this->isYc = 1;
 
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('page_size' => $this->dataPerPage, 'page' => $page);
+		$args = array('page_size' => $this->dataPerPage, 'page' => $page, "fields": ["id", "name", "last_change_date"]);
 		$this->method = 'POST';
 		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/clients/search';
 		return $this->apiQuery($args);
