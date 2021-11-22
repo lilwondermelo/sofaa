@@ -419,8 +419,9 @@ order by r.datetime desc';
 		$contact = new Contact($contactData, $this->account->getCustomFields());
 		$contact->createFromYC();
 		$amoData = $contact->convertToAmo();
-		return $contactData;
-		//return $amoData;
+		$amoData['last_change_date'] = $contactData['last_change_date'];
+		//return $contactData;
+		return $amoData;
 	}
 
 	public function getRecordList($page) {

@@ -26,6 +26,12 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 
 			$clientData = $controller->getClientData($item['id']);
+			$leadDate = $clientData['last_change_date'];
+
+
+
+
+
 			require_once '_dataRowUpdater.class.php';
 			$updater = new DataRowUpdater('clients');
 			$updater->setKeyField('id');
@@ -38,7 +44,10 @@ if ($company != '') {
 				$rezdb = $result_upd;
 			}
 			echo json_encode($rezdb, JSON_UNESCAPED_UNICODE);
-				
+
+
+
+				if (strtotime($leadDate) > 1635711967) {
 				$stat = 'y';
 				$data[] = array(
 					'name' => 'Запись из YCLIENTS',
@@ -48,6 +57,9 @@ if ($company != '') {
 						'contacts' => [$clientData]
 					]
 				);
+			}
+
+				
 				//$amoRequestData[] = $clientData;	
 		}
 		//$result = $controller->setManyContactsToAmo($amoRequestData);
