@@ -26,7 +26,7 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 
 			$clientData = $controller->getClientData($item['id']);
-		require_once '_dataRowUpdater.class.php';
+			require_once '_dataRowUpdater.class.php';
 			$updater = new DataRowUpdater('clients');
 			$updater->setKeyField('id');
 			$updater->setDataFields(array('yc_id' => $item['id'], 'name' => $clientData['name'], 'phone' => $clientData['custom_fields_values'][0]['values'][0]['value'], 'amo_host' => $company));
@@ -38,7 +38,7 @@ if ($company != '') {
 				$rezdb = $result_upd;
 			}
 			echo json_encode($rezdb, JSON_UNESCAPED_UNICODE);
-
+				
 				$stat = 'y';
 				$data[] = array(
 					'name' => 'Запись из YCLIENTS',
