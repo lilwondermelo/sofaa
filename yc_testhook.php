@@ -11,6 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($companyId);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	echo json_encode($postData, JSON_UNESCAPED_UNICODE);
+	$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 }
 ?>
