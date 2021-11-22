@@ -86,14 +86,17 @@ class Controller {
 			if (!$dataRow->getValue('lead_id')) {
 				$leadId = -1;
 			}
+			else {
+				$leadId = $dataRow->getValue('lead_id');
+			}
 			if (!$dataRow->getValue('amo_id')) {
 				$amoId = -1;
 			}
 			else {
-				$leadId = $dataRow->getValue('lead_id');
+				$amoId = $dataRow->getValue('amo_id');
 			}
 			if ($source == 'yc') {
-				return array('amo_id' => $dataRow->getValue('amo_id'), 'lead_id' => $leadId);
+				return array('amo_id' => $amoId, 'lead_id' => $leadId);
 			}
 			else {
 				return array('yc_id' => $dataRow->getValue('yc_id'), 'lead_id' => $leadId);
