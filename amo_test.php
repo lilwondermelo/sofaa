@@ -20,11 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if (!is_array($leadId)) {
 			$leadId = $controller->setDealToAmo($amoData, $amoId);
-			$check = $controller->checkClient($contact, 'amo');
-			$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
-			$resultDb = $controller->recordContactFromAmo($contact, $ycId, $leadId);
-			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
 		}
+		else {
+			$leadId = array_key_first($leadId);
+		}
+		$check = $controller->checkClient($contact, 'amo');
+		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
+		$resultDb = $controller->recordContactFromAmo($contact, $ycId, $leadId);
+		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
 	}
 	else {
 		sleep(2);
