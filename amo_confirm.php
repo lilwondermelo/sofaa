@@ -40,15 +40,3 @@ if ($data = $dataSource->getData()) {
 	$controller->recordHook('confirm '. json_encode($rez, JSON_UNESCAPED_UNICODE));
 }
 ?>
-
-confirm [{"success":false,"data":null,"meta":{"message":"Произошла ошибка","errors":{"staff_id":["Не передан обязательный параметр staff_id."],
-"services":["Не передан обязательный параметр services."],
-"client":["Не передан обязательный параметр client."],
-"seance_length":["Не передан обязательный параметр seance_length."],
-"datetime":["Не передан обязательный параметр datetime."]}}},
-
-
-{"success":false,"data":null,"meta":{"message":"Произошла ошибка","errors":{"staff_id":["Не передан обязательный параметр staff_id."],"services":["Не передан обязательный параметр services."],"client":["Не передан обязательный параметр client."],"seance_length":["Не передан обязательный параметр seance_length."],"datetime":["Не передан обязательный параметр datetime."]}}},
-
-
-{"success":false,"data":null,"meta":{"message":"Произошла ошибка","errors":{"staff_id":["Не передан обязательный параметр staff_id."],"services":["Не передан обязательный параметр services."],"client":["Не передан обязательный параметр client."],"seance_length":["Не передан обязательный параметр seance_length."],"datetime":["Не передан обязательный параметр datetime."]}}}]
