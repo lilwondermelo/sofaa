@@ -15,7 +15,7 @@ Class Account {
 	private $statuses = array();
 
 	//$key - Хост в AMOCRM или id филиала в YCLIENTS в зависимости от источника
-	public function __construct($key) {
+	public function __construct($key, $ycAcc = '') {
 		require_once '_dataRowSource.class.php';
 		$dataRowSource = new DataRowSource('select * from accounts where amo_host = "' .$key  . '" or yc_id = "' . $key . '"');
 		$accData = $dataRowSource->getDataRow();
