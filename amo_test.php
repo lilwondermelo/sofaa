@@ -1,7 +1,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	//$postData = json_decode(file_get_contents('php://input'), true);
-	$postData = $_POST;
+	$postData = json_decode(file_get_contents('php://input'), true);
+	//$postData = $_POST;
 	$entityType = array_key_first($postData);
 	$amoHost = $postData['account']['subdomain'];
 	$actionType = array_key_first($postData[$entityType]);
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
 
-		$controller->recordHook('telo test '. json_encode($postData, JSON_UNESCAPED_UNICODE));
+		echo json_encode($postData, JSON_UNESCAPED_UNICODE);
 		/*
 		$controller->recordHook('newtes1t '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
