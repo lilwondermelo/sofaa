@@ -209,6 +209,8 @@ order by r.datetime desc';
 		return $data[0];
 	}
 
+
+	//Получить актуальную запись клиента из ychook
 	public function getLastRecord($clientId) {
 		require_once '_dataSource.class.php';
 		$query = 'select * from records r 
@@ -244,6 +246,8 @@ order by r.datetime desc';
 	}
 
 
+
+	//Отправить запись в yclients
 	public function setRecordToAmo($dealData) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
