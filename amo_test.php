@@ -24,11 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		else {
 			$leadId = array_key_first($leadId);
 		}
-		$controller->recordHook('amocontact ' . $amoHost . json_encode($postData, JSON_UNESCAPED_UNICODE));
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId, $leadId);
-		//echo json_encode($leadId, JSON_UNESCAPED_UNICODE);
+		echo json_encode($leadId, JSON_UNESCAPED_UNICODE);
 		
 	}
 	else {
