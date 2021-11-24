@@ -213,26 +213,24 @@ order by r.datetime desc';
 	//Получить актуальную запись клиента из ychook
 	public function getLastRecord($clientId) {
 		require_once '_dataSource.class.php';
-		$query = 'select * from records r 
-join clients_yc yc 
-on r.client_id = yc.yc_id 
-join clients c
-on yc.lead_id = c.lead_id 
-where r.client_id = ' . $clientId . '
+		$query = '
+select * 
+from clients_yc yc join records r on yc_id = r.client_id
+where lead_id = 
+(select c.lead_id from clients_yc yc join clients c on yc.lead_id = c.lead_id where yc.yc_id = ' . $clientId . ')
 and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . ' 
 and r.deleted = 0 
 order by r.datetime';
 		$dataRow = new DataSource($query);
 		$data = $dataRow->getData();
 		if (!$data) {
-			$query = 'select * from records r 
-join clients_yc yc 
-on r.client_id = yc.yc_id 
-join clients c
-on yc.lead_id = c.lead_id
-where r.client_id = ' . $clientId . ' 
+			$query = '
+select * 
+from clients_yc yc join records r on yc_id = r.client_id
+where lead_id = 
+(select c.lead_id from clients_yc yc join clients c on yc.lead_id = c.lead_id where yc.yc_id = ' . $clientId . ')
+and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . ' 
 and r.deleted = 0 
-and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
 order by r.datetime desc';
 
 			$dataRow = new DataSource($query);
