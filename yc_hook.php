@@ -58,10 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'filial_id' => $companyId,
 			'2h' => 1
 		];
-		echo json_encode($check, JSON_UNESCAPED_UNICODE);
-		echo json_encode($recordData, JSON_UNESCAPED_UNICODE);
+		
 
-		//$resultDb = $controller->setRecord($recordData, $recordId);
+		$resultDb = $controller->setRecord($recordData, $recordId);
+		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
+		
 		//$active = $controller->getLastRecord($contactData['client']['id']);
 		//$result = $controller->setRecordToAmo($active);
 	}
