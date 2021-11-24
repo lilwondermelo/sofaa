@@ -20,11 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($leadId == -1) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				$resAmo = $controller->setComplexToAmo($amoData);
-				$contact->setAmoId($resAmo[0]['contact_id']);
-				$leadId = $resAmo[0]['id'];
-				$result = $controller->recordContactFromAmo($contact, $leadId);
-				$check = $controller->checkClient($contact);
+				echo json_encode($check, JSON_UNESCAPED_UNICODE);
+				//$resAmo = $controller->setComplexToAmo($amoData);
+				//$contact->setAmoId($resAmo[0]['contact_id']);
+				//$leadId = $resAmo[0]['id'];
+				//$result = $controller->recordContactFromAmo($contact, $leadId);
 			}
 		}
 	}
