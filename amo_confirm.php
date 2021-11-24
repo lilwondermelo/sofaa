@@ -23,7 +23,7 @@ require_once '_dataSource.class.php';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	foreach ($data as $item) {
-		$recordId = $item['recordId'];
+		$recordId = $item['record_id'];
 
 		require_once 'account.php';
 		$account = new Account($item['filial_id'], 'yc');
@@ -33,6 +33,7 @@ if ($data = $dataSource->getData()) {
 		$recData['attendance'] = 2;
 		$recData['visit_attendance'] = 2;
 		$recData['confirmed'] = 1;
+		$data[] = $recData;
 		$rez[] = $controller->confirmRecordToYC($recordId, $recData);
 
 	}
