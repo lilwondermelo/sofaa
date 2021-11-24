@@ -142,7 +142,6 @@ class Controller {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
 		$updater->setKeyField('amo_id', $contact->getAmoId());
-		}
 		$data = array('lead_id' => $leadId, 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost());
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
