@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$check = $controller->checkClient($contact);
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
-			echo $check;
+			echo json_encode($check, JSON_UNESCAPED_UNICODE);
 			/*
 
 			$resultDb = $controller->recordContactFromYc($contact, $amoId, $leadId);
