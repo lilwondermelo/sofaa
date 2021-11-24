@@ -33,7 +33,7 @@ if ($data = $dataSource->getData()) {
 		$recData['attendance'] = 2;
 		$recData['visit_attendance'] = 2;
 		$recData['confirmed'] = 1;
-		$data[] = $item['filial_id'];
+		$dataR[] = $item['filial_id'];
 		$rez[] = $controller->confirmRecordToYC($recordId, $recData);
 
 	}
@@ -41,6 +41,6 @@ if ($data = $dataSource->getData()) {
 	$active = $controller->getLastRecordByAmo($leadId);
 	$result = $controller->setRecordToAmo($active);
 	
-	echo json_encode($data, JSON_UNESCAPED_UNICODE);
+	echo json_encode($dataR, JSON_UNESCAPED_UNICODE);
 }
 ?>
