@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromYc();
 		$check = $controller->checkClient($contact);
 
-		$ycClass->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
 
 		$recordId = $contactData['id'];
 		$services = '';
