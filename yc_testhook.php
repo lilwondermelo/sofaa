@@ -11,6 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($companyId);
 	require_once 'controller.php';
 	$controller = new Controller($account);
-	$controller->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+	if ($hookType == 'client') {
+		if (($hookStatus == 'create') || ($hookStatus == 'update')){
+			require_once 'contact.php';
+			$contact = new Contact($contactData, $account->getCustomFields());
+			$resId = $contact->createFromYc();
+			$check = $controller->checkClient($contact, 'yc');
+			echo json_encode($check, JSON_UNESCAPED_UNICODE);
+		}
+	}
 }
 ?>
