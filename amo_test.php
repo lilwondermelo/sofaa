@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromAmo();
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
-		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
+		//$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
-		$controller->recordHook('amocontact '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('amocontact '. json_encode(1, JSON_UNESCAPED_UNICODE));
 	}
 	else {
 		$controller->recordHook('amolead '. json_encode($postData, JSON_UNESCAPED_UNICODE));
