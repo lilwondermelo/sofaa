@@ -1,33 +1,25 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$postData = json_decode(file_get_contents('php://input'), true);
-
 	$contactData = $postData['data'];
 	$hookType = $postData['resource'];
 	$hookStatus = $postData['status'];
 	$companyId = $postData['company_id'];
-
-
-
-
 	require_once 'account.php';
 	$account = new Account($companyId, 'yc');
-
-
-
 	require_once 'controller.php';
 	$controller = new Controller($account);
-
-
-	
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
 			require_once 'contact.php';
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
-			$check = $controller->checkClient($contact, 'yc');
+			$check = $controller->checkClient($contact);
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
+			echo $check;
+			/*
+
 			$resultDb = $controller->recordContactFromYc($contact, $amoId, $leadId);
 			if ($resultDb) {
 				$contact->setAmoId($amoId);
@@ -63,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			$active = $controller->getLastRecord($contact->getId());
 			$result = $controller->setRecordToAmo($active);
-			
+			*/
 		}
 	}
 	else {

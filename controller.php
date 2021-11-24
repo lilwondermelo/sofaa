@@ -78,40 +78,48 @@ class Controller {
 		return $this->apiQuery($args);
 	}
 
-	public function checkClient($contact, $source = 'yc') {
+
+
+	//Новая функция проверки клиента из YC
+	public function checkClient($contact) {
 		require_once '_dataRowSource.class.php';
-		if ($source == 'amo') {
-			$query = 'select * from clients where (phone = "' . $contact->getPhone() . '" or amo_id = ' . $contact->getAmoId() . ') and amo_host = "' . $this->account->getAmoHost() . '"';
-		}
-		else {
-			$query = 'select * from clients where (phone = "' . $contact->getPhone() . '" or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId() . ') and amo_host = "' . $this->account->getAmoHost() . '"';
-		}
-		
+		$query = 'select * from clients c join clients_yc yc on c.lead_id = yc.lead_id where yc.yc_id = ' . $contact->getId();
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
-			if (!$dataRow->getValue('lead_id')) {
-				$leadId = -1;
-			}
-			else {
-				$leadId = $dataRow->getValue('lead_id');
-			}
-			if (!$dataRow->getValue('amo_id')) {
-				$amoId = -1;
-			}
-			else {
-				$amoId = $dataRow->getValue('amo_id');
-			}
-			if ($source == 'yc') {
-				return array('amo_id' => $amoId, 'lead_id' => $leadId);
-			}
-			else {
-				return array('yc_id' => $dataRow->getValue('yc_id'), 'lead_id' => $leadId);
-			}
+			$leadId = $dataRow->getValue('lead_id');
+			$amoId = $dataRow->getValue('amo_id');
 		}
 		else {
-			return  array('amo_id' => -1, 'lead_id' => -1);
+			$query = 'select * from clients where phone = "' . $contact->getPhone() . '" and amo_host = "' . $this->account->getAmoHost() . '"';
+			$dataRow = new DataRowSource($query);
+			if ($dataRow->getData()) {
+				$leadId = $dataRow->getValue('lead_id');
+				$amoId = $dataRow->getValue('amo_id');
+				$resultLink = $this->recordContactLink($contact->getId(), $leadId);
+			}
+			else {
+				$leadId = -1;
+				$amoId = -1;
+			}
+		}
+		return array('amo_id' => -1, 'lead_id' => -1);
+	}
+	//Новая функция добавления связи сделки amo и клиента yc
+	public function recordContactLink($ycId, $leadId) {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('clients_yc');
+		$updater->setKeyField('id');
+		$data = array('yc_id' => $ycId, 'lead_id' => $leadId);
+		$updater->setDataFields($data);
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return false;
+		}
+		else {
+			return $result_upd;
 		}
 	}
+
 
 	public function recordContactFromYc($contact, $id = -1, $leadId = -1) {
 		require_once '_dataRowUpdater.class.php';
@@ -473,7 +481,7 @@ order by r.datetime desc';
 	}
 
 
-	public function setDealToAmo($amoData = array(), $amoId = -1) {
+	public function setDealToAmo($amoData = array(), $amoId) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';

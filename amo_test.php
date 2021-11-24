@@ -10,9 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$account = new Account($amoHost, 'amoContact');
 	require_once 'controller.php';
 	$controller = new Controller($account);
-
-
-
 	if ($entityType == 'contacts') {
 		$leadId = $entityData['linked_leads_id'];
 		require_once 'contact.php';

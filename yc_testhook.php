@@ -1,8 +1,6 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 	$postData = json_decode(file_get_contents('php://input'), true);
-
 	$contactData = $postData['data'];
 	$hookType = $postData['resource'];
 	$hookStatus = $postData['status'];
