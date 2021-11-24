@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			require_once 'contact.php';
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
-			$check = $controller->checkClient($contact);
+			$check = $controller->checkClient($contact, $companyId);
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
 			if ($leadId == -1) {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		require_once 'contact.php';
 		$contact = new Contact($clientData, $account->getCustomFields());
 		$resId = $contact->createFromYc();
-		$check = $controller->checkClient($contact);
+		$check = $controller->checkClient($contact, $companyId);
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
