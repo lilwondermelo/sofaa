@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$amoData = $contact->convertToAmo();
 
 		if (!is_array($leadId)) {
-			$leadId = $controller->setDealToAmo1($amoData, $amoId);
+			$leadId = $controller->setDealToAmo($amoData, $amoId);
 		}
 		else {
 			$leadId = array_key_first($leadId);
