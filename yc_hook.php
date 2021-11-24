@@ -44,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$services .= $service['title'] . ', ';
 			$cost += $service['cost'];
 		}
-
 		$recordData = [
 			'client_id' => $contactData['client']['id'],
 			'datetime' => strtotime($contactData['datetime']),
@@ -56,11 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'filial_id' => $companyId,
 			'2h' => 1
 		];
-		
-
 		$resultDb = $controller->setRecord($recordData, $recordId);
-		
-
 		$active = $controller->getLastRecord($contactData['client']['id']);
 		echo json_encode($active, JSON_UNESCAPED_UNICODE);
 		//$result = $controller->setRecordToAmo($active);

@@ -212,8 +212,10 @@ order by r.datetime desc';
 	public function getLastRecord($clientId) {
 		require_once '_dataSource.class.php';
 		$query = 'select * from records r 
-join clients c 
-on r.client_id = c.yc_id 
+join clients_yc yc 
+on r.client_id = yc.yc_id 
+join clients c
+on yc.lead_id = c.lead_id 
 where r.client_id = ' . $clientId . '
 and r.datetime >= ' . strtotime(date("Y-m-d H:i:s")) . ' 
 and r.deleted = 0 
@@ -222,8 +224,10 @@ order by r.datetime';
 		$data = $dataRow->getData();
 		if (!$data) {
 			$query = 'select * from records r 
-join clients c 
-on r.client_id = c.yc_id 
+join clients_yc yc 
+on r.client_id = yc.yc_id 
+join clients c
+on yc.lead_id = c.lead_id
 where r.client_id = ' . $clientId . ' 
 and r.deleted = 0 
 and r.datetime <= ' . strtotime(date("Y-m-d H:i:s")) . '
