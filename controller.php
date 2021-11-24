@@ -102,7 +102,7 @@ class Controller {
 				$amoId = -1;
 			}
 		}
-		return array('amo_id' => -1, 'lead_id' => -1);
+		return array('amo_id' => $amoId, 'lead_id' => $leadId);
 	}
 	//Новая функция добавления связи сделки amo и клиента yc
 	public function recordContactLink($ycId, $leadId) {
