@@ -104,6 +104,8 @@ class Controller {
 		}
 		return array('amo_id' => $amoId, 'lead_id' => $leadId);
 	}
+
+
 	//Новая функция добавления связи сделки amo и клиента yc
 	public function recordContactLink($ycId, $leadId) {
 		require_once '_dataRowUpdater.class.php';
@@ -145,7 +147,7 @@ class Controller {
 
 		}
 	}
-
+	//Новая функция записи сделки АМО в базу
 	public function recordContactFromAmo($contact, $leadId) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
