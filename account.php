@@ -17,10 +17,10 @@ Class Account {
 		require_once '_dataRowSource.class.php';
 		if ($source == 'yc') {
 			$query = 'select * from accounts a join filials f on a.amo_host = f.amo_host where f.filial_id = "' . $key . '"';
+			$this->setYcFilialId($key);
 		}
 		else if ($source == 'amoContact') {
 			$query = 'select * from accounts where amo_host = "' .$key  .'"';
-			$this->setYcFilialId($key);
 		}
 		$dataRowSource = new DataRowSource($query);
 		$accData = $dataRowSource->getDataRow();

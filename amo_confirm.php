@@ -26,7 +26,7 @@ if ($data = $dataSource->getData()) {
 		$recordId = $item['record_id'];
 
 		require_once 'account.php';
-		$account = new Account($item['filial_id'], 'yc');
+		$account = new Account((int)$item['filial_id'], 'yc');
 		require_once 'controller.php';
 		$controller = new Controller($account);
 		$recData = $controller->getRecord($recordId);
