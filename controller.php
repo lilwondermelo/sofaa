@@ -81,7 +81,7 @@ class Controller {
 
 
 	//Новая функция проверки клиента из YC
-	public function checkClient($contact, $filialId = 0) {
+	public function checkClient($contact) {
 		require_once '_dataRowSource.class.php';
 		$query = 'select * from clients c join clients_yc yc on c.lead_id = yc.lead_id where yc.yc_id = ' . $contact->getId();
 		$dataRow = new DataRowSource($query);
@@ -95,7 +95,7 @@ class Controller {
 			if ($dataRow->getData()) {
 				$leadId = $dataRow->getValue('lead_id');
 				$amoId = $dataRow->getValue('amo_id');
-				$resultLink = $this->recordContactLink($contact->getId(), $leadId, $filialId);
+				$resultLink = $this->recordContactLink($contact->getId(), $leadId);
 			}
 			else {
 				$leadId = -1;
@@ -107,11 +107,11 @@ class Controller {
 
 
 	//Новая функция добавления связи сделки amo и клиента yc
-	public function recordContactLink($ycId, $leadId, $filialId) {
+	public function recordContactLink($ycId, $leadId) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients_yc');
 		$updater->setKeyField('id');
-		$data = array('yc_id' => $ycId, 'lead_id' => $leadId, 'filial_id' => $filialId);
+		$data = array('yc_id' => $ycId, 'lead_id' => $leadId);
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
