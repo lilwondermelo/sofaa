@@ -26,12 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
 		//$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
-		$controller->recordHook('amocontact '. json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('amocontact '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 	}
 	else {
+		$leadId = $entityData['id'];
 		$controller->recordHook('amolead '. json_encode($postData, JSON_UNESCAPED_UNICODE));
 	}
 	
+
 		/*
 		
 		if ($resultDb) {
