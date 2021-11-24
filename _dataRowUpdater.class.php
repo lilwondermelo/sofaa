@@ -136,7 +136,7 @@ class DataRowUpdater {
         //echo $sqltext;
         $query->query($sqltext);
         if ($query->errno > 0) {
-            $this->error = $sqltext;
+            $this->error = $query->error;
             $mysql->sqlClose();
             return FALSE;
         }
