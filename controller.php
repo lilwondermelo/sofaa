@@ -80,7 +80,13 @@ class Controller {
 
 	public function checkClient($contact, $source = 'yc') {
 		require_once '_dataRowSource.class.php';
-		$query = 'select * from clients where (phone = "' . $contact->getPhone() . '" or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId() . ') and amo_host = "' . $this->account->getAmoHost() . '"';
+		if ($source == 'amo') {
+			$query = 'select * from clients where (phone = "' . $contact->getPhone() . '" or amo_id = ' . $contact->getAmoId() . ') and amo_host = "' . $this->account->getAmoHost() . '"';
+		}
+		else {
+			$query = 'select * from clients where (phone = "' . $contact->getPhone() . '" or amo_id = ' . $contact->getAmoId() . ' or yc_id = ' . $contact->getId() . ') and amo_host = "' . $this->account->getAmoHost() . '"';
+		}
+		
 		$dataRow = new DataRowSource($query);
 		if ($dataRow->getData()) {
 			if (!$dataRow->getValue('lead_id')) {
@@ -132,26 +138,19 @@ class Controller {
 		}
 	}
 
-	public function recordContactFromAmo($contact, $id = -1, $leadId = -1) {
+	public function recordContactFromAmo($contact, $leadId) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
-		if ($id == -1) {
-			$updater->setKeyField('id');
+		$updater->setKeyField('amo_id', $contact->getAmoId());
 		}
-		else {
-			$updater->setKeyField('yc_id', $id);
-		}
-		$data = array('amo_id' => $contact->getAmoId(), 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost());
-		if ($leadId != -1) {
-			$data['lead_id'] = $leadId;
-		}
+		$data = array('lead_id' => $leadId, 'name' => $contact->getName(), 'phone' => $contact->getPhone(), 'amo_host' => $this->account->getAmoHost());
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
 			return false;
 		}
 		else {
-			return $id;
+			return $result_upd;
 		}
 	}
 		
@@ -287,7 +286,7 @@ order by r.datetime desc';
 			return $recordId;
 		}
 	}
-	
+		
 
 
 	public function getAmoContact($ycId) {
