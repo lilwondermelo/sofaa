@@ -33,7 +33,7 @@ if ($data = $dataSource->getData()) {
 		$recData['attendance'] = 2;
 		$recData['visit_attendance'] = 2;
 		$recData['confirmed'] = 1;
-		$dataR[] = $item['filial_id'];
+		$dataR[] = $recData;
 		$rez[] = $controller->confirmRecordToYC($recordId, $recData);
 
 	}
