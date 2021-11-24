@@ -37,8 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$contact = new Contact($clientData, $account->getCustomFields());
 		$resId = $contact->createFromYc();
 		$check = $controller->checkClient($contact);
-
-		
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -61,10 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 
 		$resultDb = $controller->setRecord($recordData, $recordId);
-		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
+		
 
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		$result = $controller->setRecordToAmo($active);
+		echo json_encode($active, JSON_UNESCAPED_UNICODE);
+		//$result = $controller->setRecordToAmo($active);
 	}
 }
 ?>
