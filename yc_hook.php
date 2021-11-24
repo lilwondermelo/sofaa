@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 
 		$recordData = [
-			'yc_id' => $contactData['client']['id'],
+			'client_id' => $contactData['client']['id'],
 			'datetime' => strtotime($contactData['datetime']),
 			'attendance' => $contactData['attendance'],
 			'deleted' => $contactData['deleted']?1:0,
@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
 
-		//$active = $controller->getLastRecord($contactData['client']['id']);
-		//$result = $controller->setRecordToAmo($active);
+		$active = $controller->getLastRecord($contactData['client']['id']);
+		$result = $controller->setRecordToAmo($active);
 	}
 }
 ?>
