@@ -15,10 +15,10 @@ Class Account {
 	//$key - Хост в AMOCRM или id филиала в YCLIENTS в зависимости от источника
 	public function __construct($key, $source) {
 		require_once '_dataRowSource.class.php';
-		if ($source == 'amoContact') {
+		if ($source == 'yc') {
 			$query = 'select * from accounts a join filials f on a.amo_host = f.amo_host where f.filial_id = "' . $key . '"';
 		}
-		else if ($source == 'yc') {
+		else if ($source == 'amoContact') {
 			$query = 'select * from accounts where amo_host = "' .$key  .'"';
 			$this->setYcFilialId($key);
 		}
