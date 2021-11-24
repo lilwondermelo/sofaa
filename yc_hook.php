@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromYc();
 		$check = $controller->checkClient($contact);
 
+		$ycClass->recordHook(json_encode($postData, JSON_UNESCAPED_UNICODE));
+
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -57,10 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'filial_id' => $companyId,
 			'2h' => 1
 		];
-		
-		$resultDb = $controller->setRecord($recordData, $recordId);
-		$active = $controller->getLastRecord($contactData['client']['id']);
-		$result = $controller->setRecordToAmo($active);
+
+		//$resultDb = $controller->setRecord($recordData, $recordId);
+		//$active = $controller->getLastRecord($contactData['client']['id']);
+		//$result = $controller->setRecordToAmo($active);
 	}
 }
 ?>
