@@ -1,18 +1,15 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//$postData = json_decode(file_get_contents('php://input'), true);
-	$postData = $_POST;
+$postData = json_decode(file_get_contents('php://input'), true);
+	//$postData = $_POST;
 
 	$amoHost = $postData['account']['subdomain'];
 	$entityType = array_key_first($postData['leads']);
 	$leadId = $postData['leads'][$entityType][0]['id'];
-	require_once 'account.php';
-		$account = new Account($amoHost, 'amoContact');
-		require_once 'controller.php';
-		$controller = new Controller($account);
-		$controller->recordHook('confirm '. json_encode($postData, JSON_UNESCAPED_UNICODE));
+	
+		//$controller->recordHook('confirm '. json_encode($postData, JSON_UNESCAPED_UNICODE));
 
-
+$rez = array();
 $query = '
 select * from clients_yc yc 
 join records r 
@@ -43,6 +40,6 @@ if ($data = $dataSource->getData()) {
 	$active = $controller->getLastRecordByAmo($leadId);
 	$result = $controller->setRecordToAmo($active);
 	
-	
+	echo json_encode($rez, JSON_UNESCAPED_UNICODE);
 }
 ?>
