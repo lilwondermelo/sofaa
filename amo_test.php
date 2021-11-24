@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId, $leadId);
-		echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
+		echo json_encode($leadId, JSON_UNESCAPED_UNICODE);
+		$controller->recordHook('amocontact '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 	}
 	else {
 		sleep(2);
