@@ -26,8 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$result = $controller->recordContactFromAmo($contact, $leadId);
 				$check = $controller->checkClient($contact);
 			}
-			$active = $controller->getLastRecord($contact->getId());
-			$result = $controller->setRecordToAmo($active);
 		}
 	}
 	else {
