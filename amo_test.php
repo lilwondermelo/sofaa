@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	else {
 		$leadId = $entityData['id'];
-		$controller->recordHook('amolead '. json_encode($postData, JSON_UNESCAPED_UNICODE));
+		$controller->recordHook('amolead '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 	}
 	
 
