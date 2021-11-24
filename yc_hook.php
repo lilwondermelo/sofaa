@@ -1,16 +1,24 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 	$postData = json_decode(file_get_contents('php://input'), true);
 
 	$contactData = $postData['data'];
 	$hookType = $postData['resource'];
 	$hookStatus = $postData['status'];
 	$companyId = $postData['company_id'];
+
+
+
+
 	require_once 'account.php';
-	$account = new Account($companyId);
+	$account = new Account($companyId, 'yc');
+
+
+
 	require_once 'controller.php';
 	$controller = new Controller($account);
+
+
 	
 	if ($hookType == 'client') {
 		if (($hookStatus == 'create') || ($hookStatus == 'update')){
@@ -18,19 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contact = new Contact($contactData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
 			$check = $controller->checkClient($contact, 'yc');
-			$controller->recordHook('check '. json_encode($check, JSON_UNESCAPED_UNICODE));
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
-
 			$resultDb = $controller->recordContactFromYc($contact, $amoId, $leadId);
-			$controller->recordHook('db result '. json_encode($resultDb, JSON_UNESCAPED_UNICODE));
 			if ($resultDb) {
-				$controller->recordHook('user amo id '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				
-				$controller->recordHook('user amo id '. json_encode($amoId, JSON_UNESCAPED_UNICODE));
-				$controller->recordHook('user amo data '. json_encode($amoData, JSON_UNESCAPED_UNICODE));
 				if (($amoId != -1) && ($leadId != -1)) {
 					$amoId = $controller->setContactToAmo($amoData, $amoId);
 					$resAmo = $amoId;
@@ -60,16 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			else {
 				$result = false;
 			}
-				$controller->recordHook('user3 '. json_encode($resAmo, JSON_UNESCAPED_UNICODE));
-
 			$active = $controller->getLastRecord($contact->getId());
 			$result = $controller->setRecordToAmo($active);
-
-			
 			
 		}
 	}
-
 	else {
 		sleep(2);
 		$clientData = $contactData['client'];
@@ -87,11 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$leadId = $resAmo[0]['id'];
 			$contact->setAmoId($amoId);
 			$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
-			$controller->recordHook('noamo ' . json_encode($result, JSON_UNESCAPED_UNICODE));
 		}
-
-
-		//$controller->recordHook('no amo '. json_encode($check, JSON_UNESCAPED_UNICODE));
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -113,10 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-
 		$result = $controller->setRecordToAmo($active);
-		$controller->recordHook($hookStatus . ' ' . json_encode($postData, JSON_UNESCAPED_UNICODE));
-		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
 }
 ?>

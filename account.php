@@ -8,27 +8,29 @@ Class Account {
 	private $amoHost;
 	private $clientSecret;
 	private $clientId;
-	private $allDate;
-	private $activeDate;
-	private $ycFilialId;
+	private $ycFilialId = 0;
 	private $customFields = array();
 	private $statuses = array();
 
 	//$key - Хост в AMOCRM или id филиала в YCLIENTS в зависимости от источника
-	public function __construct($key) {
+	public function __construct($key, $source) {
 		require_once '_dataRowSource.class.php';
-		$dataRowSource = new DataRowSource('select * from accounts where amo_host = "' .$key  . '" or yc_id = "' . $key . '"');
+		if ($source == 'amoContact') {
+			$query = 'select * from accounts a join filials f on a.amo_host = f.amo_host where f.filial_id = "' . $key . '"';
+		}
+		else if ($source == 'yc') {
+			$query = 'select * from accounts where amo_host = "' .$key  .'"';
+			$this->setYcFilialId($key);
+		}
+		$dataRowSource = new DataRowSource($query);
 		$accData = $dataRowSource->getDataRow();
 		$this->setAmoBearer($accData['amo_bearer']);
 		$this->setAmoRefresh($accData['amo_refresh']);
 		$this->setAmoHost($accData['amo_host']);
 		$this->setClientId($accData['client_id']);
 		$this->setClientSecret($accData['client_secret']);
-		$this->setYcFilialId($accData['yc_id']);
 		$this->setCustomFields($accData['custom_fields']);
 		$this->setStatuses($accData['statuses']);
-		$this->setActiveDate($accData['active_date']);
-		$this->setAllDate($accData['all_date']);
 	}
 
 	public function newAmoBearer($type = 'refresh_token', $code = '') {
@@ -114,14 +116,6 @@ Class Account {
 		return $this->statuses;
 	}
 
-	public function getAllDate() {
-		return $this->allDate;
-	}
-
-	public function getActiveDate() {
-		return $this->activeDate;
-	}
-
 	public function setAmoBearer($amoBearer) {
 		$this->amoBearer = $amoBearer;
 	}
@@ -152,11 +146,5 @@ Class Account {
 
 	public function setStatuses($statuses) {
 		$this->statuses = json_decode($statuses, true);
-	}
-	public function setAllDate($allDate) {
-		$this->allDate = $allDate;
-	}
-	public function setActiveDate($activeDate) {
-		$this->activeDate = $activeDate;
 	}
 }
