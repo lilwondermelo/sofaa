@@ -31,12 +31,12 @@ if ($data = $dataSource->getData()) {
 		$recData['attendance'] = 2;
 		$recData['visit_attendance'] = 2;
 		$recData['confirmed'] = 1;
-		$rez[] = $controller->confirmRecordToYC($recordId, $recData);
+		//$rez[] = $controller->confirmRecordToYC($recordId, $recData);
 
 	}
 }
-	$active = $controller->getLastRecordByAmo($leadId);
-	$result = $controller->setRecordToAmo($active);
-	$controller->recordHook('confirm '. json_encode($rez, JSON_UNESCAPED_UNICODE));
+	//$active = $controller->getLastRecordByAmo($leadId);
+	//$result = $controller->setRecordToAmo($active);
+	//$controller->recordHook('confirm '. json_encode($rez, JSON_UNESCAPED_UNICODE));
 }
 ?>
