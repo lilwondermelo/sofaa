@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$check = $controller->checkClient($contact);
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
-			if ($leadId = -1) {
+			if ($leadId == -1) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
 				$resAmo = $controller->setComplexToAmo($amoData);
