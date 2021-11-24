@@ -30,24 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$result = $controller->setRecordToAmo($active);
 		}
 	}
-	/*else {
+	else {
 		sleep(2);
 		$clientData = $contactData['client'];
 		require_once 'contact.php';
 		$contact = new Contact($clientData, $account->getCustomFields());
 		$resId = $contact->createFromYc();
-		$check = $controller->checkClient($contact, 'yc');
-		$amoId = $check['amo_id'];
-		$leadId = $check['lead_id'];
-		if ($amoId == -1) {
-			$contact->setAmoId($amoId);
-			$amoData = $contact->convertToAmo();
-			$resAmo = $controller->setComplexToAmo($amoData);
-			$amoId = $resAmo[0]['contact_id'];
-			$leadId = $resAmo[0]['id'];
-			$contact->setAmoId($amoId);
-			$result = $controller->recordContactFromAmo($contact, $contact->getId(), $leadId);
-		}
+		$check = $controller->checkClient($contact);
+
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -67,9 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'filial_id' => $companyId,
 			'2h' => 1
 		];
+		
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
 		$result = $controller->setRecordToAmo($active);
-	}*/
+	}
 }
 ?>
