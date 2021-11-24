@@ -20,7 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if ($leadId = -1) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
-				echo json_encode($amoData, JSON_UNESCAPED_UNICODE);
+				$resAmo = $controller->setComplexToAmo($amoData);
+				$amoId = $resAmo[0]['contact_id'];
+				$leadId = $resAmo[0]['id'];
+				echo json_encode($resAmo, JSON_UNESCAPED_UNICODE);
 			}
 			else {
 				echo json_encode($check, JSON_UNESCAPED_UNICODE);

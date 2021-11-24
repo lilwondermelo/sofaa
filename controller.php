@@ -520,7 +520,6 @@ order by r.datetime desc';
 	}
 
 
-
 	public function setContactToAmo($contact, $amoId = -1) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
