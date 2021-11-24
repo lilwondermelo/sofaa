@@ -57,8 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		echo json_encode($active, JSON_UNESCAPED_UNICODE);
-		//$result = $controller->setRecordToAmo($active);
+		
+		$result = $controller->setRecordToAmo($active);
+		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
 }
 ?>
