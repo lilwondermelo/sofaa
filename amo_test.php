@@ -26,6 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromAmo();
 		$check = $controller->checkClient($contact, 'amo');
 		$ycId = ($check['yc_id']>0)?$check['yc_id']:-1;
+
+		$controller->recordHook('telo test '. json_encode($ycId, JSON_UNESCAPED_UNICODE));
+		/*
 		$controller->recordHook('newtes1t '. json_encode($leadId, JSON_UNESCAPED_UNICODE));
 		$resultDb = $controller->recordContactFromAmo($contact, $ycId);
 		if ($resultDb) {
@@ -47,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		else {
 			$result = false;
-		}
+		}*/
 		//$kek = $contact->editFromAmo();
 }
 
