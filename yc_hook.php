@@ -38,8 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resId = $contact->createFromYc();
 		$check = $controller->checkClient($contact);
 
-		echo json_encode($postData, JSON_UNESCAPED_UNICODE);
-
+		
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
@@ -59,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'filial_id' => $companyId,
 			'2h' => 1
 		];
+		echo json_encode($check, JSON_UNESCAPED_UNICODE);
+		echo json_encode($recordData, JSON_UNESCAPED_UNICODE);
 
 		//$resultDb = $controller->setRecord($recordData, $recordId);
 		//$active = $controller->getLastRecord($contactData['client']['id']);
