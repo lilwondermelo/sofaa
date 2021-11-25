@@ -19,17 +19,18 @@
 			$data = $dataSource->getData();
 			if ($data) {
 				$result = array();
-				require_once 'account.php';
-				$account = new Account($item['amoHost'], 'amoContact');
-				require_once 'controller.php';
-				$controller = new Controller($account);
+				
 				foreach ($data as $item) {
+					require_once 'account.php';
+					$account = new Account($item['amoHost'], 'amoContact');
+					require_once 'controller.php';
+					$controller = new Controller($account);
 					$dataReq = array(
 					'id' => (int)$item['$leadId'],
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))), array("field_id" => $account->getCustomFields()['filial'], "values" => array(array("value" => $filials[$item['filial']]))), array("field_id" => $account->getCustomFields()['all_services'], "values" => array(array("value" => $item['services'])))));
 					$result = $controller->setRequestToAmo([$dataReq]);
-					echo $account->getAmoHost();
-					echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
+					//echo $account->getAmoHost();
+					//echo json_encode($item, JSON_UNESCAPED_UNICODE);
 					echo json_encode($result, JSON_UNESCAPED_UNICODE);
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
@@ -38,7 +39,7 @@
 					
 				}
 				
-				echo json_encode($data, JSON_UNESCAPED_UNICODE);
+				//echo json_encode($data, JSON_UNESCAPED_UNICODE);
 				
 			} 
 
