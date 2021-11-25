@@ -20,7 +20,7 @@
 			if ($data) {
 				$result = array();
 				require_once 'account.php';
-				$account = new Account($item['filial'], 'yc');
+				$account = new Account($item['amoHost'], 'amoContact');
 				require_once 'controller.php';
 				$controller = new Controller($account);
 				foreach ($data as $item) {
