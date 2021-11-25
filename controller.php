@@ -69,6 +69,30 @@ class Controller {
 
 
 
+	public function startBot($type, $leadId) {
+			$this->isYc = 0;
+			$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+			$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v2/salesbot/run';
+			$this->method = 'POST';
+			$data = [];
+		if ($type == 'record') {
+			$data[0] = ['bot_id' => 7401, 'entity_id' => $leadId, 'entity_type' => 1];
+		}
+
+		else if ($type == '24h') {
+			$data[0] = ['bot_id' => 7387, 'entity_id' => $leadId, 'entity_type' => 1];
+		}
+
+		else {
+			$data[0] = ['bot_id' => 7443, 'entity_id' => $leadId, 'entity_type' => 1];
+		}
+
+		return $this->apiQuery($data);
+
+	}
+
+
+
 	public function getLastClientRecord($clientId) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
@@ -341,6 +365,8 @@ order by r.datetime desc';
 		}
 		return $resId;
 	}
+
+
 
 	public function confirmRecordToYC($recordId, $data) {
 		$this->isYc = 1;

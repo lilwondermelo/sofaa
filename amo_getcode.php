@@ -8,7 +8,7 @@ if (!empty($_GET["code"])) {
         $code = (!empty($_GET["code"]))?$_GET["code"]:'';
 }
 require_once 'account.php';
-$account = new Account($company);
+$account = new Account($company, 'amoContact');
 if ($code != '') {
      $result = $account->newAmoBearer('authorization_code', $code); 
 }
