@@ -26,7 +26,7 @@
 					require_once 'controller.php';
 					$controller = new Controller($account);
 					$dataReq = array(
-					'id' => (int)$item['$leadId'],
+					'id' => (int)$item['leadId'],
 					'custom_fields_values' => 
 					array(
 						array(
@@ -43,7 +43,7 @@
 						)
 					));
 					$result[] = $controller->setRequestToAmo([$dataReq]);
-					$dataAmo[] = $item;
+					//$dataAmo[] = $item;
 					
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
@@ -52,7 +52,7 @@
 					
 				}
 				
-				echo json_encode($dataAmo, JSON_UNESCAPED_UNICODE);
+				//echo json_encode($dataAmo, JSON_UNESCAPED_UNICODE);
 				echo json_encode($result, JSON_UNESCAPED_UNICODE);
 			} 
 
