@@ -29,6 +29,7 @@
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))), array("field_id" => $account->getCustomFields()['filial'], "values" => array(array("value" => $filials[$item['filial']]))), array("field_id" => $account->getCustomFields()['all_services'], "values" => array(array("value" => $item['services'])))));
 					$result = $controller->setRequestToAmo([$dataReq]);
 					echo $account->getAmoHost();
+					echo json_encode($dataReq, JSON_UNESCAPED_UNICODE);
 					echo json_encode($result, JSON_UNESCAPED_UNICODE);
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
