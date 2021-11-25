@@ -67,7 +67,21 @@ class Controller {
 		}
 	}
 
+	//Отправить запись в yclients
+	public function setBot($leadId) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
+		$this->method = 'PATCH';
 
+		$data = array(
+					'id' => $leadId,
+					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1)))),
+					'status_id' => $account->getStatuses()['bot']
+				);
+		$result = $this->apiQuery([$data]);
+		return $result;
+	}
 
 	public function startBot($type, $leadId) {
 			$this->isYc = 0;
