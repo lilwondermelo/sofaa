@@ -43,7 +43,7 @@
 						)
 					));
 					$result[] = $controller->setRequestToAmo([$dataReq]);
-					$dataAmo[] = $dataReq;
+					$dataAmo[] = $item;
 					
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
