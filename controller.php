@@ -73,12 +73,7 @@ class Controller {
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/contacts';
 		$this->method = 'GET';
 		$result = $this->apiQuery();
-		if ($result == true) {
-					$tempAcc = new Account($this->account->getAmoHost(), 'amoContact');
-					$this->account->setAmoBearer($tempAcc->getAmoBearer());
-					$this->account->setAmoRefresh($tempAcc->getAmoRefresh());
-					return $this->apiQuery();
-		}
+	
 		return $result;
 	}
 
