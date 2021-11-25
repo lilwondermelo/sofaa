@@ -4,7 +4,7 @@
 			$account = new Account('autobeauty', 'amoContact');
 			require_once 'controller.php';
 			$controller = new Controller($account);
-			$result = $controller->startBot('record', 20382015);
+			$result = $controller->startBot('record', 26339417);
 			echo json_encode($result, JSON_UNESCAPED_UNICODE) ;
 /*
 require_once '_dataSource.class.php';

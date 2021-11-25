@@ -76,15 +76,15 @@ class Controller {
 			$this->method = 'POST';
 			$data = [];
 		if ($type == 'record') {
-			$data[0] = ['bot_id' => 7401, 'entity_id' => $leadId, 'entity_type' => 2];
+			$data[0] = ['bot_id' => 7401, 'entity_id' => $leadId, 'entity_type' => 1];
 		}
 
 		else if ($type == '24h') {
-			$data[0] = ['bot_id' => 7387, 'entity_id' => $leadId, 'entity_type' => 2];
+			$data[0] = ['bot_id' => 7387, 'entity_id' => $leadId, 'entity_type' => 1];
 		}
 
 		else {
-			$data[0] = ['bot_id' => 7443, 'entity_id' => $leadId, 'entity_type' => 2];
+			$data[0] = ['bot_id' => 7443, 'entity_id' => $leadId, 'entity_type' => 1];
 		}
 
 		return array($this->apiQuery($data), $data);
