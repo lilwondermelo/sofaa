@@ -42,10 +42,9 @@
 							"values" => array(array("value" => $item['services']))
 						)
 					));
-					$result = $controller->setRequestToAmo([$dataReq]);
-					//echo $account->getAmoHost();
-					//echo json_encode($item, JSON_UNESCAPED_UNICODE);
-					echo json_encode($result, JSON_UNESCAPED_UNICODE);
+					$result[] = $controller->setRequestToAmo([$dataReq]);
+					$dataAmo[] = $dataReq;
+					
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
 						//$resDb[] = $controller->setRecord(array('creating' => 1), $record);
@@ -53,8 +52,8 @@
 					
 				}
 				
-				//echo json_encode($data, JSON_UNESCAPED_UNICODE);
-				
+				echo json_encode($dataAmo, JSON_UNESCAPED_UNICODE);
+				echo json_encode($result, JSON_UNESCAPED_UNICODE);
 			} 
 
 
