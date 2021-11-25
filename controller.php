@@ -87,7 +87,7 @@ class Controller {
 			$data[0] = ['bot_id' => 7443, 'entity_id' => $leadId, 'entity_type' => 1];
 		}
 
-		return $this->apiQuery($data);
+		return array($this->apiQuery($data), $data);
 
 	}
 
