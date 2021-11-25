@@ -4,8 +4,8 @@
 			$account = new Account('autobeauty', 'amoContact');
 			require_once 'controller.php';
 			$controller = new Controller($account);
-			echo $controller->startBot('record', 20382015);
-
+			$result = $controller->startBot('record', 20382015);
+			echo json_encode($result, JSON_UNESCAPED_UNICODE) ;
 /*
 require_once '_dataSource.class.php';
 	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
