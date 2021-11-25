@@ -54,8 +54,8 @@ class Controller {
 			if ($result['status'] == 401) {
 				$result = $this->account->newAmoBearer('refresh_token', $this->account->getAmoRefresh());
 				//Обновить данный аккаунта
-				return $this->apiQuery($args);
-				//return $result;
+				//return $this->apiQuery($args);
+				return $result;
 			}
 			else {
 				return $result;

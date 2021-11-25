@@ -70,8 +70,6 @@ Class Account {
 			return $requestData;
 		}
 		else {
-			$this->setAmoBearer($decodedResponse['access_token']);
-			$this->setAmoRefresh($decodedResponse['refresh_token']);
 			return $result_upd ;
 		}
 	}
