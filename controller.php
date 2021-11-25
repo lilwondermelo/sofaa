@@ -52,7 +52,7 @@ class Controller {
 		$result = json_decode($out, true);
 		if ($this->isYc == 0) {
 			if ($result['status'] == 401) {
-				$result = $this->account->newAmoBearer('refresh_token', $account->getAmoRefresh());
+				$result = $this->account->newAmoBearer('refresh_token', $this->account->getAmoRefresh());
 				//Обновить данный аккаунта
 				return $this->apiQuery($args);
 				//return $result;
