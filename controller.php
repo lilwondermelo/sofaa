@@ -76,8 +76,8 @@ class Controller {
 
 		$data = array(
 					'id' => $leadId,
-					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1)))),
-					'status_id' => $account->getStatuses()['bot']
+					'custom_fields_values' => array(array("field_id" => $this->account->getCustomFields()['creating'], "values" => array(array("value" => 1)))),
+					'status_id' =>  $this->account->getStatuses()['bot']
 				);
 		$result = $this->apiQuery([$data]);
 		return $result;
