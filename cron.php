@@ -41,7 +41,7 @@
 							"field_id" => $account->getCustomFields()['all_services'], 
 							"values" => array(array("value" => $item['services']))
 						)
-					);
+					));
 					$result = $controller->setRequestToAmo([$dataReq]);
 					//echo $account->getAmoHost();
 					//echo json_encode($item, JSON_UNESCAPED_UNICODE);
