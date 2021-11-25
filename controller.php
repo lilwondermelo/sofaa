@@ -67,6 +67,15 @@ class Controller {
 		}
 	}
 
+	public function testAmo() {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/contacts';
+		$this->method = 'GET';
+		$result = $this->apiQuery();
+		return $result;
+	}
+
 	//Отправить запись в yclients
 	public function setBot($leadId) {
 		$this->isYc = 0;
