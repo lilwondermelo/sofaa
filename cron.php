@@ -27,6 +27,7 @@
 					$controller = new Controller($account);
 					$dataReq = array(
 					'id' => (int)$item['leadId'],
+					'status_id' => $account->getStatuses()['bot'],
 					'custom_fields_values' => 
 					array(
 						array(
@@ -47,7 +48,7 @@
 					
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
-						//$resDb[] = $controller->setRecord(array('creating' => 1), $record);
+						$resDb[] = $controller->setRecord(array('creating' => 1), $record);
 					}
 					
 				}
