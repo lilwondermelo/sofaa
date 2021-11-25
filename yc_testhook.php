@@ -38,9 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$recordId = $contactData['id'];
 		$services = '';
 		$cost = 0;
+		$counter = 1;
+		$size = count($contactData['services']);
 		foreach ($contactData['services'] as $service) {
-			$services .= $service['title'] . ', ';
+			$services .= $service['title'] . ($counter != $size)?', ':'';
 			$cost += $service['cost'];
+			$counter++;
 		}
 		$recordData = [
 			'client_id' => $contactData['client']['id'],

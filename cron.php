@@ -1,11 +1,44 @@
 <?php 
 
-			require_once 'account.php';
-			$account = new Account('autobeauty', 'amoContact');
-			require_once 'controller.php';
-			$controller = new Controller($account);
-			$result = $controller->setBot(20382015);
-			echo json_encode($result, JSON_UNESCAPED_UNICODE) ;
+			$filials = [
+				612371 => 'Тестовый филиал 1',
+				615801 => 'Тестовый филиал 2'
+			];
+		
+			require_once '_dataSource.class.php';
+			'select cl.amo_host as amoHost, GROUP_CONCAT(r.services) as services, r.filial_id as filial, r.datetime as dateTime, c.lead_id as leadId, GROUP_CONCAT(r.record_id) as recordId from records r 
+			join clients_yc c on r.client_id = c.yc_id
+			join clients cl on c.lead_id = cl.lead_id
+			and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . ' 
+			and r.creating = 0 and attendance != -1 
+			and r.deleted = 0 
+			and c.lead_id is not null 
+			group by c.lead_id
+			order by r.datetime desc';
+			$dataSource = new DataSource($query24);
+			$data = $dataSource->getData();
+			if ($data) {
+				$result = array();
+				require_once 'account.php';
+				$account = new Account($item['filial'], 'yc');
+				require_once 'controller.php';
+				$controller = new Controller($account);
+				foreach ($data as $item) {
+					$dataReq = array(
+					'id' => (int)$leadId,
+					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))), array("field_id" => $account->getCustomFields()['filial'], "values" => array(array("value" => $filials[$item['filial']]))), array("field_id" => $account->getCustomFields()['all_services'], "values" => array(array("value" => $item['services']))));
+					$result[] = $controller->setRequestToAmo([$dataReq]);
+					$records = explode(',', $item['recordId']);
+					foreach ($records as $record) {
+						$resDb[] = $controller->setRecord(array('creating' => 1), $record);
+					}
+					
+				}
+				echo json_encode($result, JSON_UNESCAPED_UNICODE) ;
+			} 
+
+
+
 /*
 require_once '_dataSource.class.php';
 	$query24 = 'select r.datetime as dateTime, c.lead_id as leadId, c.amo_host as amoHost, r.record_id as recordId from records r 
@@ -32,8 +65,7 @@ and c.lead_id is not null order by r.datetime desc';
 					'custom_fields_values' => array(array("field_id" => $account->getCustomFields()['creating'], "values" => array(array("value" => 1))))
 				);
 			
-		$result = $controller->setRequestToAmo([$dataReq]);
-		$resDb = $controller->setRecord(array('creating' => 1), $recordId);
+		
 			
 		
 		}
