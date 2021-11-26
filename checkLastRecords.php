@@ -20,14 +20,20 @@ if ($company != '') {
 $apiCount = 0;
 	foreach ($data as $item) {
 		
-		$apiCount++;
+		
 		$active = $controller->getLastRecord($item['yc_id']);
-		$result[] = $controller->setRecordToAmo($active);
-		$activeresult[] = $active;
-		if ($apiCount == 7) {
+		if ($active != false) {
+			$apiCount++;
+			$result[] = $controller->setRecordToAmo($active);
+			$activeresult[] = $active;
+			if ($apiCount == 7) {
 				sleep(1);
 				$apiCount = 0;
 			}
+		}
+		
+		
+		
 	}
 	echo json_encode($activeresult, JSON_UNESCAPED_UNICODE);
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);
