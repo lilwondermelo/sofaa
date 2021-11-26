@@ -5,7 +5,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
-	private $dataPerPage = 50;
+	private $dataPerPage = 1;
 
 	public function __construct($account){
 		$this->account = $account;
@@ -477,13 +477,13 @@ order by r.datetime desc';
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/client/' . $this->account->getYcFilialId() . '/' . $id;
 		$contactData = $this->apiQuery()['data'];
-		require_once 'contact.php';
+		/*require_once 'contact.php';
 		$contact = new Contact($contactData, $this->account->getCustomFields());
 		$contact->createFromYC();
 		$amoData = $contact->convertToAmo();
-		$amoData['last_change_date'] = $contactData['last_change_date'];
+		$amoData['last_change_date'] = $contactData['last_change_date'];*/
 		//return $contactData;
-		return $amoData;
+		return $contactData;
 	}
 
 	public function getRecordList($page) {

@@ -45,7 +45,6 @@ if ($company != '') {
 
 
 
-				if (strtotime($leadDate) > 1635711967) {
 				$stat = 'y';
 				$data[] = array(
 					'name' => 'Запись из YCLIENTS',
@@ -55,7 +54,7 @@ if ($company != '') {
 						'contacts' => [$clientData]
 					]
 				);
-			}
+			
 
 				
 				//$amoRequestData[] = $clientData;	
