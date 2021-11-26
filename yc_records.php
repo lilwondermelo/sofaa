@@ -15,19 +15,25 @@ if ($company != '') {
 	$recordList = $controller->getrecordCount();
 	$pages = (ceil($recordList['pages']) > 5)?5:ceil($recordList['pages']);
 	$dataResult = [];
+	$apiCount = 0;
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) {
 		$pageData = $controller->getRecordList($i+1); //$i+1 - номер текущей страницы
 		$amoRequestData = [];
 		$data = [];
 		$amoDealsData = [];
 		foreach ($pageData['data'] as $item) {
+			$apiCount++;
 			$recordData = $controller->getRecordData($item['id']);
 			$resultDb = $controller->setRecord($recordData, $item['id']);
-			//$active = $controller->getLastRecord($item['client']['id']);
-
+			$active = $controller->getLastRecord($item['client']['id']);
+			if ($apiCount == 7) {
+				sleep(1);
+				$apiCount = 0;
+			}
+			$result = $controller->setRecordToAmo($active);
 			//echo json_encode($item, JSON_UNESCAPED_UNICODE);
-			echo json_encode($recordData, JSON_UNESCAPED_UNICODE);
-			//echo json_encode($result, JSON_UNESCAPED_UNICODE);
+			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
+			echo json_encode($result, JSON_UNESCAPED_UNICODE);
 		}
 	}
 
