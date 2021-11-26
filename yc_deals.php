@@ -38,7 +38,7 @@ if ($company != '') {
 				$resAmo = $controller->setComplexToAmo($amoData);
 				$contact->setAmoId($resAmo[0]['contact_id']);
 				$leadId = $resAmo[0]['id'];
-				$result = $controller->recordContactFromAmo($contact, $leadId);
+				$result[] = $controller->recordContactFromAmo($contact, $leadId);
 			}
 
 
@@ -55,15 +55,12 @@ if ($company != '') {
 			$data[$counter]['_embedded'] = array('contacts' => array(array('id' => $amoId)));
 			$counter++;
 		}*/
-		$result = $controller->setManyDealsToAmo($data);
 	
 			
-		
-		$dataResult[] = $result;
 		//echo count($data) . '<br><br>';
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
-	echo json_encode($dataResult, JSON_UNESCAPED_UNICODE);
+	echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	//echo 'Компания: ' . $company . '<br>';
 }
 else {
