@@ -26,6 +26,7 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 
 			$clientData = $controller->getClientData($item['id']);
+			require_once 'contact.php';
 			$contact = new Contact($clientData, $account->getCustomFields());
 			$resId = $contact->createFromYc();
 			$check = $controller->checkClient($contact);
