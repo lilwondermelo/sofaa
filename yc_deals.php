@@ -26,34 +26,21 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 
 			$clientData = $controller->getClientData($item['id']);
-			$leadDate = $clientData['last_change_date'];
-
-
-
-			require_once '_dataRowUpdater.class.php';
-			$updater = new DataRowUpdater('clients');
-			$updater->setKeyField('id');
-			$updater->setDataFields(array('yc_id' => $item['id'], 'name' => $clientData['name'], 'phone' => $clientData['custom_fields_values'][0]['values'][0]['value'], 'amo_host' => $company));
-			$result_upd = $updater->update();
-			if (!$result_upd) {
-				$rezdb = $updater->error;
+			$contact = new Contact($clientData, $account->getCustomFields());
+			$resId = $contact->createFromYc();
+			$check = $controller->checkClient($contact);
+			$amoId = $check['amo_id'];
+			$leadId = $check['lead_id'];
+			if ($leadId == -1) {
+				$contact->setAmoId($amoId);
+				$amoData = $contact->convertToAmo();
+				$resAmo = $controller->setComplexToAmo($amoData);
+				$contact->setAmoId($resAmo[0]['contact_id']);
+				$leadId = $resAmo[0]['id'];
+				$result = $controller->recordContactFromAmo($contact, $leadId);
 			}
-			else {
-				$rezdb = $result_upd;
-			}
-			echo json_encode($clientData, JSON_UNESCAPED_UNICODE);
 
 
-
-				$stat = 'y';
-				$data[] = array(
-					'name' => 'Запись из YCLIENTS',
-					'price' => 1,
-					'status_id' => $account->getStatuses()[$stat],
-					'_embedded' => [
-						'contacts' => [$clientData]
-					]
-				);
 			
 
 				
