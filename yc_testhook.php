@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'deleted' => $contactData['deleted']?1:0,
 			'cost' => $cost,
 			'comment' => $contactData['comment']?$contactData['comment']:'',
-			'services' => mb_substr($services, 0, -1),
+			'services' => $services,
 			'filial_id' => $companyId,
 			'2h' => 1
 		];
