@@ -450,9 +450,11 @@ order by r.datetime desc';
 		$contactData = $this->apiQuery()['data'];
 		$services = '';
 		$cost = 0;
+		$counter = 1;
 		foreach ($contactData['services'] as $service) {
-			$services .= $service['title'] . ', ';
+			$services .= $service['title'] . (($counter != $size)?', ':'');
 			$cost += $service['cost'];
+			$counter++;
 		}
 		$recordData = [
 			'client_id' => $contactData['client']['id'],
@@ -461,7 +463,7 @@ order by r.datetime desc';
 			'deleted' => $contactData['deleted']?1:0,
 			'cost' => $cost,
 			'comment' => $contactData['comment']?$contactData['comment']:'',
-			'services' => mb_substr($services, 0, -1),
+			'services' => $services,
 			'filial_id' => $this->account->getYcFilialId(),
 			'24h' => 1,
 			'req' => 1,

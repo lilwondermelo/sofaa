@@ -9,7 +9,7 @@ if (!empty($_GET["page"])) {
 }
 if ($company != '') {
 	require_once 'account.php';
-	$account = new Account($company);
+	$account = new Account($company, 'yc');
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	$recordList = $controller->getrecordCount();
@@ -23,12 +23,12 @@ if ($company != '') {
 		foreach ($pageData['data'] as $item) {
 			$recordData = $controller->getRecordData($item['id']);
 			$resultDb = $controller->setRecord($recordData, $item['id']);
-			$active = $controller->getLastRecord($item['client']['id']);
+			//$active = $controller->getLastRecord($item['client']['id']);
 
-			$result = $controller->setRecordToAmo($active);
+			//$result = $controller->setRecordToAmo($active);
 			//echo json_encode($item, JSON_UNESCAPED_UNICODE);
 			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
-			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+			//echo json_encode($result, JSON_UNESCAPED_UNICODE);
 		}
 	}
 
