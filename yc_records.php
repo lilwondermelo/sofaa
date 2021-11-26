@@ -25,9 +25,8 @@ if ($company != '') {
 			$resultDb = $controller->setRecord($recordData, $item['id']);
 			//$active = $controller->getLastRecord($item['client']['id']);
 
-			//$result = $controller->setRecordToAmo($active);
 			//echo json_encode($item, JSON_UNESCAPED_UNICODE);
-			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
+			echo json_encode($recordData, JSON_UNESCAPED_UNICODE);
 			//echo json_encode($result, JSON_UNESCAPED_UNICODE);
 		}
 	}
