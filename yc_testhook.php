@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$counter = 1;
 		$size = count($contactData['services']);
 		foreach ($contactData['services'] as $service) {
-			$services .= $service['title'] . ($counter != $size)?', ':'';
+			$services .= $service['title'] . (($counter != $size)?', ':'');
 			$cost += $service['cost'];
 			$counter++;
 		}
