@@ -497,7 +497,7 @@ order by r.datetime desc';
 	public function getRecordList($page) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('count' => $this->dataPerPage, 'page' => $page, 'with_deleted' => 0, 'c_start_date'=>'2021-11-1');
+		$args = array('count' => $this->dataPerPage, 'page' => $page, 'with_deleted' => 0);
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/records/' . $this->account->getYcFilialId();
 		return $this->apiQuery($args);
@@ -516,7 +516,7 @@ order by r.datetime desc';
 	public function getRecordCount() {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
-		$args = array('count' => 1, 'with_deleted' => 0, 'c_start_date'=>'2021-11-1');
+		$args = array('count' => 1, 'with_deleted' => 0);
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/records/' . $this->account->getYcFilialId();
 		$result = $this->apiQuery($args);
