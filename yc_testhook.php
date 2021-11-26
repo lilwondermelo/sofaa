@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$contact->setAmoId($resAmo[0]['contact_id']);
 				$leadId = $resAmo[0]['id'];
 				$result = $controller->recordContactFromAmo($contact, $leadId);
+				$check = $controller->checkClient($contact);
 			}
 			echo json_encode($check, JSON_UNESCAPED_UNICODE);
 		}
