@@ -24,6 +24,27 @@ function sendPostClients(company, page) {
         }
      });
 }
+function sendPostLast(company, page) {
+    console.log('START');
+    $.ajax({
+        url : "https://ingeniouslife.space/checkLastRecords.php?company=" + company + "&page=" + page,
+        type : "get",
+        success : function(response) {
+            console.log(page);
+            $('.response').append(response + '<br><br>');
+            current++;
+            if (current <= finish) {
+                sendPostClients(company, current);
+            }
+            else {
+                console.log('FINISH');
+            }
+        },
+        error: function() {
+           console.log('error');
+        }
+     });
+}
 
 function sendPostRecords(company, page) {
     console.log('START');
@@ -46,7 +67,12 @@ function sendPostRecords(company, page) {
         }
      });
 }
-
+function startLast() {
+    company = $('#company').val();
+    current = $('#from').val();
+    finish = $('#to').val();
+    sendPostLast(company, current);
+}
 
 function startClients() {
     company = $('#company').val();
