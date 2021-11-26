@@ -306,8 +306,14 @@ order by r.datetime desc';
 			if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-1 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-2 days'))) {
 				$stat = 5; // 5 - ожидает отзыва
 			}
-			else if ((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-2 days')) {
-				$stat = 6; //6 - не успешная сделка
+			else if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-2 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-14 days'))) {
+				$stat = 6; // 5 - ожидает отзыва
+			}
+			else if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-14 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-28 days'))) {
+				$stat = 7; // 5 - ожидает отзыва
+			}
+			else if ((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-28 days')) {
+				$stat = 8; //6 - не успешная сделка
 			}
 
 		}
