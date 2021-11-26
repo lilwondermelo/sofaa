@@ -10,7 +10,7 @@ if (!empty($_GET["page"])) {
 }
 if ($company != '') {
 	require_once 'account.php';
-	$account = new Account($company, 'yc');
+	$account = new Account($company, 'amoContact');
 	require_once 'controller.php';
 	$controller = new Controller($account);
 	require_once '_dataSource.class.php';
