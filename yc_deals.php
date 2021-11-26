@@ -23,8 +23,9 @@ if ($company != '') {
 		$amoRequestData = [];
 		$data = [];
 		$amoDealsData = [];
+		$apiCount = 0;
 		foreach ($pageData['data'] as $item) {
-
+			$apiCount++;
 			$clientData = $controller->getClientData($item['id']);
 			require_once 'contact.php';
 			$contact = new Contact($clientData, $account->getCustomFields());
@@ -41,7 +42,10 @@ if ($company != '') {
 				$result[] = $controller->recordContactFromAmo($contact, $leadId);
 				$check = $controller->checkClient($contact);
 			}
-
+			if ($apiCount == 7) {
+				sleep(1);
+				$apiCount = 0;
+			}
 
 			
 
