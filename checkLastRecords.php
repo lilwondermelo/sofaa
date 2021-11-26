@@ -10,7 +10,7 @@ if (!empty($_GET["page"])) {
 }
 if ($company != '') {
 	
-	require_once '_dataSource.php';
+	require_once '_dataSource.class.php';
 	$query = 'select * from clients_yc yc join clients c on yc.lead_id = c.lead_id where c.amo_host = "' . $company . '"';
 	$dataSource = new DataSource($query);
 	$data = $dataSource->getData();
