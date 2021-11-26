@@ -39,6 +39,7 @@ if ($company != '') {
 				$contact->setAmoId($resAmo[0]['contact_id']);
 				$leadId = $resAmo[0]['id'];
 				$result[] = $controller->recordContactFromAmo($contact, $leadId);
+				$check = $controller->checkClient($contact);
 			}
 
 
