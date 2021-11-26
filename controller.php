@@ -563,7 +563,7 @@ order by r.datetime desc';
 		$data = array(
 			'name' => 'Запись из YCLIENTS',
 			'price' => 1,
-			'status_id' => $this->account->getStatuses()['y']
+			'status_id' => $this->account->getStatuses()['n']
 		);
 		$data['_embedded'] = array('contacts' => array($amoData));
 		$result = $this->setManyDealsToAmo([$data]);
