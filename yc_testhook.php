@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$check = $controller->checkClient($contact);
 			}
 			echo json_encode($check, JSON_UNESCAPED_UNICODE);
+			$controller->recordHook(json_encode($check, JSON_UNESCAPED_UNICODE));
 		}
 	}
 	else {
