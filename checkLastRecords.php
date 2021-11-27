@@ -27,7 +27,7 @@ $apiCount = 0;
 		if ($active != false) {
 			$apiCount++;
 			$result[] = $controller->setRecordToAmo($active);
-			if ($apiCount == 7) {
+			if ($apiCount == 5) {
 				sleep(1);
 				$apiCount = 0;
 			}
