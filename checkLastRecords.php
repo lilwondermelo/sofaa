@@ -23,6 +23,7 @@ $apiCount = 0;
 		
 		
 		$active = $controller->getLastRecord($item['yc_id']);
+		$activeresult[] = $active;
 		if ($active != false) {
 			$apiCount++;
 			$result[] = $controller->setRecordToAmo($active);
@@ -36,7 +37,7 @@ $apiCount = 0;
 		
 	}
 	echo json_encode([$page, count($result)], JSON_UNESCAPED_UNICODE);
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);
+	echo json_encode($activeresult, JSON_UNESCAPED_UNICODE);
 
 
 
