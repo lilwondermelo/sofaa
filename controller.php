@@ -291,8 +291,10 @@ order by r.datetime desc';
 		return $data[0];
 	}
 
-//Отправить запись в yclients
-	public function setRecordToAmoOnce($dealData) {
+
+
+	//Отправить запись в yclients
+	public function setRecordToAmo($dealData) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
@@ -315,17 +317,6 @@ order by r.datetime desc';
 			}
 
 		}
-
-	//Отправить запись в yclients
-	public function setRecordToAmo($dealData) {
-		$this->isYc = 0;
-		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
-		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
-		$this->method = 'PATCH';
-
-		$stat = (int)$dealData['attendance'] + 2;
-
-	
 		
 		//$this->recordHook('1 ' . json_encode($this->account->getCustomFields(), JSON_UNESCAPED_UNICODE));
 		
