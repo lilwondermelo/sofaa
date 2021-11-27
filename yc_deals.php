@@ -33,6 +33,7 @@ if ($company != '') {
 			$check = $controller->checkClient($contact);
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
+			echo json_encode($check, JSON_UNESCAPED_UNICODE);
 			if ($leadId == -1) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
@@ -65,7 +66,7 @@ if ($company != '') {
 		//echo count($data) . '<br><br>';
 		//echo json_encode($result, JSON_UNESCAPED_UNICODE) . '<br><br>';
 	}
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);
+	
 	//echo 'Компания: ' . $company . '<br>';
 }
 else {
