@@ -13,8 +13,10 @@
 			and r.datetime >= ' . strtotime(date('Y-m-d H:i:s')) . ' 
 			and r.creating = 0 and attendance != -1 
 			and r.deleted = 0 
+			and r.record_id = 383549455 
 			and c.lead_id is not null 
-			group by c.lead_id
+			group by c.lead_id 
+			
 			order by r.datetime desc';
 			$dataSource = new DataSource($queryCr);
 			$data = $dataSource->getData();
@@ -64,6 +66,7 @@
 			and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '+1 day') . ' 
 			and r.`24h` = 0 and attendance != -1 
 			and r.deleted = 0 
+			and r.record_id = 383549455 
 			and c.lead_id is not null 
 			group by c.lead_id
 			order by r.datetime desc';
@@ -115,6 +118,7 @@
 			and r.datetime <= ' . strtotime(date('Y-m-d H:i:s') . '-1 day') . ' 
 			and r.req = 0 and attendance != -1 
 			and r.deleted = 0 
+			and r.record_id = 383549455 
 			and c.lead_id is not null 
 			group by c.lead_id
 			order by r.datetime desc';
