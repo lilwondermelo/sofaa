@@ -37,7 +37,7 @@ $apiCount = 0;
 		
 	}
 	echo json_encode([$page, count($result)], JSON_UNESCAPED_UNICODE);
-	echo json_encode($data, JSON_UNESCAPED_UNICODE);
+	echo json_encode($query, JSON_UNESCAPED_UNICODE);
 
 
 
