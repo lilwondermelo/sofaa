@@ -33,7 +33,7 @@ if ($company != '') {
 			$check = $controller->checkClient($contact);
 			$amoId = $check['amo_id'];
 			$leadId = $check['lead_id'];
-			echo json_encode($check, JSON_UNESCAPED_UNICODE);
+			echo json_encode([$check, $item['id'], $item['phone']], JSON_UNESCAPED_UNICODE);
 			if ($leadId == -1) {
 				$contact->setAmoId($amoId);
 				$amoData = $contact->convertToAmo();
