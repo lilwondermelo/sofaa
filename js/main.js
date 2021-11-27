@@ -34,7 +34,7 @@ function sendPostLast(company, page) {
             $('.response').append(response + '<br><br>');
             current++;
             if (current <= finish) {
-                sendPostClients(company, current);
+                sendPostLast(company, current);
             }
             else {
                 console.log('FINISH');
