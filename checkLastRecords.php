@@ -15,7 +15,7 @@ require_once 'account.php';
 	$controller = new Controller($account);
 
 	require_once '_dataSource.class.php';
-	$query = 'select * from clients_yc yc join clients c on yc.lead_id = c.lead_id where c.amo_host = "' . $company . '" order by c.amo_id limit ' . 50*($page - 1) . ',50';
+	$query = 'select * from clients_yc yc join clients c on yc.lead_id = c.lead_id where c.amo_host = "' . $company . '" order by c.amo_id limit ' . (50*($page - 1)) . ',50';
 	$dataSource = new DataSource($query);
 	$data = $dataSource->getData();
 $apiCount = 0;
@@ -26,7 +26,6 @@ $apiCount = 0;
 		if ($active != false) {
 			$apiCount++;
 			$result[] = $controller->setRecordToAmo($active);
-			$activeresult[] = $active;
 			if ($apiCount == 7) {
 				sleep(1);
 				$apiCount = 0;
@@ -36,7 +35,7 @@ $apiCount = 0;
 		
 		
 	}
-	echo json_encode($activeresult, JSON_UNESCAPED_UNICODE);
+	echo json_encode([$page, count($result)], JSON_UNESCAPED_UNICODE);
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);
 
 
