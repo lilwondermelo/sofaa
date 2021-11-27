@@ -25,15 +25,12 @@ if ($company != '') {
 			$apiCount++;
 			$recordData = $controller->getRecordData($item['id']);
 			$resultDb = $controller->setRecord($recordData, $item['id']);
-			$active = $controller->getLastRecord($item['client']['id']);
-			if ($apiCount == 7) {
-				sleep(1);
-				$apiCount = 0;
-			}
-			$result = $controller->setRecordToAmo($active);
+			//$active = $controller->getLastRecord($item['client']['id']);
+			
+			//$result = $controller->setRecordToAmo($active);
 			//echo json_encode($item, JSON_UNESCAPED_UNICODE);
 			echo json_encode($resultDb, JSON_UNESCAPED_UNICODE);
-			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+			//echo json_encode($result, JSON_UNESCAPED_UNICODE);
 		}
 	}
 

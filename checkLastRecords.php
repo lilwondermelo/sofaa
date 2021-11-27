@@ -25,7 +25,7 @@ $apiCount = 0;
 		$active = $controller->getLastRecord($item['yc_id']);
 		if ($active != false) {
 			$apiCount++;
-			$result[] = $controller->setRecordToAmo($active);
+			$result[] = $controller->setRecordToAmoLast($active);
 			$activeresult[] = $active;
 			if ($apiCount == 7) {
 				sleep(1);
