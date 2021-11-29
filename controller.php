@@ -5,7 +5,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
-	private $dataPerPage = 30;
+	private $dataPerPage = 1;
 
 	public function __construct($account){
 		$this->account = $account;
@@ -136,6 +136,7 @@ class Controller {
 		if ($dataRow->getData()) {
 			$leadId = $dataRow->getValue('lead_id');
 			$amoId = $dataRow->getValue('amo_id');
+			$check = 'amo';
 		}
 		else {
 			$query = 'select * from clients where phone = "' . $contact->getPhone() . '" and amo_host = "' . $this->account->getAmoHost() . '"';
@@ -144,13 +145,15 @@ class Controller {
 				$leadId = $dataRow->getValue('lead_id');
 				$amoId = $dataRow->getValue('amo_id');
 				$resultLink = $this->recordContactLink($contact->getId(), $leadId);
+				$check = 'newyc';
 			}
 			else {
 				$leadId = -1;
 				$amoId = -1;
+				$check = 'new';
 			}
 		}
-		return array('amo_id' => $amoId, 'lead_id' => $leadId);
+		return array('amo_id' => $amoId, 'lead_id' => $leadId, 'check' => $$check);
 	}
 
 
