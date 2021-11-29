@@ -96,6 +96,7 @@
 							"values" => array(array("value" => $item['services']))
 						)
 					));
+					
 					$result[] = $controller->setRequestToAmo([$dataReq]);
 					
 					$records = explode(',', $item['recordId']);
