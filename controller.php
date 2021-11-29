@@ -5,7 +5,7 @@ class Controller {
 	private $link;
 	private $method;
 	private $authHeader;
-	private $dataPerPage = 1;
+	private $dataPerPage = 30;
 
 	public function __construct($account){
 		$this->account = $account;
@@ -153,7 +153,7 @@ class Controller {
 				$check = 'new';
 			}
 		}
-		return array('amo_id' => $amoId, 'lead_id' => $leadId, 'check' => $$check);
+		return array('amo_id' => $amoId, 'lead_id' => $leadId, 'check' => $check);
 	}
 
 
