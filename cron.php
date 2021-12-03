@@ -3,7 +3,9 @@
 			$filials = [
 				'237337' => 'Горский микрорайон, 43',
 				'154703' => 'Родники. Мясниковой, 22',
-				'142632' => 'Европейский берег. Заровного, 38'
+				'142632' => 'Европейский берег. Заровного, 38',
+				'299019' => 'Октябрьское поле',
+				'412537' => 'Первомайская ул., 34'
 			];
 		
 			require_once '_dataSource.class.php';
@@ -43,7 +45,12 @@
 						array(
 							"field_id" => $account->getCustomFields()['all_services'], 
 							"values" => array(array("value" => $item['services']))
+						),
+						array(
+							"field_id" => $account->getCustomFields()['date24'], 
+							"values" => array(array("value" => $item['datetime']))
 						)
+
 					));
 					$result[] = $controller->setRequestToAmo([$dataReq]);
 					
@@ -94,6 +101,10 @@
 						array(
 							"field_id" => $account->getCustomFields()['all_services'], 
 							"values" => array(array("value" => $item['services']))
+						),
+						array(
+							"field_id" => $account->getCustomFields()['date24'], 
+							"values" => array(array("value" => $item['datetime']))
 						)
 					));
 					
