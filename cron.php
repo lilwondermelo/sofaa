@@ -48,10 +48,11 @@
 						),
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
-							"values" => array(array("value" => $item['dateTime']))
+							"values" => array(array("value" => (int)$item['dateTime']))
 						)
 
 					));
+					echo json_encode((int)$item['dateTime'], JSON_UNESCAPED_UNICODE);
 					$result[] = $controller->setRequestToAmo([$dataReq]);
 					
 					$records = explode(',', $item['recordId']);
@@ -61,7 +62,7 @@
 					
 				}
 				
-				echo json_encode($data, JSON_UNESCAPED_UNICODE);
+				
 			} 
 
 
@@ -104,7 +105,7 @@
 						),
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
-							"values" => array(array("value" => $item['dateTime']))
+							"values" => array(array("value" => (int)$item['dateTime']))
 						)
 					));
 					
