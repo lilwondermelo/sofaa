@@ -48,7 +48,7 @@
 						),
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
-							"values" => array(array("value" => $item['datetime']))
+							"values" => array(array("value" => $item['dateTime']))
 						)
 
 					));
@@ -104,7 +104,7 @@
 						),
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
-							"values" => array(array("value" => $item['datetime']))
+							"values" => array(array("value" => $item['dateTime']))
 						)
 					));
 					
