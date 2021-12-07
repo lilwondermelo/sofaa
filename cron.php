@@ -5,7 +5,8 @@
 				'154703' => 'Родники. Мясниковой, 22',
 				'142632' => 'Европейский берег. Заровного, 38',
 				'299019' => 'Октябрьское поле',
-				'412537' => 'Первомайская ул., 34'
+				'412537' => 'Первомайская ул., 34',
+				'505278' => 'Фрунзе, 20'
 			];
 		
 			require_once '_dataSource.class.php';
@@ -52,7 +53,7 @@
 						)
 
 					));
-					echo json_encode((int)$item['dateTime'], JSON_UNESCAPED_UNICODE);
+					echo json_encode($item, JSON_UNESCAPED_UNICODE);
 					$result[] = $controller->setRequestToAmo([$dataReq]);
 					
 					$records = explode(',', $item['recordId']);
