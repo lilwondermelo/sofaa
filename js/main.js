@@ -24,6 +24,27 @@ function sendPostClients(company, page) {
         }
      });
 }
+function sendPostManagers(company, page) {
+    console.log('START');
+    $.ajax({
+        url : "https://ingeniouslife.space/dashboardscript.php?company=" + company + "&page=" + page,
+        type : "get",
+        success : function(response) {
+            console.log(page);
+            $('.response').append(response + '<br><br>');
+            current++;
+            if (current <= finish) {
+                sendPostManagers(company, current);
+            }
+            else {
+                console.log('FINISH');
+            }
+        },
+        error: function() {
+           console.log('error');
+        }
+     });
+}
 function sendPostLast(company, page) {
     console.log('START');
     $.ajax({
@@ -85,5 +106,11 @@ function startRecords() {
     current = $('#from').val();
     finish = $('#to').val();
     sendPostRecords(company, current);
+}
+function startManagers() {
+    company = $('#company').val();
+    current = $('#from').val();
+    finish = $('#to').val();
+    sendPostManagers(company, current);
 }
 //JSON.parse(response)

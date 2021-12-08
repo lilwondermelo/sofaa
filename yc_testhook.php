@@ -56,7 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'comment' => $contactData['comment']?$contactData['comment']:'',
 			'services' => $services,
 			'filial_id' => $companyId,
-			'2h' => 1
+			'2h' => 1,
+			'date_create' => strtotime($contactData['create_date']),
+			'manager_id' => $contactData['created_user_id']
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);

@@ -19,7 +19,7 @@ if ($company != '') {
 	for ($i = $page*5-5; $i < $page*5-5+$pages; $i++) {
 		$pageData = $controller->getRecordList($i+1); //$i+1 - номер текущей страницы
 		foreach ($pageData['data'] as $item) {
-			$date = $item['create_date'];
+			$date = strtotime($item['create_date']);
 			$userId = $item['created_user_id'];
 			$dataDb = ['date_create' => $date, 'manager_id' => $userId];
 			$resultDb = $controller->setRecord($dataDb, $item['id']);
