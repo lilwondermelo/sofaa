@@ -62,8 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		if ($contactData['attendance'] == -1) {
 			$recordData['cancel'] = 1;
-			$controller->recordHook(strtotime(date('Y-m-d H:i:s') . '+2 hours'));
-
 		}
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
