@@ -31,6 +31,7 @@ input {
 
 .managersRow {
 	margin: 0 -10px;
+	cursor:  pointer;
 }
 
 .managersRowItemName {
@@ -48,5 +49,12 @@ input {
 
 .managersRow:hover {
 	background: wheat;
-	cursor:  pointer;
+	
 }
+.managersRow#managerHead {
+	cursor: default;
+}
+.managersRow#managerHead:hover {
+	background: white;
+}
+

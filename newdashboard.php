@@ -17,7 +17,16 @@ group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	echo '<div class="workArea">
-			<div class="managers">';
+			<div class="managers">
+				<div class="managersRow row" id="managerHead">
+					<div class="managersRowItem managersRowItemName">Имя</div>
+					<div class="managersRowItem managersRowItemRecords">Записи</div>
+					<div class="managersRowItem managersRowItemSumm">Сумма</div>
+					<div class="managersRowItem managersRowItemStars"></div>
+					<div class="managersRowItem managersRowItemCheckbox"></div>
+					<div class="managersRowItem managersRowItemAddstar"></div>
+					<div class="managersRowItem managersRowItemMotivation"></div>
+				</div>';
 	foreach ($data as $manager) {
 		echo '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
