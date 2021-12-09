@@ -62,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		];
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		
+		if ($hookStatus == 'delete') {
+			$controller->recordHook('delete record');
+		}
 		$result = $controller->setRecordToAmo($active);
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
