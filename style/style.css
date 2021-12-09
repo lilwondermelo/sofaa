@@ -38,6 +38,6 @@ input {
 	cursor:  pointer;
 }
 
-.managersRowItemHover {
+.managersRowItem:hover {
 	background: wheat;
 }
