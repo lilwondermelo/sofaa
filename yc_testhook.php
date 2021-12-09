@@ -60,11 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			'date_create' => strtotime($contactData['create_date']),
 			'manager_id' => $contactData['created_user_id']
 		];
+		if ($contactData['attendance'] == -1) {
+			$recordData['cancel'] = 1;
+			$controller->recordHook(strtotime(date('Y-m-d H:i:s') . '+2 hours'));
+
+		}
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		if ($contactData['attendance'] == -1) {
-			$controller->recordHook('не пришел');
-		}
+		
 		$result = $controller->setRecordToAmo($active);
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
