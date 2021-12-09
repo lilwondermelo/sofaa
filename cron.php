@@ -214,10 +214,6 @@ require_once '_dataSource.class.php';
 					'custom_fields_values' => 
 					array(
 						array(
-							"field_id" => $account->getCustomFields()['creating'], 
-							"values" => array(array("value" => 1))
-						), 
-						array(
 							"field_id" => $account->getCustomFields()['filial'], 
 							"values" => array(array("value" => $filials[$item['filial']]))
 						), 
@@ -227,7 +223,7 @@ require_once '_dataSource.class.php';
 						),
 						array(
 							"field_id" => $account->getCustomFields()['cancel'], 
-							"values" => array(array("value" => (int)$item['cancel']))
+							"values" => array(array("value" => 1))
 						),
 						array(
 							"field_id" => $account->getCustomFields()['id_cron'], 
