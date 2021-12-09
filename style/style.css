@@ -33,7 +33,11 @@ input {
 	width: 50px;
 }
 
-
 .managersRowItem {
 	margin:  5px 10px;
+	cursor:  pointer;
+}
+
+.managersRowItemHover {
+	background: wheat;
 }
