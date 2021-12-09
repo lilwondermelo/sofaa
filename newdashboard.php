@@ -11,7 +11,7 @@
 <?php 
 
 require_once '_dataSource.class.php';
-$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, mm.is_admin as isAdmin from managers m 
+$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.is_admin, mm.is_admin, 0) as isAdmin from managers m 
 join records r on m.yc_id = r.manager_id 
 left join managers_meta mm on m.yc_id = mm.manager_id 
 where r.date_create > '. strtotime("-1 day") . ' 
