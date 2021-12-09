@@ -37,7 +37,7 @@ input {
 .managersRowItemName {
 	width: 200px;
 }
-.managersRowItemRecords, .managersRowItemSumm {
+.managersRowItemRecords, .managersRowItemSumm, .managersRowItemStars, .managersRowItemCheckbox {
 	width: 50px;
 }
 
@@ -58,3 +58,8 @@ input {
 	background: white;
 }
 
+
+input.managerCheckbox {
+	width:  unset;
+	margin-top:  0;
+}
