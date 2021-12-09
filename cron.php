@@ -51,6 +51,10 @@
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
 							"values" => array(array("value" => (int)$item['dateTime']))
+						),
+						array(
+							"field_id" => $account->getCustomFields()['id_cron'], 
+							"values" => array(array("value" => (int)$item['recordId']))
 						)
 
 					));
@@ -108,6 +112,10 @@
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
 							"values" => array(array("value" => (int)$item['dateTime']))
+						),
+						array(
+							"field_id" => $account->getCustomFields()['id_cron'], 
+							"values" => array(array("value" => (int)$item['recordId']))
 						)
 					));
 					
@@ -160,6 +168,10 @@
 						array(
 							"field_id" => $account->getCustomFields()['all_services'], 
 							"values" => array(array("value" => $item['services']))
+						),
+						array(
+							"field_id" => $account->getCustomFields()['id_cron'], 
+							"values" => array(array("value" => (int)$item['recordId']))
 						)
 					));
 					$result[] = $controller->setRequestToAmo([$dataReq]);
