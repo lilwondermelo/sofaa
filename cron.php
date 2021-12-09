@@ -6,7 +6,8 @@
 				'142632' => 'Европейский берег. Заровного, 38',
 				'299019' => 'Октябрьское поле',
 				'412537' => 'Первомайская ул., 34',
-				'505278' => 'Фрунзе, 20'
+				'505278' => 'Фрунзе, 20',
+				'422204' => 'ул. Авиаконструктора Сухого, 2, корп. 1'
 			];
 		
 			require_once '_dataSource.class.php';
@@ -50,7 +51,7 @@
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
 							"values" => array(array("value" => (int)$item['dateTime']))
-						)
+						)598363
 
 					));
 					echo json_encode($item, JSON_UNESCAPED_UNICODE);
