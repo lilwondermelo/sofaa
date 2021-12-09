@@ -27,8 +27,12 @@ input {
 }
 
 .managersRowItemName {
-	width: 350px;
+	width: 200px;
 }
+.managersRowItemRecords, .managersRowItemSumm {
+	width: 50px;
+}
+
 
 .managersRowItem {
 	margin:  5px 10px;
