@@ -34,10 +34,11 @@ input {
 }
 
 .managersRowItem {
-	margin:  5px 10px;
-	cursor:  pointer;
+	margin: 10px;
+	
 }
 
 .managersRow:hover {
 	background: wheat;
+	cursor:  pointer;
 }
