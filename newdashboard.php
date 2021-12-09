@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AutoBeauty Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
 <?php 
 
 require_once '_dataSource.class.php';
@@ -24,6 +34,10 @@ if ($data = $dataSource->getData()) {
 		</div>';
 }
 ?>
+</body>
+</html>
+
+
 
 
 		
