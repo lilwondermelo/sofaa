@@ -3,7 +3,7 @@
 require_once '_dataSource.class.php';
 $query = 'select * from managers';
 $dataSource = new DataSource($query);
-if ($data->getData()) {
+if ($data = $dataSource->getData()) {
 	echo '<div class="workArea">
 			<div class="managers">';
 	foreach ($data as $manager) {
