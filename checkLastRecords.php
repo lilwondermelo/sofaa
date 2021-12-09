@@ -18,7 +18,7 @@ require_once 'account.php';
 	$query = 'select * from clients_yc yc join clients c on yc.lead_id = c.lead_id where c.amo_host = "' . $company . '" order by c.amo_id limit ' . (50*($page - 1)) . ',50';
 	$dataSource = new DataSource($query);
 	$data = $dataSource->getData();
-$apiCount = 0;
+	$apiCount = 0;
 	foreach ($data as $item) {
 		
 		
