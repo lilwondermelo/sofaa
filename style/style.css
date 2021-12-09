@@ -21,3 +21,15 @@ input {
 .row {
 	display: flex;
 }
+
+.managersRow {
+	margin: 0 -10px;
+}
+
+.managersRowItemName {
+	width: 350px;
+}
+
+.managersRowItem {
+	margin:  5px 10px;
+}

@@ -21,13 +21,13 @@ if ($data = $dataSource->getData()) {
 	foreach ($data as $manager) {
 		echo '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
-				<div class="managersRowName">' . $manager['name'] . '</div>
-				<div class="managersRowRecords">' . $manager['count'] . '</div>
-				<div class="managersRowSumm">' . $manager['sum'] . '</div>
-				<div class="managersRowStars"></div>
-				<div class="managersRowCheckbox"></div>
-				<div class="managersRowAddStar"></div>
-				<div class="managersRowMotivation"></div>
+				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
+				<div class="managersRowItem managersRowItemRecords">' . $manager['count'] . '</div>
+				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
+				<div class="managersRowItem managersRowItemStars"></div>
+				<div class="managersRowItem managersRowItemCheckbox"></div>
+				<div class="managersRowItem managersRowItemAddstar"></div>
+				<div class="managersRowItem managersRowItemMotivation"></div>
 			</div>';
 	}
 	echo '</div>
