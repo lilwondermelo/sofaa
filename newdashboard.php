@@ -39,8 +39,8 @@ if ($data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemRecords">' . $manager['count'] . '</div>
 				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
 				<div class="managersRowItem managersRowItemStars"></div>
-				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox"></div>
-				<div class="managersRowItem managersRowItemAddstar"><input class="managerCheckbox" type="checkbox"></div>
+				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox" ' . (($manager['isAdmin'] == 1)?'checked':'') . '></div>
+				<div class="managersRowItem managersRowItemAddstar"><input class="managerCheckbox" type="checkbox" ' . (($manager['star'] == 1)?'checked':'') . '></div>
 				<div class="managersRowItem managersRowItemMotivation"></div>
 			</div>';
 	}
