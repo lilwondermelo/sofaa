@@ -11,10 +11,13 @@
 <?php 
 
 require_once '_dataSource.class.php';
-$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count from managers m 
+$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, mm.is_admin as isAdmin from managers m 
 join records r on m.yc_id = r.manager_id 
+left join managers_meta mm on m.yc_id = mm.manager_id 
 where r.date_create > '. strtotime("-1 day") . ' 
 and r.date_create < '. strtotime("today") . ' 
+and mm.date > '. strtotime("-1 day") . ' 
+and mm.date < '. strtotime("today") . ' 
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
