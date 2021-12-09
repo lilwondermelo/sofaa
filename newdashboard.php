@@ -14,7 +14,7 @@ require_once '_dataSource.class.php';
 $query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count from managers m 
 join records r on m.yc_id = r.manager_id 
 where r.date_create > '. strtotime("-13 days") . ' 
-and r.date_create < '. strtotime("-12 days") . ' 
+and r.date_create < '. strtotime("-5 days") . ' 
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
