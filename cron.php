@@ -51,7 +51,7 @@
 						array(
 							"field_id" => $account->getCustomFields()['date24'], 
 							"values" => array(array("value" => (int)$item['dateTime']))
-						)598363
+						)
 
 					));
 					echo json_encode($item, JSON_UNESCAPED_UNICODE);
