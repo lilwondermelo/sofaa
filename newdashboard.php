@@ -22,10 +22,10 @@ if ($data = $dataSource->getData()) {
 					<div class="managersRowItem managersRowItemName">Имя</div>
 					<div class="managersRowItem managersRowItemRecords">Записи</div>
 					<div class="managersRowItem managersRowItemSumm">Сумма</div>
-					<div class="managersRowItem managersRowItemStars"></div>
-					<div class="managersRowItem managersRowItemCheckbox"></div>
-					<div class="managersRowItem managersRowItemAddstar"></div>
-					<div class="managersRowItem managersRowItemMotivation"></div>
+					<div class="managersRowItem managersRowItemStars">Рейтинг</div>
+					<div class="managersRowItem managersRowItemCheckbox">Админ</div>
+					<div class="managersRowItem managersRowItemAddstar">Медаль</div>
+					<div class="managersRowItem managersRowItemMotivation">Мотивация</div>
 				</div>';
 	foreach ($data as $manager) {
 		echo '
@@ -34,8 +34,8 @@ if ($data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemRecords">' . $manager['count'] . '</div>
 				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
 				<div class="managersRowItem managersRowItemStars"></div>
-				<div class="managersRowItem managersRowItemCheckbox"></div>
-				<div class="managersRowItem managersRowItemAddstar"></div>
+				<div class="managersRowItem managersRowItemCheckbox"><input type="checkbox"></div>
+				<div class="managersRowItem managersRowItemAddstar"><input type="checkbox"></div>
 				<div class="managersRowItem managersRowItemMotivation"></div>
 			</div>';
 	}
