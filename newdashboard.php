@@ -23,7 +23,7 @@ group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	echo '<div class="workArea">
-			<div class="calendar">Сегодня</div>
+			<div class="calendar">Вчера</div>
 			<div class="filials">Филиалы: все</div>
 			<div class="managers">
 				<div class="managersRow row" id="managerHead">
