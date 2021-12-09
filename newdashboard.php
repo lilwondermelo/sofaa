@@ -20,7 +20,7 @@ if ($data = $dataSource->getData()) {
 			<div class="managers">';
 	foreach ($data as $manager) {
 		echo '
-			<div class="managersRow" id="manager' . $manager['ycId'] . '">
+			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowName">' . $manager['name'] . '</div>
 				<div class="managersRowRecords">' . $manager['count'] . '</div>
 				<div class="managersRowSumm">' . $manager['sum'] . '</div>
