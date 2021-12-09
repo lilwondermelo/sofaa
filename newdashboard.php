@@ -7,7 +7,16 @@ if ($data = $dataSource->getData()) {
 	echo '<div class="workArea">
 			<div class="managers">';
 	foreach ($data as $manager) {
-		echo '<p id="manager' . $manager['yc_id'] . '" class="managersRow">' . $manager['name'] . '</p>';
+		echo '
+			<div class="managersRow" id="manager' . $manager['yc_id'] . '">
+				<div class="managersRowName">' . $manager['name'] . '</div>
+				<div class="managersRowRecords"></div>
+				<div class="managersRowSumm"></div>
+				<div class="managersRowStars"></div>
+				<div class="managersRowCheckbox"></div>
+				<div class="managersRowAddStar"></div>
+				<div class="managersRowMotivation"></div>
+			</div>';
 	}
 	echo '</div>
 		</div>';
