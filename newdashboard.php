@@ -39,7 +39,7 @@ if ($data = $dataSource->getData()) {
 		echo '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
-				<div class="managersRowItem managersRowItemRecords">' . $manager['count'] . '</div>
+				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
 				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
 				<div class="managersRowItem managersRowItemStars"></div>
 				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox" ' . (($manager['isAdmin'] == 1)?'checked':'') . '></div>
