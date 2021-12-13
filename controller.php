@@ -198,7 +198,10 @@ class Controller {
 
 		}
 	}
-	//Новая функция записи сделки АМО в базу
+
+
+	// Метод записывает данные amocrm в талицу clients
+	// *amo_test.php(25)
 	public function recordContactFromAmo($contact, $leadId) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater('clients');
@@ -416,6 +419,7 @@ order by r.datetime desc';
 	}
 
 
+	
 	public function getRecord($recordId) {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();
@@ -549,7 +553,8 @@ order by r.datetime desc';
 		return $result;
 	}
 
-
+	// *amo_test.php(18)
+	// Метод создает сделку без контакта в amocrm
 	public function setDealToAmo($amoData = array(), $amoId) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
