@@ -27,7 +27,6 @@
 		showMonthAfterYear: false,
 		yearSuffix: ''
 	};
-	$.datepicker.formatDate( "yy-mm-dd");
 	$.datepicker.setDefaults($.datepicker.regional['ru']);
 	</script>
 </head>
