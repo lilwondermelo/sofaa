@@ -13,7 +13,15 @@ left join managers_meta mm on m.yc_id = mm.manager_id
 and mm.date > '. strtotime("-1 day") . ' 
 and mm.date < '. strtotime("today") . ' 
 group by m.id';
-$html = '';
+$html = '<div class="managersRow row" id="managerHead">
+					<div class="managersRowItem managersRowItemName">Имя</div>
+					<div class="managersRowItem managersRowItemRecords">Записи</div>
+					<div class="managersRowItem managersRowItemSumm">Сумма</div>
+					<div class="managersRowItem managersRowItemStars">Рейтинг</div>
+					<div class="managersRowItem managersRowItemCheckbox">Админ</div>
+					<div class="managersRowItem managersRowItemAddstar">Медаль</div>
+					<div class="managersRowItem managersRowItemMotivation">Мотивация</div>
+				</div>';
 $dataSource = new DataSource($query);
 if (!$data = $dataSource->getData()) {
 	return false;
