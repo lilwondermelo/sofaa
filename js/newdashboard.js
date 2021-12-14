@@ -9,4 +9,4 @@ $(function(){
 });
 
 
-console.log($('#datepicker_value').val());
+console.log(Date.parse($('#datepicker_value').val()));
