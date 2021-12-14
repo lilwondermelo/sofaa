@@ -8,4 +8,5 @@ $(function(){
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
 });
 
-$('#datepicker_value').val(Date.now());
+
+console.log(Date.now());
