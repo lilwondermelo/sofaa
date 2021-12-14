@@ -10,8 +10,8 @@ left join records r on m.yc_id = r.manager_id
 and r.date_create > '. strtotime($date . ' -1 day') . ' 
 and r.date_create < '. strtotime($date) . '
 left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > '. strtotime("-1 day") . ' 
-and mm.date < '. strtotime("today") . ' 
+and mm.date > '. strtotime($date . ' -1 day') . ' 
+and mm.date < '. strtotime($date) . ' 
 group by m.id';
 $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
