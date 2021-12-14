@@ -3,6 +3,7 @@ $(function(){
 		onSelect: function(date){
 			$('#datepicker_value').val(date);
 			getDashboardData(date);
+			console.log(date);
 		}
 	});
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
