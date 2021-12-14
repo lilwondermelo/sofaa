@@ -3,9 +3,32 @@
 <head>
 	<meta charset="utf-8">
 	<title>AutoBeauty Dashboard</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="js/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/main.js"></script>
+    <script>
+	/* Локализация datepicker */
+	$.datepicker.regional['ru'] = {
+		closeText: 'Закрыть',
+		prevText: 'Предыдущий',
+		nextText: 'Следующий',
+		currentText: 'Сегодня',
+		monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+		monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+		dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+		dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+		dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+		weekHeader: 'Не',
+		dateFormat: 'dd.mm.yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''
+	};
+	$.datepicker.setDefaults($.datepicker.regional['ru']);
+	</script>
 </head>
 <body>
 
@@ -24,7 +47,7 @@ $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	echo strtotime("21-12-14");
 	echo '<div class="workArea">
-			<div class="calendar">Вчера</div>
+			<input type="text" id="datepicker">
 			<div class="filials">Филиалы: все</div>
 
 			<div class="managers">
@@ -53,6 +76,11 @@ if ($data = $dataSource->getData()) {
 		</div>';
 }
 ?>
+<script>
+$(function(){
+	$("#datepicker").datepicker();
+});
+</script>
 </body>
 </html>
 
