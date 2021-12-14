@@ -48,7 +48,7 @@ if ($data = $dataSource->getData()) {
 	echo strtotime("21-12-14");
 	echo '<div class="workArea">
 			<div id="datepicker"></div>
-			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
+			<input type="hidden" id="datepicker_value">
 
 			<div class="filials">Филиалы: все</div>
 
