@@ -9,4 +9,4 @@ $(function(){
 });
 
 
-console.log(Date.now());
+console.log($('#datepicker_value').val());
