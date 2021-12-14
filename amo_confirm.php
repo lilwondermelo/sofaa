@@ -6,8 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$amoHost = $postData['account']['subdomain'];
 	$entityType = array_key_first($postData['leads']);
 	$leadId = $postData['leads'][$entityType][0]['id'];
-	
-		//$controller->recordHook('confirm '. json_encode($postData, JSON_UNESCAPED_UNICODE));
 
 $rez = array();
 $query = '
@@ -44,3 +42,10 @@ if ($data = $dataSource->getData()) {
 	echo json_encode($dataR, JSON_UNESCAPED_UNICODE);
 }
 ?>
+
+
+
+
+
+
+

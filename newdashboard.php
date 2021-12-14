@@ -22,9 +22,11 @@ and mm.date < '. strtotime("today") . '
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
+	echo Date('Y-m-d', strtotime('-1 day'));
 	echo '<div class="workArea">
 			<div class="calendar">Вчера</div>
 			<div class="filials">Филиалы: все</div>
+
 			<div class="managers">
 				<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
