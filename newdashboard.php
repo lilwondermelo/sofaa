@@ -37,11 +37,11 @@
 require_once '_dataSource.class.php';
 $query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.is_admin, mm.is_admin, 0) as isAdmin from managers m 
 left join records r on m.yc_id = r.manager_id 
-and r.date_create > '. strtotime("yesterday") . ' 
-and r.date_create < '. strtotime("today") . '
+and r.date_create > '. strtotime("today") . ' 
+and r.date_create < '. strtotime("tomorrow") . '
 left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > '. strtotime("-1 day") . ' 
-and mm.date < '. strtotime("today") . ' 
+and mm.date > '. strtotime("today") . ' 
+and mm.date < '. strtotime("tomorrow") . ' 
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
