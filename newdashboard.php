@@ -22,7 +22,7 @@ and mm.date < '. strtotime("today") . '
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
-	echo strtotime("yesterday 00:00");
+	echo strtotime("yesterday");
 	echo '<div class="workArea">
 			<div class="calendar">Вчера</div>
 			<div class="filials">Филиалы: все</div>
