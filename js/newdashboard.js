@@ -22,9 +22,9 @@ function getDashboardData(date) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	
-        	$('.managers').html(data);
+        	$('.managers').html(data.data);
         } else {
-        	console.log(result);
+
         }
     });
 }
