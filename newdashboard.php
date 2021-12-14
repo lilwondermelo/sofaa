@@ -47,7 +47,9 @@ $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	echo strtotime("21-12-14");
 	echo '<div class="workArea">
-			<input type="text" id="datepicker">
+			<div id="datepicker"></div>
+<			input type="hidden" id="datepicker_value" value="01.08.2019">
+
 			<div class="filials">Филиалы: все</div>
 
 			<div class="managers">
@@ -78,7 +80,12 @@ if ($data = $dataSource->getData()) {
 ?>
 <script>
 $(function(){
-	$("#datepicker").datepicker();
+	$("#datepicker").datepicker({
+		onSelect: function(date){
+			$('#datepicker_value').val(date)
+		}
+	});
+	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
 });
 </script>
 </body>
