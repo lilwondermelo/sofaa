@@ -21,9 +21,10 @@ function getDashboardData(date) {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-        	console.log(result);
+        	
         	$('.managers').html(data);
         } else {
+        	console.log(result);
         }
     });
 }
