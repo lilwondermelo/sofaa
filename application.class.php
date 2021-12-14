@@ -40,7 +40,7 @@ if (!$data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemMotivation"></div>
 			</div>';
 	}
-	return $html;
+	return array('html' => $html, 'from' => strtotime($date . ' -1 day'), 'to' => strtotime($date));
 
 
 	}
