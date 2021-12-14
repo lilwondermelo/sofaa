@@ -7,11 +7,11 @@ class Application {
 		require_once '_dataSource.class.php';
 $query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.is_admin, mm.is_admin, 0) as isAdmin from managers m 
 left join records r on m.yc_id = r.manager_id 
-and r.date_create > '. strtotime($date . ' -2 day') . ' 
-and r.date_create < '. strtotime($date . ' -1 day') . '
+and r.date_create > '. strtotime($date . ' -1 day') . ' 
+and r.date_create < '. strtotime($date) . '
 left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > '. strtotime($date . ' -2 day') . ' 
-and mm.date < '. strtotime($date . ' -1 day') . ' 
+and mm.date > '. strtotime("-1 day") . ' 
+and mm.date < '. strtotime($date) . ' 
 group by m.id';
 $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
