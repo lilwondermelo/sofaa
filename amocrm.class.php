@@ -24,7 +24,8 @@
 			foreach ($result['_embedded']['leads'] as $item) {
 				$contactId = $item['_embedded']['contacts'][0]['id'];
 				if ($contactId) {
-					$ids[] = $contactId;
+					$contact = $controller->amoRequest('contacts/' . $contactId, 'GET');
+					$ids[] = $contact;
 				}
 				
 			}
