@@ -7,13 +7,16 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-	<div class="button clientListButton" onclick="startClients()">Интеграция клиентов</div>
-	<div class="button recordListButton" onclick="startRecords()">Интеграция записей</div>
-	<div class="button recordLastButton" onclick="startLast()">Интеграция последней записи</div>
-	<div class="button recordLastButton" onclick="startManagers()">Интеграция менеджеров</div>
+	<div class="button" onclick="startClients()">Интеграция клиентов</div>
+	<div class="button" onclick="startRecords()">Интеграция записей</div>
+	<div class="button" onclick="startLast()">Интеграция последней записи</div>
+	<div class="button" onclick="startManagers()">Интеграция менеджеров</div>
+	<div class="button" onclick="getLeads()">Получить клиентов из воронки</div>
+
 	<input type="text" id="company" placeholder="Название филиала">
 	<input type="number" id="from" placeholder="С какой страницы начать">
 	<input type="number" id="to" placeholder="До какой страницы считать">
+	<input type="status" id="status" placeholder="Этап(опционально)">
 	<div class="response"></div>
 	<script src="js/main.js"></script>
 </body>

@@ -1,4 +1,6 @@
 var company = '';
+let amoHost = ''; //Пока передаем хост из поля "Название филиала"
+let status = 0;
 var current = 1;
 var finish = 1;
 
@@ -113,4 +115,40 @@ function startManagers() {
     finish = $('#to').val();
     sendPostManagers(company, current);
 }
+
+function getLeads() {
+    amoHost = $('#company').val();
+    current = $('#from').val();
+    finish = $('#to').val();
+    status = $('#status').val();
+    getLeadsData(company, current);
+}
+
+
+function getLeadsData(company, page) {
+    console.log('START' + page);
+    $.ajax({
+        type: "POST",
+        url: "_ajaxListener.class.php",
+        data: {classFile: "amocrm.class", class: "Amocrm", method: "getLeadsFromAmo",
+            amoHost: amoHost,
+            page: page,
+            status: status
+        }}).done(function (result) {
+        var data = JSON.parse(result);
+        if (data.result === "Ok") {
+            current++;
+            if (current <= finish) {
+                getLeadsData(company, current);
+            }
+            else {
+                console.log('FINISH' + page);
+            }
+        } else {
+            console.log('error');
+        }
+    });
+}
+
+
 //JSON.parse(response)

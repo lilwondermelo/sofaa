@@ -594,6 +594,20 @@ order by r.datetime desc';
 	}
 
 
+
+	//Универсальный запрос к amocrm
+	public function amoRequets($endpoint, $method, $postData) {
+		$this->isYc = 0;
+		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
+		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/' . $endpoint;
+		$this->method = $method;
+		$result = $this->apiQuery($postData);
+		return $result;
+
+	}
+
+
+
 	public function setContactToAmo($contact, $amoId = -1) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
