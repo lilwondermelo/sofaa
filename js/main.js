@@ -140,6 +140,8 @@ function getLeadsData(company, page) {
             current++;
             if (current <= finish) {
                 getLeadsData(company, current);
+                console.log(data.data);
+                console.log('FINISH' + page);
             }
             else {
                 console.log('FINISH' + page);
@@ -149,6 +151,5 @@ function getLeadsData(company, page) {
         }
     });
 }
-
 
 //JSON.parse(response)
