@@ -27,6 +27,7 @@
 					$contactData = $controller->amoRequest('contacts/' . $contactId, 'GET');
 					require_once 'contact.php';
 					$contact = new Contact($contactData, $account->getCustomFields());
+					$contact->createFromAmo();
 					$ids[] = $contact->getPhone();
 				}
 				
