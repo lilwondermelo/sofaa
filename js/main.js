@@ -138,6 +138,7 @@ function getLeadsData(company, page) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
             current++;
+            console.log(finish+1);
             if (current <= (finish+1)) {
                 console.log('FINISH' + page);
                 console.log(data.data);
