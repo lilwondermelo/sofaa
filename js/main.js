@@ -139,9 +139,10 @@ function getLeadsData(company, page) {
         if (data.result === "Ok") {
             current++;
             if (current <= finish) {
-                getLeadsData(company, current);
+                
                 console.log(data.data);
                 console.log('FINISH' + page);
+                getLeadsData(company, current);
             }
             else {
                 console.log('FINISH' + page);
