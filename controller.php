@@ -596,7 +596,7 @@ order by r.datetime desc';
 
 
 	//Универсальный запрос к amocrm
-	public function amoRequets($endpoint, $method, $postData) {
+	public function amoRequest($endpoint, $method, $postData) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/' . $endpoint;
