@@ -20,11 +20,12 @@
 				$postData['filter[statuses]'] = $status;
 			}
 			$result = $controller->amoRequest('leads', 'GET', $postData);
-			//foreach ($result['_embedded']['leads'] as $item) {
-				//$item 
-			//}
+			$ids = [];
+			foreach ($result['_embedded']['leads'] as $item) {
+				$ids[] = $item['_embedded']['contacts'][0]['id'];
+			}
 			$resultDb = '';
-			return $result;
+			return $ids;
 		}
 	}
 ?>
