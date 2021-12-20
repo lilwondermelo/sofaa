@@ -7,6 +7,8 @@
 
 		//Функция поска сделок из определенного этапа (если нужно)
 		public function getLeadsFromAmo($amoHost, $page, $status = 0) {
+			require_once 'account.php';
+			require_once 'controller.php';
 			$account = new Account($amoHost, 'amoContact');
 			$controller = new Controller($account);
 			$postData = [
