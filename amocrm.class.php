@@ -13,12 +13,17 @@
 			$controller = new Controller($account);
 			$postData = [
 				'page' => $page,
-				'limit' => $this->dataPerPage
+				'limit' => $this->dataPerPage,
+				'with' => 'contacts'
 			];
 			if ($status != 0) {
 				$postData['filter[statuses]'] = $status;
 			}
 			$result = $controller->amoRequest('leads', 'GET', $postData);
+			foreach ($result['_embedded']['leads'] as $item) {
+				$item 
+			}
+			$resultDb = 
 			return $result;
 		}
 	}
