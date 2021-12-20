@@ -140,6 +140,7 @@ function getLeadsData(company, page) {
             current++;
             if (current <= finish+1) {
                 console.log('FINISH' + page);
+                console.log(data.data);
                 getLeadsData(company, current);
             }
             else {
