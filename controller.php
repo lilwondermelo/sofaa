@@ -620,7 +620,6 @@ order by r.datetime desc';
 		$this->method = $method;
 		$result = $this->apiQuery($postData);
 		return $result;
-
 	}
 
 
