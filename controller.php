@@ -157,6 +157,23 @@ class Controller {
 	}
 
 
+
+	//Функция добавления в бд записи
+	public function recordToDb($table, $key, $data = []) {
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater($table);
+		$updater->setKeyField($key);
+		$updater->setDataFields($data);
+		$result_upd = $updater->update();
+		if (!$result_upd) {
+			return false;
+		}
+		else {
+			return $result_upd;
+		}
+	}
+
+
 	//Новая функция добавления связи сделки amo и клиента yc
 	public function recordContactLink($ycId, $leadId) {
 		require_once '_dataRowUpdater.class.php';
@@ -596,7 +613,7 @@ order by r.datetime desc';
 
 
 	//Универсальный запрос к amocrm
-	public function amoRequest($endpoint, $method, $postData) {
+	public function amoRequest($endpoint, $method, $postData = []) {
 		$this->isYc = 0;
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://' . $this->account->getAmoHost() . '.amocrm.ru/api/v4/' . $endpoint;
