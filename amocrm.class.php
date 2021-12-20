@@ -22,7 +22,11 @@
 			$result = $controller->amoRequest('leads', 'GET', $postData);
 			$ids = [];
 			foreach ($result['_embedded']['leads'] as $item) {
-				$ids[] = $item['_embedded']['contacts'][0]['id'];
+				$contactId = $item['_embedded']['contacts'][0]['id'];
+				if ($contactId) {
+					$ids[] = $contactId;
+				}
+				
 			}
 			$resultDb = '';
 			return $ids;
