@@ -31,7 +31,7 @@
 						$phone = $contact->getPhone();
 						//$ids[] = $controller->recordToDb('amo_save', 'phone', $phone, ['status' => $status]);
 
-						$ids[] = $item;
+						$ids[] = $result;
 					}
 					//$ids[] = $contactData;
 				}
