@@ -29,7 +29,7 @@
 						$contact = new Contact($contactData, $account->getCustomFields());
 						$contact->createFromAmoRequest();
 						$phone = $contact->getPhone();
-						$ids[] = $controller->recordToDb('amo_save', 'id', '', $phone);
+						$ids[] = $controller->recordToDb('amo_save', 'id', '', ['phone' => $phone, 'status' => $status]);
 
 						//$ids[] = $indexPhone;
 					}
