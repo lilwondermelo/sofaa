@@ -27,7 +27,8 @@
 					if ($contactData['custom_fields_values']) {
 						require_once 'contact.php';
 						$contact = new Contact($contactData, $account->getCustomFields());
-						$phone = $contact->createFromAmoRequest();
+						$contact->createFromAmoRequest();
+						$phone = $contact->getPhone();
 						$ids[] = $controller->recordToDb('amo_save', 'id', '', $phone);
 
 						//$ids[] = $indexPhone;
@@ -39,4 +40,5 @@
 			return $ids;
 		}
 	}
+
 ?>
