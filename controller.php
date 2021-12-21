@@ -171,7 +171,7 @@ class Controller {
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
-			return false;
+			return $updater->error;
 		}
 		else {
 			return $result_upd;
