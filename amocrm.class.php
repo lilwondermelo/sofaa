@@ -20,7 +20,7 @@
 			$ids = [];
 			foreach ($result as $item) {
 				$contactId = $item['_embedded']['leads']['_embedded']['contacts'][0]['id'];
-				if (($contactId) && ($item['status_id'] == $status)) {
+				if ($contactId) {
 					$contactData = $controller->amoRequest('contacts/' . $contactId, 'GET');
 					if ($contactData['custom_fields_values']) {
 						require_once 'contact.php';
