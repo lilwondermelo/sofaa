@@ -25,10 +25,13 @@
 				$contactId = $item['_embedded']['contacts'][0]['id'];
 				if ($contactId) {
 					$contactData = $controller->amoRequest('contacts/' . $contactId, 'GET');
-					require_once 'contact.php';
+					if ($contactData['custom_fields_values']) {
+						require_once 'contact.php';
 					$contact = new Contact($contactData, $account->getCustomFields());
 					$contact->createFromAmo();
 					$ids[] = $contact->getPhone();
+					}
+					
 					//$ids[] = $contactData;
 				}
 				
