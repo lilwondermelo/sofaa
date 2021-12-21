@@ -159,10 +159,15 @@ class Controller {
 
 
 	//Функция добавления в бд записи
-	public function recordToDb($table, $key, $data = []) {
+	public function recordToDb($table, $key, $keyVal = '', $data = []) {
 		require_once '_dataRowUpdater.class.php';
 		$updater = new DataRowUpdater($table);
-		$updater->setKeyField($key);
+		if ($keyVal == '') {
+			$updater->setKeyField($key);
+		}
+		else {
+			$updater->setKeyField($key, $keyVal);
+		}
 		$updater->setDataFields($data);
 		$result_upd = $updater->update();
 		if (!$result_upd) {
