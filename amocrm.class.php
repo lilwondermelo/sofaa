@@ -13,11 +13,9 @@
 			$postData = [
 				'page' => $page,
 				'limit' => $this->dataPerPage,
-				'with' => 'contacts'
+				'with' => 'contacts',
+				'filter[statuses]' => $status
 			];
-			if ($status != 0) {
-				$postData['filter[statuses]'] = $status;
-			}
 			$result = $controller->amoRequest('leads', 'GET', $postData);
 			$ids = [];
 			foreach ($result['_embedded']['leads'] as $item) {
