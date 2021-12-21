@@ -75,7 +75,7 @@ Class Contact {
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setAmoId($this->contactData['id']);
 		$this->setName($this->contactData['name']);
-		return $this->customFields['phone'];
+		return $this->customFields;
 	}
 
 	public function createFromAmo() {
