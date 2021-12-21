@@ -13,13 +13,15 @@
 			$postData = [
 				'page' => $page,
 				'limit' => $this->dataPerPage,
-				'with' => 'contacts',
-				'filter[statuses]' => $status
+				'with' => 'contacts'
 			];
+			if ($status != 0) {
+				$postData[] = $status;
+			}
 			$result = $controller->amoRequest('leads', 'GET', $postData);
 			$ids = [];
-			foreach ($result as $item) {
-				$contactId = $item['_embedded']['leads']['_embedded']['contacts'][0]['id'];
+			foreach ($result['_embedded']['leads'] as $item) {
+				$contactId = $item['_embedded']['contacts'][0]['id'];
 				if ($contactId) {
 					$contactData = $controller->amoRequest('contacts/' . $contactId, 'GET');
 					if ($contactData['custom_fields_values']) {
