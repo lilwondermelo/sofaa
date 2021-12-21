@@ -4,7 +4,6 @@
 		private $constructor;
 		private $account;
 
-
 		//Функция поска сделок из определенного этапа (если нужно)
 		public function getLeadsFromAmo($amoHost, $page, $status = 0) {
 			require_once 'account.php';
@@ -27,15 +26,13 @@
 					$contactData = $controller->amoRequest('contacts/' . $contactId, 'GET');
 					if ($contactData['custom_fields_values']) {
 						require_once 'contact.php';
-					$contact = new Contact($contactData, $account->getCustomFields());
-					$indexPhone = $contact->createFromAmoRequest();
-					//$ids[] = $contact->getPhone();
-					$ids[] = $indexPhone;
+						$contact = new Contact($contactData, $account->getCustomFields());
+						$indexPhone = $contact->createFromAmoRequest();
+						//$ids[] = $contact->getPhone();
+						$ids[] = $account->getCustomFields();
 					}
-
 					//$ids[] = $contactData;
 				}
-				
 			}
 			$resultDb = '';
 			return $ids;
