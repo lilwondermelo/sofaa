@@ -22,7 +22,7 @@
 			$ids = [];
 			foreach ($result['_embedded']['leads'] as $item) {
 				$contactId = $item['_embedded']['contacts'][0]['id'];
-				if ($contactId) {
+				if (($contactId) && ($item['status_id'] == $status)) {
 					$contactData = $controller->amoRequest('contacts/' . $contactId, 'GET');
 					if ($contactData['custom_fields_values']) {
 						require_once 'contact.php';
@@ -31,7 +31,7 @@
 						$phone = $contact->getPhone();
 						//$ids[] = $controller->recordToDb('amo_save', 'phone', $phone, ['status' => $status]);
 
-						$ids[] = $result;
+						$ids[] = $item;
 					}
 					//$ids[] = $contactData;
 				}
