@@ -29,7 +29,7 @@
 						$contact = new Contact($contactData, $account->getCustomFields());
 						$indexPhone = $contact->createFromAmoRequest();
 						//$ids[] = $contact->getPhone();
-						$ids[] = $account->getCustomFields();
+						$ids[] = $indexPhone;
 					}
 					//$ids[] = $contactData;
 				}
