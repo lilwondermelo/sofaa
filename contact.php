@@ -55,7 +55,7 @@ Class Contact {
 
 
 	public function createFromAmoRequest() {
-		$dataCustomFieldIds = array_column($this->contactData['custom_fields_values'], 'id'); //Создает массив из значений id
+		$dataCustomFieldIds = array_column($this->contactData['custom_fields_values'], 'field_id'); //Создает массив из значений id
 		$indexPhone = array_search($this->customFields['phone'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
 		//Проверку телефона добавить !!!
 		$phone = $this->contactData['custom_fields_values'][$indexPhone]['values'][0]['value'];
