@@ -28,8 +28,8 @@
 						require_once 'contact.php';
 						$contact = new Contact($contactData, $account->getCustomFields());
 						$indexPhone = $contact->createFromAmoRequest();
-						//$ids[] = $contact->getPhone();
-						$ids[] = $indexPhone;
+						$ids[] = $contact->getPhone();
+						//$ids[] = $indexPhone;
 					}
 					//$ids[] = $contactData;
 				}
