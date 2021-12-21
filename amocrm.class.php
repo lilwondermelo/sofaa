@@ -28,7 +28,7 @@
 					if ($contactData['custom_fields_values']) {
 						require_once 'contact.php';
 					$contact = new Contact($contactData, $account->getCustomFields());
-					$contact->createFromAmo();
+					$contact->createFromAmoRequest();
 					$ids[] = $contact->getPhone();
 					}
 					

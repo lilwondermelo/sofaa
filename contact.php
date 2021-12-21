@@ -10,7 +10,7 @@ Class Contact {
 	private $contactData;
 
 	//$contactData - данные в массиве с AMOCRM или YCLIENTS
-	public function __construct($contactData, $customFields) {
+	public function __construct($contactData, $customField) {
 		$this->customFields = $customFields;
 		$this->contactData = $contactData;
 	}
@@ -48,6 +48,34 @@ Class Contact {
 			]
 		];
 		return $amoData;
+
+
+
+	}
+
+
+	public function createFromAmoRequest() {
+		$dataCustomFieldIds = array_column($this->contactData['custom_fields_values'], 'id'); //Создает массив из значений id
+		$indexPhone = array_search($this->customFields['phone'], $dataCustomFieldIds); //Ищет по созданному массиву индекс, в котором содержится нужный телефон
+		//Проверку телефона добавить !!!
+		$phone = $this->contactData['custom_fields_values'][$indexPhone]['values'][0]['value'];
+		$phone = preg_replace("/[^0-9]/", '', $phone);
+		if (strlen($phone) == 10) {
+			$phone = '+7' . $phone;
+		}
+		else if (substr($phone, 0, 1) == '7'){
+			$phone = '+' . $phone;
+		}
+		else if (substr($phone, 0, 1) == '8') {
+			$phone = '+7' . substr($phone, 1, 10);
+		}
+		
+		$this->setPhone($phone);
+		$this->setId(0);
+		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
+		$this->setAmoId($this->contactData['id']);
+		$this->setName($this->contactData['name']);
+		return $this->getAmoId();
 	}
 
 	public function createFromAmo() {
