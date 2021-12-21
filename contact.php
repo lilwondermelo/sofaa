@@ -69,14 +69,14 @@ Class Contact {
 		else if (substr($phone, 0, 1) == '8') {
 			$phone = '+7' . substr($phone, 1, 10);
 		}
-		
 		$this->setPhone($phone);
 		$this->setId(0);
 		//Проверка на соответствие имени клиента в YC и контакта в AMO !!!
 		$this->setAmoId($this->contactData['id']);
 		$this->setName($this->contactData['name']);
-		return $this->customFields;
+		return $this->contactData;
 	}
+
 
 	public function createFromAmo() {
 		$dataCustomFieldIds = array_column($this->contactData['custom_fields'], 'id'); //Создает массив из значений id
