@@ -64,9 +64,12 @@
 						)
 
 					));
-					echo json_encode($item, JSON_UNESCAPED_UNICODE);
-					$result[] = $controller->setRequestToAmo([$dataReq]);
-					
+					$creatingResult = $controller->setRequestToAmo([$dataReq]);
+
+					$result[] = $creatingResult;
+
+					echo json_encode($creatingResult, JSON_UNESCAPED_UNICODE);
+
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
 						$resDb[] = $controller->setRecord(array('creating' => 1), $record);
