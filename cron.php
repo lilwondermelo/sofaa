@@ -129,18 +129,18 @@
 						)
 					));
 					
-					//$result[] = $controller->setRequestToAmo([$dataReq]);
+					$result[] = $controller->setRequestToAmo([$dataReq]);
 					
 					$records = explode(',', $item['recordId']);
 					foreach ($records as $record) {
-						//$resDb[] = $controller->setRecord(array('24h' => 1), $record);
+						$resDb[] = $controller->setRecord(array('24h' => 1), $record);
 					}
 					
 				}
 				
 				echo json_encode($result, JSON_UNESCAPED_UNICODE);
 			} 
-/*
+
 
 			require_once '_dataSource.class.php';
 			$queryR = 'select cl.amo_host as amoHost, GROUP_CONCAT(r.services) as services, r.filial_id as filial, r.datetime as dateTime, c.lead_id as leadId, GROUP_CONCAT(r.record_id) as recordId from records r 
@@ -254,7 +254,7 @@ require_once '_dataSource.class.php';
 				
 			} 
 
-      */
+      
          
 ?>
 
