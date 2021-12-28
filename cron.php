@@ -64,6 +64,9 @@
 						)
 
 					));
+					if ($item['filial'] == '520162') {
+						$dataReq['custom_fields_values'][3]["values"][0]["value"] = (int)$item['dateTime'] - 14400;
+					}
 					$creatingResult = $controller->setRequestToAmo([$dataReq]);
 
 					$result[] = $creatingResult;
@@ -128,7 +131,9 @@
 							"values" => array(array("value" => (int)$item['recordId']))
 						)
 					));
-					
+					if ($item['filial'] == '520162') {
+						$dataReq['custom_fields_values'][3]["values"][0]["value"] = (int)$item['dateTime'] - 14400;
+					}
 					$result[] = $controller->setRequestToAmo([$dataReq]);
 					
 					$records = explode(',', $item['recordId']);
