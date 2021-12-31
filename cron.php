@@ -177,9 +177,9 @@
 					require_once 'controller.php';
 					$controller = new Controller($account);
 				foreach ($data as $item) {
-					echo $item['filial'];
-					if ($item['filial'] != 34521) {
-						
+					
+					if ($item['filial'] != '34521') {
+						echo $item['filial'];
 					$dataReq = array(
 					'id' => (int)$item['leadId'],
 					'status_id' => $account->getStatuses()['bot'],
