@@ -219,6 +219,7 @@
 					else {
 						$dataReq = array(
 					'id' => (int)$item['leadId'],
+					'status_id' => $account->getStatuses()['bot'],
 					'custom_fields_values' => 
 					array(
 						array(
