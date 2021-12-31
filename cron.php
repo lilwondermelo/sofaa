@@ -177,6 +177,7 @@
 					require_once 'controller.php';
 					$controller = new Controller($account);
 				foreach ($data as $item) {
+					echo $item['filial'];
 					if ($item['filial'] != 34521) {
 						
 					$dataReq = array(
