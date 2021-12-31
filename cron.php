@@ -172,12 +172,12 @@
 			$data = $dataSource->getData();
 			if ($data) {
 				$result = array();
-				require_once 'account.php';
+				
+				foreach ($data as $item) {
+					require_once 'account.php';
 					$account = new Account($item['amoHost'], 'amoContact');
 					require_once 'controller.php';
 					$controller = new Controller($account);
-				foreach ($data as $item) {
-					
 					if ($item['filial'] != '34521') {
 					
 					$dataReq = array(
