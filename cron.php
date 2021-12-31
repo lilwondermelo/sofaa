@@ -172,13 +172,13 @@
 			$data = $dataSource->getData();
 			if ($data) {
 				$result = array();
-				
-				foreach ($data as $item) {
-					if ($item['filial'] != 34521) {
-						require_once 'account.php';
+				require_once 'account.php';
 					$account = new Account($item['amoHost'], 'amoContact');
 					require_once 'controller.php';
 					$controller = new Controller($account);
+				foreach ($data as $item) {
+					if ($item['filial'] != 34521) {
+						
 					$dataReq = array(
 					'id' => (int)$item['leadId'],
 					'status_id' => $account->getStatuses()['bot'],
@@ -215,7 +215,28 @@
 						$resDb[] = $controller->setRecord(array('2h' => 1), $record);
 					}
 					}
+					else {
+						$dataReq = array(
+					'id' => (int)$item['leadId'],
+					'status_id' => $account->getStatuses()['bot'],
+					'custom_fields_values' => 
+					array(
+						array(
+							"field_id" => $account->getCustomFields()['2h'], 
+							"values" => array(array("value" => 1))
+						),
+						array(
+							"field_id" => $account->getCustomFields()['deal_datetime'], 
+							"values" => array(array("value" => (int)$item['dateTime']))
+						)
+					));
+						$result[] = $controller->setRequestToAmo([$dataReq]);
 					
+					$records = explode(',', $item['recordId']);
+					foreach ($records as $record) {
+						$resDb[] = $controller->setRecord(array('2h' => 1), $record);
+					}
+					}
 					
 				}
 				
