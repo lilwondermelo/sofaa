@@ -242,7 +242,7 @@
 					
 				}
 				
-				echo json_encode($result, JSON_UNESCAPED_UNICODE);
+				echo json_encode($dataReq, JSON_UNESCAPED_UNICODE) . json_encode($result, JSON_UNESCAPED_UNICODE);
 			} 
 
 
