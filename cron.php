@@ -179,7 +179,7 @@
 				foreach ($data as $item) {
 					
 					if ($item['filial'] != '34521') {
-						echo $item['filial'];
+					
 					$dataReq = array(
 					'id' => (int)$item['leadId'],
 					'status_id' => $account->getStatuses()['bot'],
@@ -217,6 +217,7 @@
 					}
 					}
 					else {
+							echo $item['filial'];
 						$dataReq = array(
 					'id' => (int)$item['leadId'],
 					'status_id' => $account->getStatuses()['bot'],
