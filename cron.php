@@ -178,7 +178,7 @@
 					$controller = new Controller($account);
 				foreach ($data as $item) {
 					echo $item['filial'];
-					if ($item['filial'] != '34521') {
+					if ($item['filial'] != 34521) {
 						
 					$dataReq = array(
 					'id' => (int)$item['leadId'],
