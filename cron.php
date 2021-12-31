@@ -13,7 +13,8 @@
 				'520162' => 'Большая Дорогомиловская, 1',
 				'529126' => 'Ленина, 9',
 				'584978' => 'Европейский берег. Заровного, 40',
-				'631867' => 'Родники. Мясниковой, 22'
+				'631867' => 'Родники. Мясниковой, 22',
+				'34521' => ''
 
 			];
 		
@@ -34,8 +35,10 @@
 				$result = array();
 				
 				foreach ($data as $item) {
+					if ($item['filial'] != 34521) {
+
 						require_once 'account.php';
-					$account = new Account($item['amoHost'], 'amoContact');
+						$account = new Account($item['amoHost'], 'amoContact');
 					require_once 'controller.php';
 					$controller = new Controller($account);
 					$dataReq = array(
@@ -78,6 +81,8 @@
 					foreach ($records as $record) {
 						$resDb[] = $controller->setRecord(array('creating' => 1), $record);
 					}
+					}
+					
 					
 					
 					
@@ -233,7 +238,8 @@
 			if ($data) {
 				$result = array();
 				foreach ($data as $item) {
-					require_once 'account.php';
+					if ($item['filial'] != 34521) {
+						require_once 'account.php';
 					$account = new Account($item['amoHost'], 'amoContact');
 					require_once 'controller.php';
 					$controller = new Controller($account);
@@ -265,6 +271,8 @@
 					foreach ($records as $record) {
 						$resDb[] = $controller->setRecord(array('req' => 1), $record);
 					}
+					}
+					
 					
 				}
 				
