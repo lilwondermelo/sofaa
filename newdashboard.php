@@ -49,7 +49,13 @@ if ($data = $dataSource->getData()) {
 			<div id="datepicker"></div>
 			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
 
-			<div class="filials">Филиалы: все</div>
+			<select class="filials">';
+
+			require_once 'application.class.php';
+			$app = new Application();
+			echo $app->getFilials();
+
+			echo '</select>
 
 			<div class="managers">
 				<div class="managersRow row" id="managerHead">

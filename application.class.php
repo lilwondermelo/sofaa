@@ -44,6 +44,22 @@ if (!$data = $dataSource->getData()) {
 
 
 	}
+
+	public function getFilials() {
+		$query = 'select * from filials where amo_host = "autobeauty"';
+		$html = '<option selected>Все</option>';
+		require_once '_dataSource.class.php';
+		$dataSource = new DataSource($query);
+		$data = $dataSource->getData();
+		if (!$data) {
+			$this->error = $dataSource->error;
+			return false;
+		}
+		for ($i = 0; $i < count($data); $i++) {
+			$html .= '<option value="' . $data[$i]['filial_id'] . '">' . $data[$i]['location'] . '</option>';
+		}
+		return $html;
+	}
 }
 
 ?>
