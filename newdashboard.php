@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container row">
 		<div class="menu">
 		<?php 
 		include 'blocks/menu.php';
