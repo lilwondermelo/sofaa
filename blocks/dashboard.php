@@ -45,6 +45,8 @@ if ($data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemMotivation"></div>
 			</div>';
 	}
-	echo '</div>';
+	echo '</div> 
+	<script src="js/dashboard.js"></script>';
 }
+
 ?>
