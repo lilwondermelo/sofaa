@@ -90,7 +90,7 @@ input.managerCheckbox {
 	line-height: 20px;
 }
 
-.menuItem {
+.menuItem:hover {
 	cursor:  pointer;
 	background: wheat;
 }
