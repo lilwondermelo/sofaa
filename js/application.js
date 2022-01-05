@@ -1,9 +1,12 @@
-function menuClick() {
-
+function menuClick(item) {
+    $('.block').removeClass('blockActive');
+    $('.' + index.attr('data-index')).addClass('blockActive');
+    $('.menuItem').removeClass('menuItemActive');
+    $(item).addClass('menuItemActive');
 }
 
-
-
 $('body').on('click', '.menuItem', function(){
-    console.log($(this).attr('data-index'));
+    if (!$('.' + $(this).attr('data-index')).hasClass('blockActive')) {
+        menuClick($(this));
+    }
 });
