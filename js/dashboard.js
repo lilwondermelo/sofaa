@@ -1,4 +1,3 @@
-
 $.datepicker.regional['ru'] = {
 		closeText: 'Закрыть',
 		prevText: 'Предыдущий',
@@ -29,7 +28,6 @@ $(function(){
 	});
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
 });
-
 function getDashboardData(date) {
     $.ajax({
         type: "POST",

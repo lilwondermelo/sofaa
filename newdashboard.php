@@ -61,7 +61,7 @@ if ($data = $dataSource->getData()) {
 		</div>';
 }
 ?>
-<script src="js/newdashboard.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
 </html>
 
