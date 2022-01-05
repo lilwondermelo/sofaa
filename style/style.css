@@ -89,3 +89,8 @@ input.managerCheckbox {
 	font-size: 20px;
 	line-height: 20px;
 }
+
+.menuItem {
+	cursor:  pointer;
+	background: wheat;
+}
