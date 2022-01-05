@@ -3,5 +3,9 @@
 $month = date('m');
 $year = date('Y');
 
-echo $month . ' ' . $year;
+//$unixTimestamp = strtotime();
+//dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+//$dayOfWeek = date("l", $unixTimestamp);
+echo date('Y-m-d');
+
  ?>

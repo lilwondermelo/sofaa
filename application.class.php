@@ -64,6 +64,12 @@ if (!$data = $dataSource->getData()) {
 	public function days_in_month($month, $year) {
 		return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31);
 	}
+
+	public function getMonthName($num) {
+		$monthNamesShort = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+		return $monthNamesShort;
+		
+	}
 }
 
 ?>
