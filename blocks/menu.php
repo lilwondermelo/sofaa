@@ -4,13 +4,13 @@ require_once '_dataSource.class.php';
 $query = 'select * from menu_items';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
-	foreach ($data as $key => $value) {
+	for ($i = 0; $i < count($data); $i++) {
 		echo '
- 	<div class="menuItem row" data-index="' . $value["file"] . '"> 
+ 	<div class="menuItem ' . (($i==0)?'menuItemActive':'') . ' row" data-index="' . $data[$i]["file"] . '"> 
  		<div class="menuItemImg">
- 			<img src="img/menu/item' . $value["id"] . '.svg" alt="">
+ 			<img src="img/menu/item' . $data[$i]["id"] . '.svg" alt="">
  		</div>
- 		<div class="menuItemText">' . $value["name"] . '</div>
+ 		<div class="menuItemText">' . $data[$i]["name"] . '</div>
  	</div>';
 	}	
 }
