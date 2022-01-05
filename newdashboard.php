@@ -10,6 +10,11 @@
 </head>
 <body>
 	<div class="container">
+		<div class="menu">
+		<?php 
+		include 'blocks/menu.php';
+		?>
+		</div>
 		<div class="workArea">
 		<?php 
 		include 'blocks/dashboard.php';

@@ -48,5 +48,4 @@ if ($data = $dataSource->getData()) {
 	echo '</div> 
 	<script src="js/dashboard.js"></script>';
 }
-
 ?>
