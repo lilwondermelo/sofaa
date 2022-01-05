@@ -5,7 +5,7 @@ class Application {
 
 	public function getDashboardData($date) {
 		require_once '_dataSource.class.php';
-$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.is_admin, mm.is_admin, 0) as isAdmin from managers m 
+$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
 left join records r on m.yc_id = r.manager_id 
 and r.date_create > '. strtotime($date) . ' 
 and r.date_create < '. strtotime($date . ' +1 day') . '
@@ -35,7 +35,7 @@ if (!$data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
 				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
 				<div class="managersRowItem managersRowItemStars"></div>
-				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox" ' . (($manager['isAdmin'] == 1)?'checked':'') . '></div>
+				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox" ' . (($manager['role'] == 1)?'checked':'') . '></div>
 				<div class="managersRowItem managersRowItemAddstar"><input class="managerCheckbox" type="checkbox" ' . (($manager['star'] == 1)?'checked':'') . '></div>
 				<div class="managersRowItem managersRowItemMotivation"></div>
 			</div>';
@@ -59,6 +59,10 @@ if (!$data = $dataSource->getData()) {
 			$html .= '<option value="' . $data[$i]['filial_id'] . '">' . $data[$i]['location'] . '</option>';
 		}
 		return $html;
+	}
+
+	public function days_in_month($month, $year) {
+		return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31);
 	}
 }
 
