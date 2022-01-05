@@ -9,6 +9,6 @@ $daysInMonth = $app->daysInMonth($month, $year);
 for ($i = 1; $i <= $daysInMonth; $i++) {
 	$unixTimestamp = strtotime($year . '-' . $month . '-' . $i);
 	$dayOfWeek = date("l", $unixTimestamp);
-	echo $i . ' ';
+	echo $i . ' ' . $dayNames[$dayOfWeek] . '; ';
 }
 ?>
