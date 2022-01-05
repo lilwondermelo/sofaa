@@ -100,6 +100,10 @@ input.managerCheckbox {
 	background: wheat;
 }
 
+.menuItemActive.menuItem:hover {
+	cursor:  default;
+	background: #fefefe;
+}
 
 .block {
 	display: none;
