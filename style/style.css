@@ -63,3 +63,18 @@ input.managerCheckbox {
 	width:  unset;
 	margin-top:  0;
 }
+
+.menuItemImg {
+	width: 30px;
+	height: 30px;
+}
+
+.img {
+	position: relative;
+}
+
+.img img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
