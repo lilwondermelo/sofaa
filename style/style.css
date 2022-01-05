@@ -94,3 +94,12 @@ input.managerCheckbox {
 	cursor:  pointer;
 	background: wheat;
 }
+
+
+.block {
+	display: none;
+}
+
+.blockActive {
+	display: block;
+}

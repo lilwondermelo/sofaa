@@ -6,7 +6,7 @@ $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
 	foreach ($data as $key => $value) {
 		echo '
- 	<div class="menuItem row">
+ 	<div class="menuItem row" data-index="' . $value["file"] . '"> 
  		<div class="menuItemImg">
  			<img src="img/menu/item' . $value["id"] . '.svg" alt="">
  		</div>
@@ -16,4 +16,6 @@ if ($data = $dataSource->getData()) {
 }
 ?>
  </div>
+
+
  

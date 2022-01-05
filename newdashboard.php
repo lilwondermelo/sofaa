@@ -16,11 +16,19 @@
 		?>
 		</div>
 		<div class="workArea">
-		<?php 
-		include 'blocks/dashboard.php';
-		?>
+			<div class="dashboard block blockActive">
+			<?php 
+			include 'blocks/dashboard.php';
+			?>
+			</div>
+			<div class="calendar block">
+			<?php 
+			include 'blocks/calendar.php';
+			?>
+			</div>
 		</div>
 	</div>
+	<script src="js/application.js"></script>
 </body>
 </html>
 
