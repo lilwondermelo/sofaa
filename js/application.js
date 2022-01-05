@@ -1,6 +1,6 @@
 function menuClick(item) {
     $('.block').removeClass('blockActive');
-    $('.' + index.attr('data-index')).addClass('blockActive');
+    $('.' + item.attr('data-index')).addClass('blockActive');
     $('.menuItem').removeClass('menuItemActive');
     $(item).addClass('menuItemActive');
 }

@@ -90,6 +90,11 @@ input.managerCheckbox {
 	line-height: 20px;
 }
 
+.menuItemActive {
+	cursor:  default;
+	background: #fefefe;
+}
+
 .menuItem:hover {
 	cursor:  pointer;
 	background: wheat;
@@ -99,6 +104,7 @@ input.managerCheckbox {
 .block {
 	display: none;
 }
+
 
 .blockActive {
 	display: block;
