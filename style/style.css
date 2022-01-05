@@ -92,7 +92,7 @@ input.managerCheckbox {
 
 .menuItemActive {
 	cursor:  default;
-	background: #fefefe;
+	background: #aaaaaa;
 }
 
 .menuItem:hover {
