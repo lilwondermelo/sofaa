@@ -1,7 +1,7 @@
 <?php 
 
 $month = date('m');
-$year = date('yy');
+$year = date('YY');
 
 echo $month . ' ' . $year;
  ?>
