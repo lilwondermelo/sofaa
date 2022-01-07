@@ -26,6 +26,11 @@
 			include 'blocks/calendar.php';
 			?>
 			</div>
+			<div class="staff block">
+			<?php 
+			include 'blocks/staff.php';
+			?>
+			</div>
 		</div>
 	</div>
 	<script src="js/application.js"></script>
