@@ -8,7 +8,7 @@ if ($data = $dataSource->getData()) {
 		echo '
  	<div class="menuItem ' . (($i==0)?'menuItemActive':'') . ' row" data-index="' . $data[$i]["file"] . '"> 
  		<div class="menuItemImg">
- 			<img src="img/menu/item' . $data[$i]["id"] . '.svg" alt="">
+ 			<img src="img/menu/' . $data[$i]["file"] . '.svg" alt="">
  		</div>
  		<div class="menuItemText">' . $data[$i]["name"] . '</div>
  	</div>';
