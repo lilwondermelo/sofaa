@@ -51,6 +51,8 @@
 				}
 				
 				echo json_encode($result, JSON_UNESCAPED_UNICODE);
+				echo strtotime(date('Y-m-d') . '+2 days') . '<br>';
+				echo strtotime(date('Y-m-d') . '+1 day') . '<br>';
 			} 
 
 
