@@ -1,3 +1,5 @@
+let popup = 0;
+
 function menuClick(item) {
     $('.block').removeClass('blockActive');
     $('.' + item.attr('data-index')).addClass('blockActive');
@@ -10,3 +12,14 @@ $('body').on('click', '.menuItem', function(){
         menuClick($(this));
     }
 });
+
+function popupToggle() {
+    if (popup == 1) {
+        $('.popup').css('display', 'none');
+        popup = 0;
+    }
+    else {
+        $('.popup').css('display', 'flex');
+        popup = 1;
+    }
+}

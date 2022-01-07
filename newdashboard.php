@@ -33,6 +33,9 @@
 			</div>
 		</div>
 	</div>
+	<?php 
+	include 'blocks/dashboard.php';
+	?>
 	<script src="js/application.js"></script>
 </body>
 </html>

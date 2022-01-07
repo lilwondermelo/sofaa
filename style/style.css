@@ -145,3 +145,16 @@ input.managerCheckbox {
 .managersInner {
 	padding:  40px 20px 0 20px;
 }
+
+.popup {
+
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+}
+
+.popupInner {
+	width: 600px;
+	margin:  auto;
+}
