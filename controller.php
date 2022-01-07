@@ -554,6 +554,20 @@ order by r.datetime desc';
 		return array('records' => $recordCount, 'pages' => $pagesCount);
 	}
 
+
+
+	//Получаем из yclients пользователей филиала для дашборда
+	public function getManagers() {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/company_users/' . $this->account->getYcFilialId() . '';
+		$result = $this->apiQuery($args);
+		return $result;
+	}
+
+
+
 	public function getClientCount() {
 		$this->isYc = 1;
 		$this->authHeader = $this->account->getYcAuth();

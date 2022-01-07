@@ -45,6 +45,25 @@ if (!$data = $dataSource->getData()) {
 
 	}
 
+
+	public function getManagers(){
+		$result = [];
+		$query = 'select * from filials where amo_host = "autobeauty"';
+		require_once '_dataSource.class.php';
+		$dataSource = new DataSource($query);
+		if (!$data = $dataSource->getData()) {
+			return false;
+		}
+		foreach ($data as $filial) {
+			require_once 'account.php';
+			$account = new Account($filial['filial_id'], 'yc');
+			require_once 'controller.php';
+			$controller = new Controller($account);
+			$result[] = $controller->getManagers();
+		}
+		return $result;
+	}
+
 	public function getFilials() {
 		$query = 'select * from filials where amo_host = "autobeauty"';
 		$html = '<option selected>Все</option>';
