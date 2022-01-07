@@ -1,6 +1,6 @@
 <div class="popup">
 	<div class="popupInner">
-		<div class="popupHeader">Выберите</div>
+		<h3 class="popupHeader">Выберите</h3>
 		<div class="popupArea"></div>
 	</div>
 </div>
