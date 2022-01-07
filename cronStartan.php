@@ -43,9 +43,9 @@
 						$result[] = $controller->setRequestToAmo([$dataReq]);
 					
 					$records = explode(',', $item['recordId']);
-					//foreach ($records as $record) {
-						//$resDb[] = $controller->setRecord(array('24h' => 1), $record);
-					//}
+					foreach ($records as $record) {
+						$resDb[] = $controller->setRecord(array('24h' => 1), $record);
+					}
 					
 					
 				}
