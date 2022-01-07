@@ -1,18 +1,3 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url('Roboto.ttf')  format('truetype');
-   	font-weight: 500;
-}
-@font-face {
-    font-family: 'Roboto';
-    src: url('Roboto-Medium.ttf')  format('truetype');
-   	font-weight: 600;
-}
-@font-face {
-    font-family: 'Roboto';
-    src: url('Roboto-Bold.ttf')  format('truetype');
-   	font-weight: 800;
-}   
 body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
