@@ -153,6 +153,6 @@ input.managerCheckbox {
 	cursor: default;
 }
 
-.managersAddItem {
-	background: #cecece;
+.managersAddItem:hover {
+	background: #eee;
 }
