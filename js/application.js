@@ -34,8 +34,7 @@ function openManagers() {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-            console.log(data);
-            popupOpen(data, 'Добавьте менеджеров');
+            popupOpen(data.data, 'Добавьте менеджеров');
         } else {
             console.log(data);
         }

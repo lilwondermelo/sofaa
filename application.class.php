@@ -91,7 +91,7 @@ if (!$data = $dataSource->getData()) {
 			$html .= '<div class="managersAddItem">' . $item['name'] . '</div>';
 		}
 		$html .= '</div>';
-		return $result;
+		return $html;
 	}
 
 	public function getFilials() {
