@@ -71,6 +71,21 @@ if (!$data = $dataSource->getData()) {
 		    $unique_array[$hash] = $element;
 		}
 		$result = array_values($unique_array);
+		require_once '_dataSource.class.php';
+		$query = 'select * from managers';
+		$dataSource = new DataSource($query);
+		if (!$data = $dataSource->getData()) {
+			return false;
+		}
+		$managerList = [];
+		foreach ($data as $manager) {
+			$managerList[] = $manager['yc_id'];
+		}
+		for ($i = 0; $i < count($result); $i++) {
+			if (in_array($result[$i]['id'], $managerList)) {
+				unset($result[$i]);
+			}
+		}
 		return $result;
 	}
 
