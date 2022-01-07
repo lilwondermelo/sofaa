@@ -13,13 +13,11 @@ $('body').on('click', '.menuItem', function(){
     }
 });
 
-function popupToggle() {
-    if (popup == 1) {
-        $('.popup').css('display', 'none');
-        popup = 0;
-    }
-    else {
-        $('.popup').css('display', 'flex');
-        popup = 1;
-    }
+function popupOpen() {
+    $('.popup').css('display', 'flex');
+    popup = 1;
+}
+function popupClose() {
+    $('.popup').css('display', 'none');
+    popup = 0;
 }

@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<?php 
-	include 'blocks/dashboard.php';
+	include 'blocks/popup.php';
 	?>
 	<script src="js/application.js"></script>
 </body>
