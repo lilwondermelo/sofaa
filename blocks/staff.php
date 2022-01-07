@@ -7,5 +7,5 @@ if ($data = $dataSource->getData()) {
 		echo '<div class="managersItem">' . $manager['name'] . '</div>';
 	}
 }
-echo '<div class="managersItem">Добавить сотрудника</div>';
+echo '<div class="managersItem">+ Добавить сотрудника</div>';
 ?>
