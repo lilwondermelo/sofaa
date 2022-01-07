@@ -23,7 +23,7 @@ if ($data = $dataSource->getData()) {
 
 			echo '</select>
 
-			<div class="managers">
+			<div class="managersTable">
 				<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
 					<div class="managersRowItem managersRowItemRecords">Записи</div>
