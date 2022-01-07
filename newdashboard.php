@@ -31,11 +31,6 @@
 			include 'blocks/managers.php';
 			?>
 			</div>
-			<div class="options block">
-			<?php 
-			include 'blocks/options.php';
-			?>
-			</div>
 		</div>
 	</div>
 	<?php 
