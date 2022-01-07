@@ -25,3 +25,7 @@ function popupClose() {
     $('.popup').css('display', 'none');
     popup = 0;
 }
+
+function openManagers() {
+    popupOpen('', 'Добавьте менеджеров');
+}

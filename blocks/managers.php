@@ -8,6 +8,6 @@ if ($data = $dataSource->getData()) {
 		echo '<div class="managersItem">' . $manager['name'] . '</div>';
 	}
 }
-echo '<div class="button buttonManagersAdd">+ Добавить сотрудника</div>';
+echo '<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
 ?>
 </div>
