@@ -86,6 +86,11 @@ if (!$data = $dataSource->getData()) {
 				unset($result[$i]);
 			}
 		}
+		$html = '<div class="managersAddInner">';
+		foreach ($result as $item) {
+			$html .= '<div class="managersAddItem">' . $item['name'] . '</div>';
+		}
+		$html .= '</div>';
 		return $result;
 	}
 

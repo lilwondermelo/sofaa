@@ -147,3 +147,12 @@ input.managerCheckbox {
 	width: 600px;
 	margin:  40px auto 0 auto;
 }
+
+.managersItem, .managersAddItem {
+	padding: 10px;
+	cursor: default;
+}
+
+.managersAddItem {
+	background: #cecece;
+}
