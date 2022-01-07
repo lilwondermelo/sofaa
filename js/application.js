@@ -8,9 +8,7 @@ function menuClick(item) {
 }
 
 $('body').on('click', '.menuItem', function(){
-     console.log($('.' + $(this).attr('data-index')));
     if (!$('.' + $(this).attr('data-index')).hasClass('blockActive')) {
-
         menuClick($(this));
     }
 });
