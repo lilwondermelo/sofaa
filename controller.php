@@ -562,7 +562,7 @@ order by r.datetime desc';
 		$this->authHeader = $this->account->getYcAuth();
 		$this->method = 'GET';
 		$this->link = 'https://api.yclients.com/api/v1/company_users/' . $this->account->getYcFilialId() . '';
-		$result = $this->apiQuery($args);
+		$result = $this->apiQuery();
 		return $result;
 	}
 
