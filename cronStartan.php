@@ -10,7 +10,7 @@
 			join clients_yc c on r.client_id = c.yc_id
 			join clients cl on c.lead_id = cl.lead_id
 			and r.datetime <= ' . strtotime(date('Y-m-d') . '+2 days') . ' 
-			and r.datetime > ' . strtotime(date('Y-m-d H:i:s')) . '
+			and r.datetime > ' . strtotime(date('Y-m-d +1 day')) . '
 			and r.`24h` = 0 and attendance != -1 
 			and r.deleted = 0 
 			and c.lead_id is not null 
