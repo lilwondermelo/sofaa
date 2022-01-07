@@ -13,7 +13,11 @@ $('body').on('click', '.menuItem', function(){
     }
 });
 
-function popupOpen() {
+function popupOpen(body, title) {
+    if (title) {
+        $('.popupHeader').html(title);
+    }
+    $('.popupHeader').html(body);
     $('.popup').css('display', 'flex');
     popup = 1;
 }
