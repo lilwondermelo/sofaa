@@ -142,3 +142,6 @@ input.managerCheckbox {
 	background: #58cde5;
 	font-weight: 600;
 }
+.managersInner {
+	padding:  40px 20px 0 20px;
+}
