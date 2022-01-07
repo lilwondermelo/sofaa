@@ -59,8 +59,18 @@ if (!$data = $dataSource->getData()) {
 			$account = new Account($filial['filial_id'], 'yc');
 			require_once 'controller.php';
 			$controller = new Controller($account);
-			$result[] = $controller->getManagers();
+			$result[] = $controller->getManagers()['data'];
 		}
+		$merged = [];
+		foreach ($result as $item) {
+			$merged = array_merge($merged, $item);
+		}
+		$unique_array = [];
+		foreach($merged as $element) {
+		    $hash = $element['id'];
+		    $unique_array[$hash] = $element;
+		}
+		$result = array_values($unique_array);
 		return $result;
 	}
 
