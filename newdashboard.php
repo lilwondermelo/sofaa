@@ -26,9 +26,9 @@
 			include 'blocks/calendar.php';
 			?>
 			</div>
-			<div class="staff block">
+			<div class="managers block">
 			<?php 
-			include 'blocks/staff.php';
+			include 'blocks/managers.php';
 			?>
 			</div>
 		</div>

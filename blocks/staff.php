@@ -1,3 +1,4 @@
+<div class="managersInner">
 <?php 
 require_once '_dataSource.class.php';
 $query = 'select * from managers';
@@ -9,3 +10,4 @@ if ($data = $dataSource->getData()) {
 }
 echo '<div class="button buttonManagersAdd">+ Добавить сотрудника</div>';
 ?>
+</div>
