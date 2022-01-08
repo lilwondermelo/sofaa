@@ -1,10 +1,14 @@
 let popup = 0;
-let checkedManagers = [];
 
 
 function popupManagerCheck(item) {
     item.toggleClass('itemActive');
-    console.log($('.itemActive').length);
+    if ($('.itemActive').length > 0) {
+        $('.popupButtons').css('display', 'flex');
+    }
+    else {
+        $('.popupButtons').css('display', 'none');
+    }
 }
 
 function menuClick(item) {
