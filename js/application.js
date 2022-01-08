@@ -3,7 +3,7 @@ let checkedManagers = [];
 
 
 function popupManagerCheck(item) {
-    $(this).toggleClass('itemActive');
+    $(this).addClass('itemActive');
 }
 
 function menuClick(item) {
