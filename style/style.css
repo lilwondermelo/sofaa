@@ -188,7 +188,7 @@ input.managerCheckbox {
 	justify-content: flex-end;
 }
 
-.blockActive {
+.itemActive {
 	display: block;
 	background: #27a847;
 }

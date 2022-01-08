@@ -13,9 +13,7 @@ function menuClick(item) {
     $(item).addClass('menuItemActive');
 }
 $('body').on('click', '.managersAddItem', function(){
-    if (!$('.' + $(this).attr('data-index')).hasClass('itemActive')) {
         popupManagerCheck($(this));
-    }
 });
 $('body').on('click', '.menuItem', function(){
     if (!$('.' + $(this).attr('data-index')).hasClass('blockActive')) {
