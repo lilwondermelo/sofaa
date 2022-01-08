@@ -1,4 +1,10 @@
 let popup = 0;
+let checkedManagers = [];
+
+
+function popupManagerCheck(item) {
+    $(this).toggleClass('itemActive');
+}
 
 function menuClick(item) {
     $('.block').removeClass('blockActive');
@@ -6,7 +12,11 @@ function menuClick(item) {
     $('.menuItem').removeClass('menuItemActive');
     $(item).addClass('menuItemActive');
 }
-
+$('body').on('click', '.managersAddItem', function(){
+    if (!$('.' + $(this).attr('data-index')).hasClass('itemActive')) {
+        popupManagerCheck($(this));
+    }
+});
 $('body').on('click', '.menuItem', function(){
     if (!$('.' + $(this).attr('data-index')).hasClass('blockActive')) {
         menuClick($(this));

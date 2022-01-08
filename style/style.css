@@ -184,5 +184,11 @@ input.managerCheckbox {
 }
 
 .popupButtons {
+	display:  none;
 	justify-content: flex-end;
+}
+
+.blockActive {
+	display: block;
+	background: #27a847;
 }
