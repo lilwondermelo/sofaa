@@ -192,3 +192,7 @@ input.managerCheckbox {
 	display: block;
 	background: #27a847;
 }
+
+.itemActive:hover {
+	background: #27a847;
+}
