@@ -4,6 +4,7 @@ let checkedManagers = [];
 
 function popupManagerCheck(item) {
     item.toggleClass('itemActive');
+    console.log($('.itemActive').length);
 }
 
 function menuClick(item) {
