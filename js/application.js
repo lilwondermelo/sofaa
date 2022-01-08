@@ -3,6 +3,7 @@ let checkedManagers = [];
 
 
 function popupManagerCheck(item) {
+    console.log(1);
     $(this).addClass('itemActive');
 }
 
