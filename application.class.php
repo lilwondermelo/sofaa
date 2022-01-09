@@ -140,6 +140,20 @@ if (!$data = $dataSource->getData()) {
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$reduced = $this->reduceByKey($data);
+		$html = '';
+		$month = date('m');
+		$year = date('Y');
+		$daysInMonth = $this->daysInMonth($month, $year);
+		foreach ($reduced as $key => $shift) {
+			$html .= '
+			<div class="calendarRow row"> 
+				<div class="calendarRowItem calendarRowItemName">' . $shift[0]['name'] . '</div>';
+			for ($i = 1; $i <= $daysInMonth; $i++) {
+				$html .= '
+					<div class="calendarRowItem"></div>';
+			}
+			$html .= '</div>';
+		}
 		return $reduced;
 	}
 
