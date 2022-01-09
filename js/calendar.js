@@ -12,5 +12,12 @@ function getManagersCalendar() {
         }
     });
 }
-
+$('body').on('click', '.calendarRowItem', function() {
+	if ($(this).hasClass('selectedDay')) {
+		$(this).removeClass('selectedDay');
+	}
+	else {
+		$(this).addClass('selectedDay');
+	}
+})
 getManagersCalendar();
