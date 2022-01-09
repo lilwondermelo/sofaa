@@ -13,6 +13,7 @@ function getManagersCalendar() {
     });
 }
 $('body').on('click', '.calendarRowItem', function() {
+	console.log($(this));
 	if ($(this).hasClass('selectedDay')) {
 		$(this).removeClass('selectedDay');
 	}
