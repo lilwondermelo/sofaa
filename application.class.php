@@ -81,9 +81,10 @@ if (!$data = $dataSource->getData()) {
 		foreach ($data as $manager) {
 			$managerList[] = $manager['yc_id'];
 		}
+		$resultFinal = [];
 		for ($i = 0; $i < count($result); $i++) {
-			if (in_array($result[$i]['id'], $managerList)) {
-				unset($result[$i]);
+			if (!in_array($result[$i]['id'], $managerList)) {
+				$resultFinal[] = $result[$i];
 			}
 		}
 		$html = '<div class="managersAddInner">';
