@@ -203,3 +203,8 @@ input.managerCheckbox {
 	border: 1px solid black;
 	box-sizing: border-box;
 }
+
+.calendarRowItemName {
+	width: auto;
+	border: none;
+}
