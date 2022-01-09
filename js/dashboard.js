@@ -39,7 +39,7 @@ function getDashboardData(date) {
         if (data.result === "Ok") {
         	console.log(data.data.from);
         	console.log(data.data.to);
-        	$('.managers').html(data.data.html);
+        	$('.managersTable').html(data.data.html);
         } else {
 
         }
