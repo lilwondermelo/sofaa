@@ -93,7 +93,7 @@ function getActiveManagers() {
             $('.managersInner').html(data.data);
         } 
         else {
-
+            console.log(data);
         }
     });
 }
