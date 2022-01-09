@@ -61,8 +61,9 @@ function openManagers() {
 function saveManagers() {
     let managersList = [];
     $('.managersAddItem.itemActive').each(function() {
-        managersList.push([$(this).attr('data-index'), $(this).html()]);
+        managersList.push({id: $(this).attr('data-index'), name: $(this).html()});
     });
+    console.log(managersList);
     popupClose();
     $.ajax({
         type: "POST",
