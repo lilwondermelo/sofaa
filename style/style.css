@@ -196,3 +196,10 @@ input.managerCheckbox {
 .itemActive:hover {
 	background: #27a847;
 }
+
+.calendarRowItem {
+	width: 21px;
+	height: 21px;
+	border: 1px solid black;
+	box-sizing: border-box;
+}
