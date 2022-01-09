@@ -136,7 +136,7 @@ if (!$data = $dataSource->getData()) {
 
 	public function getManagersCalendar() {
 		require_once '_dataSource.class.php';
-		$query = 'select * from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
+		$query = 'select *, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$reduced = $this->reduceByKey($data);
@@ -144,13 +144,18 @@ if (!$data = $dataSource->getData()) {
 		$month = date('m');
 		$year = date('Y');
 		$daysInMonth = $this->daysInMonth($month, $year);
-		foreach ($reduced as $key => $shift) {
+		foreach ($reduced as $key => $manager) {
+			$flag = 0;
 			$html .= '
 			<div class="calendarRow row"> 
-				<div class="calendarRowItem calendarRowItemName">' . $shift[0]['name'] . '</div>';
+				<div class="calendarRowItem calendarRowItemName">' . $manager[0]['name'] . '</div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
+				$days = explode(',', $manager[0]['days']);
+				if (in_array($i, $days)) {
+					$flag = 1;
+				}
 				$html .= '
-					<div class="calendarRowItem ">' . $shift[$i-1]['date'] . '</div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDays':'') . '"></div>';
 			}
 			$html .= '</div>';
 		}
