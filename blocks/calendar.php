@@ -32,6 +32,6 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
 		</div>';
 }*/
 ?>
-
+<script type="text/javascript" src="js/calendar.js"></script>
 
 
