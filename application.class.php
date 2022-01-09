@@ -134,6 +134,23 @@ if (!$data = $dataSource->getData()) {
 		return $html;
 	}
 
+	public function getManagersCalendar() {
+		require_once '_dataSource.class.php';
+		$query = 'select * from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
+		$dataSource = new DataSource($query);
+		$data = $dataSource->getData();
+		$reduced = $this->reduceByKey($data, 'yc_id');
+		return $reduced;
+	}
+
+	public function reduceByKey($array, $key) {
+    	$return = array();
+	    foreach($array as $val) {
+	        $return[$val->$key][] = $val;
+	    }
+	    return $return;
+	}
+
 	public function addManagers($managersList) {
 		$result_upd = [];
 		foreach ($managersList as $manager) {
