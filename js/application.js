@@ -1,14 +1,16 @@
 let popup = 0;
 
-
-function popupManagerCheck(item) {
-    item.toggleClass('itemActive');
+function popupButtonsCheck() {
     if ($('.itemActive').length > 0) {
         $('.popupButtons').css('display', 'flex');
     }
     else {
         $('.popupButtons').css('display', 'none');
     }
+}
+function popupManagersCheck(item) {
+    item.toggleClass('itemActive');
+    popupButtonsCheck();
 }
 
 function menuClick(item) {
@@ -18,7 +20,7 @@ function menuClick(item) {
     $(item).addClass('menuItemActive');
 }
 $('body').on('click', '.managersAddItem', function(){
-        popupManagerCheck($(this));
+        popupManagersCheck($(this));
 });
 $('body').on('click', '.menuItem', function(){
     if (!$('.' + $(this).attr('data-index')).hasClass('blockActive')) {
@@ -62,4 +64,9 @@ function saveManagers() {
         managersList.push($(this).attr('data-index'));
     });
     console.log(managersList);
+}
+
+function clearManagers() {
+    $('.managersAddItem').removeClass('itemActive');
+    popupManagersCheck();
 }
