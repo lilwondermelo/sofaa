@@ -139,16 +139,16 @@ if (!$data = $dataSource->getData()) {
 		$query = 'select * from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
-		$reduced = $this->reduceByKey($data, 'yc_id');
+		$reduced = $this->reduceByKey($data);
 		return $reduced;
 	}
 
-	public function reduceByKey($array, $key) {
-    	$return = array();
-	    foreach($array as $val) {
-	        $return[$val->$key][] = $val;
-	    }
-	    return $return;
+	public function reduceByKey($arr) {
+    	$res = [];
+		foreach ($arr as $value) {
+		    $res[$value['yc_id']][] = array_slice($value, 1);
+		}
+		return $res;
 	}
 
 	public function addManagers($managersList) {
