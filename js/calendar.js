@@ -7,6 +7,7 @@ function getManagersCalendar() {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
+        	console.log(data.data.data);
         } else {
             console.log(data);
         }
