@@ -55,3 +55,11 @@ function openManagers() {
     });
     
 }
+
+function saveManagers() {
+    let managersList = [];
+    $('.managersAddItem.itemActive').each(function() {
+        managersList.push($(this).attr('data-index'));
+    });
+    console.log(managersList);
+}
