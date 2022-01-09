@@ -204,7 +204,7 @@ input.managerCheckbox {
 	box-sizing: border-box;
 }
 
-.calendarRowItemName {
-	width: auto;
+.calendarRowItemName, .calendarHeadRowItemName {
+	width: 220px;
 	border: none;
 }
