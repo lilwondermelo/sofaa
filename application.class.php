@@ -118,6 +118,32 @@ if (!$data = $dataSource->getData()) {
 		$monthNamesShort = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
 		return $monthNamesShort;
 	}
+
+	public function getActiveManagers() {
+		require_once '_dataSource.class.php';
+		$query = 'select * from managers';
+		$dataSource = new DataSource($query);
+		$html = '';
+		if ($data = $dataSource->getData()) {
+			foreach ($data as $manager) {
+				$html .= '<div class="managersItem">' . $manager['name'] . '</div>';
+			}
+		}
+		$html .= '<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
+		return $html;
+	}
+
+	public function addManagers($managersList) {
+		$result_upd = [];
+		foreach ($managersList as $manager) {
+			require_once '_dataRowUpdater.class.php';
+			$updater = new DataRowUpdater('managers');
+			$updater->setKeyField('id');
+			$updater->setDataFields(['yc_id' => $manager['id'], 'name' => $manager['name']]);
+			$result_upd[] = $updater->update();
+		}
+		return $result_upd;
+	}
 }
 
 ?>

@@ -1,13 +1,7 @@
 <div class="managersInner">
 <?php 
-require_once '_dataSource.class.php';
-$query = 'select * from managers';
-$dataSource = new DataSource($query);
-if ($data = $dataSource->getData()) {
-	foreach ($data as $manager) {
-		echo '<div class="managersItem">' . $manager['name'] . '</div>';
-	}
-}
-echo '<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
+require_once 'application.class.php';
+$app = new Application();
+echo $app->getActiveManagers();
 ?>
 </div>

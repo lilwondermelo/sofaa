@@ -61,9 +61,41 @@ function openManagers() {
 function saveManagers() {
     let managersList = [];
     $('.managersAddItem.itemActive').each(function() {
-        managersList.push($(this).attr('data-index'));
+        let manager = ['id': $(this).attr('data-index')]
+        managersList.push();
     });
-    console.log(managersList);
+    popupClose();
+    $.ajax({
+        type: "POST",
+        url: "_ajaxListener.class.php",
+        data: {classFile: "application.class", class: "Application", method: "addManagers",
+        managersList: managersList
+        }}).done(function (result) {
+        var data = JSON.parse(result);
+        if (data.result === "Ok") {
+            getActiveManagers();
+        } 
+        else {
+
+        }
+    });
+}
+
+
+function getActiveManagers() {
+    $.ajax({
+        type: "POST",
+        url: "_ajaxListener.class.php",
+        data: {classFile: "application.class", class: "Application", method: "getActiveManagers"
+        }}).done(function (result) {
+        var data = JSON.parse(result);
+        if (data.result === "Ok") {
+            $('.managersInner').html(data.data);
+        } 
+        else {
+
+        }
+    });
 }
 
 function clearManagers() {
