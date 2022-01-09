@@ -150,7 +150,7 @@ if (!$data = $dataSource->getData()) {
 				<div class="calendarRowItem calendarRowItemName">' . $shift[0]['name'] . '</div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
 				$html .= '
-					<div class="calendarRowItem"></div>';
+					<div class="calendarRowItem ">' . $shift[$i]['date'] . '</div>';
 			}
 			$html .= '</div>';
 		}
