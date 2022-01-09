@@ -68,5 +68,5 @@ function saveManagers() {
 
 function clearManagers() {
     $('.managersAddItem').removeClass('itemActive');
-    popupManagersCheck();
+    popupButtonsCheck();
 }
