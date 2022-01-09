@@ -1,3 +1,4 @@
+<div class="calendarInner">
 <?php 
 require_once 'application.class.php';
 $app = new Application();
@@ -35,6 +36,7 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
 
 <div class="calendarArea">
 	
+</div>
 </div>
 <script type="text/javascript" src="js/calendar.js"></script>
 

@@ -213,3 +213,7 @@ input.managerCheckbox {
 	width: 220px;
 	border: none;
 }
+
+.calendarInner {
+	padding:  20px;
+}
