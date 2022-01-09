@@ -197,13 +197,13 @@ input.managerCheckbox {
 	background: #27a847;
 }
 .calendarHeadRowItem {
-	width: 21px;
-	height: 42px;
+	width: 31px;
+	height: 62px;
 	text-align: center;
 }
 .calendarRowItem {
-	width: 21px;
-	height: 21px;
+	width: 31px;
+	height: 31px;
 	border: 1px solid black;
 	box-sizing: border-box;
 }
