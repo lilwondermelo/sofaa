@@ -155,7 +155,7 @@ if (!$data = $dataSource->getData()) {
 					$flag = 1;
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDays':'') . '"></div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDays':'') . '">' . $flag . '</div>';
 			}
 			$html .= '</div>';
 		}
