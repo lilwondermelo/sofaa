@@ -154,7 +154,7 @@ if (!$data = $dataSource->getData()) {
 			}
 			$html .= '</div>';
 		}
-		return $reduced;
+		return $html;
 	}
 
 	public function reduceByKey($arr) {
