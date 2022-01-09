@@ -145,17 +145,17 @@ if (!$data = $dataSource->getData()) {
 		$year = date('Y');
 		$daysInMonth = $this->daysInMonth($month, $year);
 		foreach ($reduced as $key => $manager) {
-			$flag = 0;
 			$html .= '
 			<div class="calendarRow row"> 
 				<div class="calendarRowItem calendarRowItemName">' . $manager[0]['name'] . '</div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
+				$flag = 0;
 				$days = explode(',', $manager[0]['days']);
 				if (in_array($i, $days)) {
 					$flag = 1;
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDays':'') . '">' . $flag . '</div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '">' . $flag . '</div>';
 			}
 			$html .= '</div>';
 		}
