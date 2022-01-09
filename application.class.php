@@ -88,7 +88,7 @@ if (!$data = $dataSource->getData()) {
 			}
 		}
 		$html = '<div class="managersAddInner">';
-		foreach ($result as $item) {
+		foreach ($resultFinal as $item) {
 			$html .= '<div data-index="' . $item['id'] . '" class="managersAddItem">' . $item['firstname'] . '</div>';
 		}
 		$html .= '</div>';
