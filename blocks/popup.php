@@ -6,7 +6,7 @@
 			<div class="button popupCancel" onclick="clearManagers();">Сброс</div>
 			<div class="button popupSave" onclick="saveManagers();">Сохранить</div>
 		</div>
-		<div class="popupClose img">
+		<div class="popupClose img" onclick="popupClose();">
 			<img src="img/close.svg" alt="">
 		</div>
 	</div>
