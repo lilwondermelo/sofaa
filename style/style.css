@@ -199,6 +199,7 @@ input.managerCheckbox {
 .calendarHeadRowItem {
 	width: 21px;
 	height: 21px;
+	text-align: center;
 }
 .calendarRowItem {
 	width: 21px;
@@ -208,6 +209,7 @@ input.managerCheckbox {
 }
 
 .calendarRowItemName, .calendarHeadRowItemName {
+	text-align: left;
 	width: 220px;
 	border: none;
 }
