@@ -145,7 +145,7 @@ if (!$data = $dataSource->getData()) {
 			$colors[$item['id']] = $item['color'];
 		}
 		require_once '_dataSource.class.php';
-		$query = 'select m.yc_id as yc, m.name as name, mm.id as id, mm.date as date, mm.star as star, mm.role as role, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
+		$query = 'select m.yc_id as yc, m.name as name, mm.id as id, mm.date as date, mm.star as star, mm.role as role, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc = mm.manager_id';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$reduced = $this->reduceByKey($data);
