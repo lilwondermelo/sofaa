@@ -1,6 +1,7 @@
 let activeColor = 'none';
 let activeRole = 0;
 let calendar = [];
+let newCalendar = [];
 
 function getManagersCalendar() {
 	$.ajax({
@@ -69,8 +70,23 @@ function setStation(item) {
 function calendarClick(item) {
 	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
+	setCalendarMap(item.parent.attr('data-id'), item.attr('data-day'), activeRole);
 }
 
+
+function setCalendarMap(id, day, role) {
+	newCalendar[id][day] = role;
+	checkCalendar();
+}
+
+function checkCalendar() {
+	if (calendar == newCalendar) {
+		console.log('check');
+	}
+	else {
+		console.log('not check');
+	}
+}
 
 function getCalendarMap() {
 	$('.calendarRow').each(function() {
@@ -84,7 +100,7 @@ function getCalendarMap() {
 			})
 		}
 	})
-	console.log(calendar);
+	newCalendar = calendar;
 }
 
 
