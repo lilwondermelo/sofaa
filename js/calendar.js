@@ -76,7 +76,7 @@ function calendarClick(item) {
 
 
 function setCalendarMap(id, day, role) {
-	checkCalendar();
+	getCalendarMap();
 }
 
 function checkCalendar() {
