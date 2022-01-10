@@ -77,10 +77,10 @@ function calendarClick(item) {
 
 function checkCalendar() {
 	if (calen.join() == oldCalen.join()) {
-		console.log('check');
+		$('.calendarButtons').css('display', 'none');
 	}
 	else {
-		console.log('not check');
+		$('.calendarButtons').css('display', 'flex');
 	}
 }
 
