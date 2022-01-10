@@ -45,7 +45,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		
 	}
 	if ($(this).attr('data-id') != $(this).attr('data-old-id')) {
-		changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = [$(this).attr('data-id'), $(this).attr('data-index')];
+		changed['"' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day') + '"'] = [$(this).attr('data-id'), $(this).attr('data-index')];
 	}
 	else {
 		delete changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')];
