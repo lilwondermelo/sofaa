@@ -76,7 +76,8 @@ function calendarClick(item) {
 
 
 function setCalendarMap(id, day, role) {
-	getCalendarMap();
+	newCalendar[id][day] = role;
+	checkCalendar();
 }
 
 function checkCalendar() {
@@ -92,18 +93,16 @@ function getCalendarMap() {
 	$('.calendarRow').each(function() {
 		if (!$(this).hasClass('calendarRowStations')) {
 			let managerId = $(this).attr('data-id');
-			newCalendar[managerId] = [];
+			calendar[managerId] = [];
 			$(this).find('.calendarRowItem').each(function() {
 				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
-					newCalendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
+					calendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
+
 				}
 			})
 		}
 	})
-	if (calendar == []) {
-		calendar = newCalendar;
-	}
-	checkCalendar();
+	newCalendar = calendar;
 }
 
 
