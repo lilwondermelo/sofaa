@@ -189,8 +189,8 @@ if (!$data = $dataSource->getData()) {
 		$data = $dataSource->getData();
 		$html = '';
 		foreach ($data as $filial) {
-			$html .= '<div class="calendarRow row"> 
-					<div class="calendarRowItem calendarRowItemName">' . $filial['name'] . '</div> 
+			$html .= '<div class="calendarRow row calendarRowStations"> 
+					<div class="calendarRowItem calendarRowItemName calendarRowItemNameStations">' . $filial['name'] . '</div> 
 					<div class="calendarRowItem " style="background:' . $filial['color'] . ';" data-id="' . $filial['id'] . '"></div> 
 				</div>';
 		}
