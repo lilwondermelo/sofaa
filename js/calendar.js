@@ -69,16 +69,16 @@ function setStation(item) {
 
 
 function calendarClick(item) {
+	console.log(newCalendar);
+	console.log(calendar);
 	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	console.log(newCalendar);
-	console.log(calendar);	
 	setCalendarMap(item.parent().attr('data-id'), item.attr('data-day'), activeRole);
 }
 
 
 function setCalendarMap(id, day, role) {
-	//newCalendar[id][day] = role;
+	newCalendar[id][day] = role;
 	console.log(newCalendar);
 	console.log(calendar);
 	//checkCalendar();
