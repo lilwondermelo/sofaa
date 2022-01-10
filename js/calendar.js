@@ -37,7 +37,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).removeClass('selectedDay');
 		$(this).attr('data-id', '0');
 		$(this).css('background', 'none');
-		changed.splice('' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day'), 1);
+		delete changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')];
 	}
 	else {
 		$(this).addClass('selectedDay');
