@@ -147,7 +147,7 @@ if (!$data = $dataSource->getData()) {
 		foreach ($reduced as $key => $manager) {
 			$html .= '
 			<div class="calendarRow row"> 
-				<div class="calendarRowItem calendarRowItemName">' . $manager[0]['name'] . '</div>';
+				<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
 				$flag = 0;
 				$days = explode(',', $manager[0]['days']);
@@ -190,7 +190,7 @@ if (!$data = $dataSource->getData()) {
 		$html = '';
 		foreach ($data as $filial) {
 			$html .= '<div class="calendarRow row calendarRowStations"> 
-					<div class="calendarRowItem calendarRowItemName calendarRowItemNameStations">' . $filial['name'] . '</div> 
+					<div class="calendarRowItem calendarRowItemName calendarRowItemNameStations"><span>' . $filial['name'] . '</span></div> 
 					<div class="calendarRowItem " style="background:' . $filial['color'] . ';" data-id="' . $filial['id'] . '"></div> 
 				</div>';
 		}
@@ -199,3 +199,4 @@ if (!$data = $dataSource->getData()) {
 }
 
 ?>
+
