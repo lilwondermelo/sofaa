@@ -80,7 +80,7 @@ function calendarClick(item) {
 
 
 function checkCalendar() {
-	if (cal == oldCalen) {
+	if (calen == oldCalen) {
 		console.log('check');
 	}
 	else {
