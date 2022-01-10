@@ -181,6 +181,20 @@ if (!$data = $dataSource->getData()) {
 		}
 		return $result_upd;
 	}
+
+	public function getCalendarStations() {
+		require_once '_dataSource.class.php';
+		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id';
+		$dataSource = new DataSource($query);
+		$data = $dataSource->getData();
+		$html = '';
+		foreach ($data as $filial) {
+			$html .= '<div class="calendarRow row"> 
+					<div class="calendarRowItem calendarRowItemName">' . $filial['name'] . '</div> 
+					<div class="calendarRowItem " style="background:' . $filial['color'] . ';" data-id="' . $filial['id'] . '"></div> 
+				</div>';
+		}
+	}
 }
 
 ?>
