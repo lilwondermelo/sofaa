@@ -73,7 +73,7 @@ function calendarClick(item) {
 	console.log(calendar);
 	//item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	calendar[item.parent().attr('data-id')][item.attr('data-day')] = activeRole;
+	//calendar[item.parent().attr('data-id')][item.attr('data-day')] = activeRole;
 	//checkCalendar();
 }
 
