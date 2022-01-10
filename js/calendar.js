@@ -75,8 +75,6 @@ function calendarClick(item) {
 	item.css('background', activeColor);
 }
 
-
-
 function checkCalendar() {
 	if (calen.join() == oldCalen.join()) {
 		console.log('check');

@@ -245,3 +245,6 @@ input.managerCheckbox {
 	margin-top:  30px;
 }
 
+.calendarButtons {
+	display: none;
+}
