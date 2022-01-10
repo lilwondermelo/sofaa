@@ -1,5 +1,6 @@
 let activeColor = 'none';
 let activeRole = 0;
+let calendar = [];
 
 function getManagersCalendar() {
 	$.ajax({
@@ -10,7 +11,7 @@ function getManagersCalendar() {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
-        	console.log(data.data.data);
+        	getCalendarMap();
         } else {
             console.log(data);
         }
@@ -25,6 +26,7 @@ function getCalendarStations() {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarStations').html(data.data);
+        	getManagersCalendar();
         } else {
             console.log(data);
         }
@@ -70,9 +72,19 @@ function calendarClick(item) {
 
 
 function getCalendarMap() {
-	//
+	$('.calendarRow').each(function() {
+		if (!$(this).hasClass('calendarRowStations')) {
+			let managerId = $(this).attr('data-id');
+			calendar[managerId] = [];
+			$(this).find('.calendarRowItem').each(function() {
+				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
+					calendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
+				}
+			})
+		}
+	})
+	console.log(calendar);
 }
 
 
-getManagersCalendar();
 getCalendarStations();
