@@ -210,6 +210,10 @@ if (!$data = $dataSource->getData()) {
 		}
 		return $html;
 	}
+
+	public function saveCalendar($data) {
+		return $data;
+	}
 }
 
 ?>
