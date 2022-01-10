@@ -151,17 +151,15 @@ if (!$data = $dataSource->getData()) {
 			for ($i = 1; $i <= $daysInMonth; $i++) {
 				$flag = 0;
 				foreach ($manager as $shift) {
-					if ($shift['day']) {
-						if ($shift['day'] == $id) {
-							$flag = 1;
-							$role = $shift['role'];
-							break;
-						}
+					if ($shift['day'] == $i) {
+						$flag = 1;
+						$role = $shift['role'];
+						break;
 					}
 					
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' . $shift['day'] . '"></div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' . (($flag == 1)?$role:'0') . '"></div>';
 			}
 			$html .= '</div>';
 		}
