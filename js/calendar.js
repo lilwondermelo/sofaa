@@ -1,7 +1,7 @@
 let activeColor = 'none';
 let activeRole = 0;
-let calendar = [];
-let oldCalendar = [];
+let calen = [];
+let oldCalen = [];
 getCalendarStations();
 function getManagersCalendar() {
 	$.ajax({
@@ -12,7 +12,8 @@ function getManagersCalendar() {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
-        	getCalendarMap();
+        	calen = getCalendarMap();
+        	oldCalen = calen;
         	$('.calendarRowItemStations[data-id="1"]').click();
         } else {
             console.log(data);
@@ -39,11 +40,9 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).removeClass('selectedDay');
 		$(this).attr('data-id', 0);
 		$(this).css('background', 'none');
-		calendar[$(this).parent().attr('data-id')][$(this).attr('data-day')] = '0';
 	}
 	else {
 		$(this).addClass('selectedDay');
-		calendarClick($(this));
 	}
 })
 
@@ -68,19 +67,19 @@ function setStation(item) {
 }
 
 
-function calendarClick(item) {
-	console.log(oldCalendar);
-	console.log(calendar);
-	//item.attr('data-id', activeRole);
+function calendarClick() {
+	console.log(oldCalen);
+	console.log(calen);
+	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	//calendar[item.parent().attr('data-id')][item.attr('data-day')] = activeRole;
-	//checkCalendar();
+	calen = getCalendarMap();
+	checkCalendar();
 }
 
 
 
 function checkCalendar() {
-	if (calendar == oldCalendar) {
+	if (cal == oldCalen) {
 		console.log('check');
 	}
 	else {
@@ -89,20 +88,19 @@ function checkCalendar() {
 }
 
 function getCalendarMap() {
+	let cal = [];
 	$('.calendarRow').each(function() {
 		if (!$(this).hasClass('calendarRowStations')) {
 			let managerId = $(this).attr('data-id');
-			calendar[managerId] = [];
+			cal[managerId] = [];
 			$(this).find('.calendarRowItem').each(function() {
 				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
-					calendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
-					oldCalendar = calendar;
-					console.log(1);
+					cal[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
 				}
 			})
 		}
 	})
-	
+	return cal;
 }
 
 
