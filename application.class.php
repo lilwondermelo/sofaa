@@ -136,7 +136,7 @@ if (!$data = $dataSource->getData()) {
 
 	public function getManagersCalendar() {
 		require_once '_dataSource.class.php';
-		$query = 'select *, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
+		$query = 'select *, day(mm.date), (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$reduced = $this->reduceByKey($data);
@@ -155,7 +155,7 @@ if (!$data = $dataSource->getData()) {
 					$flag = 1;
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '"></div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' .  . '"></div>';
 			}
 			$html .= '</div>';
 		}
