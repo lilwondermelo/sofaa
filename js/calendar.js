@@ -76,10 +76,10 @@ function calendarClick(item) {
 
 
 function setCalendarMap(id, day, role) {
-	newCalendar[id][day].set(role);
+	//newCalendar[id][day] = role;
 	console.log(newCalendar);
 	console.log(calendar);
-	checkCalendar();
+	//checkCalendar();
 }
 
 function checkCalendar() {
