@@ -43,7 +43,12 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 	}
 	else {
 		$(this).addClass('selectedDay');
+		calendarClick(item);
 	}
+	console.log(oldCalen);
+	console.log(calen);
+	calen = getCalendarMap();
+	checkCalendar();
 })
 
 
@@ -67,13 +72,9 @@ function setStation(item) {
 }
 
 
-function calendarClick() {
-	console.log(oldCalen);
-	console.log(calen);
+function calendarClick(item) {
 	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	calen = getCalendarMap();
-	checkCalendar();
 }
 
 
