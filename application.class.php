@@ -159,6 +159,7 @@ if (!$data = $dataSource->getData()) {
 				<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
 				$flag = 0;
+				$id = '0';
 				foreach ($manager as $shift) {
 					if ($shift['day'] == $i) {
 						$flag = 1;
