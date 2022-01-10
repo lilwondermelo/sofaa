@@ -11,6 +11,7 @@ function getManagersCalendar() {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
+        	console.log(data.data.data);
         	$('.calendarRowItemStations[data-id="1"]').click();
         } else {
             console.log(data);
