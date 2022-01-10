@@ -71,10 +71,10 @@ function setStation(item) {
 function calendarClick(item) {
 	console.log(oldCalendar);
 	console.log(calendar);
-	item.attr('data-id', activeRole);
+	//item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	calendar[item.parent().attr('data-id')][item.attr('data-day')] = 5;
-	checkCalendar();
+	calendar[item.parent().attr('data-id')][item.attr('data-day')] = activeRole;
+	//checkCalendar();
 }
 
 
