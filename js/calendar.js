@@ -44,8 +44,6 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		calendarClick($(this));
 		changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
 	}
-	
-	console.log(changed);
 	checkCalendar();
 })
 
@@ -74,7 +72,7 @@ function calendarClick(item) {
 }
 
 function checkCalendar() {
-	if (changed) {
+	if (changed.length == 0) {
 		$('.calendarButtons').css('visibility', 'hidden');
 	}
 	else {
