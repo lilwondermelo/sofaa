@@ -135,6 +135,16 @@ if (!$data = $dataSource->getData()) {
 	}
 
 	public function getManagersCalendar() {
+
+		require_once '_dataSource.class.php';
+		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id';
+		$dataSource = new DataSource($query);
+		$data = $dataSource->getData();
+		$colors = [];
+		$colors[0] = 'none';
+		foreach ($data as $item) {
+			$colors[$item['id']] = $item['color'];
+		}
 		require_once '_dataSource.class.php';
 		$query = 'select *, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
 		$dataSource = new DataSource($query);
@@ -156,10 +166,9 @@ if (!$data = $dataSource->getData()) {
 						$role = $shift['role'];
 						break;
 					}
-					
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' . (($flag == 1)?$role:'0') . '"></div>';
+					<div class="calendarRowItem" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '"></div>';
 			}
 			$html .= '</div>';
 		}
