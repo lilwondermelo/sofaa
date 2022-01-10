@@ -240,5 +240,8 @@ input.managerCheckbox {
 }
 
 
-
+.calendarMenu  {
+	justify-content: space-evenly;
+	margin-top:  30px;
+}
 
