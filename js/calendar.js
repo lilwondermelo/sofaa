@@ -1,7 +1,6 @@
 let activeColor = 'none';
 let activeRole = 0;
-let calen = [];
-let oldCalen = [];
+let changed = [];
 getCalendarStations();
 function getManagersCalendar() {
 	$.ajax({
@@ -12,8 +11,6 @@ function getManagersCalendar() {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
-        	calen = getCalendarMap();
-        	oldCalen = calen;
         	$('.calendarRowItemStations[data-id="1"]').click();
         } else {
             console.log(data);
@@ -45,11 +42,9 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).addClass('selectedDay');
 		calendarClick($(this));
 	}
-	calen = getCalendarMap();
+	changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
 	checkCalendar();
 })
-
-
 
 
 
@@ -82,22 +77,6 @@ function checkCalendar() {
 	else {
 		$('.calendarButtons').css('visibility', 'visible');
 	}
-}
-
-function getCalendarMap() {
-	let cal = [];
-	$('.calendarRow').each(function() {
-		if (!$(this).hasClass('calendarRowStations')) {
-			let managerId = $(this).attr('data-id');
-			cal[managerId] = [];
-			$(this).find('.calendarRowItem').each(function() {
-				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
-					cal[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
-				}
-			})
-		}
-	})
-	return cal;
 }
 
 
