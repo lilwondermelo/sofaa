@@ -81,7 +81,8 @@ function setCalendarMap(id, day, role) {
 
 function checkCalendar() {
 	if (calendar == newCalendar) {
-		console.log('check');
+		console.log(calendar);
+		console.log(newCalendar);
 	}
 	else {
 		console.log('not check');
