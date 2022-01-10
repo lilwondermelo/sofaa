@@ -1,6 +1,6 @@
 let activeColor = 'none';
 let activeRole = 0;
-let changed = [];
+let changed = {};
 getCalendarStations();
 function getManagersCalendar() {
 	$.ajax({
@@ -45,10 +45,10 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		
 	}
 	if ($(this).attr('data-id') != $(this).attr('data-old-id')) {
-		changed[+('' + $(this).attr('data-day') + $(this).parent().attr('data-id') + $(this).attr('data-day'))] = {role: $(this).attr('data-id'), id: $(this).attr('data-index')};
+		changed['' + $(this).attr('data-day') + '-' + $(this).parent().attr('data-id') + $(this).attr('data-day')] = {role: $(this).attr('data-id'), id: $(this).attr('data-index')};
 	}
 	else {
-		delete changed[+('' + $(this).attr('data-day') + $(this).parent().attr('data-id') + $(this).attr('data-day'))];
+		delete changed['' + $(this).attr('data-day') + '-' + $(this).parent().attr('data-id') + $(this).attr('data-day')];
 	}
 	
 	checkCalendar();
