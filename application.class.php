@@ -212,7 +212,20 @@ if (!$data = $dataSource->getData()) {
 	}
 
 	public function saveCalendar($data) {
-		return $data;
+		$result_upd = [];
+		foreach ($data as $key => $item) {
+			require_once '_dataRowUpdater.class.php';
+			$updater = new DataRowUpdater('managers_meta');
+			if ($item['id'] > 0) {
+				$updater->setKeyField('id', $item['id']);
+			}
+			else {
+				$updater->setKeyField('id');
+			}
+			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role'], 'star' => 0]);
+			$result_upd[] = $updater->update();
+		}
+		return $result_upd;
 	}
 }
 
