@@ -38,15 +38,14 @@ function getCalendarStations() {
 $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function() {
 	if ($(this).hasClass('selectedDay')) {
 		$(this).removeClass('selectedDay');
-		$(this).attr('data-id', 0);
+		$(this).attr('data-id', '0');
 		$(this).css('background', 'none');
 	}
 	else {
 		$(this).addClass('selectedDay');
 		calendarClick($(this));
 	}
-	console.log(oldCalen);
-	console.log(calen);
+	
 	calen = getCalendarMap();
 	checkCalendar();
 })
@@ -80,6 +79,8 @@ function calendarClick(item) {
 
 
 function checkCalendar() {
+	console.log(oldCalen);
+	console.log(calen);
 	if (calen == oldCalen) {
 		console.log('check');
 	}
