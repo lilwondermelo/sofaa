@@ -178,7 +178,7 @@ if (!$data = $dataSource->getData()) {
 	public function reduceByKey($arr) {
     	$res = [];
 		foreach ($arr as $value) {
-		    $res[$value['yc_id']][] = array_slice($value, 1);
+		    $res[$value['yc']][] = array_slice($value, 1);
 		}
 		return $res;
 	}
