@@ -72,7 +72,7 @@ function calendarClick(item) {
 }
 
 function checkCalendar() {
-	if (Object.keys(changedr).length == 0) {
+	if (Object.keys(changed).length == 0) {
 		$('.calendarButtons').css('visibility', 'hidden');
 	}
 	else {
