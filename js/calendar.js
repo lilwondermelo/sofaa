@@ -102,6 +102,7 @@ function getCalendarMap() {
 				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
 					calendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
 					oldCalendar = calendar;
+					console.log(1);
 				}
 			})
 		}
