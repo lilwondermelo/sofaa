@@ -72,6 +72,7 @@ function calendarClick(item) {
 }
 
 function checkCalendar() {
+	console.log(changed);
 	if (changed.length == 0) {
 		$('.calendarButtons').css('visibility', 'hidden');
 	}
