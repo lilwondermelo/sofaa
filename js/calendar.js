@@ -98,7 +98,8 @@ function saveCalendar() {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-        	console.log(data);
+        	changed = {};
+        	checkCalendar();
         } else {
             console.log(data);
         }
