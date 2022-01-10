@@ -90,7 +90,7 @@ function checkCalendar() {
 
 
 function saveCalendar() {
-	console.log(JSON.stringify(changed));
+	console.log(changed.toString());
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
