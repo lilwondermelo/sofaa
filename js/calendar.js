@@ -33,6 +33,8 @@ function getCalendarStations() {
 $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function() {
 	if ($(this).hasClass('selectedDay')) {
 		$(this).removeClass('selectedDay');
+		$(this).attr('data-id', 0);
+		$(this).css('background', 'none');
 	}
 	else {
 		$(this).addClass('selectedDay');
