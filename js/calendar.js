@@ -77,10 +77,10 @@ function calendarClick(item) {
 
 function checkCalendar() {
 	if (calen.join() == oldCalen.join()) {
-		$('.calendarButtons').css('display', 'none');
+		$('.calendarButtons').css('visibility', 'hidden');
 	}
 	else {
-		$('.calendarButtons').css('display', 'flex');
+		$('.calendarButtons').css('visibility', 'visible');
 	}
 }
 
