@@ -220,3 +220,16 @@ input.managerCheckbox {
 .selectedDay {
 	background: #B40097;
 }
+
+
+.calendarStations {
+	margin-top:  30px;
+}
+
+.calendarRowItemNameStations {
+	width: 500px;
+}
+
+.calendarRowStations {
+	margin:  5px 0;
+}
