@@ -43,7 +43,13 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		calendarClick($(this));
 		
 	}
-	changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
+	if ($(this).attr('data-id') != $(this).attr('data-old_id')) {
+		changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
+	}
+	else {
+		delete changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')];
+	}
+	
 	checkCalendar();
 })
 
