@@ -12,6 +12,7 @@ function getManagersCalendar() {
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
         	getCalendarMap();
+        	$('.calendarRowItemStations[data-id="1"]').click();
         } else {
             console.log(data);
         }
@@ -88,3 +89,6 @@ function getCalendarMap() {
 
 
 getCalendarStations();
+
+
+
