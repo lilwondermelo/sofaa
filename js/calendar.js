@@ -37,12 +37,14 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).removeClass('selectedDay');
 		$(this).attr('data-id', '0');
 		$(this).css('background', 'none');
+		changed.splice('' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day'), 1);
 	}
 	else {
 		$(this).addClass('selectedDay');
 		calendarClick($(this));
+		changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
 	}
-	changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
+	
 	console.log(changed);
 	checkCalendar();
 })
