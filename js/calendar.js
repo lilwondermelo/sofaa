@@ -1,7 +1,7 @@
 let activeColor = 'none';
 let activeRole = 0;
 let calendar = [];
-let newCalendar = [];
+let oldCalendar = [];
 
 function getManagersCalendar() {
 	$.ajax({
@@ -69,23 +69,23 @@ function setStation(item) {
 
 
 function calendarClick(item) {
-	console.log(newCalendar);
+	console.log(oldCalendar);
 	console.log(calendar);
 	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	//setCalendarMap(item.parent().attr('data-id'), item.attr('data-day'), activeRole);
+	setCalendarMap(item.parent().attr('data-id'), item.attr('data-day'), activeRole);
 }
 
 
 function setCalendarMap(id, day, role) {
-	newCalendar[id][day] = role;
-	console.log(newCalendar);
+	calendar[id][day] = role;
+	console.log(oldCalendar);
 	console.log(calendar);
-	//checkCalendar();
+	checkCalendar();
 }
 
 function checkCalendar() {
-	if (calendar == newCalendar) {
+	if (calendar == oldCalendar) {
 		console.log('check');
 	}
 	else {
@@ -101,12 +101,12 @@ function getCalendarMap() {
 			$(this).find('.calendarRowItem').each(function() {
 				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
 					calendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
-
+					oldCalendar = calendar;
 				}
 			})
 		}
 	})
-	newCalendar = calendar;
+	
 }
 
 
