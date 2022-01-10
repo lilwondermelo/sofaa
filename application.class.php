@@ -149,8 +149,8 @@ if (!$data = $dataSource->getData()) {
 			<div class="calendarRow row"> 
 				<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
-				$flag = 0;
 				foreach ($manager as $shift) {
+					$flag = 0;
 					if ($shift['day'] == $id) {
 						$flag = 1;
 						$role = $shift['role'];
