@@ -39,7 +39,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).removeClass('selectedDay');
 		$(this).attr('data-id', 0);
 		$(this).css('background', 'none');
-		setCalendarMap($(this).parent().attr('data-id'), $(this).attr('data-day'), 0);
+		calendar[$(this).parent().attr('data-id')][$(this).attr('data-day')] = '0';
 	}
 	else {
 		$(this).addClass('selectedDay');
