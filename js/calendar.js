@@ -73,16 +73,11 @@ function calendarClick(item) {
 	console.log(calendar);
 	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	setCalendarMap(item.parent().attr('data-id'), item.attr('data-day'), activeRole);
-}
-
-
-function setCalendarMap(id, day, role) {
-	calendar[id][day] = role;
-	console.log(oldCalendar);
-	console.log(calendar);
+	calendar[item.parent().attr('data-id')][item.attr('data-day')] = activeRole;
 	checkCalendar();
 }
+
+
 
 function checkCalendar() {
 	if (calendar == oldCalendar) {
