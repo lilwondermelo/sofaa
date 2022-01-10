@@ -2,7 +2,7 @@ let activeColor = 'none';
 let activeRole = 0;
 let calendar = [];
 let oldCalendar = [];
-
+getCalendarStations();
 function getManagersCalendar() {
 	$.ajax({
         type: "POST",
@@ -110,7 +110,7 @@ function getCalendarMap() {
 }
 
 
-getCalendarStations();
+
 
 
 
