@@ -78,9 +78,9 @@ function calendarClick(item) {
 
 
 function checkCalendar() {
-	console.log(JSON.stringify(oldCalen));
-	console.log(JSON.stringify(calen));
-	if (calen == oldCalen) {
+	console.log(oldCalen.join());
+	console.log(calen.join());
+	if (calen.join() == oldCalen.join()) {
 		console.log('check');
 	}
 	else {
