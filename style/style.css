@@ -234,3 +234,7 @@ input.managerCheckbox {
 .calendarRowStations {
 	margin:  5px 0;
 }
+
+.selectedStation {
+	border: 2px solid #54026E;
+}
