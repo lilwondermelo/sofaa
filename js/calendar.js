@@ -45,7 +45,6 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).addClass('selectedDay');
 		calendarClick($(this));
 	}
-	
 	calen = getCalendarMap();
 	checkCalendar();
 })
@@ -79,8 +78,8 @@ function calendarClick(item) {
 
 
 function checkCalendar() {
-	console.log(oldCalen);
-	console.log(calen);
+	console.log(JSON.stringify(oldCalen));
+	console.log(JSON.stringify(calen));
 	if (calen == oldCalen) {
 		console.log('check');
 	}
