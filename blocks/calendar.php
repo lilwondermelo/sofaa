@@ -34,13 +34,17 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
 }*/
 ?>
 
-<div class="calendarArea">
-	
-</div>
-<div class="calendarStations">
-	
-</div>
+	<div class="calendarArea">
+		
+	</div>
+	<div class="calendarMenu row">
+		<div class="calendarStations">
+		
+		</div>
+		<div class="calendarButtons">
+			<div class="button calendarButtonCancel" onclick="clearCalendar();">Сброс</div>
+			<div class="button calendarButtonSave" onclick="saveCalendar();">Сохранить</div>
+		</div>
+	</div>
 </div>
 <script type="text/javascript" src="js/calendar.js"></script>
-
-
