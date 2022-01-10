@@ -76,15 +76,12 @@ function calendarClick(item) {
 
 
 function setCalendarMap(id, day, role) {
-	newCalendar[id][day] = role;
-	console.log(calendar);
-		console.log(newCalendar)
 	checkCalendar();
 }
 
 function checkCalendar() {
 	if (calendar == newCalendar) {
-		;
+		console.log('check');
 	}
 	else {
 		console.log('not check');
@@ -98,12 +95,15 @@ function getCalendarMap() {
 			calendar[managerId] = [];
 			$(this).find('.calendarRowItem').each(function() {
 				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
-					calendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
+					newCalendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
 				}
 			})
 		}
 	})
-	newCalendar = calendar;
+	if (calendar == []) {
+		calendar = newCalendar;
+	}
+	checkCalendar();
 }
 
 
