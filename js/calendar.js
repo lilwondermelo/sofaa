@@ -37,3 +37,4 @@ $('body').on('click', '.calendarRowItem', function() {
 	}
 })
 getManagersCalendar();
+getCalendarStations();
