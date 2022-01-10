@@ -150,12 +150,15 @@ if (!$data = $dataSource->getData()) {
 				<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
 				$flag = 0;
-				$days = explode(',', $manager[0]['days']);
-				if (in_array($i, $days)) {
-					$flag = 1;
+				foreach ($manager as $shift) {
+					if ($shift['day'] == $id) {
+						$flag = 1;
+						$role = $shift['role'];
+						break;
+					}
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' .  . '"></div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' . (($flag == 1)?$role:0) . '"></div>';
 			}
 			$html .= '</div>';
 		}
