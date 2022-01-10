@@ -69,5 +69,10 @@ function calendarClick(item) {
 }
 
 
+function getCalendarMap() {
+	//
+}
+
+
 getManagersCalendar();
 getCalendarStations();

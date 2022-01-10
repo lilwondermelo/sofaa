@@ -135,7 +135,6 @@ if (!$data = $dataSource->getData()) {
 	}
 
 	public function getManagersCalendar() {
-
 		require_once '_dataSource.class.php';
 		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id';
 		$dataSource = new DataSource($query);
@@ -156,7 +155,7 @@ if (!$data = $dataSource->getData()) {
 		$daysInMonth = $this->daysInMonth($month, $year);
 		foreach ($reduced as $key => $manager) {
 			$html .= '
-			<div class="calendarRow row"> 
+			<div class="calendarRow row" data-id="' . $manager[0]['yc_id'] . '"> 
 				<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 			for ($i = 1; $i <= $daysInMonth; $i++) {
 				$flag = 0;
