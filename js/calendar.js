@@ -62,7 +62,7 @@ function setStation(item) {
 
 
 function calendarClick(item) {
-	item.attr('data-id') = activeRole;
+	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
 }
 
