@@ -70,7 +70,7 @@ function setStation(item) {
 function calendarClick(item) {
 	item.attr('data-id', activeRole);
 	item.css('background', activeColor);
-	setCalendarMap(item.parent.attr('data-id'), item.attr('data-day'), activeRole);
+	setCalendarMap(item.parent().attr('data-id'), item.attr('data-day'), activeRole);
 }
 
 
