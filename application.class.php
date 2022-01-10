@@ -161,7 +161,7 @@ if (!$data = $dataSource->getData()) {
 					
 				}
 				$html .= '
-					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' . (($flag == 1)?$role:'0') . '"></div>';
+					<div class="calendarRowItem ' . (($flag == 1)?'selectedDay':'') . '" data-id="' . (($flag == 1)?$shift['day']:'0') . '"></div>';
 			}
 			$html .= '</div>';
 		}
