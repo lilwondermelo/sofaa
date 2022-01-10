@@ -212,7 +212,7 @@ if (!$data = $dataSource->getData()) {
 	}
 
 	public function saveCalendar($data) {
-		return $data;
+		return true;
 	}
 }
 
