@@ -30,7 +30,7 @@ function getCalendarStations() {
         }
     });
 }
-$('body').on('click', '.calendarRowItem', function() {
+$('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function() {
 	if ($(this).hasClass('selectedDay')) {
 		$(this).removeClass('selectedDay');
 	}
