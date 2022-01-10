@@ -92,7 +92,7 @@ function getCalendarMap() {
 	$('.calendarRow').each(function() {
 		if (!$(this).hasClass('calendarRowStations')) {
 			let managerId = $(this).attr('data-id');
-			calendar[managerId] = [];
+			newCalendar[managerId] = [];
 			$(this).find('.calendarRowItem').each(function() {
 				if (!($(this).hasClass('calendarRowItemStations')) || ($(this).hasClass('calendarRowItemName'))) {
 					newCalendar[managerId][$(this).attr('data-day')] = $(this).attr('data-id');
