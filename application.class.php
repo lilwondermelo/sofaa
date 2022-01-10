@@ -167,7 +167,7 @@ if (!$data = $dataSource->getData()) {
 					}
 				}
 				$html .= '
-					<div class="calendarRowItem" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '"></div>';
+					<div class="calendarRowItem" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-day="' . $i . '"></div>';
 			}
 			$html .= '</div>';
 		}
