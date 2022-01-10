@@ -78,8 +78,6 @@ function calendarClick(item) {
 
 
 function checkCalendar() {
-	console.log(oldCalen.join());
-	console.log(calen.join());
 	if (calen.join() == oldCalen.join()) {
 		console.log('check');
 	}
