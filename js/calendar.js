@@ -37,13 +37,13 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 		$(this).removeClass('selectedDay');
 		$(this).attr('data-id', '0');
 		$(this).css('background', 'none');
-		delete changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')];
 	}
 	else {
 		$(this).addClass('selectedDay');
 		calendarClick($(this));
-		changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
+		
 	}
+	changed['' + $(this).parent().attr('data-id') + ',' + $(this).attr('data-day')] = $(this).attr('data-id');
 	checkCalendar();
 })
 
