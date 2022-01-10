@@ -43,7 +43,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 	}
 	else {
 		$(this).addClass('selectedDay');
-		calendarClick(item);
+		calendarClick($(this));
 	}
 	console.log(oldCalen);
 	console.log(calen);
