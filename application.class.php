@@ -194,6 +194,7 @@ if (!$data = $dataSource->getData()) {
 					<div class="calendarRowItem " style="background:' . $filial['color'] . ';" data-id="' . $filial['id'] . '"></div> 
 				</div>';
 		}
+		return $html;
 	}
 }
 
