@@ -1,3 +1,6 @@
+let activeColor = 'none';
+let activeRole = 0;
+
 function getManagersCalendar() {
 	$.ajax({
         type: "POST",
@@ -28,13 +31,42 @@ function getCalendarStations() {
     });
 }
 $('body').on('click', '.calendarRowItem', function() {
-	console.log($(this));
 	if ($(this).hasClass('selectedDay')) {
 		$(this).removeClass('selectedDay');
 	}
 	else {
 		$(this).addClass('selectedDay');
+		calendarClick($(this));
 	}
 })
+
+
+
+
+
+
+$('body').on('click', '.calendarRowItemStations', function() {
+	if (!$(this).hasClass('selectedStation')) {
+		setStation($(this));
+	}
+})
+
+
+
+function setStation(item) {
+	$('.calendarRowItemStations').removeClass('selectedStation');
+	item.addClass('selectedStation');
+	activeColor = item.css('background');
+	activeRole = item.attr('data-id');
+}
+
+
+function calendarClick(item) {
+	item.attr('data-id') = activeRole;
+	item.css('background', activeColor);
+}
+
+
+
 getManagersCalendar();
 getCalendarStations();
