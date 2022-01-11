@@ -45,6 +45,6 @@ for ($i = 0; $i < 20; $i++) {
 	$keys[] = array_shift($output);
 }
 $rows = (count($output)-1)/20-1;
-echo json_encode($keys);
+echo json_encode($keys, JSON_UNESCAPED_UNICODE);
 
 ?>
