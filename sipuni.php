@@ -1,7 +1,7 @@
 <?php 
 $user = '077086';
-$from = date('d.m.Y');
-$to = date('d.m.Y');
+$from = '11.01.2022';
+$from = '11.01.2022';
 $type = '0';
 $state = '0';
 $tree = '';
