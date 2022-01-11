@@ -53,7 +53,7 @@ for ($i = 0; $i < $rows; $i++) {
 	}
 }
 
-var_dump ($result);
+echo json_encode($result);
 
 
 ?>
