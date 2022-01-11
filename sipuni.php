@@ -53,7 +53,9 @@ for ($i = 0; $i < $rows; $i++) {
 	}
 }
 
-var_dump ($result);
+foreach ($result[0] as $key => $value) {
+	echo $key . ' ' . $value . '<br>';
+}
 
 
 ?>
