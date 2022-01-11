@@ -38,5 +38,5 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $output = curl_exec($ch);
 curl_close($ch);
-$output = str_getcsv($output, ";", "\"","\\");
+$output = json_encode(str_getcsv($output, ";", "\"","\\"));
 echo $output; ?>
