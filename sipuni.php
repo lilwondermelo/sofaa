@@ -1,4 +1,7 @@
 <?php 
+$user = '077086';
+$from = date('d.m.Y');
+$to = date('d.m.Y');
 $type = '0';
 $state = '0';
 $tree = '';
@@ -9,19 +12,22 @@ $anonymous = '1';
 $firstTime = '0';
 $secret = '0.tbcax93m7wn';
 
-$hashString = join('+', array($anonymous, $firstTime, $fromNumber, $state, $toAnswer, $toNumber, $tree, $type, $secret));
+$hashString = join('+', array($anonymous, $firstTime, $from, $fromNumber, $state, $to, $toAnswer, $toNumber, $tree, $type, $user, $secret));
 $hash = md5($hashString);
 
 $url = 'https://sipuni.com/api/statistic/export';
 $query = http_build_query(array(
     'anonymous' => $anonymous,
     'firstTime' => $firstTime,
+    'from' => $from,
     'fromNumber' => $fromNumber,
     'state' => $state,
+    'to' => $to,
     'toAnswer' => $toAnswer,
     'toNumber' => $toNumber,
     'tree' => $tree,
     'type' => $type,
+    'user' => $user,
     'hash' => $hash,
 ));
 
@@ -34,6 +40,4 @@ $output = curl_exec($ch);
 curl_close($ch);
 
 header("Content-Disposition: attachment; filename=stat_$from-$to.csv");
-echo $output;
-
- ?>
+echo $output; ?>
