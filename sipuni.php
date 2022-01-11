@@ -40,10 +40,11 @@ $output = curl_exec($ch);
 curl_close($ch);
 $output = str_getcsv($output, ";", "\"","\\");
 array_shift($output);
-
-$new = array_slice($output, 1);
+$keys = [];
+for ($i = 0; $i < 20; $i++) {
+	$keys[] = array_shift($output);
+}
 $rows = (count($output)-1)/20-1;
-
-echo $output[0];
+echo json_encode($keys);
 
 ?>
