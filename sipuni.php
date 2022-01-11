@@ -41,10 +41,9 @@ curl_close($ch);
 $output = str_getcsv($output, ";", "\"","\\");
 array_unshift($output);
 
-$new = array_slice($data, 1);
+$new = array_slice($output, 1);
 $rows = (count($output)-1)/20-1;
-$keys = 
-for ($i = 0)
-echo $rows;
+
+echo $output;
 
 ?>
