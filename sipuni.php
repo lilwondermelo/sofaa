@@ -39,8 +39,12 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $output = curl_exec($ch);
 curl_close($ch);
 $output = str_getcsv($output, ";", "\"","\\");
+array_unshift($output);
 
+$new = array_slice($data, 1);
 $rows = (count($output)-1)/20-1;
-
+$keys = 
+for ($i = 0)
 echo $rows;
+
 ?>
