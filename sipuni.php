@@ -1,0 +1,39 @@
+<?php 
+$type = '0';
+$state = '0';
+$tree = '';
+$fromNumber = '';
+$toNumber = '';
+$toAnswer = '';
+$anonymous = '1';
+$firstTime = '0';
+$secret = '0.tbcax93m7wn';
+
+$hashString = join('+', array($anonymous, $firstTime, $fromNumber, $state, $toAnswer, $toNumber, $tree, $type, $secret));
+$hash = md5($hashString);
+
+$url = 'https://sipuni.com/api/statistic/export';
+$query = http_build_query(array(
+    'anonymous' => $anonymous,
+    'firstTime' => $firstTime,
+    'fromNumber' => $fromNumber,
+    'state' => $state,
+    'toAnswer' => $toAnswer,
+    'toNumber' => $toNumber,
+    'tree' => $tree,
+    'type' => $type,
+    'hash' => $hash,
+));
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$output = curl_exec($ch);
+curl_close($ch);
+
+header("Content-Disposition: attachment; filename=stat_$from-$to.csv");
+echo $output;
+
+ ?>
