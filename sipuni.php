@@ -38,6 +38,5 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $output = curl_exec($ch);
 curl_close($ch);
-
-header("Content-Disposition: attachment; filename=stat_$from-$to.csv");
+$output = str_getcsv($output, ";", "\"","\\");
 echo $output; ?>
