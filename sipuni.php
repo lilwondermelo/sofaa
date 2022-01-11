@@ -44,6 +44,6 @@ array_unshift($output);
 $new = array_slice($output, 1);
 $rows = (count($output)-1)/20-1;
 
-echo $output;
+echo $output[0];
 
 ?>
