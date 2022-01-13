@@ -3,7 +3,7 @@
 require_once 'application.class.php';
 $app = new Application();
 $data = $app->apiQuery();
-$updated = $data['info_updated']
+$updated = $data['info_updated'];
 $host = $data['hostname'];
 $online = $data['players'];
 $maxplayers = $data['maxplayers'];
