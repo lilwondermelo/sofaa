@@ -327,9 +327,7 @@ order by r.datetime desc';
 		$this->authHeader = 'Bearer ' . $this->account->getAmoBearer();
 		$this->link = 'https://'.$this->account->getAmoHost().'.amocrm.ru/api/v4/leads';
 		$this->method = 'PATCH';
-
 		$stat = (int)$dealData['attendance'] + 2;
-
 		if ($stat == 3) {
 			if (((int)$dealData['datetime'] < strtotime(date("Y-m-d H:i:s") . '-1 days')) && ((int)$dealData['datetime'] >= strtotime(date("Y-m-d H:i:s") . '-2 days'))) {
 				$stat = 5; // 5 - ожидает отзыва
