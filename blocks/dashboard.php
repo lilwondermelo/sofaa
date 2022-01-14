@@ -62,6 +62,6 @@ if ($data = $dataSource->getData()) {
 	}
 	echo '</div> 
 	<script src="js/dashboard.js"></script>';
-	echo json_encode($query);
+	echo json_encode($data);
 }
 ?>
