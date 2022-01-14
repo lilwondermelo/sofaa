@@ -1,3 +1,8 @@
+<?php 
+require_once 'application.class.php';
+$app = new Application();
+$app->checkCalls();
+?>
 <!DOCTYPE html>
 <html>
 <head>

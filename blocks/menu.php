@@ -1,5 +1,6 @@
 <div class="menuInner">
 <?php 
+
 require_once '_dataSource.class.php';
 $query = 'select * from menu_items';
 $dataSource = new DataSource($query);
