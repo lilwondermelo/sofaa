@@ -52,6 +52,7 @@ for ($i = 0; $i < $rows; $i++) {
 		$result[$i][$keys[$j]] = array_shift($output);
 	}
 }
+echo count($result) . '<br><br>';
 foreach ($result as $item) {
     foreach ($item as $key => $value) {
         echo $key . ' ' . $value . '<br>';
