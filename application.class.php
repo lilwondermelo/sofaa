@@ -137,7 +137,7 @@ if (!$data = $dataSource->getData()) {
 <div class="managersButtons row">
 	<div class="button managersCancel" onclick="clearManagers();">Сброс</div>
 	<div class="button managersSave" onclick="saveManagers();">Удалить</div>
-</div> 
+</div>
 <div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
 		return $html;
 	}
@@ -246,6 +246,18 @@ if (!$data = $dataSource->getData()) {
 				$updater->setKeyField('id');
 			}
 			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role'], 'star' => 0]);
+			$result_upd[] = $updater->update();
+		}
+		return $result_upd;
+	}
+
+	public function addCall($id, $data) {
+		$result_upd = [];
+		foreach ($managersList as $manager) {
+			require_once '_dataRowUpdater.class.php';
+			$updater = new DataRowUpdater('calls');
+			$updater->setKeyField('id', $id);
+			$updater->setDataFields($data);
 			$result_upd[] = $updater->update();
 		}
 		return $result_upd;

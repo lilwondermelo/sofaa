@@ -1,4 +1,6 @@
 <?php 
+require_once 'application.class.php';
+$app = new Application();
 $user = '077086';
 $from = '01.01.2022';
 $to = '15.01.2022';
@@ -54,13 +56,19 @@ for ($i = 0; $i < $rows; $i++) {
 }
 //echo strtotime('today') . '<br><br>';
 //echo strtotime('today -1 day') . '<br><br>';
-echo count($result) . '<br><br>';
+$counter = 1;
 foreach ($result as $item) {
-    foreach ($item as $key => $value) {
-        echo $key . ' ' . $value . '<br>';
-    }
-    echo '<br>';
+    $idDb = $item['ID записи'];
+    $dateTimeDb = $item['Время'];
+    $fromDb = $item['Откуда'];
+    $toDb = $item['Куда'];
+    $callTimeDb = $item['Длительность звонка'];
+    $speakTimeDb = $item['Длительность разговора'];
+    $orderDb = $counter;
+    $dataDb = ['datetime' => $dateTimeDb, 'from' => $fromDb, 'to' => $toDb, 'calltime' => $callTimeDb, 'speaktime' => $speakTimeDb, 'order' => $orderDb];
+    $result = $app->addCall($idDb, $dataDb);
+    $counter++;
 }
-
+echo json_encode($result);
 
 ?>
