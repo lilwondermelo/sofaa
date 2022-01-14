@@ -18,7 +18,7 @@ where datetime < '. strtotime("tomorrow") . '
 and datetime > '. strtotime("today") . ' 
 and s2.id = mm.role 
 and ((c2.num_from = s2.phone) or (c2.num_to = s2.phone))) as calltime, 
-m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
+m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, mm.role as role from managers m 
 left join records r on m.yc_id = r.manager_id 
 and r.date_create > '. strtotime("today") . ' 
 and r.date_create < '. strtotime("tomorrow") . ' 
