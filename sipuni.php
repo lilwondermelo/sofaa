@@ -2,7 +2,7 @@
 require_once 'application.class.php';
 $app = new Application();
 $user = '077086';
-$from = '01.01.2022';
+$from = '14.01.2022';
 $to = '15.01.2022';
 $type = '0';
 $state = '0';
