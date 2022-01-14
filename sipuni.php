@@ -66,7 +66,7 @@ foreach ($result as $item) {
     $callTimeDb = $item['Длительность звонка'];
     $speakTimeDb = $item['Длительность разговора'];
     $orderDb = $counter;
-    $dataDb = ['datetime' => $dateTimeDb, 'from' => $fromDb, 'to' => $toDb, 'calltime' => $callTimeDb, 'speaktime' => $speakTimeDb, 'order' => $orderDb];
+    $dataDb = ['datetime' => strtotime($dateTimeDb), 'from' => $fromDb, 'to' => $toDb, 'calltime' => $callTimeDb, 'speaktime' => $speakTimeDb, 'order' => $orderDb];
     $resultDb[] = $app->addCall($idDb, $dataDb);
     $counter++;
 }
