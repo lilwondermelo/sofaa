@@ -202,9 +202,14 @@ input.managerCheckbox {
 	background: #FF0D00;
 }
 
-.itemActive:hover {
+.managersAddItem:hover {
 	background: #27a847;
 }
+
+.managersItem:hover {
+	background: #FF0D00;
+}
+
 .calendarHeadRowItem {
 	width: 26px;
 	height: 52px;
