@@ -135,10 +135,10 @@ if (!$data = $dataSource->getData()) {
 		}
 		$html .= '
 <div class="managersButtons row">
-	<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>
 	<div class="button managersCancel" onclick="clearManagers();">Сброс</div>
 	<div class="button managersSave" onclick="saveManagers();">Сохранить</div>
-</div>';
+</div> 
+<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
 		return $html;
 	}
 
