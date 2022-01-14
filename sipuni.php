@@ -44,7 +44,7 @@ $keys = [];
 for ($i = 0; $i < 20; $i++) {
 	$keys[] = array_shift($output);
 }
-$rows = (count($output)-1)/20-1;
+$rows = (count($output)-1)/20-1;$
 $result = [];
 for ($i = 0; $i < $rows; $i++) {
 	$result[$i] = [];
@@ -52,10 +52,10 @@ for ($i = 0; $i < $rows; $i++) {
 		$result[$i][$keys[$j]] = array_shift($output);
 	}
 }
-
-foreach ($result[0] as $key => $value) {
-	echo $key . ' ' . $value . '<br>';
-}
+echo json_encode($result);
+//foreach ($result[0] as $key => $value) {
+	//echo $key . ' ' . $value . '<br>';
+//}
 
 
 ?>
