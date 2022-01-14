@@ -262,3 +262,6 @@ input.managerCheckbox {
 .calendarButtons {
 	visibility: hidden;
 }
+.managersButtons {
+	display: none;
+}
