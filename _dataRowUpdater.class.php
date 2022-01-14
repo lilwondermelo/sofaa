@@ -166,7 +166,7 @@ class DataRowUpdater {
         if ($id) {
             $this->keyValue = $id;
         }
-        return deleteRow();
+        return $this->deleteRow();
         /*
           $query = 'delete from ' . $this->dataTable . ' where ' . $this->keyField . '=';
           if (is_string($this->keyValue)) {
