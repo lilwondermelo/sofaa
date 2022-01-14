@@ -138,7 +138,7 @@ class DataRowUpdater {
         if ($query->errno > 0) {
             $this->error = $query->error;
             $mysql->sqlClose();
-            return FALSE;
+            return $sqltext;
         }
         //возвращаем ID
         if ($query->insert_id > 0) {
@@ -208,7 +208,7 @@ class DataRowUpdater {
         $mysql = new DataConnector();
         if (!$mysql->sqlConnect()) {
             $this->error = $mysql->error;
-            return 1;
+            return FALSE;
         }
 
 
@@ -219,7 +219,7 @@ class DataRowUpdater {
         if ($query->errno > 0) {
             $this->error = $query->error;
             $mysql->sqlClose();
-            return $sqltext;
+            return FALSE;
         }
         return TRUE;
     }
