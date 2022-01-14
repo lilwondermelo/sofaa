@@ -208,7 +208,7 @@ class DataRowUpdater {
         $mysql = new DataConnector();
         if (!$mysql->sqlConnect()) {
             $this->error = $mysql->error;
-            return FALSE;
+            return 1;
         }
 
 
