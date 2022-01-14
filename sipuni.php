@@ -57,7 +57,7 @@ for ($i = 0; $i < $rows; $i++) {
 //echo strtotime('today') . '<br><br>';
 //echo strtotime('today -1 day') . '<br><br>';
 $counter = 1;
-$result = [];
+$resultDb = [];
 foreach ($result as $item) {
     $idDb = $item['ID записи'];
     $dateTimeDb = $item['Время'];
@@ -67,10 +67,10 @@ foreach ($result as $item) {
     $speakTimeDb = $item['Длительность разговора'];
     $orderDb = $counter;
     $dataDb = ['datetime' => $dateTimeDb, 'from' => $fromDb, 'to' => $toDb, 'calltime' => $callTimeDb, 'speaktime' => $speakTimeDb, 'order' => $orderDb];
-    $result[] = $app->addCall($idDb, $dataDb);
+    $resultDb[] = $app->addCall($idDb, $dataDb);
     $counter++;
 }
-var_dump($dataDb);
-//echo json_encode($result[0][]);
+//var_dump($dataDb);
+echo json_encode($resultDb);
 
 ?>
