@@ -49,6 +49,11 @@ h3 {
 	cursor:  pointer;
 }
 
+.managersRowItem {
+	width: 150px;
+}
+
+
 .managersRowItemName {
 	width: 200px;
 }
