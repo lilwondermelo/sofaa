@@ -52,7 +52,8 @@ for ($i = 0; $i < $rows; $i++) {
 		$result[$i][$keys[$j]] = array_shift($output);
 	}
 }
-echo strtotime(date('Y-m-d')) . '<br><br>';
+echo strtotime('today') . '<br><br>';
+echo strtotime('-1 day') . '<br><br>';
 echo count($result) . '<br><br>';
 foreach ($result as $item) {
     foreach ($item as $key => $value) {
