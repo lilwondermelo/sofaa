@@ -1,7 +1,7 @@
 <?php 
 $user = '077086';
-$from = '13.01.2022';
-$to = '13.01.2022';
+$from = '01.01.2022';
+$to = '15.01.2022';
 $type = '0';
 $state = '0';
 $tree = '';
@@ -52,8 +52,8 @@ for ($i = 0; $i < $rows; $i++) {
 		$result[$i][$keys[$j]] = array_shift($output);
 	}
 }
-echo strtotime('today') . '<br><br>';
-echo strtotime('today -1 day') . '<br><br>';
+//echo strtotime('today') . '<br><br>';
+//echo strtotime('today -1 day') . '<br><br>';
 echo count($result) . '<br><br>';
 foreach ($result as $item) {
     foreach ($item as $key => $value) {
