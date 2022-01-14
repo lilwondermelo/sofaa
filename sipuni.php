@@ -70,6 +70,6 @@ foreach ($result as $item) {
     $result[] = $app->addCall($idDb, $dataDb);
     $counter++;
 }
-echo json_encode($dataDb);
+echo json_encode($idDb);
 
 ?>
