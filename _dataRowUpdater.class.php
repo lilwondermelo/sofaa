@@ -219,7 +219,7 @@ class DataRowUpdater {
         if ($query->errno > 0) {
             $this->error = $query->error;
             $mysql->sqlClose();
-            return FALSE;
+            return $sqltext;
         }
         return TRUE;
     }
