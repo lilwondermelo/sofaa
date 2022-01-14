@@ -2,8 +2,8 @@
 require_once 'application.class.php';
 $app = new Application();
 $user = '077086';
-$from = '10.01.2022';
-$to = '10.01.2022';
+$from = '11.01.2022';
+$to = '11.01.2022';
 $type = '0';
 $state = '0';
 $tree = '';
