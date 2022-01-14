@@ -120,6 +120,9 @@ if (!$data = $dataSource->getData()) {
 		return $monthNamesShort;
 	}
 
+
+
+
 	public function getActiveManagers() {
 		require_once '_dataSource.class.php';
 		$query = 'select * from managers';
@@ -130,8 +133,9 @@ if (!$data = $dataSource->getData()) {
 				$html .= '<div data-index="' . $manager['id'] . '" class="managersItem">' . $manager['name'] . '</div>';
 			}
 		}
-		$html .= '<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>
+		$html .= '
 <div class="managersButtons row">
+	<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>
 	<div class="button managersCancel" onclick="clearManagers();">Сброс</div>
 	<div class="button managersSave" onclick="saveManagers();">Сохранить</div>
 </div>';
@@ -200,6 +204,18 @@ if (!$data = $dataSource->getData()) {
 		return $result_upd;
 	}
 
+	public function deleteManagers($managersList) {
+		$result_upd = [];
+		foreach ($managersList as $manager) {
+			require_once '_dataRowUpdater.class.php';
+			$updater = new DataRowUpdater('managers');
+			$updater->setKeyField('id', $manager['id']);
+			$result_upd[] = $updater->delete();
+		}
+		return $result_upd;
+	}
+
+
 	public function getCalendarStations() {
 		require_once '_dataSource.class.php';
 		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id where s.company = "Telo"';
@@ -214,6 +230,9 @@ if (!$data = $dataSource->getData()) {
 		}
 		return $html;
 	}
+
+
+	
 
 	public function saveCalendar($data) {
 		$result_upd = [];

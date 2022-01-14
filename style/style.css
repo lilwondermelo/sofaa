@@ -188,9 +188,18 @@ input.managerCheckbox {
 	justify-content: flex-end;
 }
 
-.itemActive {
+.managersButtons {
+	margin-top:  30px;
+}
+
+.managersAddItem.itemActive {
 	display: block;
 	background: #27a847;
+}
+
+.managersItem.itemActive {
+	display: block;
+	background: #FF0D00;
 }
 
 .itemActive:hover {
