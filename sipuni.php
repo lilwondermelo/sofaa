@@ -52,6 +52,7 @@ for ($i = 0; $i < $rows; $i++) {
 		$result[$i][$keys[$j]] = array_shift($output);
 	}
 }
+echo date('Y-m-d h:i:s') . '<br><br>';
 echo count($result) . '<br><br>';
 foreach ($result as $item) {
     foreach ($item as $key => $value) {
