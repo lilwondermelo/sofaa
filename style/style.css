@@ -169,7 +169,7 @@ input.managerCheckbox {
 	cursor: default;
 }
 
-.managersAddItem:hover {
+.managersAddItem:hover, .managersItem:hover {
 	background: #eee;
 }
 

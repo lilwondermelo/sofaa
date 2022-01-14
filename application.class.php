@@ -127,10 +127,14 @@ if (!$data = $dataSource->getData()) {
 		$html = '';
 		if ($data = $dataSource->getData()) {
 			foreach ($data as $manager) {
-				$html .= '<div class="managersItem">' . $manager['name'] . '</div>';
+				$html .= '<div data-index="' . $manager['id'] . '" class="managersItem">' . $manager['name'] . '</div>';
 			}
 		}
-		$html .= '<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
+		$html .= '<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>
+<div class="managersButtons row">
+	<div class="button managersCancel" onclick="clearManagers();">Сброс</div>
+	<div class="button managersSave" onclick="saveManagers();">Сохранить</div>
+</div>';
 		return $html;
 	}
 

@@ -58,7 +58,7 @@ function openManagers() {
     
 }
 
-function saveManagers() {
+function saveManagersPopup() {
     let managersList = [];
     $('.managersAddItem.itemActive').each(function() {
         managersList.push({id: $(this).attr('data-index'), name: $(this).html()});
@@ -98,7 +98,7 @@ function getActiveManagers() {
     });
 }
 
-function clearManagers() {
+function clearManagersPopup() {
     $('.managersAddItem').removeClass('itemActive');
     popupButtonsCheck();
 }
