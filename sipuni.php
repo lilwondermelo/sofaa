@@ -52,10 +52,12 @@ for ($i = 0; $i < $rows; $i++) {
 		$result[$i][$keys[$j]] = array_shift($output);
 	}
 }
-echo json_encode($result);
-//foreach ($result[0] as $key => $value) {
-	//echo $key . ' ' . $value . '<br>';
-//}
+foreach ($result as $item) {
+    foreach ($item as $key => $value) {
+        echo $key . ' ' . $value . '<br>';
+    }
+    echo '<br>';
+}
 
 
 ?>
