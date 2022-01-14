@@ -23,8 +23,8 @@ left join records r on m.yc_id = r.manager_id
 and r.date_create > '. strtotime("today") . '
 and r.date_create < '. strtotime("tomorrow") . ' 
 left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > FROM_UNIXTIME('. strtotime("today") . ' ) 
-and mm.date < FROM_UNIXTIME('. strtotime("tomorrow") . ' ) 
+and mm.date > FROM_UNIXTIME('. strtotime("today") . ') 
+and mm.date < FROM_UNIXTIME('. strtotime("tomorrow") . ') 
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
@@ -54,6 +54,7 @@ if ($data = $dataSource->getData()) {
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
 				<div class="managersRowItem managersRowItemCost">' . $manager['cost'] . '</div>
+				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
 				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
 				<div class="managersRowItem managersRowItemCount">' . $manager['count'] . '</div>
 					<div class="managersRowItem managersRowItemCalltime">' . $manager['calltime'] . '</div>
