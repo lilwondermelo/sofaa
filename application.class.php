@@ -252,14 +252,11 @@ if (!$data = $dataSource->getData()) {
 	}
 
 	public function addCall($id, $data) {
-		$result_upd = [];
-		foreach ($managersList as $manager) {
-			require_once '_dataRowUpdater.class.php';
-			$updater = new DataRowUpdater('calls');
-			$updater->setKeyField('id', $id);
-			$updater->setDataFields($data);
-			$result_upd[] = $updater->update();
-		}
+		require_once '_dataRowUpdater.class.php';
+		$updater = new DataRowUpdater('calls');
+		$updater->setKeyField('id', $id);
+		$updater->setDataFields($data);
+		$result_upd = $updater->update();
 		return $result_upd;
 	}
 }
