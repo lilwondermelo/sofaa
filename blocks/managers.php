@@ -5,3 +5,4 @@ $app = new Application();
 echo $app->getActiveManagers();
 ?>
 </div>
+<script src="js/managers.js"></script>
