@@ -12,7 +12,7 @@ and attendance = 1) as cost,
 where datetime < '. strtotime("tomorrow") . '  
 and datetime > '. strtotime("today") . '
 and s1.id = mm.role 
-and (c1.num_from = s1.phone)) as count,
+and (c1.num_from = s1.phone)) as callcount,
 (select sum(speaktime) from calls c2 join stations s2
 where datetime < '. strtotime("tomorrow") . '  
 and datetime > '. strtotime("today") . '
