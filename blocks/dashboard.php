@@ -5,8 +5,8 @@ $query = '
 select (select sum(r.cost) from records r join stations s 
 where r.filial_id = s.filial_id 
 and s.id = mm.role 
-and datetime > '. strtotime("today") . ' 
-and datetime < '. strtotime("tomorrow") . ' 
+and datetime > '. (strtotime("today")-7*60*60) . ' 
+and datetime < '. (strtotime("tomorrow")-7*60*60) . ' 
 and attendance = 1) as cost, 
 (select count(*) from calls c1 join stations s1 
 where datetime < '. strtotime("tomorrow") . ' 
@@ -14,17 +14,17 @@ and datetime > '. strtotime("today") . '
 and s1.id = mm.role 
 and (c1.num_from = s1.phone)) as callcount, 
 (select sum(speaktime) from calls c2 join stations s2 
-where datetime < '. strtotime("tomorrow") . ' 
-and datetime > '. strtotime("today") . ' 
+where datetime > '. (strtotime("today")-7*60*60) . ' 
+and datetime < '. (strtotime("tomorrow")-7*60*60) . '
 and s2.id = mm.role 
 and ((c2.num_from = s2.phone) or (c2.num_to = s2.phone))) as calltime, 
-m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, mm.role as role from managers m 
+m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
 left join records r on m.yc_id = r.manager_id 
-and r.date_create > '. strtotime("today") . ' 
-and r.date_create < '. strtotime("tomorrow") . ' 
+and r.date_create > '. (strtotime("today")-7*60*60) . ' 
+and r.date_create < '. (strtotime("tomorrow")-7*60*60) . '
 left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > FROM_UNIXTIME('. strtotime("today") . ') 
-and mm.date < FROM_UNIXTIME('. strtotime("tomorrow") . ') 
+and mm.date > FROM_UNIXTIME('. (strtotime("today")-7*60*60) . ') 
+and mm.date < FROM_UNIXTIME('. (strtotime("tomorrow")-7*60*60) . ') 
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
