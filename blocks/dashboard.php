@@ -43,23 +43,20 @@ if ($data = $dataSource->getData()) {
 			<div class="managersTable">
 				<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
+					<div class="managersRowItem managersRowItemCost">Выручка</div>
 					<div class="managersRowItem managersRowItemRecords">Записи</div>
 					<div class="managersRowItem managersRowItemSumm">Сумма</div>
-					<div class="managersRowItem managersRowItemStars">Рейтинг</div>
-					<div class="managersRowItem managersRowItemCheckbox">Админ</div>
-					<div class="managersRowItem managersRowItemAddstar">Медаль</div>
-					<div class="managersRowItem managersRowItemMotivation">Мотивация</div>
+					<div class="managersRowItem managersRowItemCount">Кол-во звонков</div>
+					<div class="managersRowItem managersRowItemCalltime">Звонки,сек</div>
 				</div>';
 	foreach ($data as $manager) {
 		echo '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
+				<div class="managersRowItem managersRowItemCost">' . $manager['cost'] . '</div>
 				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
-				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
-				<div class="managersRowItem managersRowItemStars"></div>
-				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox" ' . (($manager['role'] == 1)?'checked':'') . '></div>
-				<div class="managersRowItem managersRowItemAddstar"><input class="managerCheckbox" type="checkbox" ' . (($manager['star'] == 1)?'checked':'') . '></div>
-				<div class="managersRowItem managersRowItemMotivation"></div>
+				<div class="managersRowItem managersRowItemCount">' . $manager['count'] . '</div>
+					<div class="managersRowItem managersRowItemCalltime">' . $manager['calltime'] . '</div>
 			</div>';
 	}
 	echo '</div> 
