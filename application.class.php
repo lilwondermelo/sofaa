@@ -5,7 +5,38 @@ class Application {
 
 	public function getDashboardData($date) {
 		require_once '_dataSource.class.php';
-$query = 'select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
+$query = '
+
+
+
+select (select sum(r.cost) from records r join stations s 
+where r.filial_id = s.filial_id 
+and s.id = mm.role 
+and datetime > '. (strtotime($date)-7*60*60) . ' 
+and datetime < '. (strtotime($date . ' +1 day')-7*60*60) . ' 
+and attendance = 1) as cost, 
+(select count(*) from calls c1 join stations s1 
+where datetime < '. strtotime($date . ' +1 day') . ' 
+and datetime > '. strtotime($date) . ' 
+and s1.id = mm.role 
+and (c1.num_from = s1.phone)) as callcount, 
+(select sum(speaktime) from calls c2 join stations s2 
+where datetime > '. (strtotime($date)-7*60*60) . ' 
+and datetime < '. (strtotime($date . ' +1 day')-7*60*60) . '
+and s2.id = mm.role 
+and ((c2.num_from = s2.phone) or (c2.num_to = s2.phone))) as calltime, 
+m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
+left join records r on m.yc_id = r.manager_id 
+and r.date_create > '. (strtotime($date)-7*60*60) . ' 
+and r.date_create < '. (strtotime($date . ' +1 day')-7*60*60) . '
+left join managers_meta mm on m.yc_id = mm.manager_id 
+and mm.date > FROM_UNIXTIME('. (strtotime($date)-7*60*60) . ') 
+and mm.date < FROM_UNIXTIME('. (strtotime($date . ' +1 day')-7*60*60) . ') 
+group by m.id
+
+
+
+select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
 left join records r on m.yc_id = r.manager_id 
 and r.date_create > '. strtotime($date) . ' 
 and r.date_create < '. strtotime($date . ' +1 day') . '
@@ -316,8 +347,6 @@ if (!$data = $dataSource->getData()) {
 				$result[$i][$keys[$j]] = array_shift($output);
 			}
 		}
-		//echo strtotime('today') . '<br><br>';
-		//echo strtotime('today -1 day') . '<br><br>';
 		$counter = 1;
 		$resultDb = [];
 		foreach ($result as $item) {
