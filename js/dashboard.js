@@ -41,7 +41,7 @@ function getDashboardData(date) {
         	console.log(data.data.to);
         	$('.managersTable').html(data.data.html);
         } else {
-
+        	console.log(data);
         }
     });
 }
