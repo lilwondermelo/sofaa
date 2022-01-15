@@ -46,13 +46,11 @@ and mm.date < '. strtotime($date . ' +1 day') . '
 group by m.id';
 $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
+					<div class="managersRowItem managersRowItemCost">Выручка</div>
 					<div class="managersRowItem managersRowItemRecords">Записи</div>
 					<div class="managersRowItem managersRowItemSumm">Сумма</div>
-					<div class="managersRowItem managersRowItemStars">Рейтинг</div>
-					<div class="managersRowItem managersRowItemCheckbox">Админ</div>
-					<div class="managersRowItem managersRowItemAddstar">Медаль</div>
-					<div class="managersRowItem managersRowItemMotivation">Мотивация</div>
-				</div>';
+					<div class="managersRowItem managersRowItemCount">Кол-во звонков</div>
+					<div class="managersRowItem managersRowItemCalltime">Звонки,сек</div>';
 $dataSource = new DataSource($query);
 if (!$data = $dataSource->getData()) {
 	return false;
@@ -63,12 +61,11 @@ if (!$data = $dataSource->getData()) {
 		$html .= '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
+				<div class="managersRowItem managersRowItemCost">' . (($manager['cost'] == 0)?0:$manager['cost']) . '</div>
 				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
-				<div class="managersRowItem managersRowItemSumm">' . $manager['sum'] . '</div>
-				<div class="managersRowItem managersRowItemStars"></div>
-				<div class="managersRowItem managersRowItemCheckbox"><input class="managerCheckbox" type="checkbox" ' . (($manager['role'] == 1)?'checked':'') . '></div>
-				<div class="managersRowItem managersRowItemAddstar"><input class="managerCheckbox" type="checkbox" ' . (($manager['star'] == 1)?'checked':'') . '></div>
-				<div class="managersRowItem managersRowItemMotivation"></div>
+				<div class="managersRowItem managersRowItemSumm">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['sum']) . '</div>
+				<div class="managersRowItem managersRowItemCount">' . ((($manager['count'] == 1) && ($manager['callcount'] == 0))?0:$manager['callcount']) . '</div>
+				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['count'] == 1) && ($manager['calltime'] == 0))?0:$manager['calltime']) . '</div>
 			</div>';
 	}
 	return array('html' => $html, 'from' => strtotime($date . ' -1 day'), 'to' => strtotime($date));
