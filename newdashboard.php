@@ -1,7 +1,7 @@
 <?php 
 require_once 'application.class.php';
 $app = new Application();
-//$app->checkCalls();
+$app->checkCalls();
 ?>
 <!DOCTYPE html>
 <html>
