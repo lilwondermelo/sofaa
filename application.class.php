@@ -32,17 +32,6 @@ and r.date_create < '. (strtotime($date . ' +1 day')-7*60*60) . '
 left join managers_meta mm on m.yc_id = mm.manager_id 
 and mm.date > FROM_UNIXTIME('. (strtotime($date)-7*60*60) . ') 
 and mm.date < FROM_UNIXTIME('. (strtotime($date . ' +1 day')-7*60*60) . ') 
-group by m.id
-
-
-
-select r.date_create as dateCr, m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
-left join records r on m.yc_id = r.manager_id 
-and r.date_create > '. strtotime($date) . ' 
-and r.date_create < '. strtotime($date . ' +1 day') . '
-left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > '. strtotime($date ) . ' 
-and mm.date < '. strtotime($date . ' +1 day') . ' 
 group by m.id';
 $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
