@@ -50,7 +50,8 @@ $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemRecords">Записи</div>
 					<div class="managersRowItem managersRowItemSumm">Сумма</div>
 					<div class="managersRowItem managersRowItemCount">Кол-во звонков</div>
-					<div class="managersRowItem managersRowItemCalltime">Звонки,сек</div>';
+					<div class="managersRowItem managersRowItemCalltime">Звонки,сек</div> 
+					</div>';
 $dataSource = new DataSource($query);
 if (!$data = $dataSource->getData()) {
 	return false;
