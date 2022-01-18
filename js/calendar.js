@@ -58,24 +58,38 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 
 
 $('body').on('click', '.calendarRowItemStations', function() {
-	if (!$(this).hasClass('selectedStation')) {
+	if ($(this).hasClass('calendarRowItemStationsStar')) {
+		setStar();
+	}
+	else if (!$(this).hasClass('selectedStation')) {
 		setStation($(this));
 	}
 })
 
-
+function setStation(item) {
+	$('.calendarRowItemStations').removeClass('selectedStation');
+	item.addClass('selectedStation');
+	isStar = 1;
+}
 
 function setStation(item) {
 	$('.calendarRowItemStations').removeClass('selectedStation');
 	item.addClass('selectedStation');
 	activeColor = item.css('background');
 	activeRole = item.attr('data-id');
+	isStar = 0;
 }
 
 
 function calendarClick(item) {
-	item.attr('data-id', activeRole);
-	item.css('background', activeColor);
+	if (!isStar) {
+		item.attr('data-id', activeRole);
+		item.css('background', activeColor);
+	}
+	else {
+		item.attr('background', '#000');
+	}
+	
 }
 
 function checkCalendar() {
