@@ -1,6 +1,7 @@
 let activeColor = 'none';
 let activeRole = 0;
 let changed = {};
+let isStar = 0;
 getCalendarStations();
 function getManagersCalendar() {
 	$.ajax({
@@ -66,7 +67,7 @@ $('body').on('click', '.calendarRowItemStations', function() {
 	}
 })
 
-function setStation(item) {
+function setStar(item) {
 	$('.calendarRowItemStations').removeClass('selectedStation');
 	item.addClass('selectedStation');
 	isStar = 1;
