@@ -246,6 +246,10 @@ if (!$data = $dataSource->getData()) {
 					<div class="calendarRowItemStations calendarRowItem" style="background:' . $filial['color'] . ';" data-id="' . $filial['id'] . '"></div> 
 				</div>';
 		}
+		$html .= '<div class="calendarRow row calendarRowStations"> 
+					<div class="calendarRowItem calendarRowItemName calendarRowItemNameStations"><span>Звезда</span></div> 
+					<div class="calendarRowItemStations calendarRowItemStationsStar calendarRowItem" data-id="999"></div> 
+				</div>';
 		return $html;
 	}
 
