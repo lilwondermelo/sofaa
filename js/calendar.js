@@ -60,7 +60,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 
 $('body').on('click', '.calendarRowItemStations', function() {
 	if ($(this).hasClass('calendarRowItemStationsStar')) {
-		setStar();
+		setStar($(this));
 	}
 	else if (!$(this).hasClass('selectedStation')) {
 		setStation($(this));
