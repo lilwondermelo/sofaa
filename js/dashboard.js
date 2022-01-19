@@ -55,14 +55,20 @@ $('#week').click(function() {
 	let date11 = new Date();
 	date11.setDate(date11.getDate() + date11.getDay() - 7);
 	date1 = date11.toJSON().slice(0, 10);
-	console.log(date1);
-	console.log(date2);
 	getDashboardData(companyName);
 	$("#datepicker1").datepicker("setDate", new Date());
 	$("#datepicker").datepicker("setDate", date11);
 })
 
-
+$('#month').click(function() {
+	date2 = new Date().toJSON().slice(0, 10);
+	let date11 = new Date();
+	date11.setDate(1);
+	date1 = date11.toJSON().slice(0, 10);
+	getDashboardData(companyName);
+	$("#datepicker1").datepicker("setDate", new Date());
+	$("#datepicker").datepicker("setDate", date11);
+})
 
 function getDashboardData(company) {
 	console.log(date1);
