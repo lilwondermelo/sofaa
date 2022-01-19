@@ -259,30 +259,35 @@ if (!$data = $dataSource->getData()) {
 
 	public function saveCalendar($data, $stars) {
 		$result_upd = [];
-		foreach ($data as $key => $item) {
-			require_once '_dataRowUpdater.class.php';
-			$updater = new DataRowUpdater('managers_meta');
-			if ($item['id'] > 0) {
-				$updater->setKeyField('id', $item['id']);
+		if ($data != 0) {
+			foreach ($data as $key => $item) {
+				require_once '_dataRowUpdater.class.php';
+				$updater = new DataRowUpdater('managers_meta');
+				if ($item['id'] > 0) {
+					$updater->setKeyField('id', $item['id']);
+				}
+				else {
+					$updater->setKeyField('id');
+				}
+				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role']]);
+				$result_upd[] = $updater->update();
 			}
-			else {
-				$updater->setKeyField('id');
-			}
-			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role']]);
-			$result_upd[] = $updater->update();
 		}
-		foreach ($stars as $key => $item) {
-			require_once '_dataRowUpdater.class.php';
-			$updater = new DataRowUpdater('managers_meta');
-			if ($item > 0) {
-				$updater->setKeyField('id', $item);
+		if ($stars != 0) {
+			foreach ($stars as $key => $item) {
+				require_once '_dataRowUpdater.class.php';
+				$updater = new DataRowUpdater('managers_meta');
+				if ($item > 0) {
+					$updater->setKeyField('id', $item);
+				}
+				else {
+					$updater->setKeyField('id');
+				}
+				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => 1]);
+				$result_upd[] = $updater->update();
 			}
-			else {
-				$updater->setKeyField('id');
-			}
-			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => 1]);
-			$result_upd[] = $updater->update();
 		}
+		
 		return $result_upd;
 
 	}

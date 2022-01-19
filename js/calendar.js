@@ -119,7 +119,12 @@ function checkCalendar() {
 }
 
 function saveCalendar() {
-	console.log(changed);
+	if (changed == {}) {
+		changed = 0;
+	}
+	if (stars == {}) {
+		stars = 0;
+	}
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
