@@ -21,6 +21,12 @@ $app->checkCalls();
 		?>
 		</div>
 		<div class="workArea">
+			<div class="company">
+				<select id="company">
+					<option selected value="Telo">TELO</option>
+					<option value="golova">GOLOVA</option>
+				</select>
+			</div>
 			<div class="dashboard block blockActive">
 			<?php 
 			include 'blocks/dashboard.php';
