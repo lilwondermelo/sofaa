@@ -102,7 +102,7 @@ function calendarClick(item) {
 		item.css('background', activeColor);
 	}
 	else {
-		item.attr('background', '#000');
+		item.attr('background', 'black');
 	}
 }
 
