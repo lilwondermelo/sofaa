@@ -278,12 +278,12 @@ if (!$data = $dataSource->getData()) {
 				require_once '_dataRowUpdater.class.php';
 				$updater = new DataRowUpdater('managers_meta');
 				if ($item > 0) {
-					$updater->setKeyField('id', $item);
+					$updater->setKeyField('id', $item['id']);
 				}
 				else {
 					$updater->setKeyField('id');
 				}
-				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => $item]);
+				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => $item['star']]);
 				$result_upd[] = $updater->update();
 			}
 		}
