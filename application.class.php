@@ -174,7 +174,7 @@ if (!$data = $dataSource->getData()) {
 
 	public function getManagersCalendar($company) {
 		require_once '_dataSource.class.php';
-		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id';
+		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id where s.company = "' . $company . '"';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$colors = [];
