@@ -22,7 +22,7 @@ $(function(){
 		onSelect: function(date){
 
 			$('#datepicker_value').val(date);
-			getDashboardData(date);
+			getDashboardData(date, companyName);
 			console.log(date);
 		}
 	});

@@ -1,5 +1,5 @@
 let popup = 0;
-
+let companyName = 'Telo';
 function popupButtonsCheck() {
     if ($('.itemActive').length > 0) {
         $('.popupButtons').css('display', 'flex');
@@ -88,6 +88,7 @@ function saveManagersPopup(company) {
 $( "#company" ).change(function () {
     getActiveManagers($( "#company option:selected" ).val());
     getCalendarStations($( "#company option:selected" ).val());
+    companyName = $( "#company option:selected" ).val();
   })
 
 
