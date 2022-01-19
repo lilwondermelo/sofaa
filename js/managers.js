@@ -23,7 +23,7 @@ function clearManagers() {
     $('.managersItem').removeClass('itemActive');
 }
 
-function saveManagers() {
+function saveManagers(company) {
     let managersList = [];
     $('.managersItem.itemActive').each(function() {
         managersList.push({id: $(this).attr('data-index'), name: $(this).html()});
@@ -37,7 +37,7 @@ function saveManagers() {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-            getActiveManagers();
+            getActiveManagers(company);
         } 
         else {
 

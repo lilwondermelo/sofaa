@@ -74,7 +74,7 @@ function saveManagersPopup() {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-            getActiveManagers();
+            getActiveManagers(company);
         } 
         else {
 
