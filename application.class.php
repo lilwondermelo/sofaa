@@ -65,7 +65,7 @@ if ($data) {
 		}
 		
 	}
-		})
+		}
 	
 	return array('html' => $html, 'data' => $reduced);
 
