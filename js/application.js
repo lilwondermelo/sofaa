@@ -87,6 +87,7 @@ function saveManagersPopup(company) {
 
 $( "#company" ).change(function () {
     getActiveManagers($( "#company option:selected" ).val());
+    getCalendarStations($( "#company option:selected" ).val());
   })
 
 
