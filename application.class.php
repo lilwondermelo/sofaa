@@ -384,7 +384,8 @@ if (!$data = $dataSource->getData()) {
 		}
 		$counter = 1;
 		$resultDb = [];
-		foreach ($result as $item) {
+		if ($result) {
+			foreach ($result as $item) {
 		    $idDb = $item['ID записи'];
 		    $dateTimeDb = $item['Время'];
 		    $fromDb = $item['Откуда'];
@@ -396,6 +397,8 @@ if (!$data = $dataSource->getData()) {
 		    $resultDb[] = $app->addCall($idDb, $dataDb);
 		    $counter++;
 		}
+		}
+		
 		//var_dump($dataDb);
 		return json_encode($resultDb);
 	}
