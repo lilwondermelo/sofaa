@@ -202,7 +202,7 @@ if (!$data = $dataSource->getData()) {
 		if ($reduced) {
 			foreach ($reduced as $key => $manager) {
 				$html .= '
-				<div class="calendarRow row" data-id="' . $manager[0]['yc'] . '"> 
+				<div class="calendarRow row" data-id="' . $key . '"> 
 					<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 				for ($i = 1; $i <= $daysInMonth; $i++) {
 					$flag = 0;
