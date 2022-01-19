@@ -50,7 +50,7 @@ if ($data = $dataSource->getData()) {
 					<div class="managersRowItem managersRowItemCalltime">Звонки,мин</div>
 				</div>';
 	foreach ($data as $manager) {
-		if (($manager['cost'] > 0) && ($manager['sum'] > 0)) {
+		if (($manager['cost'] > 0) || ($manager['sum'] > 0)) {
 			echo '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
