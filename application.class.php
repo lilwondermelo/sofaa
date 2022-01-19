@@ -259,7 +259,7 @@ if (!$data = $dataSource->getData()) {
 
 	public function saveCalendar($data, $stars) {
 		$result_upd = [];
-		if ($data != 0) {
+		if ($data != 'check') {
 			foreach ($data as $key => $item) {
 				require_once '_dataRowUpdater.class.php';
 				$updater = new DataRowUpdater('managers_meta');
@@ -273,7 +273,7 @@ if (!$data = $dataSource->getData()) {
 				$result_upd[] = $updater->update();
 			}
 		}
-		if ($stars != 0) {
+		if ($stars != 'check') {
 			foreach ($stars as $key => $item) {
 				require_once '_dataRowUpdater.class.php';
 				$updater = new DataRowUpdater('managers_meta');

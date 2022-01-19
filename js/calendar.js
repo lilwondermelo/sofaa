@@ -120,10 +120,10 @@ function checkCalendar() {
 
 function saveCalendar() {
 	if (changed == {}) {
-		changed = 0;
+		changed = 'check';
 	}
 	if (stars == {}) {
-		stars = 0;
+		stars = 'check';
 	}
 	$.ajax({
         type: "POST",
