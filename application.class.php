@@ -191,11 +191,12 @@ if (!$data = $dataSource->getData()) {
 						$flag = 1;
 						$role = $shift['role'];
 						$id = $shift['id'];
+						$flag = $shift['star'];
 						break;
 					}
 				}
 				$html .= '
-					<div class="calendarRowItem" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-old-id="' . (($flag == 1)?$role:'0') . '" data-index="' . (($id>0)?$id:'0') . '" data-day="' . $i . '"></div>';
+					<div class="calendarRowItem" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-old-id="' . (($flag == 1)?$role:'0') . '" data-index="' . (($id>0)?$id:'0') . '" data-star="' . (($flag == 1)?$star:'0') . '" data-old-star="' . (($flag == 1)?$star:'0') . '" data-day="' . $i . '"></div>';
 			}
 			$html .= '</div>';
 		}

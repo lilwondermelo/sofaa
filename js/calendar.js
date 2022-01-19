@@ -1,6 +1,7 @@
 let activeColor = 'none';
 let activeRole = 0;
 let changed = {};
+let stars = {};
 let isStar = 0;
 getCalendarStations();
 function getManagersCalendar() {
@@ -34,29 +35,43 @@ function getCalendarStations() {
         }
     });
 }
+
 $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function() {
-	if ($(this).hasClass('selectedDay')) {
-		$(this).removeClass('selectedDay');
-		$(this).attr('data-id', '0');
-		$(this).css('background', 'none');
+	if (isStar) {
+		if ($(this).hasClass('selectedStar')) {
+			$(this).removeClass('selectedStar');
+		}
+		else {
+			$(this).addClass('selectedStar');
+			calendarClick($(this));
+		}
+		if ($(this).attr('data-star') != $(this).attr('data-old-star')) {
+			stars['' + $(this).parent().attr('data-star') + '-' + $(this).attr('data-day')] = $(this).attr('data-index');
+		}
+		else {
+			delete stars['' + $(this).parent().attr('data-star') + '-' + $(this).attr('data-day')];
+		}
+		checkCalendar();
 	}
 	else {
-		$(this).addClass('selectedDay');
-		calendarClick($(this));
-		
+		if ($(this).hasClass('selectedDay')) {
+			$(this).removeClass('selectedDay');
+			$(this).attr('data-id', '0');
+			$(this).css('background', 'none');
+		}
+		else {
+			$(this).addClass('selectedDay');
+			calendarClick($(this));
+		}
+		if ($(this).attr('data-id') != $(this).attr('data-old-id')) {
+			changed['' + $(this).parent().attr('data-id') + '-' + $(this).attr('data-day')] = {role: $(this).attr('data-id'), id: $(this).attr('data-index')};
+		}
+		else {
+			delete changed['' + $(this).parent().attr('data-id') + '-' + $(this).attr('data-day')];
+		}
+		checkCalendar();
 	}
-	if ($(this).attr('data-id') != $(this).attr('data-old-id')) {
-		changed['' + $(this).parent().attr('data-id') + '-' + $(this).attr('data-day')] = {role: $(this).attr('data-id'), id: $(this).attr('data-index')};
-	}
-	else {
-		delete changed['' + $(this).parent().attr('data-id') + '-' + $(this).attr('data-day')];
-	}
-	
-	checkCalendar();
 })
-
-
-
 
 $('body').on('click', '.calendarRowItemStations', function() {
 	if ($(this).hasClass('calendarRowItemStationsStar')) {
@@ -81,7 +96,6 @@ function setStation(item) {
 	isStar = 0;
 }
 
-
 function calendarClick(item) {
 	if (!isStar) {
 		item.attr('data-id', activeRole);
@@ -90,19 +104,17 @@ function calendarClick(item) {
 	else {
 		item.attr('background', '#000');
 	}
-	
 }
 
 function checkCalendar() {
 	console.log(changed);
-	if (Object.keys(changed).length == 0) {
+	if ((Object.keys(changed).length == 0) || (Object.keys(stars).length == 0)) {
 		$('.calendarButtons').css('visibility', 'hidden');
 	}
 	else {
 		$('.calendarButtons').css('visibility', 'visible');
 	}
 }
-
 
 function saveCalendar() {
 	$.ajax({
@@ -120,7 +132,3 @@ function saveCalendar() {
         }
     });
 }
-
-
-
-
