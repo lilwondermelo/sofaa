@@ -43,7 +43,7 @@ $html = '<div class="managersRow row" id="managerHead">
 					</div>';
 $dataSource = new DataSource($query);
 
-if ($data) {
+if ($data = $dataSource->getData()) {
 			$reduced = $this->reduceByKey($data);
 		}
 		else {
