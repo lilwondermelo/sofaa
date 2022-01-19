@@ -189,14 +189,11 @@ if (!$data = $dataSource->getData()) {
 		if ($data) {
 			$reduced = $this->reduceByKey($data);
 		}
-		else {
-			$reduced = $data;
-		}
 		$html = '';
 		$month = date('m');
 		$year = date('Y');
 		$daysInMonth = $this->daysInMonth($month, $year);
-		if ($reduced) {
+		if ($data) {
 			foreach ($reduced as $key => $manager) {
 				$html .= '
 				<div class="calendarRow row" data-id="' . $key . '"> 
@@ -219,7 +216,6 @@ if (!$data = $dataSource->getData()) {
 				$html .= '</div>';
 			}
 		}
-		
 		return ['html' => $html, 'data' => $reduced];
 	}
 
