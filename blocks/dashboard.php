@@ -56,7 +56,7 @@ if ($data = $dataSource->getData()) {
 		if (($manager['filialSum'] > 0) || ($manager['recSum'] > 0)) {
 			$html .= '
 			<div class="managersRow row" id="manager' . $manager['yc'] . '">
-				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
+				<div class="managersRowItem managersRowItemName">' . $manager['manName'] . '</div>
 				<div class="managersRowItem managersRowItemCost">' . (($manager['filialSum'] == 0)?0:$manager['filialSum']) . '</div>
 				<div class="managersRowItem managersRowItemRecords">' . ((($manager['recCount'] == 1) && ($manager['recSum'] == 0))?0:$manager['recCount']) . '</div>
 				<div class="managersRowItem managersRowItemSumm">' . ((($manager['recCount'] == 1) && ($manager['recSum'] == 0))?0:$manager['recSum']) . '</div>
