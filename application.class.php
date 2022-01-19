@@ -172,7 +172,7 @@ if (!$data = $dataSource->getData()) {
 		return $html;
 	}
 
-	public function getManagersCalendar() {
+	public function getManagersCalendar($company) {
 		require_once '_dataSource.class.php';
 		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id';
 		$dataSource = new DataSource($query);
@@ -183,7 +183,7 @@ if (!$data = $dataSource->getData()) {
 			$colors[$item['id']] = $item['color'];
 		}
 		require_once '_dataSource.class.php';
-		$query = 'select m.yc_id as yc, m.name as name, mm.id as id, mm.date as date, mm.star as star, mm.role as role, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id';
+		$query = 'select m.yc_id as yc, m.name as name, m.id as id, mm.date as date, mm.star as star, mm.role as role, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.yc_id) as days from managers m left join managers_meta mm on m.yc_id = mm.manager_id where m.company = ' . $company . '"';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$reduced = $this->reduceByKey($data);
@@ -247,9 +247,9 @@ if (!$data = $dataSource->getData()) {
 	}
 
 
-	public function getCalendarStations() {
+	public function getCalendarStations($company) {
 		require_once '_dataSource.class.php';
-		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id where s.company = "Telo"';
+		$query = 'select s.id as id, ifnull(s.name, f.location) as name, s.color as color, f.filial_id from stations s left join filials f on s.filial_id = f.filial_id where s.company = "' . $company . '"';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		$html = '';

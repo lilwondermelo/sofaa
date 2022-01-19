@@ -43,7 +43,7 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
 		</div>
 		<div class="calendarButtons">
 			<div class="button calendarButtonCancel" onclick="clearCalendar();">Сброс</div>
-			<div class="button calendarButtonSave" onclick="saveCalendar();">Сохранить</div>
+			<div class="button calendarButtonSave" onclick="saveCalendar('Telo');">Сохранить</div>
 		</div>
 	</div>
 </div>

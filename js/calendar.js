@@ -3,33 +3,38 @@ let activeRole = 0;
 let changed = {};
 let stars = {};
 let isStar = 0;
-getCalendarStations();
-function getManagersCalendar() {
+getCalendarStations('Telo');
+
+function getManagersCalendar(company) {
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
-        data: {classFile: "application.class", class: "Application", method: "getManagersCalendar"
+        data: {classFile: "application.class", class: "Application", method: "getManagersCalendar",
+        company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarArea').html(data.data.html);
         	console.log(data.data.data);
-        	$('.calendarRowItemStations[data-id="1"]').click();
+        	$('.calendarRowItemStations[data-id="999"]').click();
         } else {
             console.log(data);
         }
     });
 }
-function getCalendarStations() {
+
+
+function getCalendarStations(company) {
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
-        data: {classFile: "application.class", class: "Application", method: "getCalendarStations"
+        data: {classFile: "application.class", class: "Application", method: "getCalendarStations",
+        company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	$('.calendarStations').html(data.data);
-        	getManagersCalendar();
+        	getManagersCalendar(company);
         } else {
             console.log(data);
         }
