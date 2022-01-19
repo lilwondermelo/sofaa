@@ -123,11 +123,13 @@ function saveCalendar() {
         type: "POST",
         url: "_ajaxListener.class.php",
         data: {classFile: "application.class", class: "Application", method: "saveCalendar",
-        changed: changed
+        changed: changed,
+        stars: stars
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
         	changed = {};
+        	stars = {};
         	checkCalendar();
         } else {
             console.log(data);

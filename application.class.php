@@ -257,7 +257,7 @@ if (!$data = $dataSource->getData()) {
 
 	
 
-	public function saveCalendar($data) {
+	public function saveCalendar($data, $stars) {
 		$result_upd = [];
 		foreach ($data as $key => $item) {
 			require_once '_dataRowUpdater.class.php';
@@ -268,10 +268,23 @@ if (!$data = $dataSource->getData()) {
 			else {
 				$updater->setKeyField('id');
 			}
-			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role'], 'star' => 0]);
+			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role']]);
+			$result_upd[] = $updater->update();
+		}
+		foreach ($stars as $key => $item) {
+			require_once '_dataRowUpdater.class.php';
+			$updater = new DataRowUpdater('managers_meta');
+			if ($item > 0) {
+				$updater->setKeyField('id', $item);
+			}
+			else {
+				$updater->setKeyField('id');
+			}
+			$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => 1]);
 			$result_upd[] = $updater->update();
 		}
 		return $result_upd;
+
 	}
 
 	public function addCall($id, $data) {
