@@ -22,8 +22,7 @@ where r.filial_id = ss.filial_id
 and ss.company = "Telo" 
 group by m.id ';
 $dataSource = new DataSource($query);
-if ($data = $dataSource->getData()) {
-	echo '
+echo '
 			<div id="datepicker"></div>
 			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
 
@@ -44,6 +43,8 @@ if ($data = $dataSource->getData()) {
 					<div class="managersRowItem managersRowItemCount">Кол-во звонков</div>
 					<div class="managersRowItem managersRowItemCalltime">Звонки,мин</div>
 				</div>';
+if ($data = $dataSource->getData()) {
+	
 	foreach ($data as $manager) {
 		if (($manager['cost'] > 0) || ($manager['sum'] > 0)) {
 			echo '
@@ -58,8 +59,9 @@ if ($data = $dataSource->getData()) {
 		}
 		
 	}
-	echo '</div> 
+	
+}
+echo '</div> 
 	<script src="js/dashboard.js"></script>';
 	//echo json_encode($data);
-}
 ?>
