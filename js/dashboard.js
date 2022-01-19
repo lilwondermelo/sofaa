@@ -1,4 +1,5 @@
-let date1 = $('#datepicker_value').val(), date2 = $('#datepicker1_value').val();
+let date1, date2;
+
 $.datepicker.regional['ru'] = {
 		closeText: 'Закрыть',
 		prevText: 'Предыдущий',
@@ -27,6 +28,8 @@ $(function(){
 		}
 	});
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
+	date1 = $('#datepicker_value').val();
+	date2 = $('#datepicker1_value').val();
 });
 
 $(function(){
