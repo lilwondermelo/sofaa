@@ -39,7 +39,7 @@ $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemRecords">Записи</div>
 					<div class="managersRowItem managersRowItemSumm">Сумма</div>
 					<div class="managersRowItem managersRowItemCount">Кол-во звонков</div>
-					<div class="managersRowItem managersRowItemCalltime">Звонки,сек</div> 
+					<div class="managersRowItem managersRowItemCalltime">Звонки,мин</div> 
 					</div>';
 $dataSource = new DataSource($query);
 if (!$data = $dataSource->getData()) {
@@ -48,7 +48,8 @@ if (!$data = $dataSource->getData()) {
 
 
 	foreach ($data as $manager) {
-		$html .= '
+		if (($manager['cost'] > 0) && ($manager['sum'] > 0)) {
+			$html .= '
 			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
 				<div class="managersRowItem managersRowItemCost">' . (($manager['cost'] == 0)?0:$manager['cost']) . '</div>
@@ -57,6 +58,8 @@ if (!$data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemCount">' . ((($manager['count'] == 1) && ($manager['callcount'] == 0))?0:$manager['callcount']) . '</div>
 				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['count'] == 1) && ($manager['calltime'] == 0))?0:floor((int)$manager['calltime']/60)) . '</div>
 			</div>';
+		}
+		
 	}
 	return array('html' => $html, 'from' => strtotime($date . ' -1 day'), 'to' => strtotime($date));
 
