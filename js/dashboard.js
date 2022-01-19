@@ -37,8 +37,7 @@ function getDashboardData(date, company) {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-        	console.log(data.data.from);
-        	console.log(data.data.to);
+        	console.log(data.data.data);
         	$('.managersTable').html(data.data.html);
         } else {
         	console.log(data);
