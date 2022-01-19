@@ -52,9 +52,9 @@ $('#today').click(function() {
 
 $('#week').click(function() {
 	date2 = new Date().toJSON().slice(0, 10);
-	date1 = new Date();
-	date1.setDate(date1.getDate() + date1.getDay() - 7);
-	var date11 = date1.toJSON().slice(0, 10)
+	date11 = new Date();
+	let date11.setDate(date11.getDate() + date11.getDay() - 7);
+	date1 = date11.toJSON().slice(0, 10);
 	console.log(date1);
 	console.log(date2);
 	getDashboardData(companyName);
