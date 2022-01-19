@@ -196,27 +196,30 @@ if (!$data = $dataSource->getData()) {
 		$month = date('m');
 		$year = date('Y');
 		$daysInMonth = $this->daysInMonth($month, $year);
-		foreach ($reduced as $key => $manager) {
-			$html .= '
-			<div class="calendarRow row" data-id="' . $key . '"> 
-				<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
-			for ($i = 1; $i <= $daysInMonth; $i++) {
-				$flag = 0;
-				$id = '0';
-				foreach ($manager as $shift) {
-					if ($shift['day'] == $i) {
-						$flag = 1;
-						$role = $shift['role'];
-						$id = $shift['id'];
-						$star = $shift['star'];
-						break;
-					}
-				}
+		if ($reduced) {
+			foreach ($reduced as $key => $manager) {
 				$html .= '
-					<div class="calendarRowItem ' . ((($role > 0) && ($flag == 1))?'selectedDay':'') . ' ' . ((($star > 0) && ($flag == 1))?'selectedStar':'') . '" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-old-id="' . (($flag == 1)?$role:'0') . '" data-index="' . (($id>0)?$id:'0') . '" data-star="' . (($flag == 1)?$star:'0') . '" data-old-star="' . (($flag == 1)?$star:'0') . '" data-day="' . $i . '"></div>';
+				<div class="calendarRow row" data-id="' . $key . '"> 
+					<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
+				for ($i = 1; $i <= $daysInMonth; $i++) {
+					$flag = 0;
+					$id = '0';
+					foreach ($manager as $shift) {
+						if ($shift['day'] == $i) {
+							$flag = 1;
+							$role = $shift['role'];
+							$id = $shift['id'];
+							$star = $shift['star'];
+							break;
+						}
+					}
+					$html .= '
+						<div class="calendarRowItem ' . ((($role > 0) && ($flag == 1))?'selectedDay':'') . ' ' . ((($star > 0) && ($flag == 1))?'selectedStar':'') . '" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-old-id="' . (($flag == 1)?$role:'0') . '" data-index="' . (($id>0)?$id:'0') . '" data-star="' . (($flag == 1)?$star:'0') . '" data-old-star="' . (($flag == 1)?$star:'0') . '" data-day="' . $i . '"></div>';
+				}
+				$html .= '</div>';
 			}
-			$html .= '</div>';
 		}
+		
 		return ['html' => $html, 'data' => $reduced];
 	}
 
