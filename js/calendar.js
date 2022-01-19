@@ -125,6 +125,8 @@ function saveCalendar() {
 	if (stars.length == 0) {
 		stars = 'check';
 	}
+	console.log(changed);
+	console.log(stars);
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
