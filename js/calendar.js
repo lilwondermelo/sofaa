@@ -119,6 +119,7 @@ function checkCalendar() {
 }
 
 function saveCalendar() {
+	console.log(changed);
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
