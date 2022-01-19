@@ -28,12 +28,13 @@ $(function(){
 	});
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
 });
-function getDashboardData(date) {
+function getDashboardData(date, company) {
     $.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
         data: {classFile: "application.class", class: "Application", method: "getDashboardData",
-            date: date
+            date: date,
+            company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
