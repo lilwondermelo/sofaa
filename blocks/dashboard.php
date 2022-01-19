@@ -33,7 +33,7 @@ echo '
 			<div id="datepicker"></div>
 			<div id="datepicker1"></div>
 			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
-
+			<input type="hidden" id="datepicker1_value" value="' . strtotime("today") . '">
 			<select class="filials">';
 
 			require_once 'application.class.php';

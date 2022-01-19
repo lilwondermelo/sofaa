@@ -1,4 +1,4 @@
-let date1 = '2022-01-20', date2 = '2022-01-20';
+let date1 = $('#datepicker_value').val(), date2 = $('#datepicker1_value').val();
 $.datepicker.regional['ru'] = {
 		closeText: 'Закрыть',
 		prevText: 'Предыдущий',
