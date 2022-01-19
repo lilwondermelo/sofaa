@@ -55,7 +55,7 @@ if (!$data = $dataSource->getData()) {
 				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
 				<div class="managersRowItem managersRowItemSumm">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['sum']) . '</div>
 				<div class="managersRowItem managersRowItemCount">' . ((($manager['count'] == 1) && ($manager['callcount'] == 0))?0:$manager['callcount']) . '</div>
-				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['count'] == 1) && ($manager['calltime'] == 0))?0:$manager['calltime']) . '</div>
+				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['count'] == 1) && ($manager['calltime'] == 0))?0:$manager['calltime']/60) . '</div>
 			</div>';
 	}
 	return array('html' => $html, 'from' => strtotime($date . ' -1 day'), 'to' => strtotime($date));
