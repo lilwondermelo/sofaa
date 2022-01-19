@@ -283,7 +283,7 @@ if (!$data = $dataSource->getData()) {
 				else {
 					$updater->setKeyField('id');
 				}
-				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => 1]);
+				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'star' => $item]);
 				$result_upd[] = $updater->update();
 			}
 		}
