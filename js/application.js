@@ -82,6 +82,11 @@ function saveManagersPopup() {
     });
 }
 
+$( "#company" ).change(function () {
+    getActiveManagers($( "#company option:selected" ).val());
+  })
+
+
 
 function getActiveManagers(company) {
     $.ajax({
