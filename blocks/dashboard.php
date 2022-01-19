@@ -25,6 +25,7 @@ and r.date_create < '. (strtotime("tomorrow")-7*60*60) . '
 left join managers_meta mm on m.yc_id = mm.manager_id 
 and mm.date > FROM_UNIXTIME('. (strtotime("today")-7*60*60) . ') 
 and mm.date < FROM_UNIXTIME('. (strtotime("tomorrow")-7*60*60) . ') 
+where s.company = "golova"
 group by m.id';
 $dataSource = new DataSource($query);
 if ($data = $dataSource->getData()) {
