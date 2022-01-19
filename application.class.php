@@ -52,19 +52,31 @@ if ($data) {
 
 		if ($reduced) {
 			foreach ($reduced as $key => $manager) {
-		if (($manager['filialSum'] > 0) || ($manager['recSum'] > 0)) {
-			$html .= '
-			<div class="managersRow row" id="manager' . $manager['yc'] . '">
-				<div class="managersRowItem managersRowItemName">' . $manager['manName'] . '</div>
-				<div class="managersRowItem managersRowItemCost">' . (($manager['filialSum'] == 0)?0:$manager['filialSum']) . '</div>
-				<div class="managersRowItem managersRowItemRecords">' . ((($manager['recCount'] == 1) && ($manager['recSum'] == 0))?0:$manager['recCount']) . '</div>
-				<div class="managersRowItem managersRowItemSumm">' . ((($manager['recCount'] == 1) && ($manager['recSum'] == 0))?0:$manager['recSum']) . '</div>
-				<div class="managersRowItem managersRowItemCount">' . ((($manager['recCount'] == 1) && ($manager['callCount'] == 0))?0:$manager['callCount']) . '</div>
-				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['recCount'] == 1) && ($manager['callTime'] == 0))?0:floor((int)$manager['callTime']/60)) . '</div>
-			</div>';
-		}
-		
-	}
+				$filialSum = 0;
+				$recSum = 0;
+				$recCount = 0;
+				$callSum = 0;
+				$callCount = 0;
+				foreach ($manager as $day) {
+					$filialSum += (($day['filialSum'] == 0)?0:$day['filialSum']);
+					$recSum +=  ((($day['recCount'] == 1) && ($day['recSum'] == 0))?0:$day['recSum']);
+					$recCount += ((($day['recCount'] == 1) && ($day['recSum'] == 0))?0:$day['recCount']);
+					$callSum += ((($day['recCount'] == 1) && ($day['callTime'] == 0))?0:floor((int)$day['callTime']/60));
+					$callCount += ((($day['recCount'] == 1) && ($day['callCount'] == 0))?0:$day['callCount']);
+				}
+				if (($filialSum > 0) || ($recSum > 0)) {
+					$html .= '
+					<div class="managersRow row" id="manager' . $key . '">
+						<div class="managersRowItem managersRowItemName">' . $manager['manName'] . '</div>
+						<div class="managersRowItem managersRowItemCost">' . $filialSum . '</div>
+						<div class="managersRowItem managersRowItemRecords">' . $recCount . '</div>
+						<div class="managersRowItem managersRowItemSumm">' . $recSum . '</div>
+						<div class="managersRowItem managersRowItemCount">' . $callCount . '</div>
+						<div class="managersRowItem managersRowItemCalltime">' . $callSum . '</div>
+					</div>';
+				}
+				
+			}
 		}
 	
 	return array('html' => $html, 'data' => $reduced);
