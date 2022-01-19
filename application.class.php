@@ -50,7 +50,7 @@ if ($data) {
 			$reduced = $data;
 		}
 
-		if ($reduced {
+		if ($reduced) {
 			foreach ($reduced as $key => $manager) {
 		if (($manager['filialSum'] > 0) || ($manager['recSum'] > 0)) {
 			$html .= '
