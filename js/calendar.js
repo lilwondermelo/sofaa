@@ -119,10 +119,10 @@ function checkCalendar() {
 }
 
 function saveCalendar() {
-	if (changed == {}) {
+	if (changed.length == 0) {
 		changed = 'check';
 	}
-	if (stars == {}) {
+	if (stars.length == 0) {
 		stars = 'check';
 	}
 	$.ajax({
