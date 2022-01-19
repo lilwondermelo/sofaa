@@ -67,9 +67,15 @@ if (!$data = $dataSource->getData()) {
 	}
 
 
-	public function getManagers(){
+	public function getManagers($company){
+		if ($company == 'Telo') {
+			$host = 'autobeauty';
+		}
+		else {
+			$host = 'golovansk';
+		}
 		$result = [];
-		$query = 'select * from filials where amo_host = "autobeauty"';
+		$query = 'select * from filials where amo_host = "' . $host . '"';
 		require_once '_dataSource.class.php';
 		$dataSource = new DataSource($query);
 		if (!$data = $dataSource->getData()) {
@@ -93,7 +99,7 @@ if (!$data = $dataSource->getData()) {
 		}
 		$result = array_values($unique_array);
 		require_once '_dataSource.class.php';
-		$query = 'select * from managers';
+		$query = 'select * from managers where company = "' . $company . '"';
 		$dataSource = new DataSource($query);
 		if (!$data = $dataSource->getData()) {
 			return false;
@@ -144,9 +150,9 @@ if (!$data = $dataSource->getData()) {
 
 
 
-	public function getActiveManagers() {
+	public function getActiveManagers($company) {
 		require_once '_dataSource.class.php';
-		$query = 'select * from managers';
+		$query = 'select * from managers where company = "' . $company . '"';
 		$dataSource = new DataSource($query);
 		$html = '';
 		if ($data = $dataSource->getData()) {
@@ -159,7 +165,7 @@ if (!$data = $dataSource->getData()) {
 	<div class="button managersCancel" onclick="clearManagers();">Сброс</div>
 	<div class="button managersSave" onclick="saveManagers();">Удалить</div>
 </div>
-<div class="button buttonManagersAdd" onclick="openManagers();">+ Добавить сотрудника</div>';
+<div class="button buttonManagersAdd" onclick="openManagers(' . $company . ');">+ Добавить сотрудника</div>';
 		return $html;
 	}
 

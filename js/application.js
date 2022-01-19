@@ -41,11 +41,12 @@ function popupClose() {
     popup = 0;
 }
 
-function openManagers() {
+function openManagers(company) {
      $.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
-        data: {classFile: "application.class", class: "Application", method: "getManagers"
+        data: {classFile: "application.class", class: "Application", method: "getManagers",
+        company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
@@ -82,11 +83,12 @@ function saveManagersPopup() {
 }
 
 
-function getActiveManagers() {
+function getActiveManagers(company) {
     $.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
-        data: {classFile: "application.class", class: "Application", method: "getActiveManagers"
+        data: {classFile: "application.class", class: "Application", method: "getActiveManagers",
+        company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
