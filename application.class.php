@@ -191,7 +191,7 @@ if (!$data = $dataSource->getData()) {
 						$flag = 1;
 						$role = $shift['role'];
 						$id = $shift['id'];
-						$flag = $shift['star'];
+						$star = $shift['star'];
 						break;
 					}
 				}
