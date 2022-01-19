@@ -53,8 +53,8 @@ $('#today').click(function() {
 $('#week').click(function() {
 	date2 = new Date().toJSON().slice(0, 10);
 	date1 = new Date().toJSON().slice(0, 10);
-	console.log(date1.getDate());
-	console.log(date1.getDay());
+	console.log(new Date().getDate());
+	console.log(new Date().getDay());
 	getDashboardData(companyName);
 	$("#datepicker1").datepicker("setDate", new Date());
 	$("#datepicker").datepicker("setDate", new Date());
