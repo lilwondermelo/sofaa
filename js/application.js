@@ -89,17 +89,7 @@ $( "#company" ).change(function () {
     getActiveManagers($( "#company option:selected" ).val());
     getCalendarStations($( "#company option:selected" ).val());
     companyName = $( "#company option:selected" ).val();
-    $(function(){
-    $("#datepicker").datepicker({
-        dateFormat: "yy-mm-dd",
-        onSelect: function(date){
-            $('#datepicker_value').val(date);
-            getDashboardData(date, companyName);
-            console.log(date);
-        }
-    });
-    $("#datepicker").datepicker("setDate", $('#datepicker_value').val());
-});
+     $("#datepicker").datepicker("setDate", new Date());
   })
 
 
