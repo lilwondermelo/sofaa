@@ -280,6 +280,10 @@ if (!$data = $dataSource->getData()) {
 		$result_upd = [];
 		if ($data != 'check') {
 			foreach ($data as $key => $item) {
+				if ($stars[$key]) {
+					$item['star'] = $stars[$key]['star'];
+					unset($stars[$key]);
+				}
 				require_once '_dataRowUpdater.class.php';
 				$updater = new DataRowUpdater('managers_meta');
 				if ($item['id'] > 0) {
@@ -288,7 +292,11 @@ if (!$data = $dataSource->getData()) {
 				else {
 					$updater->setKeyField('id');
 				}
-				$updater->setDataFields(['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role']]);
+				$dataupd = ['manager_id' => explode('-', $key)[0], 'date' => '2022-01-' . explode('-', $key)[1], 'role' => $item['role']];
+				if ($item['star']) {
+					$dataupd['star'] = $item['star'];
+				}
+				$updater->setDataFields($dataupd);
 				$result_upd[] = $updater->update();
 			}
 		}
