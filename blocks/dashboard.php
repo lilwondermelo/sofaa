@@ -2,7 +2,7 @@
 //echo strtotime("21-12-14");
 require_once '_dataSource.class.php';
 $query = '
-select 
+select m.yc_id as yc, 
 (select sum(r1.cost) from records r1 left join managers m3 on m3.yc_id = r1.manager_id
 where FROM_UNIXTIME(r1.datetime) > mm.date 
 and FROM_UNIXTIME(r1.datetime-86400) < mm.date 
@@ -24,9 +24,9 @@ and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callCount,
 where s.id = mm.role 
 and FROM_UNIXTIME(c.datetime) > mm.date 
 and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callTime,
-m.id as manId, m.yc_id as yc, m.name as manName, mm.date, mm.role from managers m join managers_meta mm on m.id = mm.manager_id
+m.id as manId, m.name as manName, mm.date, mm.role from managers m join managers_meta mm on m.id = mm.manager_id
 join stations s on mm.role = s.id 
-where m.company = "Telo"
+where m.company = "Telo" 
 and mm.date = "' . date('Y-m-d') . '"';
 $dataSource = new DataSource($query);
 echo '
