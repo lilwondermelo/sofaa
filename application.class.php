@@ -101,9 +101,6 @@ if (!$data = $dataSource->getData()) {
 		require_once '_dataSource.class.php';
 		$query = 'select * from managers where company = "' . $company . '"';
 		$dataSource = new DataSource($query);
-		if (!$data = $dataSource->getData()) {
-			return false;
-		}
 		$managerList = [];
 		foreach ($data as $manager) {
 			$managerList[] = $manager['yc_id'];
