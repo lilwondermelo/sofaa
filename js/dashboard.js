@@ -23,7 +23,7 @@ $(function(){
 		onSelect: function(date){
 			$('#datepicker_value').val(date);
 			date1 = date;
-			getDashboardData(date, date2, companyName);
+			getDashboardData(companyName);
 		}
 	});
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
@@ -35,13 +35,13 @@ $(function(){
 		onSelect: function(date){
 			$('#datepicker1_value').val(date);
 			date2 = date;
-			getDashboardData(date, date2, companyName);
+			getDashboardData(date1, date2, companyName);
 		}
 	});
 	$("#datepicker1").datepicker("setDate", $('#datepicker1_value').val());
 });
 
-function getDashboardData(date1, date2, company) {
+function getDashboardData(company) {
 	console.log(date1);
 console.log(date2);
     $.ajax({
