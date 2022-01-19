@@ -196,7 +196,7 @@ if (!$data = $dataSource->getData()) {
 					}
 				}
 				$html .= '
-					<div class="calendarRowItem" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-old-id="' . (($flag == 1)?$role:'0') . '" data-index="' . (($id>0)?$id:'0') . '" data-star="' . (($flag == 1)?$star:'0') . '" data-old-star="' . (($flag == 1)?$star:'0') . '" data-day="' . $i . '"></div>';
+					<div class="calendarRowItem ' . (($role > 0)?'selectedDay':'') . ' ' . (($star > 0)?'selectedStar':'') . '" style="background:' . $colors[(($flag == 1)?$role:0)] . ';" data-id="' . (($flag == 1)?$role:'0') . '" data-old-id="' . (($flag == 1)?$role:'0') . '" data-index="' . (($id>0)?$id:'0') . '" data-star="' . (($flag == 1)?$star:'0') . '" data-old-star="' . (($flag == 1)?$star:'0') . '" data-day="' . $i . '"></div>';
 			}
 			$html .= '</div>';
 		}
