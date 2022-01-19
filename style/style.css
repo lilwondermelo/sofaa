@@ -277,7 +277,7 @@ input.managerCheckbox {
 }
 
 
-.calendarRowItemStationsStar:after {
+.calendarRowItemStationsStar:after, .selectedStar:after {
 	content:  '';
 	position: absolute;
 	top:  0;

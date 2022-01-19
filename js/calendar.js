@@ -40,6 +40,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 	if (isStar) {
 		if ($(this).hasClass('selectedStar')) {
 			$(this).removeClass('selectedStar');
+			$(this).attr('data-star', '0');
 		}
 		else {
 			$(this).addClass('selectedStar');
@@ -102,7 +103,7 @@ function calendarClick(item) {
 		item.css('background', activeColor);
 	}
 	else {
-		item.attr('background', 'black');
+		item.attr('data-star', '1');
 	}
 }
 
