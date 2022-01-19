@@ -186,7 +186,7 @@ if (!$data = $dataSource->getData()) {
 			$colors[$item['id']] = $item['color'];
 		}
 		require_once '_dataSource.class.php';
-		$query = 'select m.yc_id as yc, m.name as name, mm.id as id, mm.date as date, mm.star as star, mm.role as role, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.id) as days from managers m left join managers_meta mm on m.id = mm.manager_id where m.company = "' . $company . '"';
+		$query = 'select m.yc_id as yc, m.id as managerId, m.name as name, mm.id as id, mm.date as date, mm.star as star, mm.role as role, day(mm.date) as day, (select group_concat(DAY(m1.date)) from managers_meta m1 where m1.manager_id = m.id) as days from managers m left join managers_meta mm on m.id = mm.manager_id where m.company = "' . $company . '"';
 		$dataSource = new DataSource($query);
 		$data = $dataSource->getData();
 		if ($data) {
@@ -202,7 +202,7 @@ if (!$data = $dataSource->getData()) {
 		if ($reduced) {
 			foreach ($reduced as $key => $manager) {
 				$html .= '
-				<div class="calendarRow row" data-id="' . $key . '"> 
+				<div class="calendarRow row" data-id="' . $manager[0]['managerId'] . '"> 
 					<div class="calendarRowItem calendarRowItemName"><span>' . $manager[0]['name'] . '</span></div>';
 				for ($i = 1; $i <= $daysInMonth; $i++) {
 					$flag = 0;
