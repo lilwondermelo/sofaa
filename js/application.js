@@ -28,14 +28,16 @@ $('body').on('click', '.menuItem', function(){
     }
 });
 
-function popupOpen(body, title) {
+function popupOpen(body, title, company) {
     if (title) {
         $('.popupHeader').html(title);
     }
+    $('.popupSave').attr('onclick', 'saveManagersPopup("' + company + '"")');
     $('.popupArea').html(body);
     $('.popup').css('display', 'flex');
     popup = 1;
 }
+
 function popupClose() {
     $('.popup').css('display', 'none');
     popup = 0;
@@ -51,7 +53,7 @@ function openManagers(company) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
             console.log(data);
-            popupOpen(data.data.html, 'Добавьте менеджеров');
+            popupOpen(data.data.html, 'Добавьте менеджеров', company);
         } else {
             console.log(data);
         }
@@ -59,7 +61,7 @@ function openManagers(company) {
     
 }
 
-function saveManagersPopup() {
+function saveManagersPopup(company) {
     let managersList = [];
     $('.managersAddItem.itemActive').each(function() {
         managersList.push({id: $(this).attr('data-index'), name: $(this).html()});
@@ -70,7 +72,8 @@ function saveManagersPopup() {
         type: "POST",
         url: "_ajaxListener.class.php",
         data: {classFile: "application.class", class: "Application", method: "addManagers",
-        managersList: managersList
+        managersList: managersList,
+        company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
