@@ -2,34 +2,32 @@
 //echo strtotime("21-12-14");
 require_once '_dataSource.class.php';
 $query = '
-select (select sum(r.cost) from records r join stations s 
-where r.filial_id = ss.filial_id 
-and s.id = mm.role 
-and datetime > '. (strtotime("today")-7*60*60) . ' 
-and datetime < '. (strtotime("tomorrow")-7*60*60) . ' 
-and attendance = 1
-and s.company = "Telo" 
-) as cost, 
-(select count(*) from calls c1 join stations s1 
-where s1.id = mm.role 
-and datetime > '. (strtotime("today")-7*60*60) . ' 
-and datetime < '. (strtotime("tomorrow")-7*60*60) . '
-and s1.company = "Telo"
-and (c1.num_from = s1.phone)) as callcount, 
-(select sum(speaktime) from calls c2 join stations s2 
-where s2.id = mm.role and s2.company = "Telo"
-and ((c2.num_from = s2.phone) or (c2.num_to = s2.phone))) as calltime, 
-m.yc_id as ycId, m.name, sum(r.cost) as sum, count(*) as count, mm.star as star, if(mm.role, mm.role, 0) as role from managers m 
-left join records r on m.yc_id = r.manager_id 
-and r.date_create > '. (strtotime("today")-7*60*60) . ' 
-and r.date_create < '. (strtotime("tomorrow")-7*60*60) . '
-left join managers_meta mm on m.yc_id = mm.manager_id 
-and mm.date > FROM_UNIXTIME('. (strtotime("today")-7*60*60) . ') 
-and mm.date < FROM_UNIXTIME('. (strtotime("tomorrow")-7*60*60) . ') 
-left join stations ss on ss.company = m.company
-where r.filial_id = ss.filial_id 
-and ss.company = "Telo" 
-group by m.id ';
+select 
+(select sum(r1.cost) from records r1 left join managers m3 on m3.yc_id = r1.manager_id
+where FROM_UNIXTIME(r1.datetime) > mm.date 
+and FROM_UNIXTIME(r1.datetime-86400) < mm.date 
+and r1.filial_id = s.filial_id
+and r1.attendance = 1) as filialSum,
+(select count(*) from records r left join managers m2 on m2.yc_id = r.manager_id
+where FROM_UNIXTIME(r.date_create) > mm.date 
+and FROM_UNIXTIME(r.date_create-86400) < mm.date 
+and m2.id = m.id) as recCount, 
+(select sum(r.cost) from records r left join managers m1 on m1.yc_id = r.manager_id
+where FROM_UNIXTIME(r.date_create) > mm.date 
+and FROM_UNIXTIME(r.date_create-86400) < mm.date 
+and m1.id = m.id) as recSum, 
+(select count(*) from calls c join stations s on c.num_from = s.phone 
+where s.id = mm.role 
+and FROM_UNIXTIME(c.datetime) > mm.date 
+and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callCount,
+(select sum(c.speaktime) from calls c join stations s on c.num_from = s.phone or c.num_to = s.phone 
+where s.id = mm.role 
+and FROM_UNIXTIME(c.datetime) > mm.date 
+and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callTime,
+m.id as manId, m.yc_id as yc, m.name as manName, mm.date, mm.role from managers m join managers_meta mm on m.id = mm.manager_id
+join stations s on mm.role = s.id 
+where m.company = "Telo"
+and mm.date = "' . date('Y-m-d') . '"';
 $dataSource = new DataSource($query);
 echo '
 			<div id="datepicker"></div>
@@ -55,15 +53,15 @@ echo '
 if ($data = $dataSource->getData()) {
 	
 	foreach ($data as $manager) {
-		if (($manager['cost'] > 0) || ($manager['sum'] > 0)) {
-			echo '
-			<div class="managersRow row" id="manager' . $manager['ycId'] . '">
+		if (($manager['filialSum'] > 0) || ($manager['recSum'] > 0)) {
+			$html .= '
+			<div class="managersRow row" id="manager' . $manager['yc'] . '">
 				<div class="managersRowItem managersRowItemName">' . $manager['name'] . '</div>
-				<div class="managersRowItem managersRowItemCost">' . (($manager['cost'] == 0)?0:$manager['cost']) . '</div>
-				<div class="managersRowItem managersRowItemRecords">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['count']) . '</div>
-				<div class="managersRowItem managersRowItemSumm">' . ((($manager['count'] == 1) && ($manager['sum'] == 0))?0:$manager['sum']) . '</div>
-				<div class="managersRowItem managersRowItemCount">' . ((($manager['count'] == 1) && ($manager['callcount'] == 0))?0:$manager['callcount']) . '</div>
-				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['count'] == 1) && ($manager['calltime'] == 0))?0:floor((int)$manager['calltime']/60)) . '</div>
+				<div class="managersRowItem managersRowItemCost">' . (($manager['filialSum'] == 0)?0:$manager['filialSum']) . '</div>
+				<div class="managersRowItem managersRowItemRecords">' . ((($manager['recCount'] == 1) && ($manager['recSum'] == 0))?0:$manager['recCount']) . '</div>
+				<div class="managersRowItem managersRowItemSumm">' . ((($manager['recCount'] == 1) && ($manager['recSum'] == 0))?0:$manager['recSum']) . '</div>
+				<div class="managersRowItem managersRowItemCount">' . ((($manager['recCount'] == 1) && ($manager['callCount'] == 0))?0:$manager['callCount']) . '</div>
+				<div class="managersRowItem managersRowItemCalltime">' . ((($manager['recCount'] == 1) && ($manager['callTime'] == 0))?0:floor((int)$manager['callTime']/60)) . '</div>
 			</div>';
 		}
 		
