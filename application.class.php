@@ -223,13 +223,13 @@ if (!$data = $dataSource->getData()) {
 		return $res;
 	}
 
-	public function addManagers($managersList) {
+	public function addManagers($managersList, $company) {
 		$result_upd = [];
 		foreach ($managersList as $manager) {
 			require_once '_dataRowUpdater.class.php';
 			$updater = new DataRowUpdater('managers');
 			$updater->setKeyField('id');
-			$updater->setDataFields(['yc_id' => $manager['id'], 'name' => $manager['name']]);
+			$updater->setDataFields(['yc_id' => $manager['id'], 'name' => $manager['name'], 'company' => $company]);
 			$result_upd[] = $updater->update();
 		}
 		return $result_upd;
