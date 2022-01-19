@@ -3,7 +3,7 @@
 require_once '_dataSource.class.php';
 $query = '
 select (select sum(r.cost) from records r join stations s 
-where r.filial_id = s.filial_id 
+where r.filial_id = ss.filial_id 
 and s.id = mm.role 
 and datetime > '. (strtotime("today")-7*60*60) . ' 
 and datetime < '. (strtotime("tomorrow")-7*60*60) . ' 
