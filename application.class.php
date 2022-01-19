@@ -114,7 +114,7 @@ if (!$data = $dataSource->getData()) {
 			}
 		}
 		else {
-			$resultFinal = $managerList;
+			$resultFinal = $result;
 		}
 		
 		$html = '<div class="managersAddInner">';
