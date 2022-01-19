@@ -119,10 +119,10 @@ function checkCalendar() {
 }
 
 function saveCalendar() {
-	if (changed.length == 0) {
+	if (jQuery.isEmptyObject(changed)) {
 		changed = 'check';
 	}
-	if (stars.length == 0) {
+	if (jQuery.isEmptyObject(stars)) {
 		stars = 'check';
 	}
 	console.log(changed);
