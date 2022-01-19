@@ -47,7 +47,7 @@ $('body').on('click', '.calendarRowItem:not(.calendarRowItemStations)', function
 			calendarClick($(this));
 		}
 		if ($(this).attr('data-star') != $(this).attr('data-old-star')) {
-			stars['' + $(this).parent().attr('data-star') + '-' + $(this).attr('data-day')] = $(this).attr('data-index');
+			stars['' + $(this).parent().attr('data-id') + '-' + $(this).attr('data-day')] = $(this).attr('data-index');
 		}
 		else {
 			delete stars['' + $(this).parent().attr('data-star') + '-' + $(this).attr('data-day')];
