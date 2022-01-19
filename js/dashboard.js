@@ -54,7 +54,7 @@ $('#week').click(function() {
 	date2 = new Date().toJSON().slice(0, 10);
 	date1 = new Date();
 	date1.setDate(date1.getDate() + date1.getDay() - 7);
-	date11 = date1.toJSON().slice(0, 10)
+	var date11 = date1.toJSON().slice(0, 10)
 	console.log(date1);
 	console.log(date2);
 	getDashboardData(companyName);
