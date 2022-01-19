@@ -31,7 +31,7 @@ and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callTime,
 m.id as manId, m.yc_id as yc, m.name as manName, mm.date, mm.role from managers m join managers_meta mm on m.id = mm.manager_id
 join stations s on mm.role = s.id 
 where m.company = "' . $company . '"
-and mm.date = "' . $date . '"
+
 ';
 $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
@@ -50,8 +50,8 @@ if ($data) {
 			$reduced = $data;
 		}
 
-
-	foreach ($reduced as $key => $manager) {
+		if ($reduced {
+			foreach ($reduced as $key => $manager) {
 		if (($manager['filialSum'] > 0) || ($manager['recSum'] > 0)) {
 			$html .= '
 			<div class="managersRow row" id="manager' . $manager['yc'] . '">
@@ -65,6 +65,8 @@ if ($data) {
 		}
 		
 	}
+		})
+	
 	return array('html' => $html, 'data' => $reduced);
 
 
