@@ -273,7 +273,7 @@ input.managerCheckbox {
 .calendarRowItemStationsStar {
 	position: relative;
 }
-.calendarRowItemStationsStar:before {
+.calendarRowItemStationsStar:after {
 	content:  '';
 	position: absolute;
 	top:  0;
