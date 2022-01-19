@@ -32,7 +32,7 @@ function popupOpen(body, title, company) {
     if (title) {
         $('.popupHeader').html(title);
     }
-    $('.popupSave').attr('onclick', 'saveManagersPopup("' + company + '"")');
+    $('.popupSave').attr('onclick', 'saveManagersPopup("' + company + '")');
     $('.popupArea').html(body);
     $('.popup').css('display', 'flex');
     popup = 1;
