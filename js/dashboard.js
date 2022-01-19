@@ -42,6 +42,8 @@ $(function(){
 });
 
 function getDashboardData(date1, date2, company) {
+	console.log(date1);
+console.log(date2);
     $.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
