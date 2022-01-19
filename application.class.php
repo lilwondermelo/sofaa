@@ -163,9 +163,9 @@ if (!$data = $dataSource->getData()) {
 		$html .= '
 <div class="managersButtons row">
 	<div class="button managersCancel" onclick="clearManagers();">Сброс</div>
-	<div class="button managersSave" onclick="saveManagers("' . $company . '");">Удалить</div>
+	<div class="button managersSave" onclick="saveManagers(\'' . $company . '\');">Удалить</div>
 </div>
-<div class="button buttonManagersAdd" onclick="openManagers("' . $company . '");">+ Добавить сотрудника</div>';
+<div class="button buttonManagersAdd" onclick="openManagers(\'' . $company . '\');">+ Добавить сотрудника</div>';
 		return $html;
 	}
 
