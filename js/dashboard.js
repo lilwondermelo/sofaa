@@ -20,7 +20,6 @@ $(function(){
 	$("#datepicker").datepicker({
 		dateFormat: "yy-mm-dd",
 		onSelect: function(date){
-
 			$('#datepicker_value').val(date);
 			getDashboardData(date, companyName);
 			console.log(date);
