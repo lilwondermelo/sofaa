@@ -31,6 +31,7 @@ and mm.date = "' . date('Y-m-d') . '"';
 $dataSource = new DataSource($query);
 echo '
 			<div id="datepicker"></div>
+			<div id="datepicker1"></div>
 			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
 
 			<select class="filials">';

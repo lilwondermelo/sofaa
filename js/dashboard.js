@@ -1,3 +1,4 @@
+let date1, date2;
 $.datepicker.regional['ru'] = {
 		closeText: 'Закрыть',
 		prevText: 'Предыдущий',
@@ -21,18 +22,32 @@ $(function(){
 		dateFormat: "yy-mm-dd",
 		onSelect: function(date){
 			$('#datepicker_value').val(date);
-			getDashboardData(date, companyName);
-			console.log(date);
+			date1 = date;
+			getDashboardData(date, date2, companyName);
 		}
 	});
 	$("#datepicker").datepicker("setDate", $('#datepicker_value').val());
 });
-function getDashboardData(date, company) {
+
+$(function(){
+	$("#datepicker1").datepicker({
+		dateFormat: "yy-mm-dd",
+		onSelect: function(date){
+			$('#datepicker1_value').val(date);
+			date2 = date;
+			getDashboardData(date, date2, companyName);
+		}
+	});
+	$("#datepicker1").datepicker("setDate", $('#datepicker1_value').val());
+});
+
+function getDashboardData(date1, date2, company) {
     $.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
         data: {classFile: "application.class", class: "Application", method: "getDashboardData",
-            date: date,
+            date1: date1,
+            date2: date2,
             company: company
         }}).done(function (result) {
         var data = JSON.parse(result);
