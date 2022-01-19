@@ -6,6 +6,7 @@ let isStar = 0;
 getCalendarStations('Telo');
 
 function getManagersCalendar(company) {
+	console.log(company);
 	$.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
