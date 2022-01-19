@@ -109,7 +109,8 @@ function calendarClick(item) {
 
 function checkCalendar() {
 	console.log(changed);
-	if ((Object.keys(changed).length == 0) || (Object.keys(stars).length == 0)) {
+	console.log(stars);
+	if ((Object.keys(changed).length == 0) && (Object.keys(stars).length == 0)) {
 		$('.calendarButtons').css('visibility', 'hidden');
 	}
 	else {
