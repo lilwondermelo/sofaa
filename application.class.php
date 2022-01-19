@@ -101,16 +101,22 @@ if (!$data = $dataSource->getData()) {
 		require_once '_dataSource.class.php';
 		$query = 'select * from managers where company = "' . $company . '"';
 		$dataSource = new DataSource($query);
-		$managerList = [];
-		foreach ($data as $manager) {
-			$managerList[] = $manager['yc_id'];
-		}
-		$resultFinal = [];
-		for ($i = 0; $i < count($result); $i++) {
-			if (!in_array($result[$i]['id'], $managerList)) {
-				$resultFinal[] = $result[$i];
+		if ($data = $dataSource->getData()) {
+			$managerList = [];
+			foreach ($data as $manager) {
+				$managerList[] = $manager['yc_id'];
+			}
+			$resultFinal = [];
+			for ($i = 0; $i < count($result); $i++) {
+				if (!in_array($result[$i]['id'], $managerList)) {
+					$resultFinal[] = $result[$i];
+				}
 			}
 		}
+		else {
+			$resultFinal = $managerList;
+		}
+		
 		$html = '<div class="managersAddInner">';
 		foreach ($resultFinal as $item) {
 			$html .= '<div data-index="' . $item['id'] . '" class="managersAddItem">' . $item['firstname'] . '</div>';
