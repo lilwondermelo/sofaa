@@ -42,10 +42,16 @@ $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemCalltime">Звонки,мин</div> 
 					</div>';
 $dataSource = new DataSource($query);
-if (!$data = $dataSource->getData()) {
-	return false;
-}
-	foreach ($data as $manager) {
+
+if ($data) {
+			$reduced = $this->reduceByKey($data);
+		}
+		else {
+			$reduced = $data;
+		}
+
+
+	foreach ($reduced as $key => $manager) {
 		if (($manager['filialSum'] > 0) || ($manager['recSum'] > 0)) {
 			$html .= '
 			<div class="managersRow row" id="manager' . $manager['yc'] . '">
@@ -59,7 +65,7 @@ if (!$data = $dataSource->getData()) {
 		}
 		
 	}
-	return array('html' => $html, 'from' => strtotime($date . ' -1 day'), 'to' => strtotime($date));
+	return array('html' => $html, 'data' => $reduced);
 
 
 	}
