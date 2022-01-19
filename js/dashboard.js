@@ -17,6 +17,7 @@ $.datepicker.regional['ru'] = {
 		yearSuffix: ''
 	};
 	$.datepicker.setDefaults($.datepicker.regional['ru']);
+
 $(function(){
 	$("#datepicker").datepicker({
 		dateFormat: "yy-mm-dd",
@@ -40,6 +41,14 @@ $(function(){
 	});
 	$("#datepicker1").datepicker("setDate", $('#datepicker1_value').val());
 });
+
+$('#today').click(function() {
+	date1 = new Date();
+	date2 = new Date();
+	getDashboardData(date1, date2, companyName);
+	$("#datepicker1").datepicker("setDate", new Date());
+	$("#datepicker").datepicker("setDate", new Date());
+})
 
 function getDashboardData(company) {
 	console.log(date1);

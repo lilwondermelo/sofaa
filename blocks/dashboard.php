@@ -34,8 +34,11 @@ echo '
 			<div id="datepicker1"></div>
 			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
 			<input type="hidden" id="datepicker1_value" value="' . strtotime("today") . '">
-			<select class="filials">';
+			<div id="today">Сегодня</div>
+			<div id="week">Неделя</div>
+			<div id="month">Месяц</div>
 
+			<select class="filials">';
 			require_once 'application.class.php';
 			$app = new Application();
 			echo $app->getFilials();
