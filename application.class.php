@@ -199,6 +199,7 @@ if (!$data = $dataSource->getData()) {
 		$month = date('m');
 		$year = date('Y');
 		$daysInMonth = $this->daysInMonth($month, $year);
+		var_dump($reduce);
 		if ($reduced) {
 			foreach ($reduced as $key => $manager) {
 				$html .= '
