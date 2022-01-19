@@ -36,16 +36,16 @@ $(function(){
 		onSelect: function(date){
 			$('#datepicker1_value').val(date);
 			date2 = date;
-			getDashboardData(date1, date2, companyName);
+			getDashboardData(companyName);
 		}
 	});
 	$("#datepicker1").datepicker("setDate", $('#datepicker1_value').val());
 });
 
 $('#today').click(function() {
-	date1 = new Date();
-	date2 = new Date();
-	getDashboardData(date1, date2, companyName);
+	date1 = new Date().toJSON().slice(0, 10);
+	date2 = new Date().toJSON().slice(0, 10);
+	getDashboardData(companyName);
 	$("#datepicker1").datepicker("setDate", new Date());
 	$("#datepicker").datepicker("setDate", new Date());
 })
