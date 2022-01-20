@@ -89,7 +89,7 @@ $( "#company" ).change(function () {
     getActiveManagers($( "#company option:selected" ).val());
     getCalendarStations($( "#company option:selected" ).val());
     companyName = $( "#company option:selected" ).val();
-     $("#datepicker").datepicker("setDate", new Date());
+    $("#datepicker").datepicker("setDate", new Date());
   })
 
 

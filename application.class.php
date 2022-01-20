@@ -12,14 +12,20 @@ where FROM_UNIXTIME(r1.datetime) > mm.date
 and FROM_UNIXTIME(r1.datetime-86400) < mm.date 
 and r1.filial_id = s.filial_id
 and r1.attendance = 1) as filialSum,
+
+
+
 (select count(*) from records r left join managers m2 on m2.yc_id = r.manager_id
 where FROM_UNIXTIME(r.date_create) > mm.date 
 and FROM_UNIXTIME(r.date_create-86400) < mm.date 
 and m2.id = m.id) as recCount, 
+
 (select sum(r.cost) from records r left join managers m1 on m1.yc_id = r.manager_id
 where FROM_UNIXTIME(r.date_create) > mm.date 
 and FROM_UNIXTIME(r.date_create-86400) < mm.date 
 and m1.id = m.id) as recSum, 
+
+
 (select count(*) from calls c join stations s on c.num_from = s.phone 
 where s.id = mm.role 
 and FROM_UNIXTIME(c.datetime) > mm.date 
@@ -138,7 +144,7 @@ if ($data = $dataSource->getData()) {
 		
 		$html = '<div class="managersAddInner">';
 		foreach ($resultFinal as $item) {
-			$html .= '<div data-index="' . $item['id'] . '" class="managersAddItem">' . $item['firstname'] . '</div>';
+			$html .= '<div data-index="' . $item['id'] . '" data-img="' . $item['avatar_big'] . '" class="managersAddItem">' . $item['firstname'] . '</div>';
 		}
 		$html .= '</div>';
 		return ['html' => $html, 'data' => $resultFinal];
@@ -168,6 +174,7 @@ if ($data = $dataSource->getData()) {
 		$monthNamesShort = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
 		return $monthNamesShort;
 	}
+
 
 
 

@@ -25,6 +25,7 @@ $app->checkCalls();
 				<select id="company">
 					<option selected value="Telo">TELO</option>
 					<option value="golova">GOLOVA</option>
+					<option value="all">Вся сеть</option>
 				</select>
 			</div>
 			<div class="dashboard block blockActive">
