@@ -108,7 +108,7 @@ console.log(date2);
         		}
         	})
         	console.log(max);
-        	consolelog(maxName);
+        	console.log(maxName);
         } else {
         	console.log(data);
         }
