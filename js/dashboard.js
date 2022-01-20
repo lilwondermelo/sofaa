@@ -50,6 +50,18 @@ $('#today').click(function() {
 	$("#datepicker").datepicker("setDate", new Date());
 })
 
+
+$('#yesterday').click(function() {
+	let date = new Date();
+	date.setDate(date.getDate() - 1);
+	date1 = date.toJSON().slice(0, 10);
+	date2 = date.toJSON().slice(0, 10);
+	getDashboardData(companyName);
+	$("#datepicker1").datepicker("setDate", date);
+	$("#datepicker").datepicker("setDate", date);
+})
+
+
 $('#week').click(function() {
 	date2 = new Date().toJSON().slice(0, 10);
 	let date11 = new Date();
