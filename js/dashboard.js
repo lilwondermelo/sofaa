@@ -102,10 +102,8 @@ console.log(date2);
         	$('.managersRowItemRecords').each(function() {
         		console.log($(this).html());
         		if (!$(this).parent().attr('id', 'managerHead')) {
-        			console.log(max);
-        			console.log(+$(this).html());
-        			if (+$(this).html() > max) {
-        				max = +$(this).html();
+        			if (parseInt($(this).html()) > max) {
+        				max = parseInt($(this).html());
         				maxName = $(this).parent().find('.managersRowItem managersRowItemName').html();
         			}
         		}
