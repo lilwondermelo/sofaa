@@ -40,13 +40,13 @@ echo '
 			<div id="month">Месяц</div>
 			
 			<select class="filials"> 
-			<div class="leader"></div>';
+			';
 			require_once 'application.class.php';
 			$app = new Application();
 			echo $app->getFilials();
 
 			echo '</select>
-
+<div class="leader"></div>
 			<div class="managersTable">
 				<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
