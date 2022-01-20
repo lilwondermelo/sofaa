@@ -84,7 +84,7 @@ $('#month').click(function() {
 
 function getDashboardData(company) {
 	console.log(date1);
-console.log(date2);
+	console.log(date2);
     $.ajax({
         type: "POST",
         url: "_ajaxListener.class.php",
@@ -97,10 +97,17 @@ console.log(date2);
         if (data.result === "Ok") {
         	console.log(data.data.data);
         	$('.managersTable').html(data.data.html);
-        	let max = 0;
+			getLeader();
+        } else {
+        	console.log(data);
+        }
+    });
+}
+
+function getLeader() {
+	let max = 0;
         	let maxName = 'Нет';
         	$('.managersRowItemRecords').each(function() {
-        		console.log($(this).html());
         		if (!($(this).parent().attr('id') == 'managerHead')) {
         			if (parseInt($(this).html()) > max) {
         				max = parseInt($(this).html());
@@ -108,10 +115,6 @@ console.log(date2);
         			}
         		}
         	})
-        	console.log(max);
-        	console.log(maxName);
-        } else {
-        	console.log(data);
-        }
-    });
+        	$('.leader').html('Лидер по записям: ' + maxName + ' (' + max + ')');
 }
+getLeader();
