@@ -65,7 +65,7 @@ $('#yesterday').click(function() {
 $('#week').click(function() {
 	date2 = new Date().toJSON().slice(0, 10);
 	let date11 = new Date();
-	date11.setDate(date11.getDate() + date11.getDay() - 7);
+	date11.setDate(date11.getDate() - date11.getDay() + 1);
 	date1 = date11.toJSON().slice(0, 10);
 	getDashboardData(companyName);
 	$("#datepicker1").datepicker("setDate", new Date());
@@ -80,6 +80,31 @@ $('#month').click(function() {
 	getDashboardData(companyName);
 	$("#datepicker1").datepicker("setDate", new Date());
 	$("#datepicker").datepicker("setDate", date11);
+})
+
+$('#lastweek').click(function() {
+
+	let date22 = new Date();
+	date22.setDate(date22.getDate() - date22.getDay());
+	date2 = date22.toJSON().slice(0, 10);
+
+	let date11 = new Date();
+	date11.setDate(date11.getDate() - date11.getDay() - 6);
+	date1 = date11.toJSON().slice(0, 10);
+	getDashboardData(companyName);
+	$("#datepicker1").datepicker("setDate", date22);
+	$("#datepicker").datepicker("setDate", date11);
+})
+
+$('#year').click(function() {
+	date2 = new Date().toJSON().slice(0, 10);
+	let date11 = new Date();
+	date11.setDate(1);
+	date1 = date11.toJSON().slice(0, 10);
+	getDashboardData(companyName);
+	$("#datepicker1").datepicker("setDate", new Date());
+	$("#datepicker").datepicker("setDate", date11);
+	//set month
 })
 
 function getDashboardData(company) {
