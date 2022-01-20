@@ -35,6 +35,7 @@ echo '
 			<input type="hidden" id="datepicker_value" value="' . strtotime("today") . '">
 			<input type="hidden" id="datepicker1_value" value="' . strtotime("today") . '">
 			<div id="today">Сегодня</div>
+			<div id="yesterday">Вчера</div>
 			<div id="week">Неделя</div>
 			<div id="month">Месяц</div>
 
