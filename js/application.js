@@ -86,10 +86,19 @@ function saveManagersPopup(company) {
 }
 
 $( "#company" ).change(function () {
-    getActiveManagers($( "#company option:selected" ).val());
-    getCalendarStations($( "#company option:selected" ).val());
-    companyName = $( "#company option:selected" ).val();
-    $("#datepicker").datepicker("setDate", new Date());
+    if ($( "#company option:selected" ).val() == 'all') {
+        getActiveManagers($( "#company option:selected" ).val());
+        $('[data-index="calendar"]').css('display', 'none');
+        $('[data-index="managers"]').css('display', 'none');
+    }
+    else {
+        getActiveManagers($( "#company option:selected" ).val());
+        getCalendarStations($( "#company option:selected" ).val());
+        companyName = $( "#company option:selected" ).val();
+        $("#datepicker").datepicker("setDate", new Date());
+         $('[data-index="calendar"]').css('display', 'flex');
+        $('[data-index="managers"]').css('display', 'flex');
+    }
   })
 
 
