@@ -100,11 +100,13 @@ console.log(date2);
         	let max = 0;
         	let maxName = 'Нет';
         	$('.managersRowItemRecords').each(function() {
+        		console.log($(this).html());
+        		if (!($(this).parent().attr('id') == 'managerHead')) {
         			if (parseInt($(this).html()) > max) {
         				max = parseInt($(this).html());
-        				maxName = $(this).parent().find('.managersRowItem managersRowItemName').html();
+        				maxName = $(this).parent().find('.managersRowItemName').html();
         			}
-        		
+        		}
         	})
         	console.log(max);
         	console.log(maxName);
