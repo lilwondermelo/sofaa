@@ -97,6 +97,18 @@ console.log(date2);
         if (data.result === "Ok") {
         	console.log(data.data.data);
         	$('.managersTable').html(data.data.html);
+        	let max = 0;
+        	let maxName = 'Нет';
+        	$('.managersRowItemRecords').each(function() {
+        		if (!$(this).parent().attr('id', 'managerHead')) {
+        			if ($(this).html() > max) {
+        				max = $(this).html();
+        				maxName = $(this).parent().find('.managersRowItem managersRowItemName').html();
+        			}
+        		}
+        	})
+        	console.log(max);
+        	consolelog(maxName);
         } else {
         	console.log(data);
         }

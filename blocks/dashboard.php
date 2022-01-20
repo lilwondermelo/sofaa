@@ -38,8 +38,9 @@ echo '
 			<div id="yesterday">Вчера</div>
 			<div id="week">Неделя</div>
 			<div id="month">Месяц</div>
-
-			<select class="filials">';
+			
+			<select class="filials"> 
+			<div class="leader"></div>';
 			require_once 'application.class.php';
 			$app = new Application();
 			echo $app->getFilials();
@@ -77,3 +78,4 @@ echo '</div>
 	<script src="js/dashboard.js"></script>';
 	//echo json_encode($data);
 ?>
+
