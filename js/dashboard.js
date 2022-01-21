@@ -151,4 +151,4 @@ function getLeader() {
         	})
         	$('.leader').html('Лидер по записям: ' + maxName + ' (' + max + ')');
 }
-getLeader();
+$('#today').click();
