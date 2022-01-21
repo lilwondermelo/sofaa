@@ -98,7 +98,7 @@ $( "#company" ).change(function () {
         $('[data-index="managers"]').css('display', 'flex');
     }
     companyName = $( "#company option:selected" ).val();
-    $("#datepicker").datepicker();
+    getDashboardData(companyName);
   })
 
 
