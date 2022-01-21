@@ -3,7 +3,7 @@
 class Application {
 	public $error;
 
-	public function getDashboardData($date, $date1, $company) {
+	public function getDashboardData($date, $date1, $company = 'all') {
 		require_once '_dataSource.class.php';
 $query = '
 select m.yc_id as yc, 
@@ -36,9 +36,9 @@ and FROM_UNIXTIME(c.datetime) > mm.date
 and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callTime,
 m.id as manId, m.name as manName, mm.date, mm.role from managers m join managers_meta mm on m.id = mm.manager_id
 join stations s on mm.role = s.id 
-where m.company = "' . $company . '" 
-and mm.date >= "' . $date . '" 
-and mm.date <= "' . $date1 . '"';
+where mm.date >= "' . $date . '" 
+and mm.date <= "' . $date1 . '" 
+' . (($company != 'all')?(' and m.company = "' . $company . '"'):'');
 
 $html = '<div class="managersRow row" id="managerHead">
 					<div class="managersRowItem managersRowItemName">Имя</div>
