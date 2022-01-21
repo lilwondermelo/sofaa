@@ -86,7 +86,7 @@ if ($data = $dataSource->getData()) {
 			}
 		}
 	
-	return array('html' => $html, 'data' => $reduced);
+	return array('html' => $html, 'data' => $query);
 
 
 	}
