@@ -118,7 +118,8 @@ function getDashboardData(company) {
             date2: date2,
             company: company
         }}).done(function (result) {
-        var data = JSON.parse(result);
+        	try {
+   var data = JSON.parse(result);
         if (data.result === "Ok") {
         	console.log(data.data.data);
         	$('.managersTable').html(data.data.html);
@@ -126,6 +127,12 @@ function getDashboardData(company) {
         } else {
         	console.log(data);
         }
+}
+catch (e) {
+   // инструкции для обработки ошибок
+   console.log(e); // передать объект исключения обработчику ошибок
+}
+        
     });
 }
 
