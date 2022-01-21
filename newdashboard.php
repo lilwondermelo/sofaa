@@ -54,6 +54,7 @@ $app->checkCalls();
 	include 'blocks/popup.php';
 	?>
 	<script src="js/application.js"></script>
+	<script src="js/dashboard.js"></script>
 </body>
 </html>
 

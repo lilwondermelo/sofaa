@@ -20,7 +20,7 @@ echo '
 			//</select>
 echo '<div class="leader"></div>
 			<div class="managersTable"></div> 
-	<script src="js/dashboard.js"></script>';
+	';
 	//echo json_encode($data);
 ?>
 
