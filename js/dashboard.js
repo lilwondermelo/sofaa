@@ -36,6 +36,7 @@ $(function(){
 		onSelect: function(date){
 			$('#datepicker1_value').val(date);
 			date2 = date;
+			console.log(companyName);
 			getDashboardData(companyName);
 		}
 	});
