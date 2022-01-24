@@ -11,6 +11,7 @@ select m.yc_id as yc,
 where FROM_UNIXTIME(r1.datetime) > mm.date 
 and FROM_UNIXTIME(r1.datetime-86400) < mm.date 
 and r1.filial_id = s.filial_id
+and r1.is_today is null 
 and r1.attendance = 1) as filialSum,
 
 
