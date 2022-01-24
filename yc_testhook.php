@@ -64,8 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$recordData['cancel'] = 1;
 		}
 		$finalCost = 0;
-		if (count($contactData['documents']) > 0) {
-			foreach ($contactData['documents'] as $item) {
+		
 				$finalCostArray = $controller->getFinalCost($item[0]['id'])['data']['state']['payment_transactions'];
 				if (($finalCostArray) && (is_array($finalCostArray))) {
 					if (count($finalCostArray) > 0) {
@@ -74,8 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						}
 					}
 				}
-			}
-		}
+	
 		$recordData['cost_end'] = $finalCost;
 		require_once '_dataRowSource.class.php';
 		$query = 'select count(*) as count from records where datetime >= unix_timestamp("' . date('Y-m-d') . '") and attendance = 1 and deleted = 0 and filial_id = ' . $companyId . ' and client_id = ' . $contactData['client']['id'];
