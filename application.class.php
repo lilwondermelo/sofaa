@@ -13,19 +13,16 @@ and FROM_UNIXTIME(r1.datetime-86400) < mm.date
 and r1.filial_id = s.filial_id 
 and r1.attendance = 1) as filialSum,
 
-
-
 (select count(*) from records r left join managers m2 on m2.yc_id = r.manager_id
 where FROM_UNIXTIME(r.date_create) >= mm.date 
 and FROM_UNIXTIME(r.date_create-86400) < mm.date 
-and r.is_today is null 
+and (r.is_today is null or r.is_today = 0)
 and m2.id = m.id) as recCount, 
 
 (select sum(r.cost) from records r left join managers m1 on m1.yc_id = r.manager_id
 where FROM_UNIXTIME(r.date_create) >= mm.date 
 and FROM_UNIXTIME(r.date_create-86400) < mm.date 
 and m1.id = m.id) as recSum, 
-
 
 (select count(*) from calls c join stations s on c.num_from = s.phone 
 where s.id = mm.role 
