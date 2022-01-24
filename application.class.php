@@ -10,8 +10,7 @@ select m.yc_id as yc,
 (select coalesce(sum(r1.cost_end), sum(r1.cost)) from records r1 left join managers m3 on m3.yc_id = r1.manager_id
 where FROM_UNIXTIME(r1.datetime) > mm.date 
 and FROM_UNIXTIME(r1.datetime-86400) < mm.date 
-and r1.filial_id = s.filial_id
-and r1.is_today is null 
+and r1.filial_id = s.filial_id 
 and r1.attendance = 1) as filialSum,
 
 
@@ -19,6 +18,7 @@ and r1.attendance = 1) as filialSum,
 (select count(*) from records r left join managers m2 on m2.yc_id = r.manager_id
 where FROM_UNIXTIME(r.date_create) >= mm.date 
 and FROM_UNIXTIME(r.date_create-86400) < mm.date 
+and r.is_today is null 
 and m2.id = m.id) as recCount, 
 
 (select sum(r.cost) from records r left join managers m1 on m1.yc_id = r.manager_id
