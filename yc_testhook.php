@@ -63,7 +63,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($contactData['attendance'] == -1) {
 			$recordData['cancel'] = 1;
 		}
-		$finalCost = $controller->getFinalCost($contactData['documents'][0]['id'])['data']['state']['payment_transactions'];
+		$finalCost = 0;
+		$finalCostArray = $controller->getFinalCost($contactData['documents'][0]['id'])['data']['state']['payment_transactions'];
+		if (($finalCostArray) && (is_array($finalCostArray))) {
+			if (count($finalCostArray) > 0) {
+				foreach ($finalCostArray as $item) {
+					$finalCost += $item['amount'];
+				}
+			}
+		}
 		require_once '_dataRowSource.class.php';
 		$query = 'select count(*) as count from records where datetime >= unix_timestamp("' . date('Y-m-d') . '") and attendance = 1 and filial_id = ' . $companyId . ' and client_id = ' . $contactData['client']['id'];
 		$dataRow = new DataRowSource($query);
@@ -75,11 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$active = $controller->getLastRecord($contactData['client']['id']);
 		
 		$result = $controller->setRecordToAmo($active);
-		$controller->recordHook('cost' . json_encode($finalCost, JSON_UNESCAPED_UNICODE));
-		echo json_encode($finalCost, JSON_UNESCAPED_UNICODE);
+		$controller->recordHook($finalCost);
 	}
 }
 
-
+cost[{"id":364799086,"document_id":470200363,"sale_item_id":586297678,"sale_item_type":"service","expense_id":5,"account_id":1144190,"amount":300,"created_at":"2022-01-24 12:33:46","account":{"id":1144190,"title":"Касса | НАЛИЧНЫЕ РАСЧЕТЫ","is_cash":true,"is_default":true},"expense":{"id":5,"title":"Оказание услуг"}},{"id":364799087,"document_id":470200363,"sale_item_id":586297679,"sale_item_type":"service","expense_id":5,"account_id":1144190,"amount":900,"created_at":"2022-01-24 12:33:46","account":{"id":1144190,"title":"Касса | НАЛИЧНЫЕ РАСЧЕТЫ","is_cash":true,"is_default":true},"expense":{"id":5,"title":"Оказание услуг"}}]
 
 ?>
