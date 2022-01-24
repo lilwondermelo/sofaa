@@ -17,6 +17,7 @@ and r1.attendance = 1) as filialSum,
 where FROM_UNIXTIME(r.date_create) >= mm.date 
 and FROM_UNIXTIME(r.date_create-86400) < mm.date 
 and (r.is_today is null or r.is_today = 0)
+and r.deleted = 0 
 and m2.id = m.id) as recCount, 
 
 (select sum(r.cost) from records r left join managers m1 on m1.yc_id = r.manager_id
