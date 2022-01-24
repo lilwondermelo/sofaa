@@ -72,7 +72,7 @@ if ($data = $dataSource->getData()) {
 					$callSum += ((($day['recCount'] == 1) && ($day['callTime'] == 0))?0:floor((int)$day['callTime']/60));
 					$callCount += ((($day['recCount'] == 1) && ($day['callCount'] == 0))?0:$day['callCount']);
 				}
-				if (($filialSum > 0) || ($recSum > 0)) {
+				if (1) {
 					$html .= '
 					<div class="managersRow row" id="manager' . $key . '">
 						<div class="managersRowItem managersRowItemName">' . $manager[0]['manName'] . '</div>
