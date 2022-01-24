@@ -81,7 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$dataRow->getData();
 		if (($dataRow->getValue('count') > 0) && ($recordData['datetime'] < strtotime(date("Y-m-d") . '+1 days'))) {
 			$recordData['is_today'] = 1;
-			$controller->recordHook($dataRow->getValue('count') . ' ' . $query);
+			if ($companyId == 142632) {
+				$controller->recordHook($finalCost);
+				$controller->recordHook($finalCostArray);
+			}
+			
 		}
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
