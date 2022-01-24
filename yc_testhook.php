@@ -87,6 +87,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 
-cost[{"id":364799086,"document_id":470200363,"sale_item_id":586297678,"sale_item_type":"service","expense_id":5,"account_id":1144190,"amount":300,"created_at":"2022-01-24 12:33:46","account":{"id":1144190,"title":"Касса | НАЛИЧНЫЕ РАСЧЕТЫ","is_cash":true,"is_default":true},"expense":{"id":5,"title":"Оказание услуг"}},{"id":364799087,"document_id":470200363,"sale_item_id":586297679,"sale_item_type":"service","expense_id":5,"account_id":1144190,"amount":900,"created_at":"2022-01-24 12:33:46","account":{"id":1144190,"title":"Касса | НАЛИЧНЫЕ РАСЧЕТЫ","is_cash":true,"is_default":true},"expense":{"id":5,"title":"Оказание услуг"}}]
 
 ?>
