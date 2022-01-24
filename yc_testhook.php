@@ -83,13 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$dataRow->getData();
 		if ($dataRow->getValue('count') > 0) {
 			$recordData['is_today'] = 1;
+			$controller->recordHook($dataRow->getValue('count'));
 		}
 		$resultDb = $controller->setRecord($recordData, $recordId);
 		$active = $controller->getLastRecord($contactData['client']['id']);
-		
 		$result = $controller->setRecordToAmo($active);
 	}
 }
-
-
 ?>
