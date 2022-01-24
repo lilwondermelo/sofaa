@@ -7,7 +7,7 @@ class Application {
 		require_once '_dataSource.class.php';
 $query = '
 select m.yc_id as yc, 
-(select sum(if r1.cost_end > 0 then r.cost_end else r.cost) from records r1 left join managers m3 on m3.yc_id = r1.manager_id
+(select coalesce(sum(r1.cost_end), sum(r1.cost)) from records r1 left join managers m3 on m3.yc_id = r1.manager_id
 where FROM_UNIXTIME(r1.datetime) > mm.date 
 and FROM_UNIXTIME(r1.datetime-86400) < mm.date 
 and r1.filial_id = s.filial_id
