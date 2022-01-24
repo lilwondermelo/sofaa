@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$query = 'select count(*) as count from records where datetime >= unix_timestamp("' . date('Y-m-d') . '") and attendance = 1 and deleted = 0 and filial_id = ' . $companyId . ' and client_id = ' . $contactData['client']['id'];
 		$dataRow = new DataRowSource($query);
 		$dataRow->getData();
-		if ($dataRow->getValue('count') > 0) {
+		if (($dataRow->getValue('count') > 0) && ($recordData['datetime'] < strtotime(date("Y-m-d") . '+1 days')))) {
 			$recordData['is_today'] = 1;
 			$controller->recordHook($dataRow->getValue('count') . ' ' . $query);
 		}
