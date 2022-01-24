@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$active = $controller->getLastRecord($contactData['client']['id']);
 		
 		$result = $controller->setRecordToAmo($active);
-		$controller->recordHook(json_encode($contactData['documents'], JSON_UNESCAPED_UNICODE));
+		$controller->recordHook(json_encode($finalCost, JSON_UNESCAPED_UNICODE));
 		echo json_encode($finalCost, JSON_UNESCAPED_UNICODE);
 	}
 }
