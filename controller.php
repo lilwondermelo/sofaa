@@ -564,7 +564,15 @@ order by r.datetime desc';
 		return $result;
 	}
 
-
+	//Получаем из yclients чек по операции для расчета стоимости с учетом скидок
+	public function getFinalCost($id) {
+		$this->isYc = 1;
+		$this->authHeader = $this->account->getYcAuth();
+		$this->method = 'GET';
+		$this->link = 'https://api.yclients.com/api/v1/company/' . $this->account->getYcFilialId() . '/sale/' . $id;
+		$result = $this->apiQuery();
+		return $result;
+	}
 
 	public function getClientCount() {
 		$this->isYc = 1;

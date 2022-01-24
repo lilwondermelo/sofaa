@@ -1,6 +1,7 @@
 <?php
 
 Class Account {
+	// Bearer db422y4ahpubbnjuy4ya, User 29a9ec5bbf774c4923d126e04cf57897
 	private $ycBearer = 'db422y4ahpubbnjuy4ya'; //Bearer код для API YCLIENTS
 	private $ycUser = '29a9ec5bbf774c4923d126e04cf57897'; //User код для API YCLIENTS
 	private $amoBearer;
