@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$dataRow = new DataRowSource($query);
 		$dataRow->getData();
 		if ($dataRow->getValue('count') > 0)) {
-			if ($recordData['datetime'] < strtotime(date("Y-m-d") . '+1 days')) {
+			if ($recordData['datetime'] < strtotime(date("Y-m-d") . '+1 day')) {
 				$recordData['is_today'] = 1;
 			}
 			else {
