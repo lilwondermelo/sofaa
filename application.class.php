@@ -35,8 +35,8 @@ and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callCount,
 where s.id = mm.role 
 and FROM_UNIXTIME(c.datetime) > mm.date 
 and FROM_UNIXTIME(c.datetime-86400) < mm.date) as callTime,
-m.id as manId, m.name as manName, mm.date, mm.role from managers m join managers_meta mm on m.id = mm.manager_id
-join stations s on mm.role = s.id 
+m.id as manId, m.name as manName, mm.date, mm.role from managers m left join managers_meta mm on m.id = mm.manager_id
+left join stations s on mm.role = s.id 
 where mm.date >= "' . $date . '" 
 and mm.date <= "' . $date1 . '" 
 ' . (($company != 'all')?(' and m.company = "' . $company . '"'):'');
