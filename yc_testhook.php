@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		$finalCost = 0;
 		
-				$finalCostArray = $controller->getFinalCost($item[0]['id'])['data']['state']['payment_transactions'];
+				$finalCostArray = $controller->getFinalCost($contactData['documents'][0]['id'])['data']['state']['payment_transactions'];
 				if (($finalCostArray) && (is_array($finalCostArray))) {
 					if (count($finalCostArray) > 0) {
 						foreach ($finalCostArray as $item) {
