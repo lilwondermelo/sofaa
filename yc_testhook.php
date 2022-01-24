@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($contactData['attendance'] == -1) {
 			$recordData['cancel'] = 1;
 		}
-		$finalCost = $controller->getFinalCost($contactData['documents'][0]);
+		$finalCost = $controller->getFinalCost($contactData['documents'][0]['id']);
 		require_once '_dataRowSource.class.php';
 		$query = 'select count(*) as count from records where datetime >= unix_timestamp("' . date('Y-m-d') . '") and attendance = 1 and filial_id = ' . $companyId . ' and client_id = ' . $contactData['client']['id'];
 		$dataRow = new DataRowSource($query);
