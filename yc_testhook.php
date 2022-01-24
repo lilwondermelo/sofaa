@@ -64,11 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$recordData['cancel'] = 1;
 		}
 		$finalCost = 0;
-		$finalCostArray = $controller->getFinalCost($contactData['documents'][0]['id'])['data']['state']['payment_transactions'];
-		if (($finalCostArray) && (is_array($finalCostArray))) {
-			if (count($finalCostArray) > 0) {
-				foreach ($finalCostArray as $item) {
-					$finalCost += $item['amount'];
+		if (count($contactData['documents']) > 0) {
+			foreach ($contactData['documents'] as $item) {
+				$finalCostArray = $controller->getFinalCost($item[0]['id'])['data']['state']['payment_transactions'];
+				if (($finalCostArray) && (is_array($finalCostArray))) {
+					if (count($finalCostArray) > 0) {
+						foreach ($finalCostArray as $item) {
+							$finalCost += $item['amount'];
+						}
+					}
 				}
 			}
 		}
