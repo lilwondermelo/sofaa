@@ -25,14 +25,14 @@ svg {
 }
 
 
-.tilePasture {
+.tile1 {
 	fill: green;
 }
 
-.tileCoast {
+.tile2 {
 	fill: blue;
 }
-.tileDesert {
+.tile3 {
 	fill: yellow;
 }
 

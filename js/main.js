@@ -1,7 +1,7 @@
 let map = {}, types = {}, typesArray = [], mapArray = [], menuActive = 0, sideBarActive = 0;
-getAllTypesFromDb();
-getAllTilesFromDb('map');
-//createNewMap('map');
+//getAllTypesFromDb();
+//getAllTilesFromDb('map');
+createNewMap('map');
 
 
 function drawPalette() {
@@ -13,7 +13,6 @@ function drawPalette() {
         let food = Object.entries(el)[1][1].food;
         let prod = Object.entries(el)[1][1].prod;
         let gold = Object.entries(el)[1][1].gold;
-        let className = Object.entries(el)[1][1].className;
         $('.sideBarInnerPalette').append('<div class="sideBarItem" data-id="' + id + '">' + name + '</div>');
     });
 }
@@ -132,10 +131,9 @@ function deleteTile(id) {
     svg.remove();
 }
 
-function drawTile(id, x, y, type, className) {
-    console.log(className);
+function drawTile(id, x, y, type) {
     let svg = '<svg class="tile" id="tile_' + id + '" data-id="' + id + '" data-name="tile_' + id + '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 396 344" width="200" height="170">' +
-    '<polygon onclick="polygonClick(this)" class="tilePolygon tile' + className + '" points="295.15 1 99.15 1 1.15 171 99.15 341 295.15 341 393.15 171 295.15 1"/></svg>';
+    '<polygon onclick="polygonClick(this)" class="tilePolygon tile' + type + '" points="295.15 1 99.15 1 1.15 171 99.15 341 295.15 341 393.15 171 295.15 1"/></svg>';
     $('.mainArea').append(svg);
     document.querySelector('polygon').addEventListener('click', () => console.log('clicked'));
     let topDelta = Math.sqrt(3) * 97;
@@ -156,18 +154,17 @@ function drawMap() {
         let x = Object.entries(el)[1][1].x;
         let y = Object.entries(el)[1][1].y;
         let type = Object.entries(el)[1][1].type;
-        let className = types[type].className;
-        drawTile(id, x, y, type, className);
+        drawTile(id, x, y, type);
     });
 }
 
 function tileEdit(id, key, value) {
     map[id][key] = value;
     deleteTile(id);
-    saveTile(id, map[id].x, map[id].y, map[id].type, types[map[id].type].className);
+    saveTile(id, map[id].x, map[id].y, map[id].type);
 }
 
-function saveTile(id, x, y, type, className) {
+function saveTile(id, x, y, type) {
     $.ajax({
         type: "POST",
         url: "core/_ajaxListener.class.php",
@@ -175,7 +172,7 @@ function saveTile(id, x, y, type, className) {
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-            drawTile(id, x, y, type, className);
+            drawTile(id, x, y, type);
         } else {
             console.log(data);
         }
