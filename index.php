@@ -1,7 +1,3 @@
-<?php
-  require $_SERVER['DOCUMENT_ROOT'] . '/model/tile.class';
-  $tile = new Tile($x, $y);
-?>
 <!DOCTYPE html>
 <html>
   <head>

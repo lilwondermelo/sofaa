@@ -50,7 +50,7 @@ class Map {
 	}
 
 	public function createNewMap($tableName) {
-		require '../model/tile.class';
+		require $_SERVER['DOCUMENT_ROOT'] . '/model/tile.class';
 		for ($x = 0; $x < $this->maxX; $x++) {
 			for ($y = 0; $y < $this->maxY; $y++) {
 				$tile = new Tile($x, $y);
