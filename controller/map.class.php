@@ -20,7 +20,7 @@ class Map {
 	}
 
 	public function getAllTypesFromDb() {
-		$source = new DataSource('select id, name, move_cost, food, prod, gold, class_name as className from types');
+		$source = new DataSource('select id, name, move_cost, food, prod, gold from types');
 		if (!$data = $source->getData()) {
 			$this->error = $source->error;
 			return false;
