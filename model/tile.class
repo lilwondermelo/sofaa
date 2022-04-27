@@ -1,0 +1,45 @@
+<?php 
+class Tile {
+	private $id = 0;
+	private $x = 0;
+	private $y = 0;
+	private $type = 1;
+
+	public function __construct($x, $y, $type = 1) {
+		$this->setPos($x, $y);
+		$this->setType($type);
+	}
+
+	public function getPos() {
+		return ['x' => $this->getX(), 'y' => $this->getY()];
+	}
+
+	public function setPos($x, $y) {
+		$this->setX($x);
+		$this->setY($y);
+	}
+
+	public function getX() {
+		return $this->x;
+	}
+
+	public function getY() {
+		return $this->y;
+	}
+
+	public function setX($x) {
+		$this->x = $x;
+	}
+	public function setY($y) {
+		$this->y = $y;
+	}
+
+	public function getType() {
+		return $this->type;
+	}
+
+	public function setType($type) {
+		$this->type = $type;
+	}
+}
+?>
