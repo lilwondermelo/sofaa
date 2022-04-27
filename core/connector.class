@@ -3,9 +3,9 @@ class Connector {
     var $db, $error, $query, $affected_rows=0;
     //установки подключения к базе
     var $server = "localhost:3306";
-    var $user = "root";
-    var $password = "root";
-    var $dbase = "coop";
+    var $user = "u1493403_default";
+    var $password = "2dJ0DRcec50pdjBJR2aw";
+    var $dbase = "u1493403_default";
 
 	//подключаем
     public function sqlConnect() {
