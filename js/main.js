@@ -1,7 +1,7 @@
 let map = {}, types = {}, typesArray = [], mapArray = [], menuActive = 0, sideBarActive = 0;
-//getAllTypesFromDb();
-//getAllTilesFromDb('map');
-createNewMap('map');
+getAllTypesFromDb();
+getAllTilesFromDb('map');
+//createNewMap('map');
 
 
 function drawPalette() {
