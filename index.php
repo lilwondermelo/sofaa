@@ -1,3 +1,7 @@
+<?php
+  require '../model/tile.class';
+  $tile = new Tile($x, $y);
+?>
 <!DOCTYPE html>
 <html>
   <head>
