@@ -9,6 +9,11 @@
       
     </div>
 
+    <div class="border borderBottom"></div>
+    <div class="border borderLeft"></div>
+    <div class="border borderLeft"></div>
+    <div class="border borderLeft"></div>
+
     <div class="sideBar sideBarLeft menuBar">
       <div data-id="1" class="menuBarItem">Выбор объектов</div>
       <div data-id="2" class="menuBarItem">Заливка клетки</div>
