@@ -111,7 +111,7 @@ class Map {
 				$tile = new Tile($x, $y);
 				$updater = new DataRowUpdater($tableName);
 				$updater->setKey('id', $id);
-            	$updater->setDataFields(array('x' => $tile->getX(), 'y' => $tile->getY()));
+            	$updater->setDataFields(array('x' => $tile->getX(), 'y' => $tile->getY(), 'type' => 9));
             	$updater->update();
             	$id++;
 			}
