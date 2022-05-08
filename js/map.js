@@ -81,7 +81,6 @@ function getUnits() {
     $.ajax({
         type: "POST",
         url: "../core/_ajaxListener.class.php",
-        async: false,
         data: {classFile: "map.class", class: "Map", method: "getUnits"
         }}).done(function (result) {
         var data = JSON.parse(result);
@@ -99,7 +98,6 @@ function getTypes() {
     $.ajax({
         type: "POST",
         url: "../core/_ajaxListener.class.php",
-        async: false,
         data: {classFile: "map.class", class: "Map", method: "getTypes"
         }}).done(function (result) {
         var data = JSON.parse(result);
@@ -228,7 +226,6 @@ function createNewMap() {
     $.ajax({
         type: "POST",
         url: "../core/_ajaxListener.class.php",
-        async: false,
         data: {classFile: "map.class", class: "Map", method: "createNewMap", map: 'map'
         }}).done(function (result) {
         var data = JSON.parse(result);
