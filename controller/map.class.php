@@ -116,6 +116,7 @@ class Map {
             	$id++;
 			}
 		}
+		return true;
 	}
 }
 ?>

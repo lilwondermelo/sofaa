@@ -13,7 +13,7 @@ let points = [];
 let centers = [];
 let id = 0;
 let shiftX = 0;
-createNewMap();
+//createNewMap();
 
 function checkDownload() {
     const count = Object.entries(checkArray).length;
