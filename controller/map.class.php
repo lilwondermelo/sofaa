@@ -44,8 +44,8 @@ class Map {
 			$this->error = $source->error;
 			return false;
 		}
-		return ['id'=> 21];
-		//return $data[array_rand($data)];
+		//return ['id'=> 21];
+		return $data[array_rand($data)];
 	}
 
 
