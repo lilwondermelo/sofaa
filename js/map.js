@@ -62,7 +62,6 @@ async function refreshUnitsData() {
     $.ajax({
         type: "POST",
         url: "../core/_ajaxListener.class.php",
-        async: false,
         data: {classFile: "map.class", class: "Map", method: "getUnits"
         }}).done(function (result) {
         var data = JSON.parse(result);
