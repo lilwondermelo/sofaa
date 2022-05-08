@@ -58,7 +58,7 @@ function getPlayers() {
 }
 
 async function refreshUnitsData() {
-    await new Promise((resolve, reject) => setTimeout(resolve, 400));
+    await new Promise((resolve, reject) => setTimeout(resolve, 2000));
     $.ajax({
         type: "POST",
         url: "../core/_ajaxListener.class.php",
