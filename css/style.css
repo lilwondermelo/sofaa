@@ -1,3 +1,15 @@
+:root {
+	--hex-side: 50px;
+  	--hex-rotate: 30deg;
+}
+
+.hexagon {
+  fill: #3e92cc;
+}
+
+
+
+
 * {
 	top: 0;
 	left:  0;
@@ -5,6 +17,52 @@
 	margin: 0;
 }
 html { overflow:  hidden; }
+
+
+.mainMenuBgr {
+	position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #EFEEEA;
+}
+
+.mainMenu {
+	position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: url(../media/bgr2.jpg);
+    background-position: center;
+    background-size: auto 90vh;
+    background-repeat: no-repeat;
+}
+
+.mainMenuInner {
+	margin: 50px auto auto 50px;
+	width: 20vw;
+	height: fit-content;
+	padding:  10px;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mainMenuInnerMain {
+	width: 60vw;
+}
+
+.mainMenuItem {
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.mainMenuItem:hover {
+	color:  yellow;
+}
+
+
+
+
+
 
 .fill {
 	cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 576 512'%3E%3Ctitle%3Ecursor-link%3C/title%3E%3Cpath d='M41.37 9.372C53.87-3.124 74.13-3.124 86.63 9.372L168 90.74L221.1 37.66C249.2 9.539 294.8 9.539 322.9 37.66L474.3 189.1C502.5 217.2 502.5 262.8 474.3 290.9L283.9 481.4C246.4 518.9 185.6 518.9 148.1 481.4L30.63 363.9C-6.863 326.4-6.863 265.6 30.63 228.1L122.7 135.1L41.37 54.63C28.88 42.13 28.88 21.87 41.37 9.372V9.372zM217.4 230.6L168 181.3L75.88 273.4C71.69 277.6 68.9 282.6 67.52 288H386.7L429.1 245.7C432.2 242.5 432.2 237.5 429.1 234.3L277.7 82.91C274.5 79.79 269.5 79.79 266.3 82.91L213.3 136L262.6 185.4C275.1 197.9 275.1 218.1 262.6 230.6C250.1 243.1 229.9 243.1 217.4 230.6L217.4 230.6zM448 448C448 422.8 480.6 368.4 499.2 339.3C505.3 329.9 518.7 329.9 524.8 339.3C543.4 368.4 576 422.8 576 448C576 483.3 547.3 512 512 512C476.7 512 448 483.3 448 448H448z' fill='%23183153' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3C/path%3E%3C/svg%3E") 32 32, pointer;
@@ -30,10 +88,10 @@ svg {
 	left: 0;
 }
 
-.tilePolygon{fill:#ffffff;stroke:#000;stroke-miterlimit:10;stroke-width:5px;pointer-events: auto;
+.hexagon{background-color:#ffffff;border: 2px solid #000;pointer-events: auto;
 	
 }
-.tilePolygon:hover {
+.hexagon:hover {
 	filter: opacity(0.5);
 }
 /**/
@@ -76,32 +134,91 @@ svg {
 
 .tileSelected {
 	stroke: #FFD073;
-	stroke-width:10px;
+	stroke-width:2px;
 }
 
-
-.sideBar {
+.map {
 	position: absolute;
-	background: #ffffff;
-	border-radius: 6px;
-	padding: 15px;
+}
+
+.tileUnit {
+	display:  none;
+	fill: rgba(0, 0, 0, 0);
+	pointer-events: auto;
+}
+
+.tileUnit.ownUnit {
+
+}
+
+.map.active {
+	cursor:  none;
+
+}
+.circle {
+	display: none;
+	pointer-events: none;
+}
+
+.circle.active {
+	display:  block;
+}
+
+.circle.ownUnit {
+	 
+	 pointer-events: auto;
+}
+
+
+.circle.unitSelected {
+	stroke: #FFD073;
+	stroke-width:  10px;
+}
+
+
+
+.hexagon.active {
+	pointer-events: none;
+}
+.unit {
+	display: none;
+	background: #FFFFFF;
+	border-radius: 50%;
+	pointer-events: auto;
+	margin: auto;
+	width: 180px;
+	height: 180px;
+}
+
+input {
+	display: block;
+	padding: 10px;
 	font-size: 20px;
-	cursor: default;
-	top:  10px;
-	z-index: 99;
-	min-width: 100px;
+	outline: none;
 }
 
-.sideBarRight {
-	left:  auto;
-	right: 20px;
+
+.mainArea {
+	  display: flex;
+    flex-wrap: wrap;
 }
 
-.sideBarLeft {
-	left:  20px;
-	right: auto;
+.button {
+	cursor: pointer;
+	padding: 10px;
+	font-size: 22px;
+	margin:  10px 0;
+	background-color: wheat;
+	width: fit-content;
 }
 
-.menuBarItemActive, .sideBarItemActive {
-	font-weight: 900;
+.move {
+		/*
+		cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 576 512'%3E%3Ctitle%3Ecursor-link%3C/title%3E%3Cpath d='M256 48C256 74.51 234.5 96 208 96C181.5 96 160 74.51 160 48C160 21.49 181.5 0 208 0C234.5 0 256 21.49 256 48zM126.5 199.3C125.6 199.7 124.6 200.1 123.7 200.5L112.7 205.4C97.41 212.2 85.42 224.6 79.22 240.1L77.71 243.9C71.15 260.3 52.53 268.3 36.12 261.7C19.71 255.1 11.73 236.5 18.29 220.1L19.8 216.3C32.19 185.4 56.18 160.5 86.66 146.9L97.66 142C118.5 132.8 140.1 128 163.7 128C208.3 128 248.5 154.8 265.6 195.9L280.1 232.7L302.3 243.4C318.1 251.3 324.5 270.5 316.6 286.3C308.7 302.1 289.5 308.5 273.7 300.6L247 287.3C236.7 282.1 228.6 273.4 224.2 262.8L214.6 239.8L195.3 305.3L244.8 359.4C250.2 365.3 254.1 372.4 256 380.2L279 472.2C283.3 489.4 272.9 506.8 255.8 511C238.6 515.3 221.2 504.9 216.1 487.8L194.9 399.6L124.3 322.5C109.5 306.4 103.1 283.9 109.6 262.8L126.5 199.3zM68.73 398L93.69 335.6C95.84 338.6 98.16 341.4 100.7 344.2L141.4 388.6L126.9 424.8C124.5 430.9 120.9 436.4 116.3 440.9L54.63 502.6C42.13 515.1 21.87 515.1 9.372 502.6C-3.124 490.1-3.124 469.9 9.372 457.4L68.73 398z' fill='%23183153' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3C/path%3E%3C/svg%3E") 32 32, pointer;
+		*/
+		cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 576 512'%3E%3Ctitle%3Ecursor-link%3C/title%3E%3Cpath d='M423.9 255.8L411 413.1c-3.3 40.7-63.9 35.1-60.6-4.9l10-122.5-41.1 2.3c10.1 20.7 15.8 43.9 15.8 68.5 0 41.2-16.1 78.7-42.3 106.5l-39.3-39.3c57.9-63.7 13.1-167.2-74-167.2-25.9 0-49.5 9.9-67.2 26L73 243.2c22-20.7 50.1-35.1 81.4-40.2l75.3-85.7-42.6-24.8-51.6 46c-30 26.8-70.6-18.5-40.5-45.4l68-60.7c9.8-8.8 24.1-10.2 35.5-3.6 0 0 139.3 80.9 139.5 81.1 16.2 10.1 20.7 36 6.1 52.6L285.7 229l106.1-5.9c18.5-1.1 33.6 14.4 32.1 32.7zm-64.9-154c28.1 0 50.9-22.8 50.9-50.9C409.9 22.8 387.1 0 359 0c-28.1 0-50.9 22.8-50.9 50.9 0 28.1 22.8 50.9 50.9 50.9zM179.6 456.5c-80.6 0-127.4-90.6-82.7-156.1l-39.7-39.7C36.4 287 24 320.3 24 356.4c0 130.7 150.7 201.4 251.4 122.5l-39.7-39.7c-16 10.9-35.3 17.3-56.1 17.3z' fill='%23183153' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3C/path%3E%3C/svg%3E") 32 32, pointer;
+}
+
+.denied {
+		cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 576 512'%3E%3Ctitle%3Ecursor-link%3C/title%3E%3Cpath d='M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM99.5 144.8C77.15 176.1 64 214.5 64 256C64 362 149.1 448 256 448C297.5 448 335.9 434.9 367.2 412.5L99.5 144.8zM448 256C448 149.1 362 64 256 64C214.5 64 176.1 77.15 144.8 99.5L412.5 367.2C434.9 335.9 448 297.5 448 256V256z' fill='%23183153' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3C/path%3E%3C/svg%3E") 32 32, pointer;
 }
