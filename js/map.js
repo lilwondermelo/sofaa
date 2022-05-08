@@ -70,7 +70,7 @@ async function refreshUnitsData() {
             units = data.data;
             console.log(units);
             refreshUnits();
-            //refreshUnitsData();
+            refreshUnitsData();
         } else {
             console.log(data);
         }
