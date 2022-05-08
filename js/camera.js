@@ -19,7 +19,9 @@ $('body').on('click', '.circle', function() {
         unitSelect();
     }
 })
-
+$('body').on('click', '.hexagon', function() {
+    polygonClick(this);
+})
   function beginMomentumTracking(){
     cancelMomentumTracking();
     momentumID = requestAnimationFrame(momentumLoop);
@@ -92,7 +94,7 @@ window.oncontextmenu = function ()
 $('body').on('mouseup', '.map', function(e) {
       if(e.which == 1)
       {
-slider = $(this);
+    slider = $(this);
     isDown = false;
     slider.removeClass('active');
     beginMomentumTracking();

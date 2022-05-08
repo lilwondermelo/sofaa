@@ -24,7 +24,12 @@ function getPage() {
         }
     });
 }
-
+function polygonClick(el) {
+    if (!$(el).hasClass('tileSelected')) {
+        $('.hexagon').removeClass('tileSelected');
+        $(el).addClass('tileSelected');
+    }
+}
 function drawLoginWindow() {
     
     let loginForm = '<div class="logigWindow">'+

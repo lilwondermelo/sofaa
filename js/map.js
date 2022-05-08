@@ -187,16 +187,7 @@ function unitSelect() {
     $('.circle[unit-id="' + selectedUnitId + '"]').addClass('unitSelected');
 }
 
-function polygonClick(el) {
-    let id = $(el).attr('data-id');
-    if ((menuActive == 2) && (sideBarActive > 0)) {
-        tileEdit(id, 'type', sideBarActive);
-    }
-    else if (!$(el).hasClass('tileSelected')) {
-        $('.hexagon').removeClass('tileSelected');
-        $(el).addClass('tileSelected');
-    }
-}
+
 function refreshMap() {
     for (let i = 0; i < map.length; i++) {
         $('.hexagon[tile-id="' + i + '"]').attr('class', "hexagon tile" + map[i].type);
