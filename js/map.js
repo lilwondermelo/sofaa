@@ -76,6 +76,22 @@ async function refreshUnitsData() {
     });
 }
 
+function getAvatars() {
+    $.ajax({
+        type: "POST",
+        url: "../core/_ajaxListener.class.php",
+        data: {classFile: "map.class", class: "Map", method: "getAvatars"
+        }}).done(function (result) {
+        var data = JSON.parse(result);
+        if (data.result === "Ok") {
+            avatars = data.data;
+            checkArray['avatars'] = 1;
+            checkDownload();
+        } else {
+            console.log(data);
+        }
+    });
+}
 
 function getUnits() {
     $.ajax({
@@ -138,8 +154,6 @@ function drawMap() {
     console.log(g);
     $('.mainArea').css('width', '1800px');
     $('.mainArea').css('height', '1600px');
-
-
     let xDelta = 86.6;
     let yDelta = 75;
     let xInit = 67.5;
@@ -166,7 +180,6 @@ function drawMap() {
         .attr("d", hexbin.hexagon())
         .attr("transform", function(d) {return "translate(" + (d.x+25) + "," + (d.y) + ")"; });
 
-
     g = svg.append("g").attr("class", "circles");
     g.selectAll("circle")
       .data(centers)
@@ -176,6 +189,15 @@ function drawMap() {
         .attr("fill", function(d) { return 'yellow'; })
         .attr("r", 30)
         .attr("transform", function(d) {return "translate(" + (d.x) + "," + (d.y) + ")"; });
+
+
+
+        for (let i = 0; i < players.length; i++) {
+            g = svg.append("g").attr("class", "avatar avatar" + i);
+            g.html(players[i].avatar);
+            let unit = $('.avatar' + i);
+            unit.attr("transform", "translate(" + -200 + "," + -200 + ") scale(0.1)");
+        }
     refreshMap();
     refreshUnitsData();
 }
@@ -196,8 +218,21 @@ function refreshMap() {
 }
 
 function refreshUnits() {
+    let xDelta = 86.6;
+    let yDelta = 75;
+    let yInit = 48;
+    let xInit = 33.3;
     $('.circle').removeClass("active");
     for (let i = 0; i < units.length; i++) {
+
+        let x = xInit + map[units[i].tile].x * xDelta;
+        let y = yInit + map[units[i].tile].y * yDelta;
+
+        if (units[i].tile%2 == 1) {
+            x += xDelta / 2;  
+        }
+        console.log(x);
+        $('.avatar' + i).attr('transform', 'translate(' + x + ', ' + y + ') scale(0.1)')
         if (units[i].player == userId) {
             $('.circle[tile-id="' + units[i].tile + '"]').addClass('ownUnit');
         }
@@ -208,6 +243,7 @@ function refreshUnits() {
     if (selectedUnitId == -1) {
         selectedUnitId = $('.ownUnit').attr('unit-id');
     }
+
     unitSelect();
 }
 
