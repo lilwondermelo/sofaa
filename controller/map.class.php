@@ -53,11 +53,9 @@ class Map {
 		session_start();
 		$userId = $_SESSION["userId"];
 		$source = new DataSource('select (select count(*) from units u1 join clients c1 on u1.player = c1.id where u1.player = ' . $userId . ') as count, u.id, u.player, u.tile, u.turns, ul.name from units u join unit_list ul on u.unit_id = ul.id join clients c on u.player = c.id');
-		if (!$data = $source->getData()) {
-			return $this->startGame();
-		}
-		if ($data[0]['count'] == 0) {
-			return $this->startGame();
+		if ((!$data = $source->getData()) || ($data[0]['count'] == 0)) {
+			$this->startGame();
+			return getUnits();
 		}
 		return $data;
 	}
