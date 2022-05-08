@@ -1,7 +1,7 @@
 let menuActive = 0, sideBarActive = 0;
 let userName = '';
 let userId = 0;
-getPage();
+//getPage();
 
 function getPage() {
     $.ajax({
