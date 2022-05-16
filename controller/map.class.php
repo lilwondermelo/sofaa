@@ -110,7 +110,7 @@ class Map {
 			for ($y = 0; $y < $this->maxY; $y++) {
 
 				$xPos = $y;
-				$yPos = -($x+$y);
+				$yPos = -(floor($x/2)+$y);
 				$zPos = $x;
 
 				$tile = new Tile($xPos, $yPos, $zPos);
