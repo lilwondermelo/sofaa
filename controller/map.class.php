@@ -109,9 +109,9 @@ class Map {
 		for ($x = 0; $x < $this->maxX; $x++) {
 			for ($y = 0; $y < $this->maxY; $y++) {
 
-				$yPos = $x - $y / 2;
+				$xPos = $y - $x / 2;
 				$zPos = $x;
-				$xPos = -($yPos + $zPos);
+				$yPos = -($xPos + $zPos);
 				
 
 				$tile = new Tile($xPos, $yPos, $zPos);
