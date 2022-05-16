@@ -109,7 +109,7 @@ class Map {
 		for ($x = 0; $x < $this->maxX; $x++) {
 			for ($y = 0; $y < $this->maxY; $y++) {
 
-				$xPos = $y - $x / 2;
+				$xPos = $y - floor($x / 2);
 				$zPos = $x;
 				$yPos = -($xPos + $zPos);
 				
