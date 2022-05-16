@@ -53,6 +53,8 @@ window.oncontextmenu = function ()
         $('.map').removeClass('move');
         $('.map').removeClass('denied');
         let tileId = $(this).attr('tile-id');
+                            $('.texts').removeClass('textsActive');
+
         if (landTiles.includes(parseInt(map[tileId].type, 10))) {
           move(tileId);
         }
@@ -94,15 +96,17 @@ window.oncontextmenu = function ()
 $('body').on('mouseup', '.map', function(e) {
       if(e.which == 1)
       {
-    slider = $(this);
-    isDown = false;
-    slider.removeClass('active');
-    beginMomentumTracking();
+        slider = $(this);
+        isDown = false;
+        slider.removeClass('active');
+        beginMomentumTracking();
       }
     
   })
 
   function movePlan(tileId) {
+
+    Dijkstra(tileId);
     if (landTiles.includes(parseInt(map[tileId].type, 10))) {
       $('.map').addClass('move');
       $('.map').removeClass('denied');

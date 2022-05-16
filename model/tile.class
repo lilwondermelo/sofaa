@@ -3,20 +3,22 @@ class Tile {
 	private $id = 0;
 	private $x = 0;
 	private $y = 0;
+	private $z = 0;
 	private $type = 1;
 
-	public function __construct($x, $y, $type = 1) {
-		$this->setPos($x, $y);
+	public function __construct($x, $y, $z, $type = 1) {
+		$this->setPos($x, $y, $z);
 		$this->setType($type);
 	}
 
 	public function getPos() {
-		return ['x' => $this->getX(), 'y' => $this->getY()];
+		return ['x' => $this->getX(), 'y' => $this->getY(), 'z' => $this->getZ()];
 	}
 
-	public function setPos($x, $y) {
+	public function setPos($x, $y, $z) {
 		$this->setX($x);
 		$this->setY($y);
+		$this->setZ($z);
 	}
 
 	public function getX() {
@@ -26,12 +28,18 @@ class Tile {
 	public function getY() {
 		return $this->y;
 	}
+	public function getZ() {
+		return $this->z;
+	}
 
 	public function setX($x) {
 		$this->x = $x;
 	}
 	public function setY($y) {
 		$this->y = $y;
+	}
+	public function setZ($z) {
+		$this->z = $z;
 	}
 
 	public function getType() {

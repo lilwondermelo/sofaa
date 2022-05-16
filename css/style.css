@@ -225,3 +225,11 @@ input {
 	stroke-width:2px;
 }
 
+
+.texts {
+	display: none;
+}
+
+.textsActive {
+	display: block;
+}
