@@ -111,7 +111,7 @@ class Map {
 
 				$yPos = $x - $y / 2;
 				$zPos = $x;
-				$xPos = -($xPos + $yPos);
+				$xPos = -($yPos + $zPos);
 				
 
 				$tile = new Tile($xPos, $yPos, $zPos);
