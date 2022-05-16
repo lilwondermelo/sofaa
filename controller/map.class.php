@@ -109,9 +109,10 @@ class Map {
 		for ($x = 0; $x < $this->maxX; $x++) {
 			for ($y = 0; $y < $this->maxY; $y++) {
 
-				$xPos = $y;
-				$yPos = -(floor($x/2)+$y);
+				$xPos = $x - $y / 2;
 				$zPos = $x;
+				$yPos = -($xPos + $zPos);
+				
 
 				$tile = new Tile($xPos, $yPos, $zPos);
 				$updater = new DataRowUpdater($tableName);
