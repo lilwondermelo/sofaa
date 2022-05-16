@@ -13,7 +13,7 @@ let points = [];
 let centers = [];
 let id = 0;
 let shiftX = 0;
-createNewMap();
+//createNewMap();
 let d = [];
 let mark = [];
 
