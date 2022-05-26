@@ -2,6 +2,49 @@ let menuActive = 0, sideBarActive = 0;
 let userName = '';
 let userId = 0;
 getPage();
+getChat();
+
+
+
+
+async function getChat() {
+    await new Promise((resolve, reject) => setTimeout(resolve, 200));
+    $.ajax({
+        type: "POST",
+        url: "../core/_ajaxListener.class.php",
+        data: {classFile: "client.class", class: "Client", method: "getChat"
+        }}).done(function (result) {
+        var data = JSON.parse(result);
+        if (data.result === "Ok") {
+            $('.messages').html('');
+            for (let i = 0; i < data.data.length; i++) {
+               $('.messages').append('<div class="chatMessage">' + data.data[i]["message_text"] + '</div>');
+            }
+             getChat();
+        } else {
+            console.log(data);
+        }
+    });
+}
+
+
+
+function sendMessage() {
+    let messageText = $('.chatButtonText').val();
+     $.ajax({
+        type: "POST",
+        url: "../core/_ajaxListener.class.php",
+        data: {classFile: "client.class", class: "Client", method: "sendMessage", messageText: messageText
+        }}).done(function (result) {
+        var data = JSON.parse(result);
+        if (data.result === "Ok") {
+           getChat();
+        } else {
+            console.log(data);
+        }
+    });
+}
+
 
 function getPage() {
     $.ajax({
@@ -17,6 +60,7 @@ function getPage() {
                 drawMainMenu('menu');
             }
             else {
+
                 drawMainMenu('login');
             }
         } else {

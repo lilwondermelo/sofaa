@@ -15,6 +15,26 @@ class Client {
 		return ['userId' => $userId, 'userName' => $data[0]['name']];
 	}
 
+	public function getChat() {
+		$source = new DataSource("select * from chat");
+		if (!$data = $source->getData()) {
+			$this->error = $source->error;
+			return false;
+		}
+		return $data;
+	}
+
+	public function sendMessage($messageText) {
+		$updater = new DataRowUpdater('chat');
+		$updater->setKeyField('id');
+        $updater->setDataFields(array('message_text' => $messageText));
+        if (!$updater->update()) {
+        	$this->error = $updater->error;
+        	return false;
+        }
+        return true;
+	}
+
 	public function getRoomList() {
 		return [['map' => 'Россия 19 века', 'name' => 'ingeniouslife']];
 	}

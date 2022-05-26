@@ -106,7 +106,7 @@ $('body').on('mouseup', '.map', function(e) {
 
   function movePlan(tileId) {
 
-    Dijkstra(tileId);
+    //Dijkstra(tileId);
     if (landTiles.includes(parseInt(map[tileId].type, 10))) {
       $('.map').addClass('move');
       $('.map').removeClass('denied');
@@ -122,12 +122,11 @@ $('body').on('mouseup', '.map', function(e) {
     $.ajax({
         type: "POST",
         url: "../core/_ajaxListener.class.php",
-        data: {classFile: "map.class", class: "Map", method: "moveUnit", unitId: selectedUnitId, tileId: tileId
+        data: {classFile: "map.class", class: "Map", method: "moveUnitTest", unitId: selectedUnitId, tileId: tileId
         }}).done(function (result) {
         var data = JSON.parse(result);
         if (data.result === "Ok") {
-            
-            units = data.data;
+      
             refreshUnits();
         } else {
             console.log(data);

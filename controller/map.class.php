@@ -21,6 +21,40 @@ class Map {
 		return $data;
 	}
 
+
+	public function moveUnitTest($unitId, $tileId) {
+		$updater = new DataRowUpdater('units_moves');
+		$updater->setKeyField('id');
+        $updater->setDataFields(array('unit_id' => $unitId, 'tile_id' => $tileId));
+        if (!$updater->update()) {
+        	$this->error = $updater->error;
+        	return false;
+        }
+        return true;
+	}
+
+	public function getUnitsTest() {
+		$source = new DataSource('select (select m.tile_id from units_moves m where m.unit_id = u.id order by m.id desc limit 1) as lastMove, (select m.id from units_moves m where m.unit_id = u.id order by m.id desc limit 1) as lastMoveId, u.id, u.player from units u order by lastMoveId');
+		if (!$data = $source->getData()) {
+			return false;
+		}
+		else {
+			return $data;
+		}
+	}
+
+	public function getMovesTest($lastMoveId) {
+		$source = new DataSource('select * from units_moves where id > ' . $lastMoveId);
+		if (!$data = $source->getData()) {
+			return 'false';
+		}
+		else {
+			return $data;
+		}
+	}
+
+	
+
 	public function moveUnit($unitId, $tileId) {
 		$updater = new DataRowUpdater('units');
 		$updater->setKey('id', $unitId);
@@ -46,6 +80,17 @@ class Map {
 		}
 		//return ['id'=> 21];
 		return $data[array_rand($data)];
+	}
+
+
+	public function getUnitsApi() {
+		$source = new DataSource('select (select m.tile_id from units_moves m where m.unit_id = u.id order by m.id desc limit 1) as tile, 1 as count, u.id, u.player, u.max_turns as maxTurns, u.turns, ul.name from units u join unit_list ul on u.unit_id = ul.id');
+		if (!$data = $source->getData()) {
+			return false;
+		}
+		else {
+			return $data;
+		}
 	}
 
 
